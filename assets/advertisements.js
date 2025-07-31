@@ -31,7 +31,8 @@ const verticalAdTemplate=document.createElement("template");verticalAdTemplate.i
 '<div class="advertising-area h-[600px]"><p>160x600 Vertical Ad</p></div>';
 const nativeBannerAdTemplate=document.createElement("template");nativeBannerAdTemplate.innerHTML=`
 <div>
-    Hello
+<script async="async" data-cfasync="false" src="//pl27312178.profitableratecpm.com/849e6610f4501e065f7c0550fff4cc17/invoke.js"></script>
+<div id="container-849e6610f4501e065f7c0550fff4cc17"></div>
 </div>
 `;
 class TopAd extends HTMLElement{constructor(){super();this.appendChild(topAdTemplate.content.cloneNode(!0))}}customElements.define("top-ad",TopAd);class MiddleAd extends HTMLElement{constructor(){super();this.appendChild(middleAdTemplate.content.cloneNode(!0))}}customElements.define("middle-ad",MiddleAd);class VerticalAd extends HTMLElement{constructor(){super();this.appendChild(verticalAdTemplate.content.cloneNode(!0))}}customElements.define("vertical-ad",VerticalAd);class NativeBannerAd extends HTMLElement{constructor(){super();this.appendChild(nativeBannerAdTemplate.content.cloneNode(!0))}}customElements.define("native-banner-ad",NativeBannerAd);
