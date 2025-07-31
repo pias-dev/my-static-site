@@ -21,7 +21,7 @@ const verticalAdTemplate=document.createElement("template");verticalAdTemplate.i
 '<div class="advertising-area h-[600px]"><p>160x600 Vertical Ad</p></div>';
 const nativeBannerAdTemplate=document.createElement("template");nativeBannerAdTemplate.innerHTML=`
 <div>
-    Native Banner Ad Section
+    Hello
 </div>
 `;
 class TopAd extends HTMLElement{constructor(){super();this.appendChild(topAdTemplate.content.cloneNode(!0))}}customElements.define("top-ad",TopAd);class MiddleAd extends HTMLElement{constructor(){super();this.appendChild(middleAdTemplate.content.cloneNode(!0))}}customElements.define("middle-ad",MiddleAd);class VerticalAd extends HTMLElement{constructor(){super();this.appendChild(verticalAdTemplate.content.cloneNode(!0))}}customElements.define("vertical-ad",VerticalAd);class NativeBannerAd extends HTMLElement{constructor(){super();this.appendChild(nativeBannerAdTemplate.content.cloneNode(!0))}}customElements.define("native-banner-ad",NativeBannerAd);
