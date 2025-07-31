@@ -27,7 +27,8 @@ verticalAdTemplate.innerHTML = `<div class="advertising-area h-[600px]"><p>160x6
 const nativeBannerAdTemplate = document.createElement('template');
 nativeBannerAdTemplate.innerHTML = `
 <div>
-    Native Banner Ad Section
+    <script async="async" data-cfasync="false" src="//pl27312178.profitableratecpm.com/849e6610f4501e065f7c0550fff4cc17/invoke.js"></script>
+    <div id="container-849e6610f4501e065f7c0550fff4cc17"></div>
 </div>
 `;
 
