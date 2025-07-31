@@ -141,7 +141,15 @@
     </style>
     
 
-    <script src="./assets/dark-theme.js"></script>
+    <script>
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+        } else {
+        document.documentElement.classList.remove('dark');
+        }
+        tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] }}}}
+    </script>
+    
 </head>
 <body class="flex min-h-screen flex-col transition-colors duration-300">
 
