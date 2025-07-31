@@ -150,19 +150,27 @@
 <header-component></header-component>
 <script src="./assets/header.js" defer></script>
 
-<script src="./assets/advertisements.js" defer></script>
 
 <main class="flex-grow w-full">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 mt-16">
 
         <!-- START: Top Horizontal Ad Section -->
-        <div class="mb-10 sm:mb-12"><top-ad></top-ad></div>
+        <div class="mb-10 sm:mb-12">
+
+    <div class="mx-auto w-full max-w-[320px] h-[50px] sm:max-w-[468px] sm:h-[60px] md:max-w-[728px] md:h-[90px]">
+        <div class="advertising-area">
+            <div> <p class="sm:hidden">320x50 horizontal Ad</p> </div>
+            <div> <p class="hidden sm:block md:hidden">468x60 horizontal Ad</p> </div>
+            <div> <p class="hidden md:block">728x90 horizontal Ad</p> </div>
+        </div>
+    </div>
+
+        </div>
         <!-- END: Top Horizontal Ad Section -->
 
         <div class="lg:grid lg:grid-cols-[160px_1fr_160px] lg:gap-8">
             <aside class="hidden lg:flex flex-col gap-8">
-                <vertical-ad></vertical-ad>
-                <vertical-ad></vertical-ad>
+                <div class="advertising-area h-[600px]"><p>160x600 Vertical Ad</p></div>
             </aside>
 
             <div class="min-w-0 overflow-hidden">
@@ -191,7 +199,14 @@
                     </div>
                 </section>
 
-                <middle-ad></middle-ad>
+                <div class="my-12 sm:my-16">
+    <div class="mx-auto w-full max-w-[320px] h-[50px] sm:max-w-[468px] sm:h-[60px]">
+        <div class="advertising-area">
+            <div> <p class="sm:hidden">320x50 horizontal Ad</p> </div>
+            <div> <p class="hidden sm:block">468x60 horizontal Ad</p> </div>
+        </div>
+    </div>
+</div>
 
                 <div class="space-y-12 sm:space-y-16 max-w-4xl mx-auto text-slate-700 dark:text-slate-300 text-base leading-relaxed">
                     <section>
@@ -208,20 +223,37 @@
                         </div>
                     </section>
                     <section><h2 class="text-3xl font-bold text-center text-slate-800 dark:text-slate-100 mb-8">Your Age Calculator Results: More Than a Number</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 text-left"><div class="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-lg border border-slate-200 dark:border-slate-700"><h3 class="font-semibold text-lg text-slate-800 dark:text-slate-200">Pinpoint Exact Age</h3><p class="text-slate-600 dark:text-slate-400 mt-2">Ever wonder about your exact age in years, months, *and* days? Our date of birth calculator gives you the precise answer, perfect for official forms or just satisfying your curiosity.</p></div><div class="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-lg border border-slate-200 dark:border-slate-700"><h3 class="font-semibold text-lg text-slate-800 dark:text-slate-200">See Your Life in Detail</h3><p class="text-slate-600 dark:text-slate-400 mt-2">Find out exactly how many days, hours, and minutes you've been alive. It's a fun way to get a new perspective on your life's journey so far. Settle any debate with friends and family!</p></div><div class="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-lg border border-slate-200 dark:border-slate-700"><h3 class="font-semibold text-lg text-slate-800 dark:text-slate-200">Count Down to Your Birthday</h3><p class="text-slate-600 dark:text-slate-400 mt-2">Get excited for your next big day! The built-in birthday calculator automatically tells you how many days are left until you celebrate again. It's perfect for planning and building anticipation.</p></div><div class="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-lg border border-slate-200 dark:border-slate-700"><h3 class="font-semibold text-lg text-slate-800 dark:text-slate-200">Completely Private and Secure</h3><p class="text-slate-600 dark:text-slate-400 mt-2">Your privacy is essential. This DOB calculator processes everything right in your browser. Your data is never stored on our servers, making it 100% confidential and secure for our global users.</p></div></div></section>
-                    <middle-ad></middle-ad>
+ 
+
+<div class="my-12 sm:my-16">
+    <div class="mx-auto w-full max-w-[320px] h-[50px] sm:max-w-[468px] sm:h-[60px]">
+        <div class="advertising-area">
+            <div> <p class="sm:hidden">320x50 horizontal Ad</p> </div>
+            <div> <p class="hidden sm:block">468x60 horizontal Ad</p> </div>
+        </div>
+    </div>
+</div>
+
                     <section><h2 class="text-3xl font-bold text-center text-slate-800 dark:text-slate-100 mb-8">Frequently Asked Questions (FAQ)</h2><div class="space-y-6"><div><h3 class="text-xl font-semibold text-slate-800 dark:text-slate-100">How do you calculate chronological age?</h3><p class="mt-2">Our chronological age calculator determines the precise time elapsed from your date of birth to the current date. It subtracts your birth year, month, and day from today's date, adjusting for leap years to give you a result in years, months, and days.</p></div><div><h3 class="text-xl font-semibold text-slate-800 dark:text-slate-100">Why should I use this "how old am I" calculator?</h3><p class="mt-2">It's the fastest and easiest way to get an exact answer! Whether you're filling out an official form, planning for a milestone birthday, or just curious, our tool gives you a detailed age breakdown instantly without any math.</p></div><div><h3 class="text-xl font-semibold text-slate-800 dark:text-slate-100">Is my date of birth information saved?</h3><p class="mt-2">Absolutely not. Your privacy is our number one concern. The entire calculation happens securely in your web browser. Your DOB is never sent to our servers, ensuring your data remains 100% private and confidential worldwide.</p></div>
                     <div><h3 class="text-xl font-semibold text-slate-800 dark:text-slate-100">Do you support different date formats?</h3><p class="mt-2">Yes! Our online age calculator is designed to be intuitive and globally friendly. The date picker will use the format standard to your browser and region (e.g., DD/MM/YYYY in the UK or MM/DD/YYYY in the US), so you can enter your date of birth in the way that is most natural to you. The calculation will be accurate regardless of the format.</p></div></div></section>
                 </div>
             </div>
 
             <aside class="hidden lg:flex flex-col gap-8">
-                <vertical-ad></vertical-ad>
-                <vertical-ad></vertical-ad>
+                <div class="advertising-area h-[600px]"><p>160x600 Vertical Ad</p></div>
             </aside>
         </div>
 
         <!-- START: Bottom Horizontal Ad Section -->
-        <div class="mt-10 sm:mt-12"><top-ad></top-ad></div>
+        <div class="mt-10 sm:mt-12">
+    <div class="mx-auto w-full max-w-[320px] h-[50px] sm:max-w-[468px] sm:h-[60px] md:max-w-[728px] md:h-[90px]">
+        <div class="advertising-area">
+            <div> <p class="sm:hidden">320x50 horizontal Ad</p> </div>
+            <div> <p class="hidden sm:block md:hidden">468x60 horizontal Ad</p> </div>
+            <div> <p class="hidden md:block">728x90 horizontal Ad</p> </div>
+        </div>
+    </div>
+        </div>
         <!-- END: Bottom Horizontal Ad Section -->
 
     </div>
@@ -232,8 +264,9 @@
 <script src="./assets/footer.js" defer></script>
 
 <!-- START: Native Banner Ad Section -->
-<script async="async" data-cfasync="false" src="//pl27312178.profitableratecpm.com/849e6610f4501e065f7c0550fff4cc17/invoke.js"></script>
-<div id="container-849e6610f4501e065f7c0550fff4cc17"></div>
+<div>
+    Native Banner Ad Section
+</div>
 <!-- END: Native Banner Section -->
 
 <!--! FINALIZED JAVASCRIPT LOGIC - VERIFIED AND PRODUCTION-READY -->
