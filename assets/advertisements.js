@@ -3,7 +3,18 @@ const topAdTemplate=document.createElement("template");topAdTemplate.innerHTML=`
         <div class="advertising-area">
             <div> <p class="sm:hidden">320x50 horizontal Ad</p> </div>
             <div> <p class="hidden sm:block md:hidden">468x60 horizontal Ad</p> </div>
-            <div> <p class="hidden md:block">728x90 horizontal Ad</p> </div>
+            <div class="hidden md:block">
+            <script type="text/javascript">
+	atOptions = {
+		'key' : '624a97a6290d488d2c37917256d06a67',
+		'format' : 'iframe',
+		'height' : 90,
+		'width' : 728,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/624a97a6290d488d2c37917256d06a67/invoke.js"></script> 
+            </div>
         </div>
     </div>
 `;
