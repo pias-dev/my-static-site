@@ -95,7 +95,6 @@
     <link rel="icon" href="./assets/logo.svg" type="image/svg+xml">
 
     <!-- Dependencies -->
-    <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -150,7 +149,6 @@
         input[type="time"]::-webkit-calendar-picker-indicator { filter: invert(0.5); }
         html.dark input[type="time"]::-webkit-calendar-picker-indicator { filter: invert(1); }
 
-        /* CHANGE: Added new reusable class for active footer links */
         .footer-link-active {
             color: #ffffff;
             font-weight: 600; /* semibold */
@@ -164,7 +162,6 @@
         } else {
         document.documentElement.classList.remove('dark');
         }
-        tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] }}}}
     </script>
     
 </head>
@@ -451,12 +448,6 @@ html.dark .switch__icon--dark { opacity: 1; transform: translateX(0); }
         </div>
     </div>
 </footer>
-<script>
-    const yearSpan = document.querySelector('#year');
-    if (yearSpan) {
-      yearSpan.textContent = new Date().getFullYear();
-    }
-</script>
 
 <!-- START: Native Banner Ad Section -->
 <div>
@@ -526,6 +517,26 @@ function ageCalculator() {
 }
 </script>
 
+<!-- PERFORMANCE FIX: Moved render-blocking script to the end of the body -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    // This script should be after the TailwindCSS script tag.
+    tailwind.config = {
+        darkMode: 'class',
+        theme: {
+            extend: {
+                fontFamily: {
+                    sans: ['Inter', 'sans-serif']
+                }
+            }
+        }
+    }
+
+    const yearSpan = document.querySelector('#year');
+    if (yearSpan) {
+      yearSpan.textContent = new Date().getFullYear();
+    }
+</script>
 </html>
 
 <style>
