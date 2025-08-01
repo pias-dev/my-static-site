@@ -95,34 +95,30 @@
     <link rel="icon" href="./assets/logo.svg" type="image/svg+xml">
 
     <!-- Dependencies -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <!-- CHANGE: Inlined Google Fonts to prevent render-blocking CSS -->
-    <style>
-      /* Inter */
-      @font-face {
-        font-family: 'Inter'; font-style: normal; font-weight: 400 800; font-display: swap;
-        src: url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2JL7W0Q5n-wU.woff2) format('woff2');
-        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-      }
-      /* Poppins Regular */
-      @font-face {
-        font-family: 'Poppins'; font-style: normal; font-weight: 400; font-display: swap;
-        src: url(https://fonts.gstatic.com/s/poppins/v21/pxiEyp8kv8JHgFVrJJfecg.woff2) format('woff2');
-        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-      }
-      /* Poppins Bold */
-      @font-face {
-        font-family: 'Poppins'; font-style: normal; font-weight: 700; font-display: swap;
-        src: url(https://fonts.gstatic.com/s/poppins/v21/pxiByp8kv8JHgFVrLCz7Z1xlFQ.woff2) format('woff2');
-        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-      }
-    </style>
-
     <!-- Optimized & Merged CSS -->
     <style>
+        /* Inlined Google Fonts to prevent render-blocking */
+        @font-face {
+            font-family: 'Inter'; font-style: normal; font-weight: 400 800; font-display: swap;
+            src: url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2JL7W0Q5n-wU.woff2) format('woff2');
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+        @font-face {
+            font-family: 'Poppins'; font-style: normal; font-weight: 400; font-display: swap;
+            src: url(https://fonts.gstatic.com/s/poppins/v21/pxiEyp8kv8JHgFVrJJfecg.woff2) format('woff2');
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+        @font-face {
+            font-family: 'Poppins'; font-style: normal; font-weight: 700; font-display: swap;
+            src: url(https://fonts.gstatic.com/s/poppins/v21/pxiByp8kv8JHgFVrLCz7Z1xlFQ.woff2) format('woff2');
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+
+        /* Core Site and Component Styles */
         :root {
             --primary-blue: #0d60ff;
             --primary-purple: #6a00f4;
@@ -149,19 +145,39 @@
         input[type="time"]::-webkit-calendar-picker-indicator { filter: invert(0.5); }
         html.dark input[type="time"]::-webkit-calendar-picker-indicator { filter: invert(1); }
 
-        .footer-link-active {
-            color: #ffffff;
-            font-weight: 600; /* semibold */
+        .footer-link-active { color: #ffffff; font-weight: 600; }
+        
+        /* FIX: Consolidated styles from body into head */
+        .theme-toggle-container { font-size: clamp(10px, 0.6rem + 0.4vw, 14px); }
+        .switch { position: relative; display: inline-block; width: 5.625em; height: 2.75em; background-image: var(--switch-bg-light); border-radius: 1.375em; cursor: pointer; transition: background-image var(--transition-duration) ease; }
+        html.dark .switch { background-image: var(--switch-bg-dark); }
+        .switch__input { appearance: none; -webkit-appearance: none; position: absolute; width: 100%; height: 100%; margin: 0; z-index: 10; cursor: pointer;}
+        .switch__input::before { content: ""; position: absolute; top: 0.25em; left: 0.25em; width: 2.25em; height: 2.25em; background-color: var(--thumb-light); border-radius: 50%; transition: transform var(--transition-duration) var(--transition-timing), background-color var(--transition-duration) ease; }
+        .switch__input:checked::before { transform: translateX(2.875em); background-color: var(--thumb-dark); }
+        .switch__icon { position: absolute; width: 1.75em; height: 1.75em; top: 0.5em; transition: opacity var(--transition-duration) ease, transform var(--transition-duration) var(--transition-timing); }
+        .switch__icon--light { right: 0.625em; color: #ffffff; opacity: 1; }
+        .switch__icon--dark { left: 0.625em; color: #ffffff; opacity: 0; transform: translateX(0.625em); }
+        html.dark .switch__icon--light { opacity: 0; transform: translateX(-0.625em); }
+        html.dark .switch__icon--dark { opacity: 1; transform: translateX(0); }
+        .logo-main-line { display: flex; align-items: baseline; line-height: 1; }
+        .logo-text { font-family: 'Poppins', sans-serif; font-size: 1.75rem; font-weight: 700; white-space: nowrap; }
+        .alltool { color: var(--primary-blue); }
+        .ai { color: var(--primary-purple); }
+        .logo-sub-line { font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 400; text-align: right; }
+        .com-light { color: var(--primary-purple); }
+        @media (max-width: 480px) {
+            .logo-text { font-size: 1.5rem; }
+            .logo-sub-line { font-size: 0.8rem; }
         }
     </style>
     
-
     <script>
         if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
         document.documentElement.classList.add('dark');
         } else {
         document.documentElement.classList.remove('dark');
         }
+        tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] }}}}
     </script>
     
 </head>
@@ -177,31 +193,6 @@
         <mask id="gp-mask" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="7" y="3" width="24" height="26"><path d="M30.0484 14.4004C31.3172 15.0986 31.3172 16.9014 30.0484 17.5996L9.75627 28.7659C8.52052 29.4459 7 28.5634 7 27.1663V4.83374C7 3.43657 8.52052 2.55415 9.75627 3.23415L30.0484 14.4004Z" fill="#C4C4C4"/></mask>
     </defs>
 </svg>
-<style>
-/* Extracted CSS for theme-toggle-container and logo-text-block */
-.theme-toggle-container { font-size: clamp(10px, 0.6rem + 0.4vw, 14px); }
-.switch { position: relative; display: inline-block; width: 5.625em; height: 2.75em; background-image: var(--switch-bg-light); border-radius: 1.375em; cursor: pointer; transition: background-image var(--transition-duration) ease; }
-html.dark .switch { background-image: var(--switch-bg-dark); }
-.switch__input { appearance: none; -webkit-appearance: none; position: absolute; width: 100%; height: 100%; margin: 0; z-index: 10; cursor: pointer;}
-.switch__input::before { content: ""; position: absolute; top: 0.25em; left: 0.25em; width: 2.25em; height: 2.25em; background-color: var(--thumb-light); border-radius: 50%; transition: transform var(--transition-duration) var(--transition-timing), background-color var(--transition-duration) ease; }
-.switch__input:checked::before { transform: translateX(2.875em); background-color: var(--thumb-dark); }
-.switch__icon { position: absolute; width: 1.75em; height: 1.75em; top: 0.5em; transition: opacity var(--transition-duration) ease, transform var(--transition-duration) var(--transition-timing); }
-.switch__icon--light { right: 0.625em; color: #ffffff; opacity: 1; }
-.switch__icon--dark { left: 0.625em; color: #ffffff; opacity: 0; transform: translateX(0.625em); }
-html.dark .switch__icon--light { opacity: 0; transform: translateX(-0.625em); }
-html.dark .switch__icon--dark { opacity: 1; transform: translateX(0); }
-.logo-main-line { display: flex; align-items: baseline; line-height: 1; }
-.logo-text { font-family: 'Poppins', sans-serif; font-size: 1.75rem; font-weight: 700; white-space: nowrap; }
-.alltool { color: var(--primary-blue); }
-.ai { color: var(--primary-purple); }
-.logo-sub-line { font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 400; text-align: right; }
-/* ACCESSIBILITY FIX: Changed contrast for light mode */
-.com-light { color: var(--primary-purple); }
-@media (max-width: 480px) {
-    .logo-text { font-size: 1.5rem; }
-    .logo-sub-line { font-size: 0.8rem; }
-}
-</style>
 
 <header x-data="{ isOpen: false }" class="fixed top-0 z-50 w-full bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm shadow-md transition-colors duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -351,9 +342,8 @@ html.dark .switch__icon--dark { opacity: 1; transform: translateX(0); }
                             <div class="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-lg border border-slate-200 dark:border-slate-700"><h3 class="font-semibold text-lg text-slate-800 dark:text-slate-200">Global Travelers</h3><p class="text-slate-600 dark:text-slate-400 mt-2">Essential for travel-related documents and age-restricted discounts or activities.</p></div>
                         </div>
                     </section>
-                    <section><h2 class="text-3xl font-bold text-center text-slate-800 dark:text-slate-100 mb-8">Your Age Calculator Results: More Than a Number</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 text-left"><div class="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-lg border border-slate-200 dark:border-slate-700"><h3 class="font-semibold text-lg text-slate-800 dark:text-slate-200">Pinpoint Exact Age</h3><p class="text-slate-600 dark:text-slate-400 mt-2">Ever wonder about your exact age in years, months, *and* days? Our date of birth calculator gives you the precise answer, perfect for official forms or just satisfying your curiosity.</p></div><div class="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-lg border border-slate-200 dark:border-slate-700"><h3 class="font-semibold text-lg text-slate-800 dark:text-slate-200">See Your Life in Detail</h3><p class="text-slate-600 dark:text-slate-400 mt-2">Find out exactly how many days, hours, and minutes you've been alive. It's a fun way to get a new perspective on your life's journey so far. Settle any debate with friends and family!</p></div><div class="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-lg border border-slate-200 dark:border-slate-700"><h3 class="font-semibold text-lg text-slate-800 dark:text-slate-200">Count Down to Your Birthday</h3><p class="text-slate-600 dark:text-slate-400 mt-2">Get excited for your next big day! The built-in birthday calculator automatically tells you how many days are left until you celebrate again. It's perfect for planning and building anticipation.</p></div><div class="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-lg border border-slate-200 dark:border-slate-700"><h3 class="font-semibold text-lg text-slate-800 dark:text-slate-200">Completely Private and Secure</h3><p class="text-slate-600 dark:text-slate-400 mt-2">Your privacy is essential. This DOB calculator processes everything right in your browser. Your data is never stored on our servers, making it 100% con... [truncated]</p></div></div></section>
+                    <section><h2 class="text-3xl font-bold text-center text-slate-800 dark:text-slate-100 mb-8">Your Age Calculator Results: More Than a Number</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 text-left"><div class="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-lg border border-slate-200 dark:border-slate-700"><h3 class="font-semibold text-lg text-slate-800 dark:text-slate-200">Pinpoint Exact Age</h3><p class="text-slate-600 dark:text-slate-400 mt-2">Ever wonder about your exact age in years, months, *and* days? Our date of birth calculator gives you the precise answer, perfect for official forms or just satisfying your curiosity.</p></div><div class="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-lg border border-slate-200 dark:border-slate-700"><h3 class="font-semibold text-lg text-slate-800 dark:text-slate-200">See Your Life in Detail</h3><p class="text-slate-600 dark:text-slate-400 mt-2">Find out exactly how many days, hours, and minutes you've been alive. It's a fun way to get a new perspective on your life's journey so far. Settle any debate with friends and family!</p></div><div class="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-lg border border-slate-200 dark:border-slate-700"><h3 class="font-semibold text-lg text-slate-800 dark:text-slate-200">Count Down to Your Birthday</h3><p class="text-slate-600 dark:text-slate-400 mt-2">Get excited for your next big day! The built-in birthday calculator automatically tells you how many days are left until you celebrate again. It's perfect for planning and building anticipation.</p></div><div class="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-lg border border-slate-200 dark:border-slate-700"><h3 class="font-semibold text-lg text-slate-800 dark:text-slate-200">Completely Private and Secure</h3><p class="text-slate-600 dark:text-slate-400 mt-2">Your privacy is essential. This DOB calculator processes everything right in your browser. Your data is never stored on our servers, making it 100% confidential and secure for peace of mind.</p></div></div></section>
  
-
 <div class="my-12 sm:my-16">
     <div class="mx-auto w-full max-w-[320px] h-[50px] sm:max-w-[468px] sm:h-[60px]">
         <div class="advertising-area">
@@ -448,6 +438,12 @@ html.dark .switch__icon--dark { opacity: 1; transform: translateX(0); }
         </div>
     </div>
 </footer>
+<script>
+    const yearSpan = document.querySelector('#year');
+    if (yearSpan) {
+      yearSpan.textContent = new Date().getFullYear();
+    }
+</script>
 
 <!-- START: Native Banner Ad Section -->
 <div>
@@ -511,33 +507,16 @@ function ageCalculator() {
             this.birthDate = ''; this.birthTime = '';
             this.years = '--'; this.months = '--'; this.days = '--';
             this.totalDays = '---'; this.totalHours = '---'; this.totalMinutes = '---';
+            // BUG FIX: Ensure the countdown days value is also reset
+            this.countdownDays = '---';
             this.resultsVisible = false; this.errorMessage = '';
         }
     };
 }
 </script>
 
-<!-- PERFORMANCE FIX: Moved render-blocking script to the end of the body -->
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-    // This script should be after the TailwindCSS script tag.
-    tailwind.config = {
-        darkMode: 'class',
-        theme: {
-            extend: {
-                fontFamily: {
-                    sans: ['Inter', 'sans-serif']
-                }
-            }
-        }
-    }
-
-    const yearSpan = document.querySelector('#year');
-    if (yearSpan) {
-      yearSpan.textContent = new Date().getFullYear();
-    }
-</script>
 </html>
+
 
 <style>
     [x-cloak] { display: none !important; }
