@@ -4,9 +4,6 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-    <!--! OPTIMIZATION: Preconnect to critical third-party origins -->
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 
     <!--! SEO & GEO OPTIMIZED META TAGS (VERIFIED) -->
     <title>Best Free Age Calculator - Calculate Your Age Instantly | All Tool AI</title>
@@ -72,7 +69,7 @@
         }
       }, {
         "@type": "Question",
-        "name": "Why should I use this "how old am I" calculator?",
+        "name": "Why should I use this \"how old am I\" calculator?",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "It's the fastest and easiest way to get an exact answer! Whether you're filling out an official form, planning for a milestone birthday, or just curious, our tool gives you a detailed age breakdown instantly without any math."
@@ -100,6 +97,9 @@
 
     <!-- tailwind css -->
     <link href="./src/output.css" rel="stylesheet">
+
+    <!-- AlpineJS -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     
     <!-- Optimized & Merged CSS -->
             <style>
@@ -144,8 +144,7 @@
         }
     </style>
     
-    <!-- AlpineJS -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.10/dist/cdn.min.js"></script>
+    
 </head>
 <body class="flex min-h-screen flex-col transition-colors duration-300">
 
@@ -160,7 +159,7 @@
     </defs>
 </svg>
 
-<header x-data="{ isOpen: false }" class="fixed top-0 z-50 w-full bg-white/80 backdrop-blur-sm shadow-md transition-colors duration-300">
+<header x-data="{ isOpen: false, isToolsOpen: false }" class="fixed top-0 z-50 w-full bg-white/80 backdrop-blur-sm shadow-md transition-colors duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
             <div class="flex-shrink-0">
@@ -179,18 +178,38 @@
                 <a href="#" class="nav-link-animated text-lg font-semibold text-slate-600 hover:text-purple-600">Contact</a>
                 <a href="#" aria-label="Get our app on Google Play" title="Google Play" class="transition-transform hover:scale-110 flex items-center"><span class="sr-only">Google Play</span><svg class="w-7 h-7" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><use href="#icon-google-play"></use></svg></a>
             </nav>
-            <div class="flex flex-shrink-0 items-center space-x-2 sm:space-x-4">
-                <div class="lg:hidden"><button @click="isOpen = !isOpen" type="button" class="p-2 text-slate-500 hover:text-slate-700 focus:outline-none border border-slate-300 rounded-md transition-colors" aria-controls="mobile-menu" :aria-expanded="isOpen.toString()"><span class="sr-only">Open main menu</span><svg x-show="!isOpen" class="w-6 h-6" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-16 6h16"/></svg><svg x-show="isOpen" class="w-6 h-6" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button></div>
+            <div class="lg:hidden">
+                <button @click="isOpen = !isOpen" type="button" class="text-slate-500 hover:text-slate-600 focus:outline-none focus:text-slate-600" aria-controls="mobile-menu" :aria-expanded="isOpen">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path :class="{'hidden': isOpen, 'inline-flex': !isOpen }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        <path :class="{'hidden': !isOpen, 'inline-flex': isOpen }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
             </div>
         </div>
-        <div x-show="isOpen" @click.away="isOpen = false" x-transition class="lg:hidden" id="mobile-menu">
-            <div class="px-2 pt-2 pb-4 space-y-2 sm:px-3 border-t border-slate-200">
-                <a href="/" @click="isOpen = false" class="block px-3 py-2 text-base font-medium text-slate-700 hover:bg-slate-100 rounded-md">Home</a>
-                <a href="#main-tools" @click="isOpen = false" class="block px-3 py-2 text-base font-medium text-slate-700 hover:bg-slate-100 rounded-md tools-list-link">Tools List</a>
-                <a href="#" @click="isOpen = false" class="block px-3 py-2 text-base font-medium text-slate-700 hover:bg-slate-100 rounded-md">About</a>
-                <a href="#" @click="isOpen = false" class="block px-3 py-2 text-base font-medium text-slate-700 hover:bg-slate-100 rounded-md">Contact</a>
-                <a href="#" @click="isOpen = false" class="flex items-center space-x-3 px-3 py-2 text-base font-medium text-slate-700 hover:bg-slate-100 rounded-md"><svg class="w-6 h-6" aria-hidden="true" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#icon-google-play"></use></svg><span>Google Play</span></a>
+    </div>
+
+    <!-- Mobile menu, show/hide based on menu state. -->
+    <div x-show="isOpen" id="mobile-menu" class="lg:hidden">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="/" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-white hover:bg-slate-700">Home</a>
+            
+            <div class="relative">
+                <button @click="isToolsOpen = !isToolsOpen" type="button" class="w-full text-left flex justify-between items-center px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-white hover:bg-slate-700">
+                    <span>Tools List</span>
+                    <svg :class="{'transform rotate-180': isToolsOpen}" class="w-5 h-5 transition-transform duration-200" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                </button>
+                <div x-show="isToolsOpen" @click.away="isToolsOpen = false" class="pl-4">
+                    <a href="#main-tools" class="block px-3 py-2 rounded-md text-base font-medium text-slate-500 hover:text-white hover:bg-slate-700">All Tools</a>
+                    <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-slate-500 hover:text-white hover:bg-slate-700">Age Calculator</a>
+                    <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-slate-500 hover:text-white hover:bg-slate-700">BMI Calculator</a>
+                </div>
             </div>
+
+            <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-white hover:bg-slate-700">About</a>
+            <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-white hover:bg-slate-700">Contact</a>
+            <a href="#" aria-label="Get our app on Google Play" title="Google Play" class="flex items-center px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-white hover:bg-slate-700"><span class="sr-only">Google Play</span><svg class="w-6 h-6" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><use href="#icon-google-play"></use></svg><span class="ml-2">Google Play</span></a>
         </div>
     </div>
 </header>
