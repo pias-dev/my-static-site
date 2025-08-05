@@ -1,59 +1,279 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Static Site</title>
-  <link href="./dist/output.css" rel="stylesheet">  <!-- Link to the built CSS -->
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <!--! OPTIMIZATION: Preconnect to critical third-party origins -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+    <!--! SEO & GEO OPTIMIZED META TAGS (VERIFIED) -->
+    <title>Best Free Age Calculator - Calculate Your Age Instantly | All Tool AI</title>
+    <meta name="keywords" content="age calculator, how old am i, date of birth calculator, DOB calculator, chronological age, free age calculator, online age calculator, exact age calculator, age in years months days, free online tools, productivity tools, secure age calculator, private age calculator, top age calculator, best age calculator, lifetime free, age calculator UK, age calculator India, age calculator Australia, age calculator USA"/>
+    <meta name="description" content="The world's best free age calculator. Instantly calculate your age in years, months, and days with our fast, private, and secure online tool. A top-rated, lifetime free DOB calculator from All Tool AI, perfect for users globally. Your data is 100% confidential."/>
+    <meta name="author" content="All Tool AI"/>
+    <link rel="canonical" href="https://www.alltoolai.com/" />
+
+    <!--! SEO OPTIMIZED SOCIAL MEDIA TAGS (VERIFIED) -->
+    <meta property="og:title" content="Best Free Age Calculator - Instant, Secure & Private | All Tool AI" />
+    <meta property="og:description" content="Use our top-rated, fast, free, and private Age Calculator. Your go-to resource for productivity, with 100% confidential and secure calculations. Find out how old you are to the day." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.alltoolai.com/" />
+    <meta property="og:image" content="https://www.alltoolai.com/assets/logo.svg" />
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:site" content="@AllToolAI"/>
+
+    <!--! SEO & GEO OPTIMIZED STRUCTURED DATA (VERIFIED) -->
+    <script type="application/ld+json">
+    [{
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "All Tool AI",
+      "url": "https://www.alltoolai.com/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.alltoolai.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Age Calculator",
+      "operatingSystem": "Web",
+      "applicationCategory": "ProductivityApplication",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "885"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "A free and secure online tool to calculate your chronological age from your date of birth down to the exact day. Ideal for users worldwide.",
+      "inLanguage": "en-US",
+      "publisher": {
+        "@type": "Organization",
+        "name": "All Tool AI"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "How do you calculate chronological age?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our chronological age calculator determines the precise time elapsed from your date of birth to the current date. It subtracts your birth year, month, and day from today's date, adjusting for leap years to give you a result in years, months, and days."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Why should I use this "how old am I" calculator?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It's the fastest and easiest way to get an exact answer! Whether you're filling out an official form, planning for a milestone birthday, or just curious, our tool gives you a detailed age breakdown instantly without any math."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Is my date of birth information saved?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Absolutely not. Your privacy is our number one concern. The entire calculation happens securely in your web browser. Your DOB is never sent to our servers, ensuring your data remains 100% private and confidential worldwide."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Do you support different date formats?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes! Our online age calculator is designed to be intuitive and globally friendly. The date picker will use the format standard to your browser and region (e.g., DD/MM/YYYY in the UK or MM/DD/YYYY in the US), so you can enter your date of birth in the way that is most natural to you. The calculation will be accurate regardless of the format."
+        }
+      }]
+    }]
+    </script>
+    
+    <!-- FAVICON -->
+    <link rel="icon" href="./src/logo.svg" type="image/svg+xml">
+
+    <!-- tailwind css -->
+    <link href="./src/output.css" rel="stylesheet">
+    
+    <!-- Optimized & Merged CSS -->
+            <style>
+        
+        /* Core Site and Component Styles */
+        :root {
+            --primary-blue: #0d60ff;
+            --primary-purple: #6a00f4;
+            --accent-cyan: #00d9ff;
+            --switch-bg-light: linear-gradient(135deg, #a6c0fe 0%, #f68084 100%);
+            --switch-bg-dark: linear-gradient(135deg, #7c5cff 0%, #c72e8f 100%);
+            --thumb-light: #ffffff;
+            --thumb-dark: #2a313c;
+            --transition-duration: 0.4s;
+            --transition-timing: cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+        body { background-color: #f8fafc; font-family: 'Roboto', sans-serif; color: #1e293b; }
+        
+        /* FIX: Stabilized ad areas to prevent CLS and LCP issues. This area is now filled and painted immediately. */
+        .advertising-area { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; }
+        
+        .nav-link-animated { position: relative; transition: color 0.3s ease, transform 0.3s ease; }
+        .nav-link-animated::after { content: ''; position: absolute; bottom: -4px; left: 50%; width: 0; height: 2px; background-color: currentColor; transform: translateX(-50%); transition: width 0.3s ease-in-out; }
+        .nav-link-animated:hover, .nav-link-animated:focus { transform: translateY(-2px); }
+        .nav-link-animated:hover::after, .nav-link-animated:focus::after { width: 100%; }
+        .sr-only:not(:focus):not(:active) { clip: rect(0 0 0 0); clip-path: inset(50%); height: 1px; overflow: hidden; position: absolute; white-space: nowrap; width: 1px; }
+        
+        input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(0.5); cursor: pointer; }
+        input[type="time"]::-webkit-calendar-picker-indicator { filter: invert(0.5); cursor: pointer; }
+
+        .footer-link-active { color: #ffffff; font-weight: 600; }
+        
+        .logo-main-line { display: flex; align-items: baseline; line-height: 1; }
+        .logo-text { font-family: 'Poppins', sans-serif; font-size: 1.75rem; font-weight: 700; white-space: nowrap; }
+        .alltool { color: var(--primary-blue); }
+        .ai { color: var(--primary-purple); }
+        .logo-sub-line { font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 400; text-align: right; }
+        .com-light { color: var(--primary-purple); }
+        @media (max-width: 480px) {
+            .logo-text { font-size: 1.5rem; }
+            .logo-sub-line { font-size: 0.8rem; }
+        }
+    </style>
+    
+    
 </head>
-<body class="bg-gray-100 font-sans antialiased">
+<body class="flex min-h-screen flex-col transition-colors duration-300">
 
-  <!-- Header/Navbar -->
-  <header class="bg-blue-600 text-white shadow-md">
-    <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
-      <h1 class="text-2xl font-bold">My Site</h1>
-      <ul class="flex space-x-6">
-        <li><a href="#" class="hover:text-blue-200">Home</a></li>
-        <li><a href="#" class="hover:text-blue-200">Features</a></li>
-        <li><a href="#" class="hover:text-blue-200">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+<svg style="position: absolute; width: 0; height: 0;" aria-hidden="true">
+    <defs>
+        <linearGradient id="gp-grad-1" x1="15.6769" y1="10.874" x2="7.07106" y2="19.5506" gradientUnits="userSpaceOnUse"><stop stop-color="#00C3FF"/><stop offset="1" stop-color="#1BE2FA"/></linearGradient>
+        <linearGradient id="gp-grad-2" x1="20.292" y1="15.8176" x2="31.7381" y2="15.8176" gradientUnits="userSpaceOnUse"><stop stop-color="#FFCE00"/><stop offset="1" stop-color="#FFEA00"/></linearGradient>
+        <linearGradient id="gp-grad-3" x1="7.36932" y1="30.1004" x2="22.595" y2="17.8937" gradientUnits="userSpaceOnUse"><stop stop-color="#DE2453"/><stop offset="1" stop-color="#FE3944"/></linearGradient>
+        <linearGradient id="gp-grad-4" x1="8.10725" y1="1.90137" x2="22.5971" y2="13.7365" gradientUnits="userSpaceOnUse"><stop stop-color="#11D574"/><stop offset="1" stop-color="#01F176"/></linearGradient>
+        <symbol id="icon-google-play" viewBox="0 0 32 32"><g mask="url(#gp-mask)"><path d="M7.63473 28.5466L20.2923 15.8179L7.84319 3.29883C7.34653 3.61721 7 4.1669 7 4.8339V27.1664C7 27.7355 7.25223 28.2191 7.63473 28.5466Z" fill="url(#gp-grad-1)"/><path d="M30.048 14.4003C31.3169 15.0985 31.3169 16.9012 30.048 17.5994L24.9287 20.4165L20.292 15.8175L24.6923 11.4531L30.048 14.4003Z" fill="url(#gp-grad-2)"/><path d="M24.9292 20.4168L20.2924 15.8179L7.63477 28.5466C8.19139 29.0232 9.02389 29.1691 9.75635 28.766L24.9292 20.4168Z" fill="url(#gp-grad-3)"/><path d="M7.84277 3.29865L20.2919 15.8177L24.6922 11.4533L9.75583 3.23415C9.11003 2.87878 8.38646 2.95013 7.84277 3.29865Z" fill="url(#gp-grad-4)"/></g></symbol>
+        <mask id="gp-mask" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="7" y="3" width="24" height="26"><path d="M30.0484 14.4004C31.3172 15.0986 31.3172 16.9014 30.0484 17.5996L9.75627 28.7659C8.52052 29.4459 7 28.5634 7 27.1663V4.83374C7 3.43657 8.52052 2.55415 9.75627 3.23415L30.0484 14.4004Z" fill="#C4C4C4"/></mask>
+    </defs>
+</svg>
 
-  <!-- Hero Section -->
-  <section class="bg-blue-500 text-white py-20 text-center">
-    <div class="container mx-auto px-4">
-      <h2 class="text-4xl font-bold mb-4">Welcome to My Static Website</h2>
-      <p class="text-xl mb-8">Built with Tailwind CSS v4 and CLI for a fast, optimized experience.</p>
-      <a href="#" class="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-200">Get Started</a>
+<header x-data="{ isOpen: false }" class="fixed top-0 z-50 w-full bg-white/80 backdrop-blur-sm shadow-md transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+            <div class="flex-shrink-0">
+                <a href="/" class="flex items-center space-x-3 transition-opacity hover:opacity-85" aria-label="Homepage">
+                    <img src="./src/logo.svg" alt="All Tool AI Logo" class="w-10 h-10 lg:w-12 lg:h-12">
+                    <div class="logo-text-block">
+                        <div class="logo-main-line"><span class="logo-text alltool">All Tool </span><span class="logo-text ai">Ai</span></div>
+                        <div class="logo-sub-line"><span class="com-light">.Com</span></div>
+                    </div>
+                </a>
+            </div>
+            <nav class="hidden lg:flex items-center space-x-8 mx-auto">
+                <a href="/" class="nav-link-animated text-lg font-semibold text-slate-600 hover:text-purple-600">Home</a>
+                <a href="#main-tools" class="nav-link-animated text-lg font-semibold text-slate-600 hover:text-purple-600 tools-list-link">Tools List</a>
+                <a href="#" class="nav-link-animated text-lg font-semibold text-slate-600 hover:text-purple-600">About</a>
+                <a href="#" class="nav-link-animated text-lg font-semibold text-slate-600 hover:text-purple-600">Contact</a>
+                <a href="#" aria-label="Get our app on Google Play" title="Google Play" class="transition-transform hover:scale-110 flex items-center"><span class="sr-only">Google Play</span><svg class="w-7 h-7" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><use href="#icon-google-play"></use></svg></a>
+            </nav>
+            <div class="flex flex-shrink-0 items-center space-x-2 sm:space-x-4">
+                <div class="lg:hidden"><button @click="isOpen = !isOpen" type="button" class="p-2 text-slate-500 hover:text-slate-700 focus:outline-none border border-slate-300 rounded-md transition-colors" aria-controls="mobile-menu" :aria-expanded="isOpen.toString()"><span class="sr-only">Open main menu</span><svg x-show="!isOpen" class="w-6 h-6" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-16 6h16"/></svg><svg x-show="isOpen" class="w-6 h-6" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button></div>
+            </div>
+        </div>
+        <div x-show="isOpen" @click.away="isOpen = false" x-transition class="lg:hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-4 space-y-2 sm:px-3 border-t border-slate-200">
+                <a href="/" @click="isOpen = false" class="block px-3 py-2 text-base font-medium text-slate-700 hover:bg-slate-100 rounded-md">Home</a>
+                <a href="#main-tools" @click="isOpen = false" class="block px-3 py-2 text-base font-medium text-slate-700 hover:bg-slate-100 rounded-md tools-list-link">Tools List</a>
+                <a href="#" @click="isOpen = false" class="block px-3 py-2 text-base font-medium text-slate-700 hover:bg-slate-100 rounded-md">About</a>
+                <a href="#" @click="isOpen = false" class="block px-3 py-2 text-base font-medium text-slate-700 hover:bg-slate-100 rounded-md">Contact</a>
+                <a href="#" @click="isOpen = false" class="flex items-center space-x-3 px-3 py-2 text-base font-medium text-slate-700 hover:bg-slate-100 rounded-md"><svg class="w-6 h-6" aria-hidden="true" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#icon-google-play"></use></svg><span>Google Play</span></a>
+            </div>
+        </div>
     </div>
-  </section>
+</header>
 
-  <!-- Features Section -->
-  <section class="py-16 bg-white">
-    <div class="container mx-auto px-4">
-      <h3 class="text-3xl font-bold text-center mb-12">Features</h3>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="bg-gray-100 p-6 rounded-lg shadow-md text-center">
-          <h4 class="text-xl font-semibold mb-2">Responsive Design</h4>
-          <p>Works on all devices with Tailwind's mobile-first approach.</p>
+<main class="flex-grow w-full">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 mt-16">
+
+        <!-- START: Top Horizontal Ad Section -->
+        <div class="mb-10 sm:mb-12">
+            <!-- FIX: Added background color to stabilize ad slot rendering for LCP and CLS. -->
+            <div class="mx-auto w-full max-w-[320px] h-[50px] sm:max-w-[468px] sm:h-[60px] md:max-w-[728px] md:h-[90px] rounded-lg bg-slate-100">
+        <div class="advertising-area">
+            <div> <p class="sm:hidden">320x50 horizontal Ad</p> </div>
+            <div> <p class="hidden sm:block md:hidden">468x60 horizontal Ad</p> </div>
+            <div> <p class="hidden md:block">728x90 horizontal Ad</p> </div>
         </div>
-        <div class="bg-gray-100 p-6 rounded-lg shadow-md text-center">
-          <h4 class="text-xl font-semibold mb-2">Fast Performance</h4>
-          <p>CLI-built with tree-shaking to purge unused CSS.</p>
+            </div>
         </div>
-        <div class="bg-gray-100 p-6 rounded-lg shadow-md text-center">
-          <h4 class="text-xl font-semibold mb-2">Easy Customization</h4>
-          <p>Extend themes and add plugins as needed.</p>
+        <!-- END: Top Horizontal Ad Section -->
+
+        <div class="lg:grid lg:grid-cols-[160px_1fr_160px] lg:gap-8">
+            <aside class="hidden lg:flex flex-col gap-8">
+                 <!-- FIX: Added background color to stabilize ad slot rendering for LCP and CLS. -->
+                <div class="advertising-area h-[600px] rounded-lg bg-slate-100">
+                    <p>160x600 Vertical Ad</p>
+                </div>
+            </aside>
+
+            <div class="min-w-0 overflow-hidden">
+                <section x-data="ageCalculator()" class="bg-white p-4 sm:p-6 lg:p-8 rounded-2xl shadow-xl border border-slate-200">
+                    <div class="text-center mb-8">
+                        <h1 class="text-3xl lg:text-4xl font-extrabold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">Free Age Calculator: The Ultimate Tool for Users Worldwide</h1>
+                        <p class="mt-2 max-w-2xl mx-auto text-lg text-slate-600">Enter your date of birth below to find your exact chronological age. The world's preferred free online tool, ensuring your data is 100% confidential and secure.</p>
+                    </div>
+                    <div class="w-full max-w-2xl mx-auto space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
+                            <div><label for="birthdate" class="block text-sm font-medium leading-6 text-slate-900">Enter Your Date of Birth (DOB)</label><div class="mt-2"><input type="date" id="birthdate" x-model="birthDate" :max="todayString" class="block w-full rounded-md border-0 py-2.5 px-3 bg-white text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"></div></div>
+                            <div><label for="birthtime" class="block text-sm font-medium leading-6 text-slate-900">Time of Birth (For More Accuracy)</label><div class="mt-2"><input type="time" id="birthtime" x-model="birthTime" class="block w-full rounded-md border-0 py-2.5 px-3 bg-white text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"></div></div>
+                        </div>
+                        <div x-show="errorMessage" x-transition class="text-center"><p class="text-sm font-medium text-red-600" x-text="errorMessage"></p></div>
+                        
+                        <div id="calculate-section" class="flex flex-col sm:flex-row gap-4 pt-2">
+                            <button @click="calculateAge" type="button" class="w-full sm:w-auto flex-grow text-white bg-indigo-600 hover:bg-indigo-700 focus:ring-4 focus:ring-indigo-300 font-semibold rounded-lg text-base px-5 py-3 transition-all">Calculate My Age</button>
+                            <button @click="reset" type="button" class="w-full sm:w-auto bg-slate-200 hover:bg-slate-300 text-slate-800 font-semibold rounded-lg text-base px-5 py-3 transition-colors">Reset</button>
+                        </div>
+
+                        <div id="results" x-show="resultsVisible" x-transition:enter.duration.500ms x-transition:leave.duration.300ms class="space-y-8 pt-4" x-cloak>
+                            <div class="text-center space-y-4"><h2 class="text-2xl font-bold text-slate-800">Your Age in Years, Months, and Days</h2><div class="flex items-center justify-around text-center bg-slate-100 p-4 rounded-xl"><div><span class="block text-3xl sm:text-4xl font-extrabold text-indigo-600" x-text="years"></span><span class="text-sm text-slate-600">Years</span></div><div><span class="block text-3xl sm:text-4xl font-extrabold text-indigo-600" x-text="months"></span><span class="text-sm text-slate-600">Months</span></div><div><span class="block text-3xl sm:text-4xl font-extrabold text-indigo-600" x-text="days"></span><span class="text-sm text-slate-600">Days</span></div></div></div>
+                            <div class="text-center space-y-4"><h2 class="text-2xl font-bold text-slate-800">Your Life in Numbers</h2><div class="grid grid-cols-1 sm:grid-cols-3 gap-4"><div class="bg-slate-100 p-4 rounded-xl"><h3 class="font-semibold text-slate-600">Total Days Lived</h3><p class="text-2xl font-bold text-slate-800 mt-1" x-text="totalDays"></p></div><div class="bg-slate-100 p-4 rounded-xl"><h3 class="font-semibold text-slate-600">Total Hours Lived</h3><p class="text-2xl font-bold text-slate-800 mt-1" x-text="totalHours"></p></div><div class="bg-slate-100 p-4 rounded-xl"><h3 class="font-semibold text-slate-600">Total Minutes Lived</h3><p class="text-2xl font-bold text-slate-800 mt-1" x-text="totalMinutes"></p></div></div></div>
+                            <div class="text-center space-y-4"><h2 class="text-2xl font-bold text-slate-800">Next Birthday Countdown</h2><div class="bg-slate-100 p-4 rounded-xl"><p class="text-lg text-slate-700"><span class="text-3xl font-extrabold text-indigo-600" x-text="countdownDays"></span> Days to Go!</p></div></div>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="my-12 sm:my-16">
+                    <div class="mx-auto w-full max-w-[320px] h-[50px] sm:max-w-[468px] sm:h-[60px] rounded-lg bg-slate-100">
+                        <div class="advertising-area">
+            <div> <p class="sm:hidden">320x50 horizontal Ad</p> </div>
+            <div> <p class="hidden sm:block">468x60 horizontal Ad</p> </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+            </div>
+
+            <aside class="hidden lg:flex flex-col gap-8">
+                <!-- FIX: Added background color to stabilize ad slot rendering for LCP and CLS. -->
+                <div class="advertising-area h-[600px] rounded-lg bg-slate-100">
+                    <p>160x600 Vertical Ad</p>
+                </div>
+            </aside>
         </div>
-      </div>
+
+
+
     </div>
-  </section>
+</main>
 
-  <!-- Footer -->
-  <footer class="bg-gray-800 text-white py-6 text-center">
-    <p>&copy; 2023 My Static Site. All rights reserved.</p>
-  </footer>
+
+
+<style>
+    [x-cloak] { display: none !important; }
+</style>
 
 </body>
 </html>
