@@ -69,7 +69,7 @@
         }
       }, {
         "@type": "Question",
-        "name": "Why should I use this \"how old am I\" calculator?",
+        "name": "Why should I use this "how old am I" calculator?",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "It's the fastest and easiest way to get an exact answer! Whether you're filling out an official form, planning for a milestone birthday, or just curious, our tool gives you a detailed age breakdown instantly without any math."
@@ -97,9 +97,6 @@
 
     <!-- tailwind css -->
     <link href="./src/output.css" rel="stylesheet">
-
-    <!-- AlpineJS -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     
     <!-- Optimized & Merged CSS -->
             <style>
@@ -159,7 +156,7 @@
     </defs>
 </svg>
 
-<header x-data="{ isOpen: false, isToolsOpen: false }" class="fixed top-0 z-50 w-full bg-white/80 backdrop-blur-sm shadow-md transition-colors duration-300">
+<header class="fixed top-0 z-50 w-full bg-white/80 backdrop-blur-sm shadow-md transition-colors duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
             <div class="flex-shrink-0">
@@ -175,15 +172,15 @@
                 <a href="#" class="nav-link-animated text-lg font-semibold text-slate-600 hover:text-purple-600">Home</a>
                 <a href="#" class="nav-link-animated text-lg font-semibold text-slate-600 hover:text-purple-600">Tools List</a>
                 <a href="#" class="nav-link-animated text-lg font-semibold text-slate-600 hover:text-purple-600">About</a>
-                <a href="#" class="nav-link-animated text-lg font-semibold text-slate-600 hover:text-purple-600">Contact</a>
+                <a href="#" class="nav-link-animated text-lg font-semibold text-slate-600 hover:text-purple-600">Privacy Policy</a>
                 <a href="#" aria-label="Get our app on Google Play" title="Google Play" class="transition-transform hover:scale-110 flex items-center"><span class="sr-only">Google Play</span><svg class="w-7 h-7" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><use href="#icon-google-play"></use></svg></a>
             </nav>
             <div class="lg:hidden">
-                <button @click="isOpen = !isOpen" type="button" class="text-slate-500 hover:text-slate-600 focus:outline-none focus:text-slate-600" aria-controls="mobile-menu" :aria-expanded="isOpen">
+                <button id="mobile-menu-button" type="button" class="text-slate-500 hover:text-slate-600 focus:outline-none focus:text-slate-600" aria-controls="mobile-menu" aria-expanded="false">
                     <span class="sr-only">Open main menu</span>
                     <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path :class="{'hidden': isOpen, 'inline-flex': !isOpen }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        <path :class="{'hidden': !isOpen, 'inline-flex': isOpen }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        <path id="hamburger-icon" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        <path id="close-icon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
             </div>
@@ -191,12 +188,12 @@
     </div>
 
     <!-- Mobile menu, show/hide based on menu state. -->
-    <div x-show="isOpen" id="mobile-menu" class="lg:hidden">
+    <div id="mobile-menu" class="lg:hidden hidden">
         <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-white hover:bg-slate-700">Home</a>
             <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-white hover:bg-slate-700">Tools List</a>
             <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-white hover:bg-slate-700">About</a>
-            <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-white hover:bg-slate-700">Contact</a>
+            <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-white hover:bg-slate-700">Privacy Policy</a>
             <a href="#" aria-label="Get our app on Google Play" title="Google Play" class="flex items-center px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-white hover:bg-slate-700"><span class="sr-only">Google Play</span><svg class="w-6 h-6" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><use href="#icon-google-play"></use></svg><span class="ml-2">Google Play</span></a>
         </div>
     </div>
@@ -227,27 +224,27 @@
             </aside>
 
             <div class="min-w-0 overflow-hidden">
-                <section x-data="ageCalculator()" class="bg-white p-4 sm:p-6 lg:p-8 rounded-2xl shadow-xl border border-slate-200">
+                <section class="bg-white p-4 sm:p-6 lg:p-8 rounded-2xl shadow-xl border border-slate-200">
                     <div class="text-center mb-8">
                         <h1 class="text-3xl lg:text-4xl font-extrabold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">Free Age Calculator: The Ultimate Tool for Users Worldwide</h1>
                         <p class="mt-2 max-w-2xl mx-auto text-lg text-slate-600">Enter your date of birth below to find your exact chronological age. The world's preferred free online tool, ensuring your data is 100% confidential and secure.</p>
                     </div>
                     <div class="w-full max-w-2xl mx-auto space-y-6">
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
-                            <div><label for="birthdate" class="block text-sm font-medium leading-6 text-slate-900">Enter Your Date of Birth (DOB)</label><div class="mt-2"><input type="date" id="birthdate" x-model="birthDate" :max="todayString" class="block w-full rounded-md border-0 py-2.5 px-3 bg-white text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"></div></div>
-                            <div><label for="birthtime" class="block text-sm font-medium leading-6 text-slate-900">Time of Birth (For More Accuracy)</label><div class="mt-2"><input type="time" id="birthtime" x-model="birthTime" class="block w-full rounded-md border-0 py-2.5 px-3 bg-white text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"></div></div>
+                            <div><label for="birthdate" class="block text-sm font-medium leading-6 text-slate-900">Enter Your Date of Birth (DOB)</label><div class="mt-2"><input type="date" id="birthdate" class="block w-full rounded-md border-0 py-2.5 px-3 bg-white text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"></div></div>
+                            <div><label for="birthtime" class="block text-sm font-medium leading-6 text-slate-900">Time of Birth (For More Accuracy)</label><div class="mt-2"><input type="time" id="birthtime" class="block w-full rounded-md border-0 py-2.5 px-3 bg-white text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"></div></div>
                         </div>
-                        <div x-show="errorMessage" x-transition class="text-center"><p class="text-sm font-medium text-red-600" x-text="errorMessage"></p></div>
+                        <div id="error-message" class="text-center hidden"><p class="text-sm font-medium text-red-600"></p></div>
                         
                         <div id="calculate-section" class="flex flex-col sm:flex-row gap-4 pt-2">
-                            <button @click="calculateAge" type="button" class="w-full sm:w-auto flex-grow text-white bg-indigo-600 hover:bg-indigo-700 focus:ring-4 focus:ring-indigo-300 font-semibold rounded-lg text-base px-5 py-3 transition-all">Calculate My Age</button>
-                            <button @click="reset" type="button" class="w-full sm:w-auto bg-slate-200 hover:bg-slate-300 text-slate-800 font-semibold rounded-lg text-base px-5 py-3 transition-colors">Reset</button>
+                            <button id="calculate-button" type="button" class="w-full sm:w-auto flex-grow text-white bg-indigo-600 hover:bg-indigo-700 focus:ring-4 focus:ring-indigo-300 font-semibold rounded-lg text-base px-5 py-3 transition-all">Calculate My Age</button>
+                            <button id="reset-button" type="button" class="w-full sm:w-auto bg-slate-200 hover:bg-slate-300 text-slate-800 font-semibold rounded-lg text-base px-5 py-3 transition-colors">Reset</button>
                         </div>
 
-                        <div id="results" x-show="resultsVisible" x-transition:enter.duration.500ms x-transition:leave.duration.300ms class="space-y-8 pt-4" x-cloak>
-                            <div class="text-center space-y-4"><h2 class="text-2xl font-bold text-slate-800">Your Age in Years, Months, and Days</h2><div class="flex items-center justify-around text-center bg-slate-100 p-4 rounded-xl"><div><span class="block text-3xl sm:text-4xl font-extrabold text-indigo-600" x-text="years"></span><span class="text-sm text-slate-600">Years</span></div><div><span class="block text-3xl sm:text-4xl font-extrabold text-indigo-600" x-text="months"></span><span class="text-sm text-slate-600">Months</span></div><div><span class="block text-3xl sm:text-4xl font-extrabold text-indigo-600" x-text="days"></span><span class="text-sm text-slate-600">Days</span></div></div></div>
-                            <div class="text-center space-y-4"><h2 class="text-2xl font-bold text-slate-800">Your Life in Numbers</h2><div class="grid grid-cols-1 sm:grid-cols-3 gap-4"><div class="bg-slate-100 p-4 rounded-xl"><h3 class="font-semibold text-slate-600">Total Days Lived</h3><p class="text-2xl font-bold text-slate-800 mt-1" x-text="totalDays"></p></div><div class="bg-slate-100 p-4 rounded-xl"><h3 class="font-semibold text-slate-600">Total Hours Lived</h3><p class="text-2xl font-bold text-slate-800 mt-1" x-text="totalHours"></p></div><div class="bg-slate-100 p-4 rounded-xl"><h3 class="font-semibold text-slate-600">Total Minutes Lived</h3><p class="text-2xl font-bold text-slate-800 mt-1" x-text="totalMinutes"></p></div></div></div>
-                            <div class="text-center space-y-4"><h2 class="text-2xl font-bold text-slate-800">Next Birthday Countdown</h2><div class="bg-slate-100 p-4 rounded-xl"><p class="text-lg text-slate-700"><span class="text-3xl font-extrabold text-indigo-600" x-text="countdownDays"></span> Days to Go!</p></div></div>
+                        <div id="results" class="space-y-8 pt-4 hidden">
+                            <div class="text-center space-y-4"><h2 class="text-2xl font-bold text-slate-800">Your Age in Years, Months, and Days</h2><div class="flex items-center justify-around text-center bg-slate-100 p-4 rounded-xl"><div><span id="years" class="block text-3xl sm:text-4xl font-extrabold text-indigo-600"></span><span class="text-sm text-slate-600">Years</span></div><div><span id="months" class="block text-3xl sm:text-4xl font-extrabold text-indigo-600"></span><span class="text-sm text-slate-600">Months</span></div><div><span id="days" class="block text-3xl sm:text-4xl font-extrabold text-indigo-600"></span><span class="text-sm text-slate-600">Days</span></div></div></div>
+                            <div class="text-center space-y-4"><h2 class="text-2xl font-bold text-slate-800">Your Life in Numbers</h2><div class="grid grid-cols-1 sm:grid-cols-3 gap-4"><div class="bg-slate-100 p-4 rounded-xl"><h3 class="font-semibold text-slate-600">Total Days Lived</h3><p id="total-days" class="text-2xl font-bold text-slate-800 mt-1"></p></div><div class="bg-slate-100 p-4 rounded-xl"><h3 class="font-semibold text-slate-600">Total Hours Lived</h3><p id="total-hours" class="text-2xl font-bold text-slate-800 mt-1"></p></div><div class="bg-slate-100 p-4 rounded-xl"><h3 class="font-semibold text-slate-600">Total Minutes Lived</h3><p id="total-minutes" class="text-2xl font-bold text-slate-800 mt-1"></p></div></div></div>
+                            <div class="text-center space-y-4"><h2 class="text-2xl font-bold text-slate-800">Next Birthday Countdown</h2><div class="bg-slate-100 p-4 rounded-xl"><p class="text-lg text-slate-700"><span id="countdown-days" class="text-3xl font-extrabold text-indigo-600"></span> Days to Go!</p></div></div>
                         </div>
                     </div>
                 </section>
@@ -282,6 +279,102 @@
 <style>
     [x-cloak] { display: none !important; }
 </style>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const hamburgerIcon = document.getElementById('hamburger-icon');
+        const closeIcon = document.getElementById('close-icon');
 
+        mobileMenuButton.addEventListener('click', function () {
+            const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+            mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+            mobileMenu.classList.toggle('hidden');
+            hamburgerIcon.classList.toggle('hidden');
+            hamburgerIcon.classList.toggle('inline-flex');
+            closeIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('inline-flex');
+        });
+
+        // Age Calculator
+        const birthDateInput = document.getElementById('birthdate');
+        const birthTimeInput = document.getElementById('birthtime');
+        const calculateButton = document.getElementById('calculate-button');
+        const resetButton = document.getElementById('reset-button');
+        const errorMessage = document.getElementById('error-message');
+        const resultsSection = document.getElementById('results');
+
+        const yearsSpan = document.getElementById('years');
+        const monthsSpan = document.getElementById('months');
+        const daysSpan = document.getElementById('days');
+        const totalDaysSpan = document.getElementById('total-days');
+        const totalHoursSpan = document.getElementById('total-hours');
+        const totalMinutesSpan = document.getElementById('total-minutes');
+        const countdownDaysSpan = document.getElementById('countdown-days');
+
+        // Set max date to today
+        const today = new Date();
+        const todayString = today.toISOString().split('T')[0];
+        birthDateInput.max = todayString;
+
+        calculateButton.addEventListener('click', calculateAge);
+        resetButton.addEventListener('click', resetCalculator);
+
+        function calculateAge() {
+            const birthDateValue = birthDateInput.value;
+            if (!birthDateValue) {
+                errorMessage.firstElementChild.textContent = 'Please enter your date of birth.';
+                errorMessage.classList.remove('hidden');
+                resultsSection.classList.add('hidden');
+                return;
+            }
+
+            errorMessage.classList.add('hidden');
+            resultsSection.classList.remove('hidden');
+
+            const birthDate = new Date(birthDateValue + 'T' + (birthTimeInput.value || '00:00'));
+            const now = new Date();
+
+            let years = now.getFullYear() - birthDate.getFullYear();
+            let months = now.getMonth() - birthDate.getMonth();
+            let days = now.getDate() - birthDate.getDate();
+
+            if (days < 0) {
+                months--;
+                const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+                days += prevMonth.getDate();
+            }
+
+            if (months < 0) {
+                years--;
+                months += 12;
+            }
+
+            yearsSpan.textContent = years;
+            monthsSpan.textContent = months;
+            daysSpan.textContent = days;
+
+            const totalDays = Math.floor((now - birthDate) / (1000 * 60 * 60 * 24));
+            totalDaysSpan.textContent = totalDays.toLocaleString();
+            totalHoursSpan.textContent = (totalDays * 24).toLocaleString();
+            totalMinutesSpan.textContent = (totalDays * 24 * 60).toLocaleString();
+
+            const nextBirthday = new Date(now.getFullYear(), birthDate.getMonth(), birthDate.getDate());
+            if (now > nextBirthday) {
+                nextBirthday.setFullYear(now.getFullYear() + 1);
+            }
+            const countdownDays = Math.ceil((nextBirthday - now) / (1000 * 60 * 60 * 24));
+            countdownDaysSpan.textContent = countdownDays;
+        }
+
+        function resetCalculator() {
+            birthDateInput.value = '';
+            birthTimeInput.value = '';
+            errorMessage.classList.add('hidden');
+            resultsSection.classList.add('hidden');
+        }
+    });
+</script>
 </body>
 </html>
