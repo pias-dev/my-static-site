@@ -190,11 +190,11 @@
     <!-- Mobile menu, show/hide based on menu state. -->
     <div id="mobile-menu" class="lg:hidden hidden">
         <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-white hover:bg-slate-700">Home</a>
-            <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-white hover:bg-slate-700">Tools List</a>
-            <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-white hover:bg-slate-700">About</a>
-            <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-white hover:bg-slate-700">Privacy Policy</a>
-            <a href="#" aria-label="Get our app on Google Play" title="Google Play" class="flex items-center px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-white hover:bg-slate-700"><span class="sr-only">Google Play</span><svg class="w-6 h-6" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><use href="#icon-google-play"></use></svg><span class="ml-2">Google Play</span></a>
+            <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-200">Home</a>
+            <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-200">Tools List</a>
+            <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-200">About</a>
+            <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-200">Privacy Policy</a>
+            <a href="#" aria-label="Get our app on Google Play" title="Google Play" class="flex items-center px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-200"><span class="sr-only">Google Play</span><svg class="w-6 h-6" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><use href="#icon-google-play"></use></svg><span class="ml-2">Google Play</span></a>
         </div>
     </div>
 </header>
@@ -287,7 +287,7 @@
         const hamburgerIcon = document.getElementById('hamburger-icon');
         const closeIcon = document.getElementById('close-icon');
 
-        mobileMenuButton.addEventListener('click', function () {
+        function toggleMobileMenu() {
             const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
             mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
             mobileMenu.classList.toggle('hidden');
@@ -295,6 +295,19 @@
             hamburgerIcon.classList.toggle('inline-flex');
             closeIcon.classList.toggle('hidden');
             closeIcon.classList.toggle('inline-flex');
+        }
+
+        mobileMenuButton.addEventListener('click', toggleMobileMenu);
+
+        // Close mobile menu when a link is clicked
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(function(link) {
+            link.addEventListener('click', function() {
+                const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+                if (isExpanded) {
+                    toggleMobileMenu();
+                }
+            });
         });
 
         // Age Calculator
