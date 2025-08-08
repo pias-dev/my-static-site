@@ -786,6 +786,31 @@
       --tw-ring-inset: inset;
     }
   }
+  .active\:bg-indigo-700 {
+    &:active {
+      background-color: var(--color-indigo-700);
+    }
+  }
+  .active\:bg-slate-100 {
+    &:active {
+      background-color: var(--color-slate-100);
+    }
+  }
+  .active\:bg-slate-300 {
+    &:active {
+      background-color: var(--color-slate-300);
+    }
+  }
+  .active\:text-purple-600 {
+    &:active {
+      color: var(--color-purple-600);
+    }
+  }
+  .active\:text-white {
+    &:active {
+      color: var(--color-white);
+    }
+  }
   .sm\:my-16 {
     @media (width >= 40rem) {
       margin-block: calc(var(--spacing) * 16);
@@ -1060,13 +1085,6 @@
   }
   .com-light {
     color: var(--color-purple-600);
-  }
-  button:active {
-    --tw-scale-x: 95%;
-    --tw-scale-y: 95%;
-    --tw-scale-z: 95%;
-    scale: var(--tw-scale-x) var(--tw-scale-y);
-    transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
   }
   @media (hover: hover) and (pointer: fine) {
     .nav-link-animated:hover, .nav-link-animated:focus {
