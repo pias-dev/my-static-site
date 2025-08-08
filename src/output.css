@@ -998,12 +998,12 @@
     --tw-content: '';
     content: var(--tw-content);
   }
-  .nav-link-animated:hover, .nav-link-animated:focus, .nav-link-animated.hover-effect {
+  .nav-link-animated:hover, .nav-link-animated:focus {
     --tw-translate-y: calc(var(--spacing) * -0.5);
     translate: var(--tw-translate-x) var(--tw-translate-y);
     transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
   }
-  .nav-link-animated:hover::after, .nav-link-animated:focus::after, .nav-link-animated.hover-effect::after {
+  .nav-link-animated:hover::after, .nav-link-animated:focus::after {
     width: 100%;
   }
   input[type="date"]::-webkit-calendar-picker-indicator {
