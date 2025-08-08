@@ -128,10 +128,10 @@
                 </a>
             </div>
             <nav class="hidden lg:flex items-center space-x-8 mx-auto">
-                <a href="#" class="nav-link-animated text-lg font-semibold text-slate-600 hover:text-purple-600 focus:text-purple-600">Home</a>
-                <a href="#" class="nav-link-animated text-lg font-semibold text-slate-600 hover:text-purple-600 focus:text-purple-600">Tools List</a>
-                <a href="#" class="nav-link-animated text-lg font-semibold text-slate-600 hover:text-purple-600 focus:text-purple-600">About</a>
-                <a href="#" class="nav-link-animated text-lg font-semibold text-slate-600 hover:text-purple-600 focus:text-purple-600">Privacy Policy</a>
+                <a href="#" class="nav-link-animated text-lg font-semibold text-slate-600 hover:text-purple-600 focus:text-purple-600" ontouchstart="this.classList.toggle('hover-effect')">Home</a>
+                <a href="#" class="nav-link-animated text-lg font-semibold text-slate-600 hover:text-purple-600 focus:text-purple-600" ontouchstart="this.classList.toggle('hover-effect')">Tools List</a>
+                <a href="#" class="nav-link-animated text-lg font-semibold text-slate-600 hover:text-purple-600 focus:text-purple-600" ontouchstart="this.classList.toggle('hover-effect')">About</a>
+                <a href="#" class="nav-link-animated text-lg font-semibold text-slate-600 hover:text-purple-600 focus:text-purple-600" ontouchstart="this.classList.toggle('hover-effect')">Privacy Policy</a>
                 <a href="#" aria-label="Get our app on Google Play" title="Google Play" class="transition-transform hover:scale-110 focus:scale-110 flex items-center"><span class="sr-only">Google Play</span><svg class="w-7 h-7" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><use href="#icon-google-play"></use></svg></a>
             </nav>
             <div class="lg:hidden">
@@ -359,31 +359,6 @@
             errorMessage.classList.add('hidden');
             resultsSection.classList.add('hidden');
         }
-
-        // Touch hover effect
-        const navLinks = document.querySelectorAll('.nav-link-animated');
-        navLinks.forEach(link => {
-            link.addEventListener('touchstart', function(e) {
-                e.preventDefault();
-                // Remove the class from all other links
-                navLinks.forEach(otherLink => {
-                    if (otherLink !== link) {
-                        otherLink.classList.remove('hover-effect');
-                    }
-                });
-                // Toggle the class on the touched link
-                link.classList.toggle('hover-effect');
-            });
-        });
-
-        // Close the hover effect when clicking elsewhere
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('.nav-link-animated')) {
-                navLinks.forEach(link => {
-                    link.classList.remove('hover-effect');
-                });
-            }
-        });
     });
 </script>
 </body>
