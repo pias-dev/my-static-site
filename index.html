@@ -251,6 +251,7 @@
 
 
 <script>
+    document.addEventListener('touchstart', function() {}, true);
     document.addEventListener('DOMContentLoaded', function () {
         // Mobile menu toggle
         const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -358,6 +359,31 @@
             errorMessage.classList.add('hidden');
             resultsSection.classList.add('hidden');
         }
+
+        // Touch hover effect
+        const navLinks = document.querySelectorAll('.nav-link-animated');
+        navLinks.forEach(link => {
+            link.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                // Remove the class from all other links
+                navLinks.forEach(otherLink => {
+                    if (otherLink !== link) {
+                        otherLink.classList.remove('hover-effect');
+                    }
+                });
+                // Toggle the class on the touched link
+                link.classList.toggle('hover-effect');
+            });
+        });
+
+        // Close the hover effect when clicking elsewhere
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.nav-link-animated')) {
+                navLinks.forEach(link => {
+                    link.classList.remove('hover-effect');
+                });
+            }
+        });
     });
 </script>
 </body>
