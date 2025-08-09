@@ -138,13 +138,15 @@
                 <a href="#" class="nav-link-animated text-lg font-semibold text-slate-600 hover:text-purple-600 focus:text-purple-600 active:text-purple-600 dark:text-slate-300 dark:hover:text-purple-400 dark:focus:text-purple-400 dark:active:text-purple-400">About</a>
                 <a href="#" class="nav-link-animated text-lg font-semibold text-slate-600 hover:text-purple-600 focus:text-purple-600 active:text-purple-600 dark:text-slate-300 dark:hover:text-purple-400 dark:focus:text-purple-400 dark:active:text-purple-400">Contact</a>
                 <a href="#" aria-label="Get our app on Google Play" title="Google Play" class="transition-transform hover:scale-110 focus:scale-110 flex items-center"><span class="sr-only">Google Play</span><svg class="w-7 h-7" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><use href="#icon-google-play"></use></svg></a>
+            </nav>
 
+            <div>
                 <label class="theme-switch" for="theme-switch-checkbox">
                     <input type="checkbox" id="theme-switch-checkbox" />
                     <div class="slider round"></div>
                 </label>
+            </div>
 
-            </nav>
             <div class="lg:hidden">
                 <button id="mobile-menu-button" type="button" class="text-slate-500 hover:text-slate-600 focus:text-slate-600 focus:outline-none dark:text-slate-400 dark:hover:text-slate-300 dark:focus:text-slate-300" aria-controls="mobile-menu" aria-expanded="false">
                     <span class="sr-only">Open main menu</span>
@@ -165,12 +167,6 @@
             <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-100 focus:bg-slate-100 active:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-700 dark:focus:bg-slate-700 dark:active:bg-slate-700">About</a>
             <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-100 focus:bg-slate-100 active:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-700 dark:focus:bg-slate-700 dark:active:bg-slate-700">Contact</a>
             <a href="#" aria-label="Get our app on Google Play" title="Google Play" class="flex items-center px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-100 focus:bg-slate-100 active:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-700 dark:focus:bg-slate-700 dark:active:bg-slate-700"><span class="sr-only">Google Play</span><svg class="w-6 h-6" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><use href="#icon-google-play"></use></svg><span class="ml-2">Google Play</span></a>
-            <div class="flex justify-center py-2">
-                <label class="theme-switch" for="theme-switch-checkbox-mobile">
-                    <input type="checkbox" id="theme-switch-checkbox-mobile" />
-                    <div class="slider round"></div>
-                </label>
-            </div>
         </div>
     </div>
 </header>
@@ -378,7 +374,7 @@
 
         // Theme Switcher
         const themeSwitch = document.getElementById('theme-switch-checkbox');
-        const themeSwitchMobile = document.getElementById('theme-switch-checkbox-mobile');
+        const themeSwitchMobile = document.getElementById('theme-switch-checkbox');
         const html = document.documentElement;
 
         // check for saved theme preference
@@ -402,19 +398,6 @@
                 localStorage.setItem('theme', 'light');
                 themeSwitchMobile.checked = false;
             }
-        });
-
-        themeSwitchMobile.addEventListener('change', function () {
-            if (this.checked) {
-                html.classList.add('dark');
-                localStorage.setItem('theme', 'dark');
-                themeSwitch.checked = true;
-            } else {
-                html.classList.remove('dark');
-                localStorage.setItem('theme', 'light');
-                themeSwitch.checked = false;
-            }
-            // We are not closing the menu here, as the user might want to toggle it multiple times.
         });
     });
 </script>
