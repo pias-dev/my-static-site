@@ -434,9 +434,6 @@
   .overflow-hidden {
     overflow: hidden;
   }
-  .scroll-smooth {
-    scroll-behavior: smooth;
-  }
   .rounded-2xl {
     border-radius: var(--radius-2xl);
   }
@@ -1197,10 +1194,10 @@
     font-weight: var(--font-weight-normal);
   }
   .com-light {
-    color: var(--color-purple-600);
+    color: var(--color-blue-600);
   }
   .dark .com-light {
-    color: var(--color-purple-400);
+    color: var(--color-blue-600);
   }
   @media (hover: hover) and (pointer: fine) {
     .nav-link-animated:hover::after, .nav-link-animated:focus::after {
