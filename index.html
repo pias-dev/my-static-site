@@ -374,29 +374,24 @@
 
         // Theme Switcher
         const themeSwitch = document.getElementById('theme-switch-checkbox');
-        const themeSwitchMobile = document.getElementById('theme-switch-checkbox');
         const html = document.documentElement;
 
         // check for saved theme preference
         if (localStorage.getItem('theme') === 'dark') {
             html.classList.add('dark');
             themeSwitch.checked = true;
-            themeSwitchMobile.checked = true;
         } else {
             html.classList.remove('dark');
             themeSwitch.checked = false;
-            themeSwitchMobile.checked = false;
         }
 
         themeSwitch.addEventListener('change', function () {
             if (this.checked) {
                 html.classList.add('dark');
                 localStorage.setItem('theme', 'dark');
-                themeSwitchMobile.checked = true;
             } else {
                 html.classList.remove('dark');
                 localStorage.setItem('theme', 'light');
-                themeSwitchMobile.checked = false;
             }
         });
     });
