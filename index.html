@@ -107,7 +107,7 @@
     
     
 </head>
-<body class="bg-slate-50 font-sans text-slate-800 flex min-h-screen flex-col transition-colors duration-300">
+<body class="bg-slate-50 font-sans text-slate-800 flex min-h-screen flex-col transition-colors duration-300 dark:bg-slate-900 dark:text-slate-200">
 
 <svg class="absolute w-0 h-0" aria-hidden="true">
     <defs>
@@ -120,7 +120,7 @@
     </defs>
 </svg>
 
-<header class="fixed top-0 z-50 w-full bg-white/80 backdrop-blur-sm shadow-md transition-colors duration-300">
+<header class="fixed top-0 z-50 w-full bg-white/80 backdrop-blur-sm shadow-md transition-colors duration-300 dark:bg-slate-900/80 dark:shadow-slate-800">
     <div class="container">
         <div class="flex items-center justify-between h-16">
             <div class="flex-shrink-0">
@@ -133,14 +133,20 @@
                 </a>
             </div>
             <nav class="hidden lg:flex items-center space-x-8">
-                <a href="#" class="nav-link-animated text-lg font-semibold text-slate-600 hover:text-purple-600 focus:text-purple-600 active:text-purple-600">Home</a>
-                <a href="#" class="nav-link-animated text-lg font-semibold text-slate-600 hover:text-purple-600 focus:text-purple-600 active:text-purple-600">Tools List</a>
-                <a href="#" class="nav-link-animated text-lg font-semibold text-slate-600 hover:text-purple-600 focus:text-purple-600 active:text-purple-600">About</a>
-                <a href="#" class="nav-link-animated text-lg font-semibold text-slate-600 hover:text-purple-600 focus:text-purple-600 active:text-purple-600">Privacy Policy</a>
+                <a href="#" class="nav-link-animated text-lg font-semibold text-slate-600 hover:text-purple-600 focus:text-purple-600 active:text-purple-600 dark:text-slate-300 dark:hover:text-purple-400 dark:focus:text-purple-400 dark:active:text-purple-400">Home</a>
+                <a href="#" class="nav-link-animated text-lg font-semibold text-slate-600 hover:text-purple-600 focus:text-purple-600 active:text-purple-600 dark:text-slate-300 dark:hover:text-purple-400 dark:focus:text-purple-400 dark:active:text-purple-400">Tools List</a>
+                <a href="#" class="nav-link-animated text-lg font-semibold text-slate-600 hover:text-purple-600 focus:text-purple-600 active:text-purple-600 dark:text-slate-300 dark:hover:text-purple-400 dark:focus:text-purple-400 dark:active:text-purple-400">About</a>
+                <a href="#" class="nav-link-animated text-lg font-semibold text-slate-600 hover:text-purple-600 focus:text-purple-600 active:text-purple-600 dark:text-slate-300 dark:hover:text-purple-400 dark:focus:text-purple-400 dark:active:text-purple-400">Contact</a>
                 <a href="#" aria-label="Get our app on Google Play" title="Google Play" class="transition-transform hover:scale-110 focus:scale-110 flex items-center"><span class="sr-only">Google Play</span><svg class="w-7 h-7" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><use href="#icon-google-play"></use></svg></a>
+
+                <label class="theme-switch" for="theme-switch-checkbox">
+                    <input type="checkbox" id="theme-switch-checkbox" />
+                    <div class="slider round"></div>
+                </label>
+
             </nav>
             <div class="lg:hidden">
-                <button id="mobile-menu-button" type="button" class="text-slate-500 hover:text-slate-600 focus:text-slate-600 focus:outline-none" aria-controls="mobile-menu" aria-expanded="false">
+                <button id="mobile-menu-button" type="button" class="text-slate-500 hover:text-slate-600 focus:text-slate-600 focus:outline-none dark:text-slate-400 dark:hover:text-slate-300 dark:focus:text-slate-300" aria-controls="mobile-menu" aria-expanded="false">
                     <span class="sr-only">Open main menu</span>
                     <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path id="hamburger-icon" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -152,13 +158,19 @@
     </div>
 
     <!-- Mobile menu, show/hide based on menu state. -->
-    <div id="mobile-menu" class="lg:hidden hidden">
+    <div id="mobile-menu" class="lg:hidden hidden dark:bg-slate-800">
         <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-100 focus:bg-slate-100 active:bg-slate-100">Home</a>
-            <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-100 focus:bg-slate-100 active:bg-slate-100">Tools List</a>
-            <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-100 focus:bg-slate-100 active:bg-slate-100">About</a>
-            <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-100 focus:bg-slate-100 active:bg-slate-100">Privacy Policy</a>
-            <a href="#" aria-label="Get our app on Google Play" title="Google Play" class="flex items-center px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-100 focus:bg-slate-100 active:bg-slate-100"><span class="sr-only">Google Play</span><svg class="w-6 h-6" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><use href="#icon-google-play"></use></svg><span class="ml-2">Google Play</span></a>
+            <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-100 focus:bg-slate-100 active:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-700 dark:focus:bg-slate-700 dark:active:bg-slate-700">Home</a>
+            <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-100 focus:bg-slate-100 active:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-700 dark:focus:bg-slate-700 dark:active:bg-slate-700">Tools List</a>
+            <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-100 focus:bg-slate-100 active:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-700 dark:focus:bg-slate-700 dark:active:bg-slate-700">About</a>
+            <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-100 focus:bg-slate-100 active:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-700 dark:focus:bg-slate-700 dark:active:bg-slate-700">Contact</a>
+            <a href="#" aria-label="Get our app on Google Play" title="Google Play" class="flex items-center px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-100 focus:bg-slate-100 active:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-700 dark:focus:bg-slate-700 dark:active:bg-slate-700"><span class="sr-only">Google Play</span><svg class="w-6 h-6" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><use href="#icon-google-play"></use></svg><span class="ml-2">Google Play</span></a>
+            <div class="flex justify-center py-2">
+                <label class="theme-switch" for="theme-switch-checkbox-mobile">
+                    <input type="checkbox" id="theme-switch-checkbox-mobile" />
+                    <div class="slider round"></div>
+                </label>
+            </div>
         </div>
     </div>
 </header>
@@ -168,11 +180,11 @@
 
         <!-- START: Top Horizontal Ad Section -->
         <div class="mb-10 sm:mb-12">
-            <div class="mx-auto w-full max-w-[320px] h-[50px] sm:max-w-[468px] sm:h-[60px] md:max-w-[728px] md:h-[90px] rounded-lg bg-slate-100">
+            <div class="mx-auto w-full max-w-[320px] h-[50px] sm:max-w-[468px] sm:h-[60px] md:max-w-[728px] md:h-[90px]">
         <div class="advertising-area">
-            <div> <p class="sm:hidden">320x50 horizontal Ad</p> </div>
-            <div> <p class="hidden sm:block md:hidden">468x60 horizontal Ad</p> </div>
-            <div> <p class="hidden md:block">728x90 horizontal Ad</p> </div>
+            <div class="sm:hidden"><p>320x50 horizontal Ad</p> </div>
+            <div class="hidden sm:block md:hidden"><p>468x60 horizontal Ad</p> </div>
+            <div class="hidden md:block"><p>728x90 horizontal Ad</p> </div>
         </div>
             </div>
         </div>
@@ -180,42 +192,42 @@
 
         <div class="lg:grid lg:grid-cols-[160px_1fr_160px] lg:gap-8">
             <aside class="hidden lg:flex flex-col gap-8">
-                <div class="advertising-area h-[600px] rounded-lg bg-slate-100">
+                <div class="advertising-area h-[600px]">
                     <p>160x600 Vertical Ad</p>
                 </div>
             </aside>
 
             <div class="min-w-0 overflow-hidden">
-                <section class="bg-white p-4 sm:p-6 lg:p-8 rounded-2xl shadow-xl border border-slate-200">
+                <section class="bg-white p-4 sm:p-6 lg:p-8 rounded-2xl shadow-xl border border-slate-200 dark:bg-slate-800 dark:border-slate-700">
                     <div class="text-center mb-8">
                         <h1 class="text-3xl lg:text-4xl font-extrabold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">Free Age Calculator: The Ultimate Tool for Users Worldwide</h1>
-                        <p class="mt-2 text-lg text-slate-600">Enter your date of birth below to find your exact chronological age. The world's preferred free online tool, ensuring your data is 100% confidential and secure.</p>
+                        <p class="mt-2 text-lg text-slate-600 dark:text-slate-400">Enter your date of birth below to find your exact chronological age. The world's preferred free online tool, ensuring your data is 100% confidential and secure.</p>
                     </div>
                     <div class="w-full max-w-2xl mx-auto space-y-6">
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
-                            <div><label for="birthdate" class="block text-sm font-medium leading-6 text-slate-900">Enter Your Date of Birth (DOB)</label><div class="mt-2"><input type="date" id="birthdate" class="block w-full rounded-md border-0 py-2.5 px-3 bg-white text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"></div></div>
-                            <div><label for="birthtime" class="block text-sm font-medium leading-6 text-slate-900">Time of Birth (For More Accuracy)</label><div class="mt-2"><input type="time" id="birthtime" class="block w-full rounded-md border-0 py-2.5 px-3 bg-white text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"></div></div>
+                            <div><label for="birthdate" class="block text-sm font-medium leading-6 text-slate-900 dark:text-slate-200">Enter Your Date of Birth (DOB)</label><div class="mt-2"><input type="date" id="birthdate" class="block w-full rounded-md border-0 py-2.5 px-3 bg-white text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 dark:bg-slate-700 dark:text-slate-200 dark:ring-slate-600 dark:focus:ring-indigo-500"></div></div>
+                            <div><label for="birthtime" class="block text-sm font-medium leading-6 text-slate-900 dark:text-slate-200">Time of Birth (For More Accuracy)</label><div class="mt-2"><input type="time" id="birthtime" class="block w-full rounded-md border-0 py-2.5 px-3 bg-white text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 dark:bg-slate-700 dark:text-slate-200 dark:ring-slate-600 dark:focus:ring-indigo-500"></div></div>
                         </div>
-                        <div id="error-message" class="text-center hidden"><p class="text-sm font-medium text-red-600"></p></div>
+                        <div id="error-message" class="text-center hidden"><p class="text-sm font-medium text-red-600 dark:text-red-500"></p></div>
                         
                         <div id="calculate-section" class="flex flex-col sm:flex-row gap-4 pt-2">
-                            <button id="calculate-button" type="button" class="w-full sm:w-auto flex-grow text-white bg-indigo-600 hover:bg-indigo-700 focus:bg-indigo-700 active:bg-indigo-700 focus:ring-4 focus:ring-indigo-300 font-semibold rounded-lg text-base px-5 py-3 transition-all">Calculate My Age</button>
-                            <button id="reset-button" type="button" class="w-full sm:w-auto bg-slate-200 hover:bg-slate-300 focus:bg-slate-300 active:bg-slate-300 text-slate-800 font-semibold rounded-lg text-base px-5 py-3 transition-colors">Reset</button>
+                            <button id="calculate-button" type="button" class="w-full sm:w-auto flex-grow text-white bg-indigo-600 hover:bg-indigo-700 focus:bg-indigo-700 active:bg-indigo-700 focus:ring-4 focus:ring-indigo-300 font-semibold rounded-lg text-base px-5 py-3 transition-all dark:bg-indigo-500 dark:hover:bg-indigo-600 dark:focus:bg-indigo-600 dark:active:bg-indigo-600 dark:focus:ring-indigo-800">Calculate My Age</button>
+                            <button id="reset-button" type="button" class="w-full sm:w-auto bg-slate-200 hover:bg-slate-300 focus:bg-slate-300 active:bg-slate-300 text-slate-800 font-semibold rounded-lg text-base px-5 py-3 transition-colors dark:bg-slate-600 dark:hover:bg-slate-500 dark:focus:bg-slate-500 dark:active:bg-slate-500 dark:text-slate-200">Reset</button>
                         </div>
 
                         <div id="results" class="space-y-8 pt-4 hidden">
-                            <div class="text-center space-y-4"><h2 class="text-2xl font-bold text-slate-800">Your Age in Years, Months, and Days</h2><div class="flex items-center justify-around text-center bg-slate-100 p-4 rounded-xl"><div><span id="years" class="block text-3xl sm:text-4xl font-extrabold text-indigo-600"></span><span class="text-sm text-slate-600">Years</span></div><div><span id="months" class="block text-3xl sm:text-4xl font-extrabold text-indigo-600"></span><span class="text-sm text-slate-600">Months</span></div><div><span id="days" class="block text-3xl sm:text-4xl font-extrabold text-indigo-600"></span><span class="text-sm text-slate-600">Days</span></div></div></div>
-                            <div class="text-center space-y-4"><h2 class="text-2xl font-bold text-slate-800">Your Life in Numbers</h2><div class="grid grid-cols-1 sm:grid-cols-3 gap-4"><div class="bg-slate-100 p-4 rounded-xl"><h3 class="font-semibold text-slate-600">Total Days Lived</h3><p id="total-days" class="text-2xl font-bold text-slate-800 mt-1"></p></div><div class="bg-slate-100 p-4 rounded-xl"><h3 class="font-semibold text-slate-600">Total Hours Lived</h3><p id="total-hours" class="text-2xl font-bold text-slate-800 mt-1"></p></div><div class="bg-slate-100 p-4 rounded-xl"><h3 class="font-semibold text-slate-600">Total Minutes Lived</h3><p id="total-minutes" class="text-2xl font-bold text-slate-800 mt-1"></p></div></div></div>
-                            <div class="text-center space-y-4"><h2 class="text-2xl font-bold text-slate-800">Next Birthday Countdown</h2><div class="bg-slate-100 p-4 rounded-xl"><p class="text-lg text-slate-700"><span id="countdown-days" class="text-3xl font-extrabold text-indigo-600"></span> Days to Go!</p></div></div>
+                            <div class="text-center space-y-4"><h2 class="text-2xl font-bold text-slate-800 dark:text-slate-200">Your Age in Years, Months, and Days</h2><div class="flex items-center justify-around text-center bg-slate-100 p-4 rounded-xl dark:bg-slate-700"><div><span id="years" class="block text-3xl sm:text-4xl font-extrabold text-indigo-600 dark:text-indigo-400"></span><span class="text-sm text-slate-600 dark:text-slate-400">Years</span></div><div><span id="months" class="block text-3xl sm:text-4xl font-extrabold text-indigo-600 dark:text-indigo-400"></span><span class="text-sm text-slate-600 dark:text-slate-400">Months</span></div><div><span id="days" class="block text-3xl sm:text-4xl font-extrabold text-indigo-600 dark:text-indigo-400"></span><span class="text-sm text-slate-600 dark:text-slate-400">Days</span></div></div></div>
+                            <div class="text-center space-y-4"><h2 class="text-2xl font-bold text-slate-800 dark:text-slate-200">Your Life in Numbers</h2><div class="grid grid-cols-1 sm:grid-cols-3 gap-4"><div class="bg-slate-100 p-4 rounded-xl dark:bg-slate-700"><h3 class="font-semibold text-slate-600 dark:text-slate-400">Total Days Lived</h3><p id="total-days" class="text-2xl font-bold text-slate-800 mt-1 dark:text-slate-200"></p></div><div class="bg-slate-100 p-4 rounded-xl dark:bg-slate-700"><h3 class="font-semibold text-slate-600 dark:text-slate-400">Total Hours Lived</h3><p id="total-hours" class="text-2xl font-bold text-slate-800 mt-1 dark:text-slate-200"></p></div><div class="bg-slate-100 p-4 rounded-xl dark:bg-slate-700"><h3 class="font-semibold text-slate-600 dark:text-slate-400">Total Minutes Lived</h3><p id="total-minutes" class="text-2xl font-bold text-slate-800 mt-1 dark:text-slate-200"></p></div></div></div>
+                            <div class="text-center space-y-4"><h2 class="text-2xl font-bold text-slate-800 dark:text-slate-200">Next Birthday Countdown</h2><div class="bg-slate-100 p-4 rounded-xl dark:bg-slate-700"><p class="text-lg text-slate-700 dark:text-slate-300"><span id="countdown-days" class="text-3xl font-extrabold text-indigo-600 dark:text-indigo-400"></span> Days to Go!</p></div></div>
                         </div>
                     </div>
                 </section>
 
                 <div class="my-12 sm:my-16">
-                    <div class="mx-auto w-full max-w-[320px] h-[50px] sm:max-w-[468px] sm:h-[60px] rounded-lg bg-slate-100">
+                    <div class="mx-auto w-full max-w-[320px] h-[50px] sm:max-w-[468px] sm:h-[60px]">
                         <div class="advertising-area">
-            <div> <p class="sm:hidden">320x50 horizontal Ad</p> </div>
-            <div> <p class="hidden sm:block">468x60 horizontal Ad</p> </div>
+                 <div class="sm:hidden"><p>320x50 horizontal Ad</p></div>
+                 <div class="hidden sm:block"><p>468x60 horizontal Ad</p></div>
                         </div>
                     </div>
                 </div>
@@ -224,7 +236,7 @@
             </div>
 
             <aside class="hidden lg:flex flex-col gap-8">
-                <div class="advertising-area h-[600px] rounded-lg bg-slate-100">
+                <div class="advertising-area h-[600px]">
                     <p>160x600 Vertical Ad</p>
                 </div>
             </aside>
@@ -235,7 +247,7 @@
     </div>
 </main>
 
-<footer class="bg-slate-800 text-white py-8">
+<footer class="bg-slate-800 text-white py-8 dark:bg-slate-900">
     <div class="container">
         <div class="flex flex-col md:flex-row justify-between items-center">
             <div class="text-center md:text-left mb-4 md:mb-0">
@@ -246,7 +258,7 @@
                 <a href="#" class="text-slate-400 hover:text-white focus:text-white active:text-white transition-colors duration-300">Home</a>
                 <a href="#" class="text-slate-400 hover:text-white focus:text-white active:text-white transition-colors duration-300">Tools List</a>
                 <a href="#" class="text-slate-400 hover:text-white focus:text-white active:text-white transition-colors duration-300">About</a>
-                <a href="#" class="text-slate-400 hover:text-white focus:text-white active:text-white transition-colors duration-300">Privacy Policy</a>
+                <a href="#" class="text-slate-400 hover:text-white focus:text-white active:text-white transition-colors duration-300">Contact</a>
             </div>
         </div>
     </div>
@@ -363,6 +375,47 @@
             errorMessage.classList.add('hidden');
             resultsSection.classList.add('hidden');
         }
+
+        // Theme Switcher
+        const themeSwitch = document.getElementById('theme-switch-checkbox');
+        const themeSwitchMobile = document.getElementById('theme-switch-checkbox-mobile');
+        const html = document.documentElement;
+
+        // check for saved theme preference
+        if (localStorage.getItem('theme') === 'dark') {
+            html.classList.add('dark');
+            themeSwitch.checked = true;
+            themeSwitchMobile.checked = true;
+        } else {
+            html.classList.remove('dark');
+            themeSwitch.checked = false;
+            themeSwitchMobile.checked = false;
+        }
+
+        themeSwitch.addEventListener('change', function () {
+            if (this.checked) {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                themeSwitchMobile.checked = true;
+            } else {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                themeSwitchMobile.checked = false;
+            }
+        });
+
+        themeSwitchMobile.addEventListener('change', function () {
+            if (this.checked) {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                themeSwitch.checked = true;
+            } else {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                themeSwitch.checked = false;
+            }
+            // We are not closing the menu here, as the user might want to toggle it multiple times.
+        });
     });
 </script>
 </body>
