@@ -1263,7 +1263,6 @@
     background-color: var(--thumb-dark);
     content: "🌙";
     color: white;
-    font-size: 18px;
   }
   .slider.round {
     border-radius: 34px;
