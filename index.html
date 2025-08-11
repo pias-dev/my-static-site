@@ -175,7 +175,8 @@
         <!-- START: Top Horizontal Ad Section -->
         <div class="mb-10 sm:mb-12">
             <div class="mx-auto w-full max-w-[320px] h-[50px] sm:max-w-[468px] sm:h-[60px] md:max-w-[728px] md:h-[90px]">
-        <div id="top-ad-container" class="advertising-area">
+        <div class="advertising-area">
+            <script>showTopAd();</script>
         </div>
             </div>
         </div>
@@ -183,7 +184,8 @@
 
         <div class="lg:grid lg:grid-cols-[160px_1fr_160px] lg:gap-8">
             <aside class="hidden lg:flex flex-col gap-8">
-                <div id="sidebar-ad-container-1" class="advertising-area h-[600px]">
+                <div class="advertising-area h-[600px]">
+                    <script>showSidebarAd();</script>
                 </div>
             </aside>
 
@@ -215,7 +217,8 @@
 
                 <div class="my-12 sm:my-16">
                     <div class="mx-auto w-full max-w-[320px] h-[50px] sm:max-w-[468px] sm:h-[60px] md:max-w-[728px] md:h-[90px]">
-                        <div id="bottom-ad-container" class="advertising-area">
+                        <div class="advertising-area">
+                            <script>showBottomAd();</script>
                         </div>
                     </div>
                 </div>
@@ -224,7 +227,8 @@
             </div>
 
             <aside class="hidden lg:flex flex-col gap-8">
-                <div id="sidebar-ad-container-2" class="advertising-area h-[600px]">
+                <div class="advertising-area h-[600px]">
+                    <script>showSidebarAd();</script>
                 </div>
             </aside>
         </div>
@@ -252,7 +256,8 @@
 </footer>
 
 <!-- START: Native Banner Ad Section -->
-<div id="native-banner-ad-container">
+<div>
+    <script>showNativeBannerAd();</script>
 </div>
 <!-- END: Native Banner Section -->
 
@@ -391,12 +396,6 @@
                 localStorage.setItem('theme', 'light');
             }
         });
-
-                showTopAd('top-ad-container');
-        showSidebarAd('sidebar-ad-container-1');
-        showSidebarAd('sidebar-ad-container-2');
-        showBottomAd('bottom-ad-container');
-        showNativeBannerAd('native-banner-ad-container');
     });
 </script>
 </body>
