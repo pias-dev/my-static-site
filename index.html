@@ -102,7 +102,8 @@
 
     <!-- tailwind css -->
     <link href="./src/output.css" rel="stylesheet">
-    
+    <script src="./src/ads.js" defer></script>
+    <script src="./src/main.js" defer></script>
     
     
     
@@ -177,49 +178,15 @@
         <!-- START: Top Horizontal Ad Section -->
         <div class="mb-10 sm:mb-12">
             <div class="mx-auto w-full max-w-[320px] h-[50px] sm:max-w-[468px] sm:h-[60px] md:max-w-[728px] md:h-[90px]">
-        <div class="advertising-area">
-            <div class="sm:hidden">
-
-<script type="text/javascript">
-    atOptions = {
-        'key' : '01229d661b91222d4120ca2e6c5c14f8',
-        'format' : 'iframe',
-        'height' : 50,
-        'width' : 320,
-        'params' : {}
-    };
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/01229d661b91222d4120ca2e6c5c14f8/invoke.js"></script>
-
-            </div>
-            <div class="hidden sm:block md:hidden">
-
-<script type="text/javascript">
-    atOptions = {
-        'key' : 'fbbeaac58499d5ee65a6aa8c6a9810a4',
-        'format' : 'iframe',
-        'height' : 60,
-        'width' : 468,
-        'params' : {}
-    };
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/fbbeaac58499d5ee65a6aa8c6a9810a4/invoke.js"></script>
-
-            </div>
-            <div class="hidden md:block">
-
-<script type="text/javascript">
-    atOptions = {
-        'key' : '624a97a6290d488d2c37917256d06a67',
-        'format' : 'iframe',
-        'height' : 90,
-        'width' : 728,
-        'params' : {}
-    };
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/624a97a6290d488d2c37917256d06a67/invoke.js"></script>
-
-            </div>
+        <div id="top-ad-container" class="advertising-area"></div>
+        <div class="sm:hidden">
+            <div id="mini-ad-container" class="advertising-area"></div>
+        </div>
+        <div class="hidden sm:block md:hidden">
+            <div id="medium-ad-container" class="advertising-area"></div>
+        </div>
+        <div class="hidden md:block">
+            <div id="large-ad-container" class="advertising-area"></div>
         </div>
             </div>
         </div>
@@ -227,19 +194,8 @@
 
         <div class="lg:grid lg:grid-cols-[160px_1fr_160px] lg:gap-8">
             <aside class="hidden lg:flex flex-col gap-8">
-                <div class="advertising-area h-[600px]">
-
-<script type="text/javascript">
-    atOptions = {
-        'key' : '723938310f9d6a9b6647d12a3ddbd205',
-        'format' : 'iframe',
-        'height' : 600,
-        'width' : 160,
-        'params' : {}
-    };
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/723938310f9d6a9b6647d12a3ddbd205/invoke.js"></script>
-
+                <div id="sidebar-ad-container-1" class="advertising-area h-[600px]">
+                    
                 </div>
             </aside>
 
@@ -271,36 +227,12 @@
 
                 <div class="my-12 sm:my-16">
                     <div class="mx-auto w-full max-w-[320px] h-[50px] sm:max-w-[468px] sm:h-[60px]">
-                        <div class="advertising-area">
-                 <div class="sm:hidden">
-                
-<script type="text/javascript">
-    atOptions = {
-        'key' : '01229d661b91222d4120ca2e6c5c14f8',
-        'format' : 'iframe',
-        'height' : 50,
-        'width' : 320,
-        'params' : {}
-    };
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/01229d661b91222d4120ca2e6c5c14f8/invoke.js"></script>
-
-                </div>
-                 <div class="hidden sm:block">
-                
-<script type="text/javascript">
-    atOptions = {
-        'key' : 'fbbeaac58499d5ee65a6aa8c6a9810a4',
-        'format' : 'iframe',
-        'height' : 60,
-        'width' : 468,
-        'params' : {}
-    };
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/fbbeaac58499d5ee65a6aa8c6a9810a4/invoke.js"></script>
-                
-                </div>
-                        </div>
+        <div class="sm:hidden">
+            <div id="mini-ad-container-2" class="advertising-area"></div>
+        </div>
+        <div class="hidden sm:block">
+            <div id="medium-ad-container-2" class="advertising-area"></div>
+        </div>
                     </div>
                 </div>
 
@@ -308,19 +240,8 @@
             </div>
 
             <aside class="hidden lg:flex flex-col gap-8">
-                <div class="advertising-area h-[600px]">
-
-<script type="text/javascript">
-    atOptions = {
-        'key' : '723938310f9d6a9b6647d12a3ddbd205',
-        'format' : 'iframe',
-        'height' : 600,
-        'width' : 160,
-        'params' : {}
-    };
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/723938310f9d6a9b6647d12a3ddbd205/invoke.js"></script>
-
+                <div id="sidebar-ad-container-2" class="advertising-area h-[600px]">
+                    
                 </div>
             </aside>
         </div>
@@ -348,145 +269,12 @@
 </footer>
 
 <!-- START: Native Banner Ad Section -->
-<div>
-    <script async="async" data-cfasync="false" src="//pl27312178.profitableratecpm.com/849e6610f4501e065f7c0550fff4cc17/invoke.js"></script>
-    <div id="container-849e6610f4501e065f7c0550fff4cc17"></div>
+<div id="native-banner-ad-container">
+    
 </div>
 <!-- END: Native Banner Section -->
 
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const hamburgerIcon = document.getElementById('hamburger-icon');
-        const closeIcon = document.getElementById('close-icon');
 
-        function toggleMobileMenu() {
-            const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
-            mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
-            mobileMenu.classList.toggle('hidden');
-            hamburgerIcon.classList.toggle('hidden');
-            hamburgerIcon.classList.toggle('inline-flex');
-            closeIcon.classList.toggle('hidden');
-            closeIcon.classList.toggle('inline-flex');
-        }
-
-        mobileMenuButton.addEventListener('click', toggleMobileMenu);
-
-        // Close mobile menu when a link is clicked
-        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-        mobileMenuLinks.forEach(function(link) {
-            link.addEventListener('click', function() {
-                const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
-                if (isExpanded) {
-                    toggleMobileMenu();
-                }
-            });
-        });
-
-        // Age Calculator
-        const birthDateInput = document.getElementById('birthdate');
-        const birthTimeInput = document.getElementById('birthtime');
-        const calculateButton = document.getElementById('calculate-button');
-        const resetButton = document.getElementById('reset-button');
-        const errorMessage = document.getElementById('error-message');
-        const resultsSection = document.getElementById('results');
-
-        const yearsSpan = document.getElementById('years');
-        const monthsSpan = document.getElementById('months');
-        const daysSpan = document.getElementById('days');
-        const totalDaysSpan = document.getElementById('total-days');
-        const totalHoursSpan =document.getElementById('total-hours');
-        const totalMinutesSpan = document.getElementById('total-minutes');
-        const countdownDaysSpan = document.getElementById('countdown-days');
-
-        // Set max date to today
-        const today = new Date();
-        const todayString = today.toISOString().split('T')[0];
-        birthDateInput.max = todayString;
-
-        calculateButton.addEventListener('click', calculateAge);
-        resetButton.addEventListener('click', resetCalculator);
-
-        function calculateAge() {
-            const birthDateValue = birthDateInput.value;
-            if (!birthDateValue) {
-                errorMessage.firstElementChild.textContent = 'Please enter your date of birth.';
-                errorMessage.classList.remove('hidden');
-                resultsSection.classList.add('hidden');
-                return;
-            }
-
-            errorMessage.classList.add('hidden');
-            resultsSection.classList.remove('hidden');
-
-            const birthDate = new Date(birthDateValue + 'T' + (birthTimeInput.value || '00:00'));
-            const now = new Date();
-
-            let years = now.getFullYear() - birthDate.getFullYear();
-            let months = now.getMonth() - birthDate.getMonth();
-            let days = now.getDate() - birthDate.getDate();
-
-            if (days < 0) {
-                months--;
-                const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
-                days += prevMonth.getDate();
-            }
-
-            if (months < 0) {
-                years--;
-                months += 12;
-            }
-
-            yearsSpan.textContent = years;
-            monthsSpan.textContent = months;
-            daysSpan.textContent = days;
-
-            const totalDays = Math.floor((now - birthDate) / (1000 * 60 * 60 * 24));
-            totalDaysSpan.textContent = totalDays.toLocaleString();
-            totalHoursSpan.textContent = (totalDays * 24).toLocaleString();
-            totalMinutesSpan.textContent = (totalDays * 24 * 60).toLocaleString();
-
-            const nextBirthday = new Date(now.getFullYear(), birthDate.getMonth(), birthDate.getDate());
-            if (now > nextBirthday) {
-                nextBirthday.setFullYear(now.getFullYear() + 1);
-            }
-            const countdownDays = Math.ceil((nextBirthday - now) / (1000 * 60 * 60 * 24));
-            countdownDaysSpan.textContent = countdownDays;
-        }
-
-        function resetCalculator() {
-            birthDateInput.value = '';
-            birthTimeInput.value = '';
-            errorMessage.classList.add('hidden');
-            resultsSection.classList.add('hidden');
-        }
-
-        // Theme Switcher
-        const themeSwitch = document.getElementById('theme-switch-checkbox');
-        const html = document.documentElement;
-
-        // check for saved theme preference
-        if (localStorage.getItem('theme') === 'dark') {
-            html.classList.add('dark');
-            themeSwitch.checked = true;
-        } else {
-            html.classList.remove('dark');
-            themeSwitch.checked = false;
-        }
-
-        themeSwitch.addEventListener('change', function () {
-            if (this.checked) {
-                html.classList.add('dark');
-                localStorage.setItem('theme', 'dark');
-            } else {
-                html.classList.remove('dark');
-                localStorage.setItem('theme', 'light');
-            }
-        });
-    });
-</script>
 </body>
 </html>
