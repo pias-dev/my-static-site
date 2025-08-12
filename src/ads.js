@@ -48,8 +48,8 @@ function loadAds() {
                         'width' : 728,
                         'params' : {}
                     };
-                </script>
-                <script type="text/javascript" src="//www.highperformanceformat.com/624a97a6290d488d2c37917256d06a67/invoke.js"></script>
+                <\/script>
+                <script type="text/javascript" src="//www.highperformanceformat.com/624a97a6290d488d2c37917256d06a67/invoke.js"><\/script>
             `;
             showAd('top-ad-container', largeAdScript);
         } else if (screenWidth >= 468) {
@@ -64,8 +64,8 @@ function loadAds() {
                         'width' : 468,
                         'params' : {}
                     };
-                </script>
-                <script type="text/javascript" src="//www.highperformanceformat.com/fbbeaac58499d5ee65a6aa8c6a9810a4/invoke.js"></script>
+                <\/script>
+                <script type="text/javascript" src="//www.highperformanceformat.com/fbbeaac58499d5ee65a6aa8c6a9810a4/invoke.js"><\/script>
             `;
             showAd('top-ad-container', mediumAdScript);
         } else {
@@ -80,8 +80,8 @@ function loadAds() {
                         'width' : 320,
                         'params' : {}
                     };
-                </script>
-                <script type="text/javascript" src="//www.highperformanceformat.com/01229d661b91222d4120ca2e6c5c14f8/invoke.js"></script>
+                <\/script>
+                <script type="text/javascript" src="//www.highperformanceformat.com/01229d661b91222d4120ca2e6c5c14f8/invoke.js"><\/script>
             `;
             showAd('top-ad-container', miniAdScript);
         }
@@ -102,8 +102,8 @@ function loadAds() {
                         'width' : 468,
                         'params' : {}
                     };
-                </script>
-                <script type="text/javascript" src="//www.highperformanceformat.com/fbbeaac58499d5ee65a6aa8c6a9810a4/invoke.js"></script>
+                <\/script>
+                <script type="text/javascript" src="//www.highperformanceformat.com/fbbeaac58499d5ee65a6aa8c6a9810a4/invoke.js"><\/script>
             `;
             showAd('bottom-ad-container', mediumAdScript);
         } else {
@@ -118,8 +118,8 @@ function loadAds() {
                         'width' : 320,
                         'params' : {}
                     };
-                </script>
-                <script type="text/javascript" src="//www.highperformanceformat.com/01229d661b91222d4120ca2e6c5c14f8/invoke.js"></script>
+                <\/script>
+                <script type="text/javascript" src="//www.highperformanceformat.com/01229d661b91222d4120ca2e6c5c14f8/invoke.js"><\/script>
             `;
             showAd('bottom-ad-container', miniAdScript);
         }
@@ -135,8 +135,8 @@ function loadAds() {
                 'width' : 160,
                 'params' : {}
             };
-        </script>
-        <script type="text/javascript" src="//www.highperformanceformat.com/723938310f9d6a9b6647d12a3ddbd205/invoke.js"></script>
+        <\/script>
+        <script type="text/javascript" src="//www.highperformanceformat.com/723938310f9d6a9b6647d12a3ddbd205/invoke.js"><\/script>
     `;
 
     const sidebar1 = document.getElementById('sidebar-ad-container-1');
