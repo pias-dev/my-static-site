@@ -1,8 +1,7 @@
 function showAd(containerId, adHtml) {
     const container = document.getElementById(containerId);
     if (container) {
-        // Clear previous ad
-        container.innerHTML = '';
+        container.innerHTML = ''; // Clear previous ad
 
         const iframe = document.createElement('iframe');
         iframe.style.width = '100%';
@@ -13,7 +12,7 @@ function showAd(containerId, adHtml) {
         iframe.setAttribute('marginheight', '0');
         iframe.setAttribute('marginwidth', '0');
 
-        // Set accessible title
+        // Accessibility title
         const label = container.getAttribute('aria-label') || container.getAttribute('data-title');
         iframe.setAttribute('title', label || `${containerId.replace(/-/g, ' ')} content`);
 
@@ -26,12 +25,36 @@ function showAd(containerId, adHtml) {
     }
 }
 
-function getAdScript(key, format, height, width) {
+function loadAds() {
+    const screenWidth = window.innerWidth;
+
+    // Top ad
+    if (screenWidth >= 728) {
+        showAd('top-ad-container', getAdScript('624a97a6290d488d2c37917256d06a67', 728, 90));
+    } else if (screenWidth >= 468) {
+        showAd('top-ad-container', getAdScript('fbbeaac58499d5ee65a6aa8c6a9810a4', 468, 60));
+    } else {
+        showAd('top-ad-container', getAdScript('01229d661b91222d4120ca2e6c5c14f8', 320, 50));
+    }
+
+    // Bottom ad
+    if (screenWidth >= 468) {
+        showAd('bottom-ad-container', getAdScript('fbbeaac58499d5ee65a6aa8c6a9810a4', 468, 60));
+    } else {
+        showAd('bottom-ad-container', getAdScript('01229d661b91222d4120ca2e6c5c14f8', 320, 50));
+    }
+
+    // Sidebars
+    showAdIfExists('sidebar-ad-container-1', '723938310f9d6a9b6647d12a3ddbd205', 160, 600);
+    showAdIfExists('sidebar-ad-container-2', '723938310f9d6a9b6647d12a3ddbd205', 160, 600);
+}
+
+function getAdScript(key, width, height) {
     return `
         <script type="text/javascript">
             atOptions = {
                 'key': '${key}',
-                'format': '${format}',
+                'format': 'iframe',
                 'height': ${height},
                 'width': ${width},
                 'params': {}
@@ -41,46 +64,14 @@ function getAdScript(key, format, height, width) {
     `;
 }
 
-function loadAds() {
-    const screenWidth = window.innerWidth;
-
-    // Top Ad
-    const topAdContainer = document.getElementById('top-ad-container');
-    if (topAdContainer) {
-        if (screenWidth >= 728) {
-            showAd('top-ad-container', getAdScript('624a97a6290d488d2c37917256d06a67', 'iframe', 90, 728));
-        } else if (screenWidth >= 468) {
-            showAd('top-ad-container', getAdScript('fbbeaac58499d5ee65a6aa8c6a9810a4', 'iframe', 60, 468));
-        } else {
-            showAd('top-ad-container', getAdScript('01229d661b91222d4120ca2e6c5c14f8', 'iframe', 50, 320));
-        }
+function showAdIfExists(containerId, key, width, height) {
+    const container = document.getElementById(containerId);
+    if (container) {
+        container.style.width = width + 'px';
+        container.style.height = height + 'px';
+        showAd(containerId, getAdScript(key, width, height));
     }
-
-    // Bottom Ad
-    const bottomAdContainer = document.getElementById('bottom-ad-container');
-    if (bottomAdContainer) {
-        if (screenWidth >= 468) {
-            showAd('bottom-ad-container', getAdScript('fbbeaac58499d5ee65a6aa8c6a9810a4', 'iframe', 60, 468));
-        } else {
-            showAd('bottom-ad-container', getAdScript('01229d661b91222d4120ca2e6c5c14f8', 'iframe', 50, 320));
-        }
-    }
-
-    // Sidebars (always same)
-    const sidebarAdScript = getAdScript('723938310f9d6a9b6647d12a3ddbd205', 'iframe', 600, 160);
-
-    ['sidebar-ad-container-1', 'sidebar-ad-container-2'].forEach(id => {
-        const el = document.getElementById(id);
-        if (el) showAd(id, sidebarAdScript);
-    });
 }
 
-// Run on load
 window.addEventListener('load', loadAds);
-
-// Debounced resize listener
-let resizeTimer;
-window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(loadAds, 300);
-});
+window.addEventListener('resize', loadAds);
