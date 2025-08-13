@@ -79,15 +79,22 @@
 #top-ad-container {
     width: 100%;
     height: 50px; /* mobile top ad height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 #bottom-ad-container {
     width: 100%;
     height: 50px; /* mobile bottom ad height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 #sidebar-ad-container-1,
 #sidebar-ad-container-2 {
     width: 160px;
     height: 600px;
+    display: flex;
 }
 
 /* Tablet (min-width: 468px) */
