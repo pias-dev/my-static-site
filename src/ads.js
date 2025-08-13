@@ -61,7 +61,7 @@ function getAdScript(key, width, height) {
                 'params': {}
             };
         <\/script>
-        <script type="text/javascript" src="//www.highperformanceformat.com/${key}/invoke.js"><\/script>
+        <script type="text/javascript" src="https://www.highperformanceformat.com/${key}/invoke.js"><\/script>
     `;
 }
 
