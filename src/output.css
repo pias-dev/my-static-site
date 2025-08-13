@@ -75,9 +75,41 @@
     border: 0 solid;
   }
 
-  #top-ad-container { width: 100%; height: 90px; }
-#bottom-ad-container { width: 100%; height: 60px; }
-#sidebar-ad-container-1, #sidebar-ad-container-2 { width: 160px; height: 600px; }
+  /* Default (Mobile first) */
+#top-ad-container {
+    width: 100%;
+    height: 50px; /* mobile top ad height */
+}
+#bottom-ad-container {
+    width: 100%;
+    height: 50px; /* mobile bottom ad height */
+}
+#sidebar-ad-container-1,
+#sidebar-ad-container-2 {
+    width: 160px;
+    height: 600px;
+}
+
+/* Tablet (min-width: 468px) */
+@media (min-width: 468px) and (max-width: 727px) {
+    #top-ad-container {
+        height: 60px; /* tablet top ad height */
+    }
+    #bottom-ad-container {
+        height: 60px; /* tablet bottom ad height */
+    }
+}
+
+/* Desktop (min-width: 728px) */
+@media (min-width: 728px) {
+    #top-ad-container {
+        height: 90px; /* desktop top ad height */
+    }
+    #bottom-ad-container {
+        height: 60px; /* desktop bottom ad height */
+    }
+}
+
   
   html, :host {
     line-height: 1.5;
