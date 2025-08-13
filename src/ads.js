@@ -47,6 +47,8 @@ function loadAds() {
     // Sidebars
     showAdIfExists('sidebar-ad-container-1', '723938310f9d6a9b6647d12a3ddbd205', 160, 600);
     showAdIfExists('sidebar-ad-container-2', '723938310f9d6a9b6647d12a3ddbd205', 160, 600);
+    showAdIfExists('sidebar-ad-container-3', '723938310f9d6a9b6647d12a3ddbd205', 160, 600);
+    showAdIfExists('sidebar-ad-container-4', '723938310f9d6a9b6647d12a3ddbd205', 160, 600);
 }
 
 function getAdScript(key, width, height) {
