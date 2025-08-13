@@ -75,45 +75,47 @@
     border: 0 solid;
   }
 
-  /* Default (Mobile first) */
-#top-ad-container {
-    width: 100%;
-    height: 50px; /* mobile top ad height */
+/* Center ad containers and set CLS-safe sizes */
+#top-ad-container,
+#bottom-ad-container {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    justify-content: center; /* center horizontally */
+    align-items: center;     /* center vertically */
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+/* Mobile default */
+#top-ad-container {
+    height: 50px;
+    max-width: 320px;
 }
 #bottom-ad-container {
-    width: 100%;
-    height: 50px; /* mobile bottom ad height */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-#sidebar-ad-container-1,
-#sidebar-ad-container-2 {
-    width: 160px;
-    height: 600px;
-    display: flex;
+    height: 50px;
+    max-width: 320px;
 }
 
-/* Tablet (min-width: 468px) */
+/* Tablet ads */
 @media (min-width: 468px) and (max-width: 727px) {
     #top-ad-container {
-        height: 60px; /* tablet top ad height */
+        height: 60px;
+        max-width: 468px;
     }
     #bottom-ad-container {
-        height: 60px; /* tablet bottom ad height */
+        height: 60px;
+        max-width: 468px;
     }
 }
 
-/* Desktop (min-width: 728px) */
+/* Desktop ads */
 @media (min-width: 728px) {
     #top-ad-container {
-        height: 90px; /* desktop top ad height */
+        height: 90px;
+        max-width: 728px;
     }
     #bottom-ad-container {
-        height: 60px; /* desktop bottom ad height */
+        height: 60px;
+        max-width: 468px;
     }
 }
 
