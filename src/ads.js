@@ -1,43 +1,7 @@
-// 1️⃣ CONFIG — just edit here to add/remove ads
-const adConfig = {
-    top: [
-        { id: "top-ad-container" },
-        { id: "top-ad-container-2" },
-        { id: "top-ad-container-3" }
-    ],
-    bottom: [
-        { id: "bottom-ad-container" },
-        { id: "bottom-ad-container-2" }
-    ],
-    sidebar: [
-        { id: "sidebar-ad-container-1" },
-        { id: "sidebar-ad-container-2" },
-        { id: "sidebar-ad-container-3" },
-        { id: "sidebar-ad-container-4" }
-    ]
-};
-
-// Ad size mapping based on screen width
-const adSizes = {
-    top: [
-        { minWidth: 728, key: '624a97a6290d488d2c37917256d06a67', width: 728, height: 90 },
-        { minWidth: 468, key: 'fbbeaac58499d5ee65a6aa8c6a9810a4', width: 468, height: 60 },
-        { minWidth: 0,   key: '01229d661b91222d4120ca2e6c5c14f8', width: 320, height: 50 }
-    ],
-    bottom: [
-        { minWidth: 468, key: 'fbbeaac58499d5ee65a6aa8c6a9810a4', width: 468, height: 60 },
-        { minWidth: 0,   key: '01229d661b91222d4120ca2e6c5c14f8', width: 320, height: 50 }
-    ],
-    sidebar: [
-        { minWidth: 0,   key: '723938310f9d6a9b6647d12a3ddbd205', width: 160, height: 600 }
-    ]
-};
-
-// 2️⃣ Core ad rendering
 function showAd(containerId, adHtml, width, height) {
     const container = document.getElementById(containerId);
     if (container) {
-        container.innerHTML = '';
+        container.innerHTML = ''; // Clear previous ad
         container.style.width = width + 'px';
         container.style.height = height + 'px';
 
@@ -77,20 +41,41 @@ function getAdScript(key, width, height) {
     `;
 }
 
-function showAdsForPosition(position, configList, screenWidth) {
-    const sizes = adSizes[position];
-    const size = sizes.find(s => screenWidth >= s.minWidth) || sizes[sizes.length - 1];
-    configList.forEach(ad => {
-        showAd(ad.id, getAdScript(size.key, size.width, size.height), size.width, size.height);
-    });
+function showAdIfExists(containerId, key, width, height) {
+    const container = document.getElementById(containerId);
+    if (container) {
+        showAd(containerId, getAdScript(key, width, height), width, height);
+    }
 }
 
-// 3️⃣ Load ads dynamically
 function loadAds() {
     const screenWidth = window.innerWidth;
-    showAdsForPosition("top", adConfig.top, screenWidth);
-    showAdsForPosition("bottom", adConfig.bottom, screenWidth);
-    showAdsForPosition("sidebar", adConfig.sidebar, screenWidth);
+
+    // Multiple top ads
+    const topAdIds = ["top-ad-container", "top-ad-container-2", "top-ad-container-3"];
+    topAdIds.forEach(id => {
+        if (screenWidth >= 728) {
+            showAdIfExists(id, '624a97a6290d488d2c37917256d06a67', 728, 90);
+        } else if (screenWidth >= 468) {
+            showAdIfExists(id, 'fbbeaac58499d5ee65a6aa8c6a9810a4', 468, 60);
+        } else {
+            showAdIfExists(id, '01229d661b91222d4120ca2e6c5c14f8', 320, 50);
+        }
+    });
+
+    // Multiple bottom ads
+    const bottomAdIds = ["bottom-ad-container", "bottom-ad-container-2"];
+    bottomAdIds.forEach(id => {
+        if (screenWidth >= 468) {
+            showAdIfExists(id, 'fbbeaac58499d5ee65a6aa8c6a9810a4', 468, 60);
+        } else {
+            showAdIfExists(id, '01229d661b91222d4120ca2e6c5c14f8', 320, 50);
+        }
+    });
+
+    // Sidebars
+    Array.from({ length: 4 }, (_, i) => `sidebar-ad-container-${i + 1}`)
+        .forEach(id => showAdIfExists(id, '723938310f9d6a9b6647d12a3ddbd205', 160, 600));
 }
 
 window.addEventListener('load', loadAds);
