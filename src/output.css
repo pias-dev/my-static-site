@@ -75,6 +75,16 @@
     border: 0 solid;
   }
 
+/* Shared centering for all ads */
+#top-ad-container, #top-ad-container-2, #top-ad-container-3,
+#bottom-ad-container, #bottom-ad-container-2,
+[id^="sidebar-ad-container-"] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    overflow: hidden;
+}
 
   
   html, :host {
