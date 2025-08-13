@@ -45,8 +45,9 @@ function loadAds() {
     }
 
     // Sidebars
-    ['sidebar-ad-container-1','sidebar-ad-container-2','sidebar-ad-container-3','sidebar-ad-container-4']
+    Array.from({ length: 4 }, (_, i) => `sidebar-ad-container-${i + 1}`)
     .forEach(id => showAdIfExists(id, '723938310f9d6a9b6647d12a3ddbd205', 160, 600));
+
 }
 
 function getAdScript(key, width, height) {
