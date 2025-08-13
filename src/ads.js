@@ -1,11 +1,23 @@
-// CONFIG — how many ads in each section
+// 1️⃣ CONFIG — just edit here to add/remove ads
 const adConfig = {
-    top: 2,
-    bottom: 2,
-    sidebar: 4
+    top: [
+        { id: "top-ad-container" },
+        { id: "top-ad-container-2" },
+        { id: "top-ad-container-3" }
+    ],
+    bottom: [
+        { id: "bottom-ad-container" },
+        { id: "bottom-ad-container-2" }
+    ],
+    sidebar: [
+        { id: "sidebar-ad-container-1" },
+        { id: "sidebar-ad-container-2" },
+        { id: "sidebar-ad-container-3" },
+        { id: "sidebar-ad-container-4" }
+    ]
 };
 
-// Ad size mapping per section
+// Ad size mapping based on screen width
 const adSizes = {
     top: [
         { minWidth: 728, key: '624a97a6290d488d2c37917256d06a67', width: 728, height: 90 },
@@ -21,57 +33,7 @@ const adSizes = {
     ]
 };
 
-// Create ad wrappers + containers
-function createAdContainers() {
-    // TOP wrapper
-    const topWrapper = document.createElement("div");
-    topWrapper.id = "top-ads-wrapper";
-    topWrapper.style.display = "flex";
-    topWrapper.style.justifyContent = "center";
-    topWrapper.style.gap = "10px";
-    topWrapper.style.margin = "10px auto";
-    document.body.insertAdjacentElement("afterbegin", topWrapper);
-
-    for (let i = 1; i <= adConfig.top; i++) {
-        const div = document.createElement("div");
-        div.id = `top-ad-container-${i}`;
-        topWrapper.appendChild(div);
-    }
-
-    // BOTTOM wrapper
-    const bottomWrapper = document.createElement("div");
-    bottomWrapper.id = "bottom-ads-wrapper";
-    bottomWrapper.style.display = "flex";
-    bottomWrapper.style.justifyContent = "center";
-    bottomWrapper.style.gap = "10px";
-    bottomWrapper.style.margin = "10px auto";
-    document.body.insertAdjacentElement("beforeend", bottomWrapper);
-
-    for (let i = 1; i <= adConfig.bottom; i++) {
-        const div = document.createElement("div");
-        div.id = `bottom-ad-container-${i}`;
-        bottomWrapper.appendChild(div);
-    }
-
-    // SIDEBAR wrapper
-    const sidebarWrapper = document.createElement("div");
-    sidebarWrapper.id = "sidebar-wrapper";
-    sidebarWrapper.style.display = "flex";
-    sidebarWrapper.style.flexDirection = "column";
-    sidebarWrapper.style.gap = "10px";
-    sidebarWrapper.style.position = "fixed";
-    sidebarWrapper.style.right = "0";
-    sidebarWrapper.style.top = "50px";
-    document.body.appendChild(sidebarWrapper);
-
-    for (let i = 1; i <= adConfig.sidebar; i++) {
-        const div = document.createElement("div");
-        div.id = `sidebar-ad-container-${i}`;
-        sidebarWrapper.appendChild(div);
-    }
-}
-
-// Render ad into a container
+// 2️⃣ Core ad rendering
 function showAd(containerId, adHtml, width, height) {
     const container = document.getElementById(containerId);
     if (container) {
@@ -85,6 +47,8 @@ function showAd(containerId, adHtml, width, height) {
         iframe.style.border = '0';
         iframe.setAttribute('scrolling', 'no');
         iframe.setAttribute('frameborder', '0');
+        iframe.setAttribute('marginheight', '0');
+        iframe.setAttribute('marginwidth', '0');
 
         const label = container.getAttribute('aria-label') || container.getAttribute('data-title');
         iframe.setAttribute('title', label || `${containerId.replace(/-/g, ' ')} content`);
@@ -98,7 +62,6 @@ function showAd(containerId, adHtml, width, height) {
     }
 }
 
-// Generate ad script
 function getAdScript(key, width, height) {
     return `
         <script type="text/javascript">
@@ -114,18 +77,15 @@ function getAdScript(key, width, height) {
     `;
 }
 
-// Load ads for a given section
-function showAdsForPosition(position, count, screenWidth) {
+function showAdsForPosition(position, configList, screenWidth) {
     const sizes = adSizes[position];
     const size = sizes.find(s => screenWidth >= s.minWidth) || sizes[sizes.length - 1];
-
-    for (let i = 1; i <= count; i++) {
-        const id = `${position}-ad-container-${i}`;
-        showAd(id, getAdScript(size.key, size.width, size.height), size.width, size.height);
-    }
+    configList.forEach(ad => {
+        showAd(ad.id, getAdScript(size.key, size.width, size.height), size.width, size.height);
+    });
 }
 
-// Load all ads
+// 3️⃣ Load ads dynamically
 function loadAds() {
     const screenWidth = window.innerWidth;
     showAdsForPosition("top", adConfig.top, screenWidth);
@@ -133,8 +93,5 @@ function loadAds() {
     showAdsForPosition("sidebar", adConfig.sidebar, screenWidth);
 }
 
-window.addEventListener('load', () => {
-    createAdContainers();
-    loadAds();
-});
+window.addEventListener('load', loadAds);
 window.addEventListener('resize', loadAds);
