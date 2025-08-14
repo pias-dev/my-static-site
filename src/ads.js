@@ -19,21 +19,18 @@ const adConfig = [
     },
     // Sidebar ads
     {
-        Array.from({ length: 4 }, (_, i) => `sidebar-ad-container-${i + 1}`)
-        .forEach(id => showAdIfExists(id, '723938310f9d6a9b6647d12a3ddbd205', w: 160, h: 600));
-
+        ids: ["sidebar-ad-container-1", "sidebar-ad-container-2", "sidebar-ad-container-3", "sidebar-ad-container-4"],
+        sizes: [
+            { minWidth: 0, key: "723938310f9d6a9b6647d12a3ddbd205", w: 160, h: 600 }
+        ]
     },
-    // NativeBanner ad
+    // Your new external ad
     {
         ids: ["nativebanner"],
         external: true,
         scriptSrc: "//pl27312178.profitableratecpm.com/849e6610f4501e065f7c0550fff4cc17/invoke.js",
-    },
-    // Socialbar ad
-    {
-        ids: ["socialbar"],
-        external: true,
-        scriptSrc: "//pl27396127.profitableratecpm.com/24/92/2d/24922d458c60e04fa0ccc2c1f9f70062.js",
+        w: 300,
+        h: 250
     }
 ];
 
