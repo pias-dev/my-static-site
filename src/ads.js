@@ -78,6 +78,9 @@ function loadAds() {
         .forEach(id => showAdIfExists(id, '723938310f9d6a9b6647d12a3ddbd205', 160, 600));
 }
 
+window.addEventListener('load', loadAds);
+window.addEventListener('resize', loadAds);
+
 function showNativeBannerAd() {
     document.write(`
         <script async="async" data-cfasync="false" src="//pl27312178.profitableratecpm.com/849e6610f4501e065f7c0550fff4cc17/invoke.js"><\/script>
@@ -90,6 +93,3 @@ function showsocialbarAd() {
         <script type='text/javascript' src='//pl27396127.profitableratecpm.com/24/92/2d/24922d458c60e04fa0ccc2c1f9f70062.js'><\/script>
     `);
 }
-
-window.addEventListener('load', loadAds);
-window.addEventListener('resize', loadAds);
