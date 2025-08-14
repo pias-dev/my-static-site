@@ -19,10 +19,9 @@ const adConfig = [
     },
     // Sidebar ads
     {
-        ids: ["sidebar-ad-container-1", "sidebar-ad-container-2", "sidebar-ad-container-3", "sidebar-ad-container-4"],
-        sizes: [
-            { minWidth: 0, key: "723938310f9d6a9b6647d12a3ddbd205", w: 160, h: 600 }
-        ]
+        Array.from({ length: 4 }, (_, i) => `sidebar-ad-container-${i + 1}`)
+        .forEach(id => showAdIfExists(id, '723938310f9d6a9b6647d12a3ddbd205', w: 160, h: 600));
+
     },
     // External ad #1
     {
