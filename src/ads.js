@@ -29,8 +29,6 @@ const adConfig = [
         ids: ["container-849e6610f4501e065f7c0550fff4cc17"],
         external: true,
         scriptSrc: "//pl27312178.profitableratecpm.com/849e6610f4501e065f7c0550fff4cc17/invoke.js",
-        w: 300,
-        h: 250
     }
 ];
 
