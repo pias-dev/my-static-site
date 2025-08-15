@@ -38,25 +38,21 @@ const adConfig = [
             { minWidth: 0, key: "723938310f9d6a9b6647d12a3ddbd205", w: 160, h: 600 }
         ]
     },
-    // External ad #1
+    // Native Banner Ad
     {
         ids: [
             { id: "container-849e6610f4501e065f7c0550fff4cc17", label: "Native Banner Advertisement" }
         ],
         external: true,
         scriptSrc: "//pl27312178.profitableratecpm.com/849e6610f4501e065f7c0550fff4cc17/invoke.js",
-        w: 320,
-        h: 50
     },
-    // External ad #2
+    // Socialbar Ad
     {
         ids: [
             { id: "container-24922d458c60e04fa0ccc2c1f9f70062", label: "Socialbar Advertisement" }
         ],
         external: true,
         scriptSrc: "//pl27396127.profitableratecpm.com/24/92/2d/24922d458c60e04fa0ccc2c1f9f70062.js",
-        w: 320,
-        h: 50
     }
 ];
 
