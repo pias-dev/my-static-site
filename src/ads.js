@@ -2,7 +2,10 @@
 const adConfig = [
     // Top ads
     {
-        ids: ["top-ad-container", "top-ad-container-2", "top-ad-container-3"],
+        ids: [
+            { id: "top-ad-container", label: "Top Advertisement" },
+            { id: "top-ad-container-2", label: "Top Advertisement 2" }
+        ],
         sizes: [
             { minWidth: 728, key: "624a97a6290d488d2c37917256d06a67", w: 728, h: 90 },
             { minWidth: 468, key: "fbbeaac58499d5ee65a6aa8c6a9810a4", w: 468, h: 60 },
@@ -11,7 +14,11 @@ const adConfig = [
     },
     // Bottom ads
     {
-        ids: ["bottom-ad-container", "bottom-ad-container-2"],
+        ids: [
+            { id: "bottom-ad-container", label: "Bottom Advertisement" },
+            { id: "bottom-ad-container-2", label: "Bottom Advertisement 2" },
+            { id: "bottom-ad-container-3", label: "Bottom Advertisement 3" }
+        ],
         sizes: [
             { minWidth: 468, key: "fbbeaac58499d5ee65a6aa8c6a9810a4", w: 468, h: 60 },
             { minWidth: 0,   key: "01229d661b91222d4120ca2e6c5c14f8", w: 320, h: 50 }
@@ -19,37 +26,66 @@ const adConfig = [
     },
     // Sidebar ads
     {
-        ids: ["sidebar-ad-container-1", "sidebar-ad-container-2", "sidebar-ad-container-3", "sidebar-ad-container-4"],
+        ids: [
+            { id: "sidebar-ad-container-1", label: "Sidebar Advertisement 1" },
+            { id: "sidebar-ad-container-2", label: "Sidebar Advertisement 2" },
+            { id: "sidebar-ad-container-3", label: "Sidebar Advertisement 3" },
+            { id: "sidebar-ad-container-4", label: "Sidebar Advertisement 4" },
+            { id: "sidebar-ad-container-5", label: "Sidebar Advertisement 5" },
+            { id: "sidebar-ad-container-6", label: "Sidebar Advertisement 6" }
+        ],
         sizes: [
             { minWidth: 0, key: "723938310f9d6a9b6647d12a3ddbd205", w: 160, h: 600 }
         ]
     },
     // External ad #1
     {
-        ids: ["container-849e6610f4501e065f7c0550fff4cc17"],
+        ids: [
+            { id: "container-849e6610f4501e065f7c0550fff4cc17", label: "Native Banner Advertisement" }
+        ],
         external: true,
         scriptSrc: "//pl27312178.profitableratecpm.com/849e6610f4501e065f7c0550fff4cc17/invoke.js",
+        w: 320,
+        h: 50
     },
-    // External ad #2 (your new script)
+    // External ad #2
     {
-        ids: ["container-24922d458c60e04fa0ccc2c1f9f70062"],
+        ids: [
+            { id: "container-24922d458c60e04fa0ccc2c1f9f70062", label: "Socialbar Advertisement" }
+        ],
         external: true,
         scriptSrc: "//pl27396127.profitableratecpm.com/24/92/2d/24922d458c60e04fa0ccc2c1f9f70062.js",
+        w: 320,
+        h: 50
     }
 ];
 
-// Core functions
-function showIframeAd(containerId, adHtml, width, height) {
+// Tracks current ad size category to prevent unnecessary reloads
+let currentScreenCategory = null;
+
+// Determine which ad size category applies
+function getScreenCategory() {
+    const w = window.innerWidth;
+    if (w >= 728) return "lg";
+    if (w >= 468) return "md";
+    return "sm";
+}
+
+// Create iframe ads with title + accessible container
+function showIframeAd(containerId, containerLabel, adHtml, width, height) {
     const container = document.getElementById(containerId);
     if (!container) return;
     container.innerHTML = '';
     container.style.width = width + 'px';
     container.style.height = height + 'px';
+    container.setAttribute("role", "region");
+    container.setAttribute("aria-label", containerLabel);
 
     const iframe = document.createElement('iframe');
     Object.assign(iframe.style, { width: width + 'px', height: height + 'px', border: '0' });
     iframe.setAttribute('scrolling', 'no');
     iframe.setAttribute('frameborder', '0');
+    iframe.setAttribute('title', containerLabel);
 
     container.appendChild(iframe);
     const doc = iframe.contentWindow.document;
@@ -58,6 +94,7 @@ function showIframeAd(containerId, adHtml, width, height) {
     doc.close();
 }
 
+// Get ad script HTML
 function getAdScript(key, width, height) {
     return `
         <script type="text/javascript">
@@ -67,7 +104,8 @@ function getAdScript(key, width, height) {
     `;
 }
 
-function loadExternalAd(containerId, scriptSrc, width, height) {
+// Load external script ads
+function loadExternalAd(containerId, containerLabel, scriptSrc, width, height) {
     const container = document.getElementById(containerId);
     if (!container) return;
     container.style.width = width + 'px';
@@ -75,6 +113,8 @@ function loadExternalAd(containerId, scriptSrc, width, height) {
     container.style.display = "flex";
     container.style.justifyContent = "center";
     container.style.alignItems = "center";
+    container.setAttribute("role", "region");
+    container.setAttribute("aria-label", containerLabel);
 
     const script = document.createElement('script');
     script.async = true;
@@ -84,17 +124,23 @@ function loadExternalAd(containerId, scriptSrc, width, height) {
 }
 
 // Main loader
-function loadAds() {
+function loadAds(force = false) {
+    const newCategory = getScreenCategory();
+    if (!force && newCategory === currentScreenCategory) {
+        return; // Skip reload if same category
+    }
+    currentScreenCategory = newCategory;
+
     const screenWidth = window.innerWidth;
 
     adConfig.forEach(config => {
-        config.ids.forEach(id => {
+        config.ids.forEach(obj => {
             if (config.external) {
-                loadExternalAd(id, config.scriptSrc, config.w, config.h);
+                loadExternalAd(obj.id, obj.label, config.scriptSrc, config.w, config.h);
             } else {
                 for (let size of config.sizes) {
                     if (screenWidth >= size.minWidth) {
-                        showIframeAd(id, getAdScript(size.key, size.w, size.h), size.w, size.h);
+                        showIframeAd(obj.id, obj.label, getAdScript(size.key, size.w, size.h), size.w, size.h);
                         break;
                     }
                 }
@@ -103,5 +149,11 @@ function loadAds() {
     });
 }
 
-window.addEventListener('load', loadAds);
-window.addEventListener('resize', loadAds);
+// Debounce resize to avoid constant reload
+let resizeTimeout;
+window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => loadAds(false), 250);
+});
+
+window.addEventListener('load', () => loadAds(true));
