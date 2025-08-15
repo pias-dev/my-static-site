@@ -38,42 +38,37 @@ const adConfig = [
             { minWidth: 0, key: "723938310f9d6a9b6647d12a3ddbd205", w: 160, h: 600 }
         ]
     },
-    // Native Banner Ad
+    // External ad #1
     {
         ids: [
             { id: "container-849e6610f4501e065f7c0550fff4cc17", label: "Native Banner Advertisement" }
         ],
         external: true,
         scriptSrc: "//pl27312178.profitableratecpm.com/849e6610f4501e065f7c0550fff4cc17/invoke.js",
+        w: 320,
+        h: 50
     },
-    // Socialbar Ad
+    // External ad #2
     {
         ids: [
             { id: "container-24922d458c60e04fa0ccc2c1f9f70062", label: "Socialbar Advertisement" }
         ],
         external: true,
         scriptSrc: "//pl27396127.profitableratecpm.com/24/92/2d/24922d458c60e04fa0ccc2c1f9f70062.js",
+        w: 320,
+        h: 50
     }
 ];
 
-// Tracks current ad size category to prevent unnecessary reloads
-let currentScreenCategory = null;
-
-// Determine which ad size category applies
-function getScreenCategory() {
-    const w = window.innerWidth;
-    if (w >= 728) return "lg";
-    if (w >= 468) return "md";
-    return "sm";
-}
-
-// Create iframe ads with title + accessible container
+// Create iframe ads with title and accessible container
 function showIframeAd(containerId, containerLabel, adHtml, width, height) {
     const container = document.getElementById(containerId);
     if (!container) return;
     container.innerHTML = '';
     container.style.width = width + 'px';
     container.style.height = height + 'px';
+
+    // Make container accessible
     container.setAttribute("role", "region");
     container.setAttribute("aria-label", containerLabel);
 
@@ -109,6 +104,7 @@ function loadExternalAd(containerId, containerLabel, scriptSrc, width, height) {
     container.style.display = "flex";
     container.style.justifyContent = "center";
     container.style.alignItems = "center";
+
     container.setAttribute("role", "region");
     container.setAttribute("aria-label", containerLabel);
 
@@ -120,13 +116,7 @@ function loadExternalAd(containerId, containerLabel, scriptSrc, width, height) {
 }
 
 // Main loader
-function loadAds(force = false) {
-    const newCategory = getScreenCategory();
-    if (!force && newCategory === currentScreenCategory) {
-        return; // Skip reload if same category
-    }
-    currentScreenCategory = newCategory;
-
+function loadAds() {
     const screenWidth = window.innerWidth;
 
     adConfig.forEach(config => {
@@ -145,11 +135,5 @@ function loadAds(force = false) {
     });
 }
 
-// Debounce resize to avoid constant reload
-let resizeTimeout;
-window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(() => loadAds(false), 250);
-});
-
-window.addEventListener('load', () => loadAds(true));
+window.addEventListener('load', loadAds);
+window.addEventListener('resize', loadAds);
