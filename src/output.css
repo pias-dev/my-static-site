@@ -94,6 +94,40 @@
     margin: 0 auto;
     overflow: hidden;
 }
+
+  /* Default mobile sizes */
+#top-ad-container, #top-ad-container-2 {
+    height: 50px;
+    max-width: 320px;
+}
+#bottom-ad-container, #bottom-ad-container-2, #bottom-ad-container-3 {
+    height: 50px;
+    max-width: 320px;
+}
+
+/* Tablet sizes */
+@media (min-width: 468px) and (max-width: 727px) {
+    #top-ad-container, #top-ad-container-2 {
+        height: 60px;
+        max-width: 468px;
+    }
+    #bottom-ad-container, #bottom-ad-container-2, #bottom-ad-container-3 {
+        height: 60px;
+        max-width: 468px;
+    }
+}
+
+/* Desktop sizes */
+@media (min-width: 728px) {
+    #top-ad-container, #top-ad-container-2 {
+        height: 90px;
+        max-width: 728px;
+    }
+    #bottom-ad-container, #bottom-ad-container-2, #bottom-ad-container-3 {
+        height: 60px;
+        max-width: 468px;
+    }
+}
   
   hr {
     height: 0;
