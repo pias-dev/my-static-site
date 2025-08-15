@@ -97,22 +97,14 @@
 }
 
 /* Default mobile sizes */
-[id^="top-ad-container-"] {
-    height: 50px;
-    max-width: 320px;
-}
-[id^="bottom-ad-container-"] {
+[id^="top-ad-container-"], [id^="bottom-ad-container-"] {
     height: 50px;
     max-width: 320px;
 }
 
 /* Tablet sizes */
 @media (min-width: 468px) and (max-width: 727px) {
-    [id^="top-ad-container-"] {
-        height: 60px;
-        max-width: 468px;
-    }
-    [id^="bottom-ad-container-"] {
+    [id^="top-ad-container-"], [id^="bottom-ad-container-"] {
         height: 60px;
         max-width: 468px;
     }
@@ -120,13 +112,9 @@
 
 /* Desktop sizes */
 @media (min-width: 728px) {
-    [id^="top-ad-container-"] {
+    [id^="top-ad-container-"], [id^="bottom-ad-container-"] {
         height: 90px;
         max-width: 728px;
-    }
-    [id^="bottom-ad-container-"] {
-        height: 60px;
-        max-width: 468px;
     }
 }
 
