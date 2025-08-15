@@ -56,24 +56,15 @@ const adConfig = [
     }
 ];
 
-// Tracks current ad size category to prevent unnecessary reloads
-let currentScreenCategory = null;
-
-// Determine which ad size category applies
-function getScreenCategory() {
-    const w = window.innerWidth;
-    if (w >= 728) return "lg";
-    if (w >= 468) return "md";
-    return "sm";
-}
-
-// Create iframe ads with title + accessible container
+// Create iframe ads with title and accessible container
 function showIframeAd(containerId, containerLabel, adHtml, width, height) {
     const container = document.getElementById(containerId);
     if (!container) return;
     container.innerHTML = '';
     container.style.width = width + 'px';
     container.style.height = height + 'px';
+
+    // Make container accessible
     container.setAttribute("role", "region");
     container.setAttribute("aria-label", containerLabel);
 
@@ -109,6 +100,7 @@ function loadExternalAd(containerId, containerLabel, scriptSrc, width, height) {
     container.style.display = "flex";
     container.style.justifyContent = "center";
     container.style.alignItems = "center";
+
     container.setAttribute("role", "region");
     container.setAttribute("aria-label", containerLabel);
 
@@ -120,13 +112,7 @@ function loadExternalAd(containerId, containerLabel, scriptSrc, width, height) {
 }
 
 // Main loader
-function loadAds(force = false) {
-    const newCategory = getScreenCategory();
-    if (!force && newCategory === currentScreenCategory) {
-        return; // Skip reload if same category
-    }
-    currentScreenCategory = newCategory;
-
+function loadAds() {
     const screenWidth = window.innerWidth;
 
     adConfig.forEach(config => {
@@ -145,11 +131,5 @@ function loadAds(force = false) {
     });
 }
 
-// Debounce resize to avoid constant reload
-let resizeTimeout;
-window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(() => loadAds(false), 250);
-});
-
-window.addEventListener('load', () => loadAds(true));
+window.addEventListener('load', loadAds);
+window.addEventListener('resize', loadAds);
