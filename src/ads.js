@@ -45,8 +45,6 @@ const adConfig = [
         ],
         external: true,
         scriptSrc: "//pl27312178.profitableratecpm.com/849e6610f4501e065f7c0550fff4cc17/invoke.js",
-        w: 320,
-        h: 50
     },
     // External ad #2
     {
@@ -55,8 +53,6 @@ const adConfig = [
         ],
         external: true,
         scriptSrc: "//pl27396127.profitableratecpm.com/24/92/2d/24922d458c60e04fa0ccc2c1f9f70062.js",
-        w: 320,
-        h: 50
     }
 ];
 
