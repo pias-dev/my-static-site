@@ -83,11 +83,12 @@
     -webkit-tap-highlight-color: transparent;
   }
 
-/* ===== AD CONTAINERS ===== */
-[id^="top-ad-container"],
-[id^="bottom-ad-container"],
-[id^="sidebar-ad-container"],
-[id^="container-"] {
+/* Shared centering styles for all ad containers */
+#container-849e6610f4501e065f7c0550fff4cc17,
+#container-24922d458c60e04fa0ccc2c1f9f70062,
+[id^="top-ad-container-"],
+[id^="bottom-ad-container-"],
+[id^="sidebar-ad-container-"] {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -95,44 +96,44 @@
     overflow: hidden;
 }
 
-/* Reserve space for each ad size to prevent CLS */
-#top-ad-container, 
-#top-ad-container-2 {
-    min-width: 320px;
-    min-height: 50px;
+/* Default mobile sizes */
+#top-ad-container-1, #top-ad-container-2 {
+    height: 50px;
+    max-width: 320px;
+}
+#bottom-ad-container-1, #bottom-ad-container-2, #bottom-ad-container-3 {
+    height: 50px;
+    max-width: 320px;
 }
 
-#bottom-ad-container,
-#bottom-ad-container-2,
-#bottom-ad-container-3 {
-    min-width: 320px;
-    min-height: 50px;
-}
-
-#sidebar-ad-container-1,
-#sidebar-ad-container-2,
-#sidebar-ad-container-3,
-#sidebar-ad-container-4,
-#sidebar-ad-container-5,
-#sidebar-ad-container-6 {
-    min-width: 160px;
-    min-height: 600px;
-}
-
-/* Responsive scaling for smaller screens */
-@media (max-width: 728px) {
-    #top-ad-container, #top-ad-container-2 {
-        min-width: 468px;
-        min-height: 60px;
+/* Tablet sizes */
+@media (min-width: 468px) and (max-width: 727px) {
+    #top-ad-container-1, #top-ad-container-2 {
+        height: 60px;
+        max-width: 468px;
+    }
+    #bottom-ad-container-1, #bottom-ad-container-2, #bottom-ad-container-3 {
+        height: 60px;
+        max-width: 468px;
     }
 }
 
-@media (max-width: 468px) {
-    #top-ad-container, #top-ad-container-2,
-    #bottom-ad-container, #bottom-ad-container-2, #bottom-ad-container-3 {
-        min-width: 320px;
-        min-height: 50px;
+/* Desktop sizes */
+@media (min-width: 728px) {
+    #top-ad-container-1, #top-ad-container-2 {
+        height: 90px;
+        max-width: 728px;
     }
+    #bottom-ad-container-1, #bottom-ad-container-2, #bottom-ad-container-3 {
+        height: 60px;
+        max-width: 468px;
+    }
+}
+
+/* Sidebars */
+[id^="sidebar-ad-container-"] {
+    height: 600px;
+    max-width: 160px;
 }
   
   hr {
