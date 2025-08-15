@@ -3,7 +3,7 @@ const adConfig = [
     // Top ads
     {
         ids: [
-            { id: "top-ad-container", label: "Top Advertisement" },
+            { id: "top-ad-container-1", label: "Top Advertisement-1" },
             { id: "top-ad-container-2", label: "Top Advertisement 2" }
         ],
         sizes: [
@@ -15,7 +15,7 @@ const adConfig = [
     // Bottom ads
     {
         ids: [
-            { id: "bottom-ad-container", label: "Bottom Advertisement" },
+            { id: "bottom-ad-container-1", label: "Bottom Advertisement-1" },
             { id: "bottom-ad-container-2", label: "Bottom Advertisement 2" },
             { id: "bottom-ad-container-3", label: "Bottom Advertisement 3" }
         ],
