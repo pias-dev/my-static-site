@@ -83,6 +83,18 @@
     font-variation-settings: var(--default-font-variation-settings, normal);
     -webkit-tap-highlight-color: transparent;
   }
+
+    /* Shared centering styles for all ad containers */
+#top-ad-container, #top-ad-container-2,
+#bottom-ad-container, #bottom-ad-container-2, #bottom-ad-container-3
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    overflow: hidden;
+}
+  
   hr {
     height: 0;
     color: inherit;
