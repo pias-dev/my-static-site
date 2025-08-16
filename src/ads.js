@@ -3,7 +3,7 @@ const adConfig = [
     // Top ads
     {
         ids: [
-            { id: "top-ad-container-1", label: "Top Advertisement 1" },
+            { id: "top-ad-container-1", label: "Top Advertisement-1" },
             { id: "top-ad-container-2", label: "Top Advertisement 2" }
         ],
         sizes: [
@@ -15,7 +15,7 @@ const adConfig = [
     // Bottom ads
     {
         ids: [
-            { id: "bottom-ad-container-1", label: "Bottom Advertisement 1" },
+            { id: "bottom-ad-container-1", label: "Bottom Advertisement-1" },
             { id: "bottom-ad-container-2", label: "Bottom Advertisement 2" },
             { id: "bottom-ad-container-3", label: "Bottom Advertisement 3" }
         ],
@@ -56,15 +56,24 @@ const adConfig = [
     }
 ];
 
-// Create iframe ads with title and accessible container
+// Tracks current ad size category to prevent unnecessary reloads
+let currentScreenCategory = null;
+
+// Determine which ad size category applies
+function getScreenCategory() {
+    const w = window.innerWidth;
+    if (w >= 728) return "lg";
+    if (w >= 468) return "md";
+    return "sm";
+}
+
+// Create iframe ads with title + accessible container
 function showIframeAd(containerId, containerLabel, adHtml, width, height) {
     const container = document.getElementById(containerId);
     if (!container) return;
     container.innerHTML = '';
     container.style.width = width + 'px';
     container.style.height = height + 'px';
-
-    // Make container accessible
     container.setAttribute("role", "region");
     container.setAttribute("aria-label", containerLabel);
 
@@ -100,7 +109,6 @@ function loadExternalAd(containerId, containerLabel, scriptSrc, width, height) {
     container.style.display = "flex";
     container.style.justifyContent = "center";
     container.style.alignItems = "center";
-
     container.setAttribute("role", "region");
     container.setAttribute("aria-label", containerLabel);
 
@@ -112,7 +120,13 @@ function loadExternalAd(containerId, containerLabel, scriptSrc, width, height) {
 }
 
 // Main loader
-function loadAds() {
+function loadAds(force = false) {
+    const newCategory = getScreenCategory();
+    if (!force && newCategory === currentScreenCategory) {
+        return; // Skip reload if same category
+    }
+    currentScreenCategory = newCategory;
+
     const screenWidth = window.innerWidth;
 
     adConfig.forEach(config => {
@@ -131,5 +145,11 @@ function loadAds() {
     });
 }
 
-window.addEventListener('load', loadAds);
-window.addEventListener('resize', loadAds);
+// Debounce resize to avoid constant reload
+let resizeTimeout;
+window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => loadAds(false), 250);
+});
+
+window.addEventListener('load', () => loadAds(true));
