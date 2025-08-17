@@ -7,11 +7,12 @@
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     --color-red-500: oklch(63.7% 0.237 25.331);
     --color-red-600: oklch(57.7% 0.245 27.325);
-    --color-green-200: oklch(92.5% 0.084 155.995);
-    --color-green-500: oklch(72.3% 0.219 149.579);
+    /* Accessibility Fix: Modified green values for better contrast */
+    --color-green-200: oklch(85% 0.18 155);     /* Brighter green for dark mode */
+    --color-green-500: oklch(60% 0.19 148);     /* Darker green for light mode */
     --color-blue-400: oklch(70.7% 0.165 254.624);
     --color-blue-600: oklch(54.6% 0.245 262.881);
-    --color-blue-700: oklch(45.7% 0.24 277.023); /* Added from your initial code */
+    --color-blue-700: oklch(45.7% 0.24 277.023); 
     --color-indigo-300: oklch(78.5% 0.115 274.713);
     --color-indigo-400: oklch(67.3% 0.182 276.935);
     --color-indigo-500: oklch(58.5% 0.233 277.117);
@@ -79,6 +80,7 @@
   img, video { max-width: 100%; height: auto; }
   button, input, select, textarea { font-family: inherit; font-size: 100%; font-weight: inherit; line-height: inherit; color: inherit; margin: 0; padding: 0; }
   [hidden] { display: none; }
+
   /* Custom base styles */
   :root {
     --primary-blue: #0d60ff;
@@ -314,7 +316,7 @@
   @media (min-width: 768px) {
     .md\:flex { display: flex; }
     .md\:hidden { display: none; }
-    .md\:grid-cols-2 { grid-template-columns: repeat(2,minmax(0,1fr)); } /* Added */
+    .md\:grid-cols-2 { grid-template-columns: repeat(2,minmax(0,1fr)); }
   }
   @media (min-width: 1024px) {
     .lg\:flex { display: flex; }
