@@ -75,7 +75,7 @@
   a { color: inherit; text-decoration: inherit; }
   b, strong { font-weight: bolder; }
   code, kbd, samp, pre { font-family: var(--default-mono-font-family); font-size: 1em; }
-  img, svg, video, canvas, audio, iframe, embed, object { display: block; vertical-align: middle; }
+  img, svg, video, canvas, audio, iframe, embed, object { display: block;}
   img, video { max-width: 100%; height: auto; }
   button, input, select, textarea { font-family: inherit; font-size: 100%; font-weight: inherit; line-height: inherit; color: inherit; margin: 0; padding: 0; }
   [hidden] { display: none; }
@@ -149,7 +149,8 @@
   .slider.round { border-radius: 34px; }
   .slider.round:before { border-radius: 50%; }
 }
-  #container-849e6610f4501e065f7c0550fff4cc17, #container-24922d458c60e04fa0ccc2c1f9f70062, [id^="top-ad-container-"], [id^="bottom-ad-container-"], [id^="sidebar-ad-container-"] {
+  #container-849e6610f4501e065f7c0550fff4cc17, #container-24922d458c60e04fa0ccc2c1f9f70062, 
+  [id^="top-ad-container-"], [id^="bottom-ad-container-"], [id^="sidebar-ad-container-"] {
     display: flex;
     justify-content: center;
     align-items: center;
