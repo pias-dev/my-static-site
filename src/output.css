@@ -149,7 +149,6 @@
   .slider.round { border-radius: 34px; }
   .slider.round:before { border-radius: 50%; }
 }
-  #container-849e6610f4501e065f7c0550fff4cc17, 
   [id^="top-ad-container-"], [id^="bottom-ad-container-"], [id^="sidebar-ad-container-"] {
     display: flex;
     justify-content: center;
