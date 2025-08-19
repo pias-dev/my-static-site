@@ -95,13 +95,27 @@
     <!-- FAVICON -->
     <link rel="icon" href="./src/logo.svg" type="image/svg+xml">
 
-    <!-- Preload Google Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <!-- Preconnect for faster Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <!-- tailwind css -->
-    <link href="./src/output.css" rel="stylesheet">
+  <!-- Preload Google Fonts -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" as="style" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"></noscript>
+
+  <!-- Inline critical Tailwind CSS -->
+  <style>
+    /* Example Critical CSS (just for above-the-fold content) */
+    body { margin: 0; font-family: 'Roboto', sans-serif; }
+    header { display: flex; align-items: center; justify-content: space-between; padding: 1rem; }
+    h1 { font-size: 2rem; font-weight: 700; }
+    .btn { background: #2563eb; color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; }
+  </style>
+
+  <!-- Load main Tailwind output asynchronously -->
+  <link rel="preload" href="/src/output.css" as="style" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/src/output.css"></noscript>
+    
     <script src="./src/ads.js" defer></script>
     <script src="./src/main.js" defer></script>
 </head>
