@@ -151,7 +151,6 @@
 }
   #container-24922d458c60e04fa0ccc2c1f9f70062{
     bottom:0;
-    right:0;
   }
 [id^="top-ad-container-"], [id^="bottom-ad-container-"], [id^="sidebar-ad-container-"] {
     display: flex;
@@ -403,5 +402,5 @@
 }
 
 .scroll-mt-16 {
-    scroll-margin-top: 4rem;
+    scroll-margin-top: 4.5rem;
 }
