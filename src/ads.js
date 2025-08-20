@@ -67,10 +67,11 @@ function getScreenCategory() {
     return "sm";
 }
 
-// Create iframe ads with title + accessible container
-function showIframeAd(containerId, containerLabel, adHtml, width, height) {
+// Create iframe ads (no document.write)
+function showIframeAd(containerId, containerLabel, key, width, height) {
     const container = document.getElementById(containerId);
     if (!container) return;
+
     container.innerHTML = '';
     container.style.width = width + 'px';
     container.style.height = height + 'px';
@@ -82,28 +83,34 @@ function showIframeAd(containerId, containerLabel, adHtml, width, height) {
     iframe.setAttribute('scrolling', 'no');
     iframe.setAttribute('frameborder', '0');
     iframe.setAttribute('title', containerLabel);
+    iframe.loading = "lazy"; // improves performance
 
     container.appendChild(iframe);
-    const doc = iframe.contentWindow.document;
-    doc.open();
-    doc.write('<html><body style="margin:0">' + adHtml + '</body></html>');
-    doc.close();
-}
 
-// Get ad script HTML
-function getAdScript(key, width, height) {
-    return `
-        <script type="text/javascript">
-            atOptions = { 'key': '${key}', 'format': 'iframe', 'height': ${height}, 'width': ${width}, 'params': {} };
-        <\/script>
-        <script src="//www.highperformanceformat.com/${key}/invoke.js"><\/script>
-    `;
+    // Safely inject ad script into iframe
+    iframe.addEventListener("load", () => {
+        const doc = iframe.contentDocument;
+        const script1 = doc.createElement("script");
+        script1.type = "text/javascript";
+        script1.text = `atOptions = { 'key': '${key}', 'format': 'iframe', 'height': ${height}, 'width': ${width}, 'params': {} };`;
+
+        const script2 = doc.createElement("script");
+        script2.src = `//www.highperformanceformat.com/${key}/invoke.js`;
+        script2.async = true;
+
+        doc.body.appendChild(script1);
+        doc.body.appendChild(script2);
+    });
+
+    // Trigger load event manually if empty
+    iframe.src = "about:blank";
 }
 
 // Load external script ads
-function loadExternalAd(containerId, containerLabel, scriptSrc, width, height) {
+function loadExternalAd(containerId, containerLabel, scriptSrc, width = 300, height = 250) {
     const container = document.getElementById(containerId);
     if (!container) return;
+
     container.style.width = width + 'px';
     container.style.height = height + 'px';
     container.style.display = "flex";
@@ -116,7 +123,7 @@ function loadExternalAd(containerId, containerLabel, scriptSrc, width, height) {
     script.async = true;
     script.setAttribute('data-cfasync', 'false');
     script.src = scriptSrc;
-    document.body.appendChild(script);
+    container.appendChild(script);
 }
 
 // Main loader
@@ -136,7 +143,7 @@ function loadAds(force = false) {
             } else {
                 for (let size of config.sizes) {
                     if (screenWidth >= size.minWidth) {
-                        showIframeAd(obj.id, obj.label, getAdScript(size.key, size.w, size.h), size.w, size.h);
+                        showIframeAd(obj.id, obj.label, size.key, size.w, size.h);
                         break;
                     }
                 }
@@ -152,4 +159,7 @@ window.addEventListener('resize', () => {
     resizeTimeout = setTimeout(() => loadAds(false), 250);
 });
 
-window.addEventListener('load', () => loadAds(true));
+// Lazy-load ads after page content
+window.addEventListener('load', () => {
+    setTimeout(() => loadAds(true), 500);
+});
