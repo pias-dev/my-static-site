@@ -808,5 +808,5 @@
   .dark .dark\:active\:text-purple-400:active { color: var(--color-purple-400); }
 }
 .scroll-mt-16 {
-    scroll-margin-top: 4rem;
+    scroll-margin-top: 4.5rem;
 }
