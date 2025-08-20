@@ -160,8 +160,14 @@
     height: 50px;
     max-width: 320px;
   }
+  @media (min-width: 468px) {
+    [id^="bottom-ad-container-"] {
+      height: 60px;
+      max-width: 468px;
+    }
+  }
   @media (min-width: 468px) and (max-width: 727px) {
-    [id^="top-ad-container-"], [id^="bottom-ad-container-"] {
+    [id^="top-ad-container-"] {
       height: 60px;
       max-width: 468px;
     }
