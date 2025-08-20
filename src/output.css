@@ -149,6 +149,13 @@
   .slider.round { border-radius: 34px; }
   .slider.round:before { border-radius: 50%; }
 }
+#container-24922d458c60e04fa0ccc2c1f9f70062{
+    display: flex;
+    bottom:0;
+    right:0;
+    margin: 0 auto;
+    overflow: hidden;
+}
   [id^="top-ad-container-"], [id^="bottom-ad-container-"], [id^="sidebar-ad-container-"] {
     display: flex;
     justify-content: center;
