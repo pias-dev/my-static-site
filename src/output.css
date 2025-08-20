@@ -167,7 +167,7 @@
     }
   }
   @media (min-width: 728px) {
-    [id^="top-ad-container-"], [id^="bottom-ad-container-"] {
+    [id^="top-ad-container-"] {
       height: 90px;
       max-width: 728px;
     }
