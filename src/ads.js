@@ -106,13 +106,12 @@ function showIframeAd(containerId, containerLabel, key, width, height) {
     iframe.src = "about:blank";
 }
 
-// Load external script ads
-function loadExternalAd(containerId, containerLabel, scriptSrc, width = 300, height = 250) {
+// Load external script ads (no fixed size for native/socialbar ads)
+function loadExternalAd(containerId, containerLabel, scriptSrc) {
     const container = document.getElementById(containerId);
     if (!container) return;
 
-    container.style.width = width + 'px';
-    container.style.height = height + 'px';
+    // Remove fixed sizes → let ad script control size
     container.style.display = "flex";
     container.style.justifyContent = "center";
     container.style.alignItems = "center";
