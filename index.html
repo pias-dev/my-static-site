@@ -95,16 +95,20 @@
     <!-- FAVICON -->
     <link rel="icon" href="./src/logo.svg" type="image/svg+xml">
 
-    <!-- Preconnect for faster Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- 1) Preconnect for Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- Preload Google Fonts -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" as="style" onload="this.rel='stylesheet'">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <!-- 2) Non-blocking load for Google Fonts stylesheet -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" as="style" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" />
     
-    <link rel="preload" href="/src/output.css" as="style" onload="this.rel='stylesheet'">
-    <link rel="stylesheet" href="/src/output.css">
+    <!-- 3) Non-blocking load for your Tailwind build -->
+    <link rel="preload" href="/src/output.css" as="style" />
+    <link rel="stylesheet" href="/src/output.css" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="/src/output.css" />
+    
     <script src="./src/ads.js" defer></script>
     <script src="./src/main.js" defer></script>
 </head>
