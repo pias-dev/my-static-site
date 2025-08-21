@@ -152,13 +152,13 @@
   .slider.round { border-radius: 34px; }
   .slider.round:before { border-radius: 50%; }
 }
-  #container-24922d458c60e04fa0ccc2c1f9f70062{
+  /* #container-24922d458c60e04fa0ccc2c1f9f70062{
     display: flex;
     bottom:0;
     right:0;
     overflow: hidden;
   }
-  #container-849e6610f4501e065f7c0550fff4cc17,
+  #container-849e6610f4501e065f7c0550fff4cc17, */
   [id^="top-ad-container-"], [id^="bottom-ad-container-"], [id^="sidebar-ad-container-"] {
     display: flex;
     justify-content: center;
