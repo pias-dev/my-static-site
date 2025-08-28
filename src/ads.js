@@ -68,24 +68,24 @@ function getScreenCategory() {
 }
 
 // Create iframe ads (no document.write)
-function showIframeAd(adsId, adsLabel, key, width, height) {
-    const ads = document.getElementById(adsId);
-    if (!ads) return;
+// function showIframeAd(adsId, adsLabel, key, width, height) {
+//     const ads = document.getElementById(adsId);
+//     if (!ads) return;
 
-    ads.innerHTML = '';
-    ads.style.width = width + 'px';
-    ads.style.height = height + 'px';
-    ads.setAttribute("role", "region");
-    ads.setAttribute("aria-label", adsLabel);
+//     ads.innerHTML = '';
+//     ads.style.width = width + 'px';
+//     ads.style.height = height + 'px';
+//     ads.setAttribute("role", "region");
+//     ads.setAttribute("aria-label", adsLabel);
 
-    const iframe = document.createElement('iframe');
-    Object.assign(iframe.style, { width: width + 'px', height: height + 'px', border: '0' });
-    iframe.setAttribute('scrolling', 'no');
-    iframe.setAttribute('frameborder', '0');
-    iframe.setAttribute('title', adsLabel);
-    iframe.loading = "lazy"; // improves performance
+//     const iframe = document.createElement('iframe');
+//     Object.assign(iframe.style, { width: width + 'px', height: height + 'px', border: '0' });
+//     iframe.setAttribute('scrolling', 'no');
+//     iframe.setAttribute('frameborder', '0');
+//     iframe.setAttribute('title', adsLabel);
+//     iframe.loading = "lazy"; // improves performance
 
-    ads.appendChild(iframe);
+//     ads.appendChild(iframe);
 
     // Safely inject ad script into iframe
     iframe.addEventListener("load", () => {
