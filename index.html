@@ -11,86 +11,6 @@
     <meta name="description" content="The world's best free age calculator. Instantly calculate your age in years, months, and days with our fast, private, and secure online tool. A top-rated, lifetime free DOB calculator from All Tool AI, perfect for users globally. Your data is 100% confidential."/>
     <meta name="author" content="All Tool AI"/>
     <link rel="canonical" href="https://www.alltoolai.com/" />
-
-    <!--! SEO OPTIMIZED SOCIAL MEDIA TAGS (VERIFIED) -->
-    <meta property="og:title" content="Best Free Age Calculator - Instant, Secure & Private | All Tool AI" />
-    <meta property="og:description" content="Use our top-rated, fast, free, and private Age Calculator. Your go-to resource for productivity, with 100% confidential and secure calculations. Find out how old you are to the day." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.alltoolai.com/" />
-    <meta property="og:image" content="https://www.alltoolai.com/assets/logo.svg" />
-    <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:site" content="@AllToolAI"/>
-
-    <!--! SEO & GEO OPTIMIZED STRUCTURED DATA (VERIFIED) -->
-    <script type="application/ld+json">
-    [{
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "All Tool AI",
-      "url": "https://www.alltoolai.com/",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://www.alltoolai.com/search?q={search_term_string}",
-        "query-input": "required name=search_term_string"
-      }
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "Age Calculator",
-      "operatingSystem": "Web",
-      "applicationCategory": "ProductivityApplication",
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "ratingCount": "885"
-      },
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "description": "A free and secure online tool to calculate your chronological age from your date of birth down to the exact day. Ideal for users worldwide.",
-      "inLanguage": "en-US",
-      "publisher": {
-        "@type": "Organization",
-        "name": "All Tool AI"
-      }
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [{
-        "@type": "Question",
-        "name": "How do you calculate chronological age?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Our chronological age calculator determines the precise time elapsed from your date of birth to the current date. It subtracts your birth year, month, and day from today's date, adjusting for leap years to give you a result in years, months, and days."
-        }
-      }, {
-        "@type": "Question",
-        "name": "Why should I use this "how old am I" calculator?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "It's the fastest and easiest way to get an exact answer! Whether you're filling out an official form, planning for a milestone birthday, or just curious, our tool gives you a detailed age breakdown instantly without any math."
-        }
-      }, {
-        "@type": "Question",
-        "name": "Is my date of birth information saved?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Absolutely not. Your privacy is our number one concern. The entire calculation happens securely in your web browser. Your DOB is never sent to our servers, ensuring your data remains 100% private and confidential worldwide."
-        }
-      }, {
-        "@type": "Question",
-        "name": "Do you support different date formats?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes! Our online age calculator is designed to be intuitive and globally friendly. The date picker will use the format standard to your browser and region (e.g., DD/MM/YYYY in the UK or MM/DD/YYYY in the US), so you can enter your date of birth in the way that is most natural to you. The calculation will be accurate regardless of the format."
-        }
-      }]
-    }]
-    </script>
     
     <!-- FAVICON -->
     <link rel="icon" href="./src/logo.svg" type="image/svg+xml">
@@ -105,9 +25,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" />
     
     <!-- 3) Non-blocking load for your Tailwind build -->
-    <link rel="preload" href="./src/output.css" as="style" />
-    <link rel="stylesheet" href="./src/output.css" media="print" onload="this.media='all'" />
-    <link rel="stylesheet" href="./src/output.css" />
+    <link rel="preload" href="./src/style.css" as="style" />
+    <link rel="stylesheet" href="./src/style.css" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="./src/style.css" />
     
     <script src="./src/header.js" defer></script>
     <script src="./src/footer.js" defer></script>
@@ -120,21 +40,20 @@
 <div id="header-placeholder"></div>
 
 <main class="flex-grow w-full">
-    <div class="p-4 sm:p-6 mt-16">
-
+    <div class="p-4 sm:p-6 mt-16 mx-auto">
         <!-- START: Top Horizontal Ad Section -->
         <div class="mb-4">
-            <div id="tads-1" aria-label="Top Advertisement 1"></div>
+            <div id="top-ad-container-1" aria-label="Top Advertisement 1"></div>
         </div>
         <!-- END: Top Horizontal Ad Section -->
 
-        <div class="lg:grid lg:grid-cols-[160px_1fr_160px] lg:gap-6">
+        <div class="lg:grid lg:grid-cols-[side_bar] lg:gap-6">
             <aside class="hidden lg:flex flex-col gap-6">
                 <div id="sidebar-ad-container-1" aria-label="Sidebar Advertisement 1"></div>
             </aside>
 
             <div class="min-w-0 overflow-hidden">
-                <section class="bg-white p-4 sm:p-6 lg:p-8 rounded-2xl shadow-xl border border-slate-200 dark:bg-slate-800 dark:border-slate-700">
+                <section class="bg-white p-4 sm:p-6 lg:p-8 rounded-2xl border border-indigo-300 dark:bg-slate-800 dark:border-slate-700">
                     <div class="text-center mb-8">
                         <h1 class="text-3xl lg:text-4xl font-extrabold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">Free Age Calculator: International Users’ Ultimate Tool</h1>
                         <p class="mt-2 text-lg text-slate-600 dark:text-slate-400">Enter your birth year and date to calculate your chronological age. The most popular inline free software that is trusted to just give you the results you are looking for, without leaving your data out there insecurely.</p>
@@ -144,13 +63,13 @@
                             <div>
                               <label for="birthdate" class="block text-sm font-medium leading-6 text-slate-900 dark:text-slate-200">Enter Your Date of Birth (DOB)</label>
                               <div class="mt-2">
-                                <input type="date" id="birthdate" class="block w-full rounded-md border-0 py-2.5 px-3 bg-slate-200 text-slate-900 shadow-sm dark:bg-slate-700 dark:text-slate-200">
+                                <input type="date" id="birthdate" class="block w-full rounded-md border-0 py-2.5 px-3 bg-slate-200 text-slate-900 dark:bg-slate-700 dark:text-slate-200">
                               </div>
                             </div>
                             <div>
                               <label for="birthtime" class="block text-sm font-medium leading-6 text-slate-900 dark:text-slate-200">Time of Birth (For More Accuracy)</label>
                               <div class="mt-2">
-                                <input type="time" id="birthtime" class="block w-full rounded-md border-0 py-2.5 px-3 bg-slate-200 text-slate-900 shadow-sm dark:bg-slate-700 dark:text-slate-200">
+                                <input type="time" id="birthtime" class="block w-full rounded-md border-0 py-2.5 px-3 bg-slate-200 text-slate-900 dark:bg-slate-700 dark:text-slate-200">
                               </div>
                             </div>
                         </div>
@@ -223,15 +142,15 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
                       <div class="bg-slate-100 p-4 dark:bg-slate-800 rounded-lg">
                         <h3 class="text-lg font-semibold mb-4">International Students</h3>
-                        <p>Easily calculate your age for school and university admission forms worldwide.</p>
+                        <p class="text-base">Easily calculate your age for school and university admission forms worldwide.</p>
                       </div>
                       <div class="bg-slate-100 p-4 dark:bg-slate-800 rounded-lg">
                         <h3 class="text-lg font-semibold mb-4">Visa and Immigration</h3>
-                        <p>Get precise age calculations for visa applications, green card petitions, and other immigration documents.</p>
+                        <p class="text-base">Get precise age calculations for visa applications, green card petitions, and other immigration documents.</p>
                       </div>
                       <div class="bg-slate-100 p-4 dark:bg-slate-800 rounded-lg">
                         <h3 class="text-lg font-semibold mb-4">Global Travelers</h3>
-                        <p>Essential for travel-related documents and age-restricted discounts or activities.</p>
+                        <p class="text-base">Essential for travel-related documents and age-restricted discounts or activities.</p>
                       </div>
                     </div>
                   </section>
@@ -241,19 +160,19 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
                       <div class="bg-slate-100 p-4 dark:bg-slate-800 rounded-lg">
                         <h3 class="text-lg font-semibold mb-4">Pinpoint Exact Age</h3>
-                        <p>Ever wonder about your exact age in years, months, *and* days? Our date of birth calculator gives you the precise answer, perfect for official forms or just satisfying your curiosity.</p>
+                        <p class="text-base">Ever wonder about your exact age in years, months, *and* days? Our date of birth calculator gives you the precise answer, perfect for official forms or just satisfying your curiosity.</p>
                       </div>
                       <div class="bg-slate-100 p-4 dark:bg-slate-800 rounded-lg">
                         <h3 class="text-lg font-semibold mb-4">See your life in detail</h3>
-                        <p>Count the days, hours, and minutes to your life and how much time you’ll need to spend over a fun journey of your lifetime. See your life in fine detail. Countdown to arguments with friends and family!</p>
+                        <p class="text-base">Count the days, hours, and minutes to your life and how much time you’ll need to spend over a fun journey of your lifetime. See your life in fine detail. Countdown to arguments with friends and family!</p>
                       </div>
                       <div class="bg-slate-100 p-4 dark:bg-slate-800 rounded-lg">
                         <h3 class="text-lg font-semibold mb-4">Countdown to Your Birthday</h3>
-                        <p>Get excited for your next big day! Hurray! It’s that easy to plan and look forward to getting the birthday calculator.</p>
+                        <p class="text-base">Get excited for your next big day! Hurray! It’s that easy to plan and look forward to getting the birthday calculator.</p>
                       </div>
                       <div class="bg-slate-100 p-4 dark:bg-slate-800 rounded-lg">
                         <h3 class="text-lg font-semibold mb-4">It is completely private and secure</h3>
-                        <p>Your privacy is essential. This DOB calculator processes everything right in your browser. Your data is never stored on our servers, making it 100% confidential and secure for your peace of mind.</p>
+                        <p class="text-base">Your privacy is essential. This DOB calculator processes everything right in your browser. Your data is never stored on our servers, making it 100% confidential and secure for your peace of mind.</p>
                       </div>
                     </div>
                   </section>
@@ -294,6 +213,89 @@
     <div id="container-24922d458c60e04fa0ccc2c1f9f70062" aria-label="Socialbar Advertisement"></div>
 </div>
 <!-- END: Social Bar Section -->
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Age Calculator
+    const birthDateInput = document.getElementById('birthdate');
+    const birthTimeInput = document.getElementById('birthtime');
+    const calculateButton = document.getElementById('calculate-button');
+    const resetButton = document.getElementById('reset-button');
+    const errorMessage = document.getElementById('error-message');
+    const resultsSection = document.getElementById('results');
+
+    const yearsSpan = document.getElementById('years');
+    const monthsSpan = document.getElementById('months');
+    const daysSpan = document.getElementById('days');
+    const totalDaysSpan = document.getElementById('total-days');
+    const totalHoursSpan =document.getElementById('total-hours');
+    const totalMinutesSpan = document.getElementById('total-minutes');
+    const countdownDaysSpan = document.getElementById('countdown-days');
+
+    // Set max date to today
+    const today = new Date();
+    const todayString = today.toISOString().split('T')[0];
+    birthDateInput.max = todayString;
+
+    calculateButton.addEventListener('click', calculateAge);
+    resetButton.addEventListener('click', resetCalculator);
+
+    function calculateAge() {
+        const birthDateValue = birthDateInput.value;
+        if (!birthDateValue) {
+            errorMessage.firstElementChild.textContent = 'Please enter your date of birth.';
+            errorMessage.classList.remove('hidden');
+            resultsSection.classList.add('hidden');
+            return;
+        }
+
+        errorMessage.classList.add('hidden');
+        resultsSection.classList.remove('hidden');
+        resultsSection.scrollIntoView({ behavior: 'smooth' });
+
+        const birthDate = new Date(birthDateValue + 'T' + (birthTimeInput.value || '00:00'));
+        const now = new Date();
+
+        let years = now.getFullYear() - birthDate.getFullYear();
+        let months = now.getMonth() - birthDate.getMonth();
+        let days = now.getDate() - birthDate.getDate();
+
+        if (days < 0) {
+            months--;
+            const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+            days += prevMonth.getDate();
+        }
+
+        if (months < 0) {
+            years--;
+            months += 12;
+        }
+
+        yearsSpan.textContent = years;
+        monthsSpan.textContent = months;
+        daysSpan.textContent = days;
+
+        const totalDays = Math.floor((now - birthDate) / (1000 * 60 * 60 * 24));
+        totalDaysSpan.textContent = totalDays.toLocaleString();
+        totalHoursSpan.textContent = (totalDays * 24).toLocaleString();
+        totalMinutesSpan.textContent = (totalDays * 24 * 60).toLocaleString();
+
+        const nextBirthday = new Date(now.getFullYear(), birthDate.getMonth(), birthDate.getDate());
+        if (now > nextBirthday) {
+            nextBirthday.setFullYear(now.getFullYear() + 1);
+        }
+        const countdownDays = Math.ceil((nextBirthday - now) / (1000 * 60 * 60 * 24));
+        countdownDaysSpan.textContent = countdownDays;
+    }
+
+    function resetCalculator() {
+        birthDateInput.value = '';
+        birthTimeInput.value = '';
+        errorMessage.classList.add('hidden');
+        resultsSection.classList.add('hidden');
+    }
+});
+</script>
  
 </body>
 </html>
