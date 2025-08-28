@@ -41,7 +41,7 @@ const adConfig = [
     // Native Banner ad
     {
         ids: [
-            { id: "natbar-849e6610f4501e065f7c0550fff4cc17", label: "Native Banner Advertisement" }
+            { id: "container-849e6610f4501e065f7c0550fff4cc17", label: "Native Banner Advertisement" }
         ],
         external: true,
         scriptSrc: "//pl27312178.profitableratecpm.com/849e6610f4501e065f7c0550fff4cc17/invoke.js",
@@ -49,7 +49,7 @@ const adConfig = [
     // Socialbar ad
     {
         ids: [
-            { id: "social-24922d458c60e04fa0ccc2c1f9f70062", label: "Socialbar Advertisement" }
+            { id: "container-24922d458c60e04fa0ccc2c1f9f70062", label: "Socialbar Advertisement" }
         ],
         external: true,
         scriptSrc: "//pl27396127.profitableratecpm.com/24/92/2d/24922d458c60e04fa0ccc2c1f9f70062.js",
@@ -67,25 +67,25 @@ function getScreenCategory() {
     return "sm";
 }
 
-Create iframe ads (no document.write)
-function showIframeAd(adsId, adsLabel, key, width, height) {
-    const ads = document.getElementById(adsId);
-    if (!ads) return;
+// Create iframe ads (no document.write)
+function showIframeAd(containerId, containerLabel, key, width, height) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
 
-    ads.innerHTML = '';
-    ads.style.width = width + 'px';
-    ads.style.height = height + 'px';
-    ads.setAttribute("role", "region");
-    ads.setAttribute("aria-label", adsLabel);
+    container.innerHTML = '';
+    container.style.width = width + 'px';
+    container.style.height = height + 'px';
+    container.setAttribute("role", "region");
+    container.setAttribute("aria-label", containerLabel);
 
     const iframe = document.createElement('iframe');
     Object.assign(iframe.style, { width: width + 'px', height: height + 'px', border: '0' });
     iframe.setAttribute('scrolling', 'no');
     iframe.setAttribute('frameborder', '0');
-    iframe.setAttribute('title', adsLabel);
+    iframe.setAttribute('title', containerLabel);
     iframe.loading = "lazy"; // improves performance
 
-    ads.appendChild(iframe);
+    container.appendChild(iframe);
 
     // Safely inject ad script into iframe
     iframe.addEventListener("load", () => {
@@ -107,22 +107,22 @@ function showIframeAd(adsId, adsLabel, key, width, height) {
 }
 
 // Load external script ads (no fixed size for native/socialbar ads)
-function loadExternalAd(adsId, adsLabel, scriptSrc) {
-    const ads = document.getElementById(adsId);
-    if (!ads) return;
+function loadExternalAd(containerId, containerLabel, scriptSrc) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
 
     // Remove fixed sizes → let ad script control size
-    ads.style.display = "flex";
-    ads.style.justifyContent = "center";
-    ads.style.alignItems = "center";
-    ads.setAttribute("role", "region");
-    ads.setAttribute("aria-label", adsLabel);
+    container.style.display = "flex";
+    container.style.justifyContent = "center";
+    container.style.alignItems = "center";
+    container.setAttribute("role", "region");
+    container.setAttribute("aria-label", containerLabel);
 
     const script = document.createElement('script');
     script.async = true;
     script.setAttribute('data-cfasync', 'false');
     script.src = scriptSrc;
-    ads.appendChild(script);
+    container.appendChild(script);
 }
 
 // Main loader
