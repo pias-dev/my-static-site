@@ -67,23 +67,23 @@ function getScreenCategory() {
     return "sm";
 }
 
-// Create iframe ads (no document.write)
-// function showIframeAd(adsId, adsLabel, key, width, height) {
-//     const ads = document.getElementById(adsId);
-//     if (!ads) return;
+Create iframe ads (no document.write)
+function showIframeAd(adsId, adsLabel, key, width, height) {
+    const ads = document.getElementById(adsId);
+    if (!ads) return;
 
-//     ads.innerHTML = '';
-//     ads.style.width = width + 'px';
-//     ads.style.height = height + 'px';
-//     ads.setAttribute("role", "region");
-//     ads.setAttribute("aria-label", adsLabel);
+    ads.innerHTML = '';
+    ads.style.width = width + 'px';
+    ads.style.height = height + 'px';
+    ads.setAttribute("role", "region");
+    ads.setAttribute("aria-label", adsLabel);
 
-//     const iframe = document.createElement('iframe');
-//     Object.assign(iframe.style, { width: width + 'px', height: height + 'px', border: '0' });
-//     iframe.setAttribute('scrolling', 'no');
-//     iframe.setAttribute('frameborder', '0');
-//     iframe.setAttribute('title', adsLabel);
-//     iframe.loading = "lazy"; // improves performance
+    const iframe = document.createElement('iframe');
+    Object.assign(iframe.style, { width: width + 'px', height: height + 'px', border: '0' });
+    iframe.setAttribute('scrolling', 'no');
+    iframe.setAttribute('frameborder', '0');
+    iframe.setAttribute('title', adsLabel);
+    iframe.loading = "lazy"; // improves performance
 
     ads.appendChild(iframe);
 
@@ -125,31 +125,31 @@ function loadExternalAd(adsId, adsLabel, scriptSrc) {
     ads.appendChild(script);
 }
 
-// Main loader
-function loadAds(force = false) {
-    const newCategory = getScreenCategory();
-    if (!force && newCategory === currentScreenCategory) {
-        return; // Skip reload if same category
-    }
-    currentScreenCategory = newCategory;
+// // Main loader
+// function loadAds(force = false) {
+//     const newCategory = getScreenCategory();
+//     if (!force && newCategory === currentScreenCategory) {
+//         return; // Skip reload if same category
+//     }
+//     currentScreenCategory = newCategory;
 
-    const screenWidth = window.innerWidth;
+//     const screenWidth = window.innerWidth;
 
-    adConfig.forEach(config => {
-        config.ids.forEach(obj => {
-            if (config.external) {
-                loadExternalAd(obj.id, obj.label, config.scriptSrc, config.w, config.h);
-            } else {
-                for (let size of config.sizes) {
-                    if (screenWidth >= size.minWidth) {
-                        showIframeAd(obj.id, obj.label, size.key, size.w, size.h);
-                        break;
-                    }
-                }
-            }
-        });
-    });
-}
+//     adConfig.forEach(config => {
+//         config.ids.forEach(obj => {
+//             if (config.external) {
+//                 loadExternalAd(obj.id, obj.label, config.scriptSrc, config.w, config.h);
+//             } else {
+//                 for (let size of config.sizes) {
+//                     if (screenWidth >= size.minWidth) {
+//                         showIframeAd(obj.id, obj.label, size.key, size.w, size.h);
+//                         break;
+//                     }
+//                 }
+//             }
+//         });
+//     });
+// }
 
 // Debounce resize to avoid constant reload
 let resizeTimeout;
