@@ -68,24 +68,24 @@ function getScreenCategory() {
 }
 
 // Create iframe ads (no document.write)
-function showIframeAd(containerId, containerLabel, key, width, height) {
-    const container = document.getElementById(containerId);
-    if (!container) return;
+function showIframeAd(adsId, adsLabel, key, width, height) {
+    const ads = document.getElementById(adsId);
+    if (!ads) return;
 
-    container.innerHTML = '';
-    container.style.width = width + 'px';
-    container.style.height = height + 'px';
-    container.setAttribute("role", "region");
-    container.setAttribute("aria-label", containerLabel);
+    ads.innerHTML = '';
+    ads.style.width = width + 'px';
+    ads.style.height = height + 'px';
+    ads.setAttribute("role", "region");
+    ads.setAttribute("aria-label", adsLabel);
 
     const iframe = document.createElement('iframe');
     Object.assign(iframe.style, { width: width + 'px', height: height + 'px', border: '0' });
     iframe.setAttribute('scrolling', 'no');
     iframe.setAttribute('frameborder', '0');
-    iframe.setAttribute('title', containerLabel);
+    iframe.setAttribute('title', adsLabel);
     iframe.loading = "lazy"; // improves performance
 
-    container.appendChild(iframe);
+    ads.appendChild(iframe);
 
     // Safely inject ad script into iframe
     iframe.addEventListener("load", () => {
@@ -107,22 +107,22 @@ function showIframeAd(containerId, containerLabel, key, width, height) {
 }
 
 // Load external script ads (no fixed size for native/socialbar ads)
-function loadExternalAd(containerId, containerLabel, scriptSrc) {
-    const container = document.getElementById(containerId);
-    if (!container) return;
+function loadExternalAd(adsId, adsLabel, scriptSrc) {
+    const ads = document.getElementById(adsId);
+    if (!ads) return;
 
     // Remove fixed sizes → let ad script control size
-    container.style.display = "flex";
-    container.style.justifyContent = "center";
-    container.style.alignItems = "center";
-    container.setAttribute("role", "region");
-    container.setAttribute("aria-label", containerLabel);
+    ads.style.display = "flex";
+    ads.style.justifyContent = "center";
+    ads.style.alignItems = "center";
+    ads.setAttribute("role", "region");
+    ads.setAttribute("aria-label", adsLabel);
 
     const script = document.createElement('script');
     script.async = true;
     script.setAttribute('data-cfasync', 'false');
     script.src = scriptSrc;
-    container.appendChild(script);
+    ads.appendChild(script);
 }
 
 // Main loader
