@@ -41,7 +41,7 @@ const adConfig = [
     // Native Banner ad
     {
         ids: [
-            { id: "natbar", label: "Native Banner Advertisement" }
+            { id: "container-natbar", label: "Native Banner Advertisement" }
         ],
         external: true,
         scriptSrc: "//pl27312178.profitableratecpm.com/849e6610f4501e065f7c0550fff4cc17/invoke.js",
