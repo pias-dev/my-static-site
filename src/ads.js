@@ -41,7 +41,7 @@ const adConfig = [
     // Native Banner ad
     {
         ids: [
-            { id: "container-849e6610f4501e065f7c0550fff4cc17", label: "Native Banner Advertisement" }
+            { id: "natbar-849e6610f4501e065f7c0550fff4cc17", label: "Native Banner Advertisement" }
         ],
         external: true,
         scriptSrc: "//pl27312178.profitableratecpm.com/849e6610f4501e065f7c0550fff4cc17/invoke.js",
@@ -49,7 +49,7 @@ const adConfig = [
     // Socialbar ad
     {
         ids: [
-            { id: "container-24922d458c60e04fa0ccc2c1f9f70062", label: "Socialbar Advertisement" }
+            { id: "social-24922d458c60e04fa0ccc2c1f9f70062", label: "Socialbar Advertisement" }
         ],
         external: true,
         scriptSrc: "//pl27396127.profitableratecpm.com/24/92/2d/24922d458c60e04fa0ccc2c1f9f70062.js",
@@ -125,31 +125,31 @@ function loadExternalAd(adsId, adsLabel, scriptSrc) {
     ads.appendChild(script);
 }
 
-// // Main loader
-// function loadAds(force = false) {
-//     const newCategory = getScreenCategory();
-//     if (!force && newCategory === currentScreenCategory) {
-//         return; // Skip reload if same category
-//     }
-//     currentScreenCategory = newCategory;
+// Main loader
+function loadAds(force = false) {
+    const newCategory = getScreenCategory();
+    if (!force && newCategory === currentScreenCategory) {
+        return; // Skip reload if same category
+    }
+    currentScreenCategory = newCategory;
 
-//     const screenWidth = window.innerWidth;
+    const screenWidth = window.innerWidth;
 
-//     adConfig.forEach(config => {
-//         config.ids.forEach(obj => {
-//             if (config.external) {
-//                 loadExternalAd(obj.id, obj.label, config.scriptSrc, config.w, config.h);
-//             } else {
-//                 for (let size of config.sizes) {
-//                     if (screenWidth >= size.minWidth) {
-//                         showIframeAd(obj.id, obj.label, size.key, size.w, size.h);
-//                         break;
-//                     }
-//                 }
-//             }
-//         });
-//     });
-// }
+    adConfig.forEach(config => {
+        config.ids.forEach(obj => {
+            if (config.external) {
+                loadExternalAd(obj.id, obj.label, config.scriptSrc, config.w, config.h);
+            } else {
+                for (let size of config.sizes) {
+                    if (screenWidth >= size.minWidth) {
+                        showIframeAd(obj.id, obj.label, size.key, size.w, size.h);
+                        break;
+                    }
+                }
+            }
+        });
+    });
+}
 
 // Debounce resize to avoid constant reload
 let resizeTimeout;
