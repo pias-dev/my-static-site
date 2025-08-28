@@ -261,14 +261,14 @@
   .slider.round:before {
     border-radius: 50%;
   }
-  [id^="top-ad-container-"], [id^="bottom-ad-container-"], [id^="sidebar-ad-container-"] {
+  [id^="tads-container-"], [id^="bottom-ad-container-"], [id^="sidebar-ad-container-"] {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 0 auto;
     overflow: hidden;
   }
-  [id^="top-ad-container-"], [id^="bottom-ad-container-"] {
+  [id^="tads-container-"], [id^="bottom-ad-container-"] {
     height: 66px;
     max-width: 336px;
   }
@@ -279,13 +279,13 @@
     }
   }
   @media (min-width: 484px) and (max-width: 744px) {
-    [id^="top-ad-container-"] {
+    [id^="tads-container-"] {
       height: 76px;
       max-width: 484px;
     }
   }
   @media (min-width: 744px) {
-    [id^="top-ad-container-"] {
+    [id^="tads-container-"] {
       height: 106px;
       max-width: 744px;
     }
