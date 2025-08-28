@@ -3,7 +3,7 @@ const adConfig = [
     // Top ads
     {
         ids: [
-            { id: "tads-container-1", label: "Top Advertisement-1" },
+            { id: "tads-1", label: "Top Advertisement-1" },
             { id: "tads-container-2", label: "Top Advertisement 2" }
         ],
         sizes: [
