@@ -85,7 +85,7 @@ function getScreenCategory() {
 //     iframe.setAttribute('title', adsLabel);
 //     iframe.loading = "lazy"; // improves performance
 
-//     ads.appendChild(iframe);
+    ads.appendChild(iframe);
 
     // Safely inject ad script into iframe
     iframe.addEventListener("load", () => {
