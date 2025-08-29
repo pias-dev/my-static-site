@@ -37,22 +37,6 @@ const adConfig = [
         sizes: [
             { minWidth: 0, key: "723938310f9d6a9b6647d12a3ddbd205", w: 176, h: 616 }
         ]
-    },
-    // Native Banner ad
-    {
-        ids: [
-            { id: "container-849e6610f4501e065f7c0550fff4cc17", label: "Native Banner Advertisement" }
-        ],
-        external: true,
-        scriptSrc: "//pl27312178.profitableratecpm.com/849e6610f4501e065f7c0550fff4cc17/invoke.js",
-    },
-    // Socialbar ad
-    {
-        ids: [
-            { id: "social-24922d458c60e04fa0ccc2c1f9f70062", label: "Socialbar Advertisement" }
-        ],
-        external: true,
-        scriptSrc: "//pl27396127.profitableratecpm.com/24/92/2d/24922d458c60e04fa0ccc2c1f9f70062.js",
     }
 ];
 
@@ -106,25 +90,6 @@ function showIframeAd(containerId, containerLabel, key, width, height) {
     iframe.src = "about:blank";
 }
 
-// Load external script ads (no fixed size for native/socialbar ads)
-function loadExternalAd(containerId, containerLabel, scriptSrc) {
-    const container = document.getElementById(containerId);
-    if (!container) return;
-
-    // Remove fixed sizes → let ad script control size
-    container.style.display = "flex";
-    container.style.justifyContent = "center";
-    container.style.alignItems = "center";
-    container.setAttribute("role", "region");
-    container.setAttribute("aria-label", containerLabel);
-
-    const script = document.createElement('script');
-    script.async = true;
-    script.setAttribute('data-cfasync', 'false');
-    script.src = scriptSrc;
-    container.appendChild(script);
-}
-
 // Main loader
 function loadAds(force = false) {
     const newCategory = getScreenCategory();
@@ -137,14 +102,10 @@ function loadAds(force = false) {
 
     adConfig.forEach(config => {
         config.ids.forEach(obj => {
-            if (config.external) {
-                loadExternalAd(obj.id, obj.label, config.scriptSrc, config.w, config.h);
-            } else {
-                for (let size of config.sizes) {
-                    if (screenWidth >= size.minWidth) {
-                        showIframeAd(obj.id, obj.label, size.key, size.w, size.h);
-                        break;
-                    }
+            for (let size of config.sizes) {
+                if (screenWidth >= size.minWidth) {
+                    showIframeAd(obj.id, obj.label, size.key, size.w, size.h);
+                    break;
                 }
             }
         });
