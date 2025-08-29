@@ -1,10 +1,10 @@
 <script>
-(function(thyz){
+(function(okb){
 var d = document,
     s = d.createElement('script'),
     l = d.scripts[d.scripts.length - 1];
-s.settings = thyz || {};
-s.src = "\/\/fancyresponse.com\/b.XOVNsydOGLlb0hYGWQcN\/Heym\/9pu_ZPUJl\/kxP\/TiYU2sMlzCI-2JNtDrIvtXNRjtYlzSMqjmYI0dMbwm";
+s.settings = okb || {};
+s.src = "\/\/fancyresponse.com\/btXaVVs.dlGPlx0QYbWrcE\/HeOmB9fuXZxUJl\/kpPrTqYE2sMSzCIc2\/Maz_QltCNmjbYGziMGjGYPzfN\/QP";
 s.async = true;
 s.referrerPolicy = 'no-referrer-when-downgrade';
 l.parentNode.insertBefore(s, l);
