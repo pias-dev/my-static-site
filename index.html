@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 
-
-    <meta name="author" content="All Tool AI" />
+    <!--! SEO & GEO OPTIMIZED META TAGS (VERIFIED) -->
+    <title>Best Free Age Calculator - Calculate Your Age Instantly | All Tool AI</title>
+    <meta name="keywords" content="age calculator, how old am i, date of birth calculator, DOB calculator, chronological age, free age calculator, online age calculator, exact age calculator, age in years months days, free online tools, productivity tools, secure age calculator, private age calculator, top age calculator, best age calculator, lifetime free, age calculator UK, age calculator India, age calculator Australia, age calculator USA"/>
+    <meta name="description" content="The world's best free age calculator. Instantly calculate your age in years, months, and days with our fast, private, and secure online tool. A top-rated, lifetime free DOB calculator from All Tool AI, perfect for users globally. Your data is 100% confidential."/>
+    <meta name="author" content="All Tool AI"/>
     <link rel="canonical" href="https://www.alltoolai.com/" />
-
     
     <!-- FAVICON -->
     <link rel="icon" href="./src/logo.svg" type="image/svg+xml">
@@ -29,10 +31,9 @@
     
     <script src="./src/header.js" defer></script>
     <script src="./src/footer.js" defer></script>
-    <script src="./src/ads.js" defer></script>
     <script src="./src/main.js" defer></script>
-    <script src="./src/in-page-push-ad.js" defer></script>
-    <script src="./src/video-slider-ad.js" defer></script>
+    <script src="./src/banner_ads.js" defer></script>
+    <script src="./src/video_ad.js" defer></script>
 </head>
 <body class="bg-slate-200 font-sans text-slate-800 flex min-h-screen flex-col transition-colors duration-300 dark:bg-slate-900 dark:text-slate-200">
 
@@ -41,12 +42,6 @@
 
 <main class="flex-grow w-full">
     <div class="p-4 sm:p-6 mt-16 mx-auto">
-
-      <div class="text-center mt-8 mb-4">
-        <h1 class="p-4 text-4xl md:text-5xl lg:text-6xl font-extrabold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">Your All-in-One Ai Assistant for Everyday Tasks</h1>
-        <p class="p-2 text-xl max-w-2xl mx-auto text-slate-600 dark:text-slate-400">Boost your productivity with our suite of free Ai tools. Effortlessly generate content, process images, and automate your creative workflow in just a few clicks.</p>
-      </div>
-
         <!-- START: Top Horizontal Ad Section -->
         <div class="mb-4">
             <div id="topad-1" aria-label="Top Ad 1"></div>
@@ -56,145 +51,130 @@
         <div class="lg:grid lg:grid-cols-[side_bar] lg:gap-4">
 
             <div class="min-w-0 overflow-hidden">
-              <section class="mx-auto text-slate-800 dark:text-slate-200 text-center mb-4">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                  
-                  <div class="p-4 mx-auto bg-white rounded-lg card-glow duration-300 transition-all m-4 border border-indigo-300 dark:bg-slate-800 dark:border-slate-700">
-                    <a href="">
-                      <div class="mx-auto w-16 h-16 my-4 rounded-full flex items-center bg-indigo-100 dark:bg-indigo-900">
-                        <svg class="mx-auto w-8 h-8 text-indigo-600 dark:text-emerald-100" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                          <path d="M15 8h.01" />
-                          <path d="M10 21h-4a3 3 0 0 1 -3 -3v-12a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v5" />
-                          <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l1 1" />
-                          <path d="M14 21v-4a2 2 0 1 1 4 0v4" />
-                          <path d="M14 19h4" />
-                          <path d="M21 15v6" />
-                        </svg>
-                      </div>
-                      <h1 class="text-2xl font-bold mb-4">Image Tools</h1>
-                      <p class="text-base">Free AI image tools to edit, resize, enhance, and convert photos online. Perfect for designers, marketers, and students in the USA, UK, India, Indonesia, Brazil, and worldwide. Fast, secure, and unlimited.</p>
-                    </a>
-                  </div>
+                <section class="bg-white p-4 sm:p-6 lg:p-8 rounded-2xl border border-indigo-300 dark:bg-slate-800 dark:border-slate-700">
+                    <div class="text-center mb-8">
+                        <h1 class="text-3xl lg:text-4xl font-extrabold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">Free Age Calculator: International Users’ Ultimate Tool</h1>
+                        <p class="mt-2 text-lg text-slate-600 dark:text-slate-400">Enter your birth year and date to calculate your chronological age. The most popular inline free software that is trusted to just give you the results you are looking for, without leaving your data out there insecurely.</p>
+                    </div>
+                    <div class="w-full max-w-2xl mx-auto space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
+                            <div>
+                              <label for="birthdate" class="block text-sm font-medium leading-6 text-slate-900 dark:text-slate-200">Enter Your Date of Birth (DOB)</label>
+                              <div class="mt-2">
+                                <input type="date" id="birthdate" class="block w-full rounded-md border-0 py-2.5 px-3 bg-slate-200 text-slate-900 dark:bg-slate-700 dark:text-slate-200">
+                              </div>
+                            </div>
+                            <div>
+                              <label for="birthtime" class="block text-sm font-medium leading-6 text-slate-900 dark:text-slate-200">Time of Birth (For More Accuracy)</label>
+                              <div class="mt-2">
+                                <input type="time" id="birthtime" class="block w-full rounded-md border-0 py-2.5 px-3 bg-slate-200 text-slate-900 dark:bg-slate-700 dark:text-slate-200">
+                              </div>
+                            </div>
+                        </div>
+                        <div id="error-message" class="text-center hidden">
+                          <p class="text-sm font-medium text-red-600 dark:text-red-500"></p>
+                        </div>
+                        
+                        <div id="calculate-section" class="flex flex-col sm:flex-row gap-4 pt-2">
+                            <button id="calculate-button" type="button" class="w-full sm:w-auto flex-grow text-white bg-indigo-600 hover:bg-indigo-700 font-semibold rounded-lg text-base px-5 py-3 transition-all dark:bg-indigo-500 dark:hover:bg-indigo-600">Calculate My Age</button>
+                            <button id="reset-button" type="button" class="w-full sm:w-auto bg-slate-200 hover:bg-slate-300 text-slate-800 font-semibold rounded-lg text-base px-5 py-3 transition-colors dark:bg-slate-600 dark:hover:bg-slate-500 dark:text-slate-200">Reset</button>
+                        </div>
 
-                  <div class="p-4 mx-auto bg-white rounded-lg card-glow duration-300 transition-all m-4 border border-indigo-300 dark:bg-slate-800 dark:border-slate-700">
-                    <a href="">
-                      <div class="mx-auto w-16 h-16 my-4 rounded-full flex items-center bg-indigo-100 dark:bg-indigo-900">
-                        <svg class="mx-auto w-8 h-8 text-indigo-600 dark:text-emerald-100" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                          <path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 3v4a1 1 0 0 0 1 1h4" />
-                          <path d="M5 12v-7a2 2 0 0 1 2 -2h7l5 5v4" /><path d="M5 18h1.5a1.5 1.5 0 0 0 0 -3h-1.5v6" />
-                          <path d="M17 18h2" /><path d="M20 15h-3v6" />
-                          <path d="M11 15v6h1a2 2 0 0 0 2 -2v-2a2 2 0 0 0 -2 -2h-1z" />
-                        </svg>
-                      </div>
-                      <h1 class="text-2xl font-bold mb-4">PDF Tools</h1>
-                      <p class="text-base">Convert, merge, split, and compress PDF files instantly. Our free online PDF tools work globally and ensure your data is 100% safe. Trusted by users across the USA, UK, Europe, and Asia.</p>
-                    </a>
-                  </div>
+                        <div id="results" class="space-y-8 pt-4 hidden scroll-mt-16">
+                            <div class="text-center space-y-4">
+                              <h2 class="text-2xl font-bold text-slate-800 dark:text-slate-200">Your Age in Years, Months, and Days</h2>
+                              <div class="flex items-center justify-around text-center bg-slate-100 p-4 rounded-xl dark:bg-slate-700">
+                                <div>
+                                  <span id="years" class="block text-3xl sm:text-4xl font-extrabold text-indigo-600 dark:text-indigo-400"></span><span class="text-sm text-slate-600 dark:text-slate-400">Years</span>
+                                </div>
+                                <div>
+                                  <span id="months" class="block text-3xl sm:text-4xl font-extrabold text-indigo-600 dark:text-indigo-400"></span>
+                                  <span class="text-sm text-slate-600 dark:text-slate-400">Months</span>
+                                </div>
+                                <div>
+                                  <span id="days" class="block text-3xl sm:text-4xl font-extrabold text-indigo-600 dark:text-indigo-400"></span>
+                                  <span class="text-sm text-slate-600 dark:text-slate-400">Days</span>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="text-center space-y-4">
+                              <h2 class="text-2xl font-bold text-slate-800 dark:text-slate-200">Your Life in Numbers</h2>
+                              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                                <div class="bg-slate-100 p-4 rounded-xl dark:bg-slate-700">
+                                  <h3 class="font-semibold text-slate-600 dark:text-slate-400">Total Days Lived</h3>
+                                  <p id="total-days" class="text-2xl font-bold text-slate-800 mt-1 dark:text-slate-200"></p>
+                                </div>
+                                <div class="bg-slate-100 p-4 rounded-xl dark:bg-slate-700">
+                                  <h3 class="font-semibold text-slate-600 dark:text-slate-400">Total Hours Lived</h3>
+                                  <p id="total-hours" class="text-2xl font-bold text-slate-800 mt-1 dark:text-slate-200"></p>
+                                </div>
+                                <div class="bg-slate-100 p-4 rounded-xl dark:bg-slate-700">
+                                  <h3 class="font-semibold text-slate-600 dark:text-slate-400">Total Minutes Lived</h3>
+                                  <p id="total-minutes" class="text-2xl font-bold text-slate-800 mt-1 dark:text-slate-200"></p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="text-center space-y-4">
+                              <h2 class="text-2xl font-bold text-slate-800 dark:text-slate-200">Next Birthday Countdown</h2>
+                              <div class="bg-slate-100 p-4 rounded-xl dark:bg-slate-700">
+                                <p class="text-lg text-slate-700 dark:text-slate-300"><span id="countdown-days" class="text-3xl font-extrabold text-indigo-600 dark:text-indigo-400"></span> Days to Go!</p>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
-                  <div class="p-4 mx-auto bg-white rounded-lg card-glow duration-300 transition-all m-4 border border-indigo-300 dark:bg-slate-800 dark:border-slate-700">
-                    <a href="">
-                      <div class="mx-auto w-16 h-16 my-4 rounded-full flex items-center bg-indigo-100 dark:bg-indigo-900">
-                        <svg class="mx-auto w-8 h-8 text-indigo-600 dark:text-emerald-100" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                          <path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 3v4a1 1 0 0 0 1 1h4" />
-                          <path d="M14 3v4a1 1 0 0 0 1 1h4" /><path d="M16.5 15h3" /><path d="M5 12v-7a2 2 0 0 1 2 -2h7l5 5v4" />
-                          <path d="M4.5 15h3" /><path d="M6 15v6" /><path d="M18 15v6" />
-                          <path d="M10 15l4 6" /><path d="M10 21l4 -6" />
-                        </svg>
-                      </div>
-                      <h1 class="text-2xl font-bold mb-4">Text Tools</h1>
-                      <p class="text-base">Generate, format, and process text with AI. Ideal for writers, bloggers, and students in Pakistan, Philippines, India, USA, and worldwide. Free, unlimited, and privacy-protected.</p>
-                    </a>
-                  </div>
-
-                  <div class="p-4 mx-auto bg-white rounded-lg card-glow duration-300 transition-all m-4 border border-indigo-300 dark:bg-slate-800 dark:border-slate-700">
-                    <a href="">
-                      <div class="mx-auto w-16 h-16 my-4 rounded-full flex items-center bg-indigo-100 dark:bg-indigo-900">
-                        <svg class="mx-auto w-8 h-8 text-indigo-600 dark:text-emerald-100" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                          <path d="M4 3m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
-                          <path d="M8 7m0 1a1 1 0 0 1 1 -1h6a1 1 0 0 1 1 1v1a1 1 0 0 1 -1 1h-6a1 1 0 0 1 -1 -1z" />
-                          <path d="M8 14l0 .01" /><path d="M12 14l0 .01" /><path d="M16 14l0 .01" /><path d="M8 17l0 .01" />
-                          <path d="M12 17l0 .01" /><path d="M16 17l0 .01" />
-                        </svg>
-                      </div>
-                      <h1 class="text-2xl font-bold mb-4">Calculator Tools</h1>
-                      <p class="text-base">Use our smart online calculator for math, finance, and everyday calculations. Fast, reliable, and accessible worldwide – from the USA, India, Pakistan, Nigeria.</p>
-                    </a>
-                  </div>
-
-                  <div class="p-4 mx-auto bg-white rounded-lg card-glow duration-300 transition-all m-4 border border-indigo-300 dark:bg-slate-800 dark:border-slate-700">
-                    <a href="">
-                      <div class="mx-auto w-16 h-16 my-4 rounded-full flex items-center bg-indigo-100 dark:bg-indigo-900">
-                        <svg class="mx-auto w-8 h-8 text-indigo-600 dark:text-emerald-100" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                          <path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M17 3l4 4l-14 14l-4 -4z" />
-                          <path d="M16 7l-1.5 -1.5" /><path d="M13 10l-1.5 -1.5" />
-                          <path d="M10 13l-1.5 -1.5" /><path d="M7 16l-1.5 -1.5" />
-                        </svg>
-                      </div>
-                      <h1 class="text-2xl font-bold mb-4">Unit Converter</h1>
-                      <p class="text-base">Convert length, weight, temperature, and more with our free AI unit converter. Works instantly for users in India, USA, UK, Canada, and across the globe.</p>
-                    </a>
-                  </div>
-
-                  <div class="p-4 mx-auto bg-white rounded-lg card-glow duration-300 transition-all m-4 border border-indigo-300 dark:bg-slate-800 dark:border-slate-700">
-                    <a href="">
-                      <div class="mx-auto w-16 h-16 my-4 rounded-full flex items-center bg-indigo-100 dark:bg-indigo-900">
-                        <svg class="mx-auto w-8 h-8 text-indigo-600 dark:text-emerald-100" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                          <path d="M4 4m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" />
-                          <path d="M7 17l0 .01" /><path d="M14 4m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" />
-                          <path d="M7 7l0 .01" /><path d="M4 14m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" />
-                          <path d="M17 7l0 .01" /><path d="M14 14l3 0" /><path d="M20 14l0 .01" /><path d="M14 14l0 3" /><path d="M14 20l3 0" />
-                          <path d="M17 17l3 0" /><path d="M20 17l0 3" />
-                        </svg>
-                      </div>
-                      <h1 class="text-2xl font-bold mb-4">QR Generator Tools</h1>
-                      <p class="text-base">Create free QR codes for links, text, and contacts. Our QR generator is fast, unlimited, and trusted by users worldwide – from Asia, North America, India, Indonesia, Brazil, Japan.
-                      </p>
-                    </a>
-                  </div>
-
-                  <div class="p-4 mx-auto bg-white rounded-lg card-glow duration-300 transition-all m-4 border border-indigo-300 dark:bg-slate-800 dark:border-slate-700">
-                    <a href="">
-                      <div class="mx-auto w-16 h-16 my-4 rounded-full flex items-center bg-indigo-100 dark:bg-indigo-900">
-                        <svg class="mx-auto w-8 h-8 text-indigo-600 dark:text-emerald-100" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                          <path d="M12 5m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-                          <path d="M5 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-                          <path d="M19 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-                          <path d="M12 14m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><path d="M12 7l0 4" />
-                          <path d="M6.7 17.8l2.8 -2" /><path d="M17.3 17.8l-2.8 -2" />
-                        </svg>
-                      </div>
-                      <h1 class="text-2xl font-bold mb-4">Social Media Tools</h1>
-                      <p class="text-base">Boost your online presence with our free AI-powered social media tools. Easily create, schedule, and optimize posts for Facebook, Instagram, Twitter (X), LinkedIn, and more. Perfect for businesses, influencers, and students in the USA, UK, India, Brazil, Indonesia, Mexico, and worldwide. Fast, secure, and 100% free forever.</p>
-                    </a>
-                  </div>
-
-                  <div class="p-4 mx-auto bg-white rounded-lg card-glow duration-300 transition-all m-4 border border-indigo-300 dark:bg-slate-800 dark:border-slate-700">
-                    <a href="">
-                      <div class="mx-auto w-16 h-16 my-4 rounded-full flex items-center bg-indigo-100 dark:bg-indigo-900">
-                        <svg class="mx-auto w-8 h-8 text-indigo-600 dark:text-emerald-100" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                          <path d="M3 17a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
-                          <path d="M13 17a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
-                          <path d="M9 17v-13h10v13" /><path d="M9 8h10" />
-                        </svg>
-                      </div>
-                      <h1 class="text-2xl font-bold mb-4">Audio</h1>
-                      <p class="text-base">Convert, edit, and manage audio files with AI-powered tools. Secure, fast, and free for users in India, Brazil, Turkey, USA, UK, and globally.</p>
-                    </a>
-                  </div>
-                  
+                <div class="my-4">
+                    <div id="midad-1" aria-label="Mid Ad 1"></div>
                 </div>
-              </section>
 
-              <div class="my-4">
-                <div id="bottom-ad-container-1" aria-label="Bottom Advertisement 1"></div>
-              </div>
+                <div class="mx-auto text-slate-800 dark:text-slate-200 text-center mt-8">
+                  <section class="mb-8">
+                    <h2 class="text-3xl font-bold mb-8">The World's Best and Free Age Calculator_MUTUHERITAGE</h2>
+                    <p class="text-lg font-medium">Need your most current event age, our age calculator is perfect for anyone who needs to determine your current age quickly and easily. No matter your vocation in life or anything else you do, if you want to know yourself, our calculator has you covered. It is fast, free and easy to use. Simply input your date of birth and our calculator will do the rest. You can even estimate the age of your friends and relatives! So what are you waiting for? Try our age calculator today!</p>
+                  </section>
 
-              <div class="mx-auto text-slate-800 dark:text-slate-200 text-center mt-8">
+                  <section class="mb-8">
+                    <h2 class="text-3xl font-bold mb-8">A Truly Global Age Calculator for Every Need</h2>
+                    <p class="text-lg font-medium">No matter where you are in the world, from the UK to India, or the USA to Australia, our age calculator is the universal tool for you. We understand that calculating age is crucial for many official purposes. That’s why our tool is designed to be the best free age calculator for:</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
+                      <div class="bg-slate-100 p-4 dark:bg-slate-800 rounded-lg">
+                        <h3 class="text-lg font-semibold mb-4">International Students</h3>
+                        <p class="text-base">Easily calculate your age for school and university admission forms worldwide.</p>
+                      </div>
+                      <div class="bg-slate-100 p-4 dark:bg-slate-800 rounded-lg">
+                        <h3 class="text-lg font-semibold mb-4">Visa and Immigration</h3>
+                        <p class="text-base">Get precise age calculations for visa applications, green card petitions, and other immigration documents.</p>
+                      </div>
+                      <div class="bg-slate-100 p-4 dark:bg-slate-800 rounded-lg">
+                        <h3 class="text-lg font-semibold mb-4">Global Travelers</h3>
+                        <p class="text-base">Essential for travel-related documents and age-restricted discounts or activities.</p>
+                      </div>
+                    </div>
+                  </section>
+
+                  <section class="mb-8">
+                    <h2 class="text-3xl font-bold mb-4">Your Age Calculator Results: More Than a Number</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+                      <div class="bg-slate-100 p-4 dark:bg-slate-800 rounded-lg">
+                        <h3 class="text-lg font-semibold mb-4">Pinpoint Exact Age</h3>
+                        <p class="text-base">Ever wonder about your exact age in years, months, *and* days? Our date of birth calculator gives you the precise answer, perfect for official forms or just satisfying your curiosity.</p>
+                      </div>
+                      <div class="bg-slate-100 p-4 dark:bg-slate-800 rounded-lg">
+                        <h3 class="text-lg font-semibold mb-4">See your life in detail</h3>
+                        <p class="text-base">Count the days, hours, and minutes to your life and how much time you’ll need to spend over a fun journey of your lifetime. See your life in fine detail. Countdown to arguments with friends and family!</p>
+                      </div>
+                      <div class="bg-slate-100 p-4 dark:bg-slate-800 rounded-lg">
+                        <h3 class="text-lg font-semibold mb-4">Countdown to Your Birthday</h3>
+                        <p class="text-base">Get excited for your next big day! Hurray! It’s that easy to plan and look forward to getting the birthday calculator.</p>
+                      </div>
+                      <div class="bg-slate-100 p-4 dark:bg-slate-800 rounded-lg">
+                        <h3 class="text-lg font-semibold mb-4">It is completely private and secure</h3>
+                        <p class="text-base">Your privacy is essential. This DOB calculator processes everything right in your browser. Your data is never stored on our servers, making it 100% confidential and secure for your peace of mind.</p>
+                      </div>
+                    </div>
+                  </section>
+
                   <section class="mb-8 text-left">
                     <h2 class="text-3xl font-bold mb-8 text-center">A list of frequently asked questions (FAQ)</h2>
                     <h3 class="text-2xl font-semibold mb-4">How is Chronological Age Calculated?</h3>
@@ -206,27 +186,109 @@
                     <h3 class="text-2xl font-semibold mb-4">Do you support different date formats?</h3>
                     <p class="text-base font-medium mb-8">Yep! We made our online age calculator intuitive and globally friendly. The date picker will use the format standard for your browser and your region. Therefore, you can enter your date of birth in whichever way is most natural to you. It’s no worry, it’ll calculate correctly all the same.</p>
                   </section>
-              </div>
 
+                </div>
             </div>
 
             <aside class="hidden lg:flex flex-col">
-                <div id="sidebar-ad-container-4" aria-label="Sidebar Advertisement 4"></div>
+              <div id="sidead-1" aria-label="Sidebar Ad 1"></div>
             </aside>
 
             <aside class="hidden lg:flex flex-col">
-                <div id="sidebar-ad-container-1" aria-label="Sidebar Advertisement 1"></div>
+              <div id="sidead-2" aria-label="Sidebar Ad 2"></div>
             </aside>
-        </div>
 
-        <div class="mt-4">
-            <div id="top-ad-container-2" aria-label="Top Advertisement 1"></div>
         </div>
-
     </div>
 </main>
 
 <!-- :: Footer PLACEHOLDER :: -->
 <div id="footer-placeholder"></div>
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Age Calculator
+    const birthDateInput = document.getElementById('birthdate');
+    const birthTimeInput = document.getElementById('birthtime');
+    const calculateButton = document.getElementById('calculate-button');
+    const resetButton = document.getElementById('reset-button');
+    const errorMessage = document.getElementById('error-message');
+    const resultsSection = document.getElementById('results');
+
+    const yearsSpan = document.getElementById('years');
+    const monthsSpan = document.getElementById('months');
+    const daysSpan = document.getElementById('days');
+    const totalDaysSpan = document.getElementById('total-days');
+    const totalHoursSpan =document.getElementById('total-hours');
+    const totalMinutesSpan = document.getElementById('total-minutes');
+    const countdownDaysSpan = document.getElementById('countdown-days');
+
+    // Set max date to today
+    const today = new Date();
+    const todayString = today.toISOString().split('T')[0];
+    birthDateInput.max = todayString;
+
+    calculateButton.addEventListener('click', calculateAge);
+    resetButton.addEventListener('click', resetCalculator);
+
+    function calculateAge() {
+        const birthDateValue = birthDateInput.value;
+        if (!birthDateValue) {
+            errorMessage.firstElementChild.textContent = 'Please enter your date of birth.';
+            errorMessage.classList.remove('hidden');
+            resultsSection.classList.add('hidden');
+            return;
+        }
+
+        errorMessage.classList.add('hidden');
+        resultsSection.classList.remove('hidden');
+        resultsSection.scrollIntoView({ behavior: 'smooth' });
+
+        const birthDate = new Date(birthDateValue + 'T' + (birthTimeInput.value || '00:00'));
+        const now = new Date();
+
+        let years = now.getFullYear() - birthDate.getFullYear();
+        let months = now.getMonth() - birthDate.getMonth();
+        let days = now.getDate() - birthDate.getDate();
+
+        if (days < 0) {
+            months--;
+            const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+            days += prevMonth.getDate();
+        }
+
+        if (months < 0) {
+            years--;
+            months += 12;
+        }
+
+        yearsSpan.textContent = years;
+        monthsSpan.textContent = months;
+        daysSpan.textContent = days;
+
+        const totalDays = Math.floor((now - birthDate) / (1000 * 60 * 60 * 24));
+        totalDaysSpan.textContent = totalDays.toLocaleString();
+        totalHoursSpan.textContent = (totalDays * 24).toLocaleString();
+        totalMinutesSpan.textContent = (totalDays * 24 * 60).toLocaleString();
+
+        const nextBirthday = new Date(now.getFullYear(), birthDate.getMonth(), birthDate.getDate());
+        if (now > nextBirthday) {
+            nextBirthday.setFullYear(now.getFullYear() + 1);
+        }
+        const countdownDays = Math.ceil((nextBirthday - now) / (1000 * 60 * 60 * 24));
+        countdownDaysSpan.textContent = countdownDays;
+    }
+
+    function resetCalculator() {
+        birthDateInput.value = '';
+        birthTimeInput.value = '';
+        errorMessage.classList.add('hidden');
+        resultsSection.classList.add('hidden');
+    }
+});
+</script>
+ 
 </body>
 </html>
