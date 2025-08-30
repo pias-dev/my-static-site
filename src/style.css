@@ -766,7 +766,7 @@
       width: 3rem;
     }
     .lg\:grid-cols-\[side_bar\] {
-      grid-template-columns: 1fr 160px 160px;
+      grid-template-columns: 1fr 165px 165px;
     }
     .lg\:grid-cols-3 {
       grid-template-columns: repeat(3, minmax(0, 1fr));
