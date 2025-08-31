@@ -45,11 +45,11 @@ document.addEventListener("DOMContentLoaded", function() {
         <!-- Mobile menu, show/hide based on menu state. -->
         <div id="mobile-menu" class="lg:hidden hidden">
             <div class="p-2 text-base font-medium text-slate-700 dark:text-slate-300">
-                <a href="index.html" class="block p-2 hover:bg-slate-100 dark:hover:bg-slate-700">Home</a>
-                <a href="#main-tools" class="block p-2 hover:bg-slate-100 dark:hover:bg-slate-700">Tools List</a>
-                <a href="#" class="block p-2 hover:bg-slate-100 dark:hover:bg-slate-700">About</a>
-                <a href="#" class="block p-2 hover:bg-slate-100 dark:hover:bg-slate-700">Contact</a>
-                <a href="#" aria-label="Get our app on Google Play" title="Google Play" class="flex items-center p-2 hover:bg-slate-100 dark:hover:bg-slate-700"><span class="sr-only">Google Play</span><img src="./assets/svg/play.svg" alt="Google Play Icon" class="w-6 h-6"><span class="ml-2">Google Play</span></a>
+                <a href="index.html" class="block p-2 mt-1 hover:bg-slate-100 dark:hover:bg-slate-700">Home</a>
+                <a href="#main-tools" class="block p-2 mt-1 hover:bg-slate-100 dark:hover:bg-slate-700">Tools List</a>
+                <a href="#" class="block p-2 mt-1 hover:bg-slate-100 dark:hover:bg-slate-700">About</a>
+                <a href="#" class="block p-2 mt-1 hover:bg-slate-100 dark:hover:bg-slate-700">Contact</a>
+                <a href="#" aria-label="Get our app on Google Play" title="Google Play" class="flex items-center p-2 mt-1 hover:bg-slate-100 dark:hover:bg-slate-700"><span class="sr-only">Google Play</span><img src="./assets/svg/play.svg" alt="Google Play Icon" class="w-6 h-6"><span class="ml-2">Google Play</span></a>
             </div>
         </div>
     </header>
