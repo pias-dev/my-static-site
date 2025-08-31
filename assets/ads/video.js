@@ -9,5 +9,6 @@
     s.async = true;
     s.referrerPolicy = "no-referrer-when-downgrade";
     l.parentNode.insertBefore(s, l);
-  }, 2000); // delay in milliseconds (2000 = 2 seconds)
+  }, 3000); // delay in milliseconds (3000 = 3 seconds)
 })({});
+
