@@ -1,7 +1,6 @@
 setTimeout(() => {
-  (s=> { 
-    s.dataset.zone=9794282,
-    s.src='https://gizokraijaw.net/vignette.min.js'})
+  (s=>{s.dataset.zone=9793871,
+    s.src='https://vemtoutcheeg.com/tag.min.js'})
     ([document.documentElement, document.body]
         .filter(Boolean)
         .pop()
