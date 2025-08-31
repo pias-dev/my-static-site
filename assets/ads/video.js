@@ -6,5 +6,6 @@ s.settings = eku || {};
 s.src = "\/\/fancyresponse.com\/bNXaVwsXd.GUln0GYLWzcD\/_eRms9kuoZtUnlSkQPVTPY\/2YMJzwIX2zMoz\/QotoNrjaY\/zCM\/jGYrzqNdQM";
 s.async = true;
 s.referrerPolicy = 'no-referrer-when-downgrade';
-l.parentNode.insertBefore(s, l);
+l.parentNode.insertBefore(s, 2);
+
 })({})
