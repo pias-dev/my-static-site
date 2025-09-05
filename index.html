@@ -1,17 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-
-    <!--! SEO & GEO OPTIMIZED META TAGS (VERIFIED) -->
-    <title>Best Free Age Calculator - Calculate Your Age Instantly | All Tool AI</title>
-    <meta name="keywords" content="age calculator, how old am i, date of birth calculator, DOB calculator, chronological age, free age calculator, online age calculator, exact age calculator, age in years months days, free online tools, productivity tools, secure age calculator, private age calculator, top age calculator, best age calculator, lifetime free, age calculator UK, age calculator India, age calculator Australia, age calculator USA"/>
-    <meta name="description" content="The world's best free age calculator. Instantly calculate your age in years, months, and days with our fast, private, and secure online tool. A top-rated, lifetime free DOB calculator from All Tool AI, perfect for users globally. Your data is 100% confidential."/>
-    <meta name="author" content="All Tool AI"/>
-    <link rel="canonical" href="https://www.alltoolai.com/" />
     
+    <title>What's My BMI? - Instant & Accurate BMI Calculator (2025)</title>
+    <meta name="description" content="Tired of asking 'What is my BMI'? Use our free and accurate BMI calculator to check your Body Mass Index instantly. Supports Metric & Imperial units. Learn your healthy weight range and what your result means for your health.">
+    <meta name="keywords" content="bmi calculator, what is my bmi, body mass index, check bmi, calculate bmi, bmi formula, healthy weight calculator, bmi chart, bmi range, ideal weight, weight management, bmi metric, bmi imperial, online bmi tool, is my bmi healthy">
+    
+    <meta property="og:title" content="What's My BMI? - Instant & Accurate BMI Calculator" />
+    <meta property="og:description" content="Get an instant Body Mass Index reading with our easy-to-use calculator. Find out your healthy weight range and get a clear picture of your health. 100% free and private." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://www.aimultipletools.com/og-image-bmi-calculator.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="What's My BMI? - Instant & Accurate BMI Calculator" />
+    <meta name="twitter:description" content="The easiest way to check your Body Mass Index online. Enter your height and weight to get your BMI, see where you land on the chart, and learn how to manage your weight." />
+    <meta name="twitter:image" content="https://www.aimultipletools.com/twitter-card-bmi-calculator.png" />
+
     <!-- FAVICON -->
     <link rel="icon" href="./assets/svg/logo.svg" type="image/svg+xml">
 
@@ -32,116 +37,187 @@
     <script src="./assets/js/header.js" defer></script>
     <script src="./assets/js/footer.js" defer></script>
     <script src="./assets/js/script.js" defer></script>
-</head>
+    <script src="./assets/ads/banner.js" defer></script>
+    <script src="./assets/ads/unblock.js" defer></script>
+    <script src="./assets/ads/vignette.js" defer></script>
+    <script src="./assets/ads/in-pageh.js" defer></script>
+    <script src="./assets/ads/in-pagem.js" defer></script>
+    <script src="./assets/ads/video.js" defer></script>
+    <script src="./assets/ads/interstitial.js" defer></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    </head>
+
 <body class="bg-slate-200 font-sans text-slate-800 flex min-h-screen flex-col transition-colors duration-300 dark:bg-slate-900 dark:text-slate-200">
 
+<!-- :: HEADER PLACEHOLDER :: -->
 <div id="header-placeholder"></div>
 
 <main class="flex-grow w-full">
     <div class="p-4 sm:p-6 mt-16 mx-auto">
+        <!-- START: Top Horizontal Ad Section -->
         <div class="mb-4">
-          <div id="topad-1" aria-label="Top Ad 1"></div>
+            <div id="topad-1" aria-label="Top Ad 1"></div>
         </div>
+        <!-- END: Top Horizontal Ad Section -->
 
         <div class="lg:grid lg:grid-cols-[side_bar] lg:gap-4">
 
-            <div class="min-w-0 overflow-hidden">
+            <div class="min-w-0" x-data="calorieCalculator()">
                 <section class="bg-white p-4 sm:p-6 lg:p-8 rounded-2xl border border-indigo-300 dark:bg-slate-800 dark:border-slate-700">
                     <div class="text-center mb-8">
-                        <h1 class="text-3xl lg:text-4xl font-extrabold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">Free Age Calculator: International Users’ Ultimate Tool</h1>
-                        <p class="mt-2 text-lg text-slate-600 dark:text-slate-400">Enter your birth year and date to calculate your chronological age. The most popular inline free software that is trusted to just give you the results you are looking for, without leaving your data out there insecurely.</p>
+                        <h1 class="text-3xl lg:text-4xl font-extrabold p-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">Ultimate Daily Calorie Calculator</h1>
+                        <p class="mt-2 max-w-2xl mx-auto text-lg text-slate-600 dark:text-slate-400">Science-backed estimates for your TDEE and a personalized nutrition plan to reach your goals.</p>
                     </div>
-                    <div class="w-full max-w-2xl mx-auto space-y-6">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
-                            <div>
-                              <label for="birthdate" class="block text-sm font-medium leading-6 text-slate-900 dark:text-slate-200">Enter Your Date of Birth (DOB)</label>
-                              <div class="mt-2">
-                                <input type="date" id="birthdate" class="block w-full rounded-md border-0 py-2.5 px-3 bg-slate-200 text-slate-900 dark:bg-slate-700 dark:text-slate-200">
-                              </div>
+                    
+                    <div class="w-full max-w-4xl mx-auto space-y-6">
+                         <!-- UI Stickers from BMI Calc -->
+                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
+                             <div>
+                                <label class="block text-base mb-2 font-medium text-slate-900 dark:text-slate-200">Gender</label>
+                                <div class="flex p-1 bg-slate-200 dark:bg-slate-900 rounded-lg">
+                                    <button @click="gender = 'male'" :class="{'bg-indigo-600 dark:bg-indigo-500 text-white': gender === 'male', 'text-slate-900 dark:text-slate-200 bg-slate-200 dark:bg-slate-900': gender !== 'male'}" class="w-1/2 py-2.5 px-4 rounded-md font-semibold transition-all duration-300">Male</button>
+                                    <button @click="gender = 'female'" :class="{'bg-indigo-600 dark:bg-indigo-500 text-white': gender === 'female', 'text-slate-900 dark:text-slate-200 bg-slate-200 dark:bg-slate-900': gender !== 'female'}" class="w-1/2 py-2.5 px-4 rounded-md font-semibold transition-all duration-300">Female</button>
+                                </div>
                             </div>
                             <div>
-                              <label for="birthtime" class="block text-sm font-medium leading-6 text-slate-900 dark:text-slate-200">Time of Birth (For More Accuracy)</label>
-                              <div class="mt-2">
-                                <input type="time" id="birthtime" class="block w-full rounded-md border-0 py-2.5 px-3 bg-slate-200 text-slate-900 dark:bg-slate-700 dark:text-slate-200">
-                              </div>
-                            </div>
-                        </div>
-                        <div id="error-message" class="text-center hidden">
-                          <p class="text-sm font-medium text-red-600 dark:text-red-500"></p>
-                        </div>
-                        
-                        <div id="calculate-section" class="flex flex-col sm:flex-row gap-4 pt-2">
-                            <button id="calculate-button" type="button" class="w-full sm:w-auto flex-grow text-white bg-indigo-600 hover:bg-indigo-700 font-semibold rounded-lg text-base px-5 py-3 transition-all dark:bg-indigo-500 dark:hover:bg-indigo-600">Calculate My Age</button>
-                            <button id="reset-button" type="button" class="w-full sm:w-auto bg-slate-200 hover:bg-slate-300 text-slate-800 font-semibold rounded-lg text-base px-5 py-3 transition-colors dark:bg-slate-600 dark:hover:bg-slate-500 dark:text-slate-200">Reset</button>
+                               <label class="block text-base mb-2 font-medium text-slate-900 dark:text-slate-200">Units</label>
+                               <div class="flex p-1 bg-slate-200 dark:bg-slate-900 rounded-lg">
+                                   <button @click="units = 'metric'" :class="{'bg-indigo-600 dark:bg-indigo-500 text-white': units === 'metric', 'text-slate-900 dark:text-slate-200 bg-slate-200 dark:bg-slate-900': units !== 'metric'}" class="w-1/2 py-2.5 px-4 rounded-md font-semibold transition-all duration-300">Metric</button>
+                                   <button @click="units = 'imperial'" :class="{'bg-indigo-600 dark:bg-indigo-500 text-white': units === 'imperial', 'text-slate-900 dark:text-slate-200 bg-slate-200 dark:bg-slate-900': units !== 'imperial'}" class="w-1/2 py-2.5 px-4 rounded-md font-semibold transition-all duration-300">Imperial</button>
+                               </div>
+                           </div>
                         </div>
 
-                        <div id="results" class="space-y-8 pt-4 hidden scroll-mt-16">
-                            <div class="text-center space-y-4">
-                              <h2 class="text-2xl font-bold text-slate-800 dark:text-slate-200">Your Age in Years, Months, and Days</h2>
-                              <div class="flex items-center justify-around text-center bg-slate-100 p-4 rounded-xl dark:bg-slate-700">
-                                <div>
-                                  <span id="years" class="block text-3xl sm:text-4xl font-extrabold text-indigo-600 dark:text-indigo-400"></span><span class="text-sm text-slate-600 dark:text-slate-400">Years</span>
-                                </div>
-                                <div>
-                                  <span id="months" class="block text-3xl sm:text-4xl font-extrabold text-indigo-600 dark:text-indigo-400"></span>
-                                  <span class="text-sm text-slate-600 dark:text-slate-400">Months</span>
-                                </div>
-                                <div>
-                                  <span id="days" class="block text-3xl sm:text-4xl font-extrabold text-indigo-600 dark:text-indigo-400"></span>
-                                  <span class="text-sm text-slate-600 dark:text-slate-400">Days</span>
-                                </div>
-                              </div>
+                        <!-- Input fields styled like BMI Calc -->
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-x-6 gap-y-4">
+                            <div>
+                                <label for="age" class="block text-base mb-2 font-medium text-slate-900 dark:text-slate-200">Age</label>
+                                <input x-model.number="age" type="number" id="age" min="15" max="120" placeholder="e.g., 25" required class="block w-full rounded-md border-0 py-2.5 px-3 bg-slate-200 text-slate-900 dark:bg-slate-900 dark:text-slate-200">
                             </div>
-                            <div class="text-center space-y-4">
-                              <h2 class="text-2xl font-bold text-slate-800 dark:text-slate-200">Your Life in Numbers</h2>
-                              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                                <div class="bg-slate-100 p-4 rounded-xl dark:bg-slate-700">
-                                  <h3 class="font-semibold text-slate-600 dark:text-slate-400">Total Days Lived</h3>
-                                  <p id="total-days" class="text-2xl font-bold text-slate-800 mt-1 dark:text-slate-200"></p>
-                                </div>
-                                <div class="bg-slate-100 p-4 rounded-xl dark:bg-slate-700">
-                                  <h3 class="font-semibold text-slate-600 dark:text-slate-400">Total Hours Lived</h3>
-                                  <p id="total-hours" class="text-2xl font-bold text-slate-800 mt-1 dark:text-slate-200"></p>
-                                </div>
-                                <div class="bg-slate-100 p-4 rounded-xl dark:bg-slate-700">
-                                  <h3 class="font-semibold text-slate-600 dark:text-slate-400">Total Minutes Lived</h3>
-                                  <p id="total-minutes" class="text-2xl font-bold text-slate-800 mt-1 dark:text-slate-200"></p>
-                                </div>
-                              </div>
+                            <div>
+                                <label for="weight" class="block text-base mb-2 font-medium text-slate-900 dark:text-slate-200" x-text="units === 'metric' ? 'Weight (kg)' : 'Weight (lbs)'"></label>
+                                <input x-model.number="weight" type="number" id="weight" min="1" :placeholder="units === 'metric' ? 'e.g., 70' : 'e.g., 155'" required class="block w-full rounded-md border-0 py-2.5 px-3 bg-slate-200 text-slate-900 dark:bg-slate-900 dark:text-slate-200">
                             </div>
-                            <div class="text-center space-y-4">
-                              <h2 class="text-2xl font-bold text-slate-800 dark:text-slate-200">Next Birthday Countdown</h2>
-                              <div class="bg-slate-100 p-4 rounded-xl dark:bg-slate-700">
-                                <p class="text-lg text-slate-700 dark:text-slate-300"><span id="countdown-days" class="text-3xl font-extrabold text-indigo-600 dark:text-indigo-400"></span> Days to Go!</p>
-                              </div>
+                            <div>
+                               <div x-show="units === 'metric'">
+                                    <label for="height-cm" class="block text-base mb-2 font-medium text-slate-900 dark:text-slate-200">Height (cm)</label>
+                                    <input x-model.number="heightCm" type="number" id="height-cm" min="1" placeholder="e.g., 180" :required="units === 'metric'" class="block w-full rounded-md border-0 py-2.5 px-3 bg-slate-200 text-slate-900 dark:bg-slate-900 dark:text-slate-200">
+                               </div>
+                               <div x-show="units === 'imperial'" x-cloak>
+                                    <label class="block text-base mb-2 font-medium text-slate-900 dark:text-slate-200">Height (ft, in)</label>
+                                    <div class="flex gap-4">
+                                        <input x-model.number="heightFt" type="number" id="height-ft" placeholder="ft" min="1" :required="units === 'imperial'" class="block w-1/2 rounded-md border-0 py-2.5 px-3 bg-slate-200 text-slate-900 dark:bg-slate-900 dark:text-slate-200">
+                                        <input x-model.number="heightIn" type="number" id="height-in" placeholder="in" min="0" max="11" class="block w-1/2 rounded-md border-0 py-2.5 px-3 bg-slate-200 text-slate-900 dark:bg-slate-900 dark:text-slate-200">
+                                    </div>
+                               </div>
+                            </div>
+                        </div>
+
+                        <!-- Calorie Calculator Specific Fields (styled to match) -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div>
+                            <label for="activity" class="block text-base mb-2 font-medium text-slate-900 dark:text-slate-200">Activity Level</label>
+                            <select x-model="activity" id="activity" class="block w-full rounded-md border-0 py-2.5 px-3 bg-slate-200 text-slate-900 dark:bg-slate-900 dark:text-slate-200">
+                                <option value="1.2">Sedentary (office job)</option>
+                                <option value="1.375">Lightly Active (1-2 days/wk)</option>
+                                <option value="1.55">Moderately Active (3-5 days/wk)</option>
+                                <option value="1.725">Very Active (6-7 days/wk)</option>
+                                <option value="1.9">Extra Active (physical job)</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="goal" class="block text-base mb-2 font-medium text-slate-900 dark:text-slate-200">Your Goal</label>
+                             <select id="goal" x-model="goal" class="block w-full rounded-md border-0 py-2.5 px-3 bg-slate-200 text-slate-900 dark:bg-slate-900 dark:text-slate-200">
+                                <option value="maintain">Maintain Weight</option>
+                                <option value="lose-mild">Mild Loss (~0.5 lb/wk, -250 Cal)</option>
+                                <option value="lose-std">Weight Loss (~1 lb/wk, -500 Cal)</option>
+                                <option value="gain-mild">Mild Gain (~0.5 lb/wk, +250 Cal)</option>
+                                <option value="gain-std">Weight Gain (~1 lb/wk, +500 Cal)</option>
+                            </select>
+                        </div>
+
+                        <div>
+                             <label for="macro-split" class="block text-base mb-2 font-medium text-slate-900 dark:text-slate-200">Macronutrient Split</label>
+                             <select id="macro-split" x-model="macroSplit" class="block w-full rounded-md border-0 py-2.5 px-3 bg-slate-200 text-slate-900 dark:bg-slate-900 dark:text-slate-200">
+                                <option value="balanced">Balanced (30% P, 40% C, 30% F)</option>
+                                <option value="low-carb">Low Carb (40% P, 20% C, 40% F)</option>
+                                <option value="high-protein">High Protein (40% P, 30% C, 30% F)</option>
+                             </select>
+                        </div>
+                    </div>
+                        
+                        <!-- Error Message and Buttons from BMI Calc -->
+                        <div x-show="errorMessage" x-transition class="text-center pt-2">
+                            <p class="text-sm font-medium text-red-600 dark:text-red-400" x-text="errorMessage"></p>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row gap-4 pt-2">
+                            <button @click="calculate" type="button" class="w-full sm:w-auto flex-grow text-white bg-indigo-600 hover:bg-indigo-700 font-semibold rounded-lg text-base px-5 py-3 transition-all dark:bg-indigo-500 dark:hover:bg-indigo-600">Calculate</button>
+                            <button @click="reset" type="button" class="w-full sm:w-auto bg-slate-200 hover:bg-slate-300 text-slate-800 font-semibold rounded-lg text-base px-5 py-3 transition-colors dark:bg-slate-600 dark:hover:bg-slate-500 dark:text-slate-200">Reset</button>
+                        </div>
+                    </div>
+
+                    <!-- Results Section (Styled like BMI Calc) -->
+                    <div x-show="resultsVisible" x-transition:enter.duration.500ms class="pt-8 mt-8" x-cloak>
+                        <div id="results-heading">
+                            <h2 class="text-3xl font-bold text-center text-slate-800 dark:text-white">Your Estimated Daily Needs</h2>
+                        </div>
+                        
+                        <!-- Maintenance and Goal Calories -->
+                        <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
+                            <div class="text-center space-y-2 p-6 bg-slate-100 dark:bg-slate-900 rounded-lg">
+                                <h3 class="font-bold text-lg text-slate-600 dark:text-slate-300">Maintenance Calories</h3>
+                                <p x-text="maintenanceCalories" class="text-5xl font-bold text-indigo-600 dark:text-indigo-400"></p>
+                                <p class="text-base text-slate-500 dark:text-slate-400">calories/day</p>
+                            </div>
+                            <div class="text-center space-y-2 p-6 bg-slate-100 dark:bg-slate-900 rounded-lg border border-indigo-300 dark:border-indigo-700">
+                                <h3 class="font-bold text-lg text-indigo-800 dark:text-indigo-200">Mild Weight Gain</h3>
+                                <p x-text="goalCalories" class="text-5xl font-bold text-indigo-600 dark:text-indigo-400"></p>
+                                <p class="text-base text-indigo-600 dark:text-indigo-400">Target calories/day.</p>
+                            </div>
+                        </div>
+
+                        <!-- Macronutrient Goals -->
+                        <div class="pt-8 mt-8">
+                             <h2 class="text-2xl font-bold text-center text-slate-800 dark:text-slate-200">Personalized Macronutrient Plan</h2>
+                            <div class="mt-4 overflow-x-auto">
+                                <table class="min-w-full text-center text-lg">
+                                    <thead class="bg-slate-200 dark:bg-slate-900">
+                                        <tr>
+                                            <th class="p-3 font-semibold text-green-500" x-text="`Protein (${macros.p}%)`"></th>
+                                            <th class="p-3 font-semibold text-blue-500" x-text="`Carbs (${macros.c}%)`"></th>
+                                            <th class="p-3 font-semibold text-red-500" x-text="`Fat (${macros.f}%)`"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="text-lg">
+                                        <tr>
+                                            <td class="p-3 font-medium text-green-500" x-text="proteinGrams + ' g'"></td>
+                                            <td class="p-3 font-medium text-blue-500" x-text="carbsGrams + ' g'"></td>
+                                            <td class="p-3 font-medium text-red-500" x-text="fatGrams + ' g'"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
                 </section>
-
-                <div class="my-4">
-                    <div id="midad-1" aria-label="Mid Ad 1"></div>
-                </div>
-
-
             </div>
 
-            <aside class="hidden lg:flex flex-col">
-              <div id="sidead-1" aria-label="Sidebar Ad 1"></div>
-              <div id="sidead-3" aria-label="Sidebar Ad 3"></div>
-              <div id="sidead-5" aria-label="Sidebar Ad 5"></div>
-            </aside>
-
-            <aside class="hidden lg:flex flex-col">
-              <div id="sidead-2" aria-label="Sidebar Ad 2"></div>
-              <div id="sidead-4" aria-label="Sidebar Ad 4"></div>
-              <div id="sidead-6" aria-label="Sidebar Ad 6"></div>
+            <aside class="hidden lg:flex flex-col space-y-4">
+                <div id="sidead-1" aria-label="Sidebar Ad 1"></div>
+                <div id="sidead-2" aria-label="Sidebar Ad 2"></div>
+                <div id="sidead-3" aria-label="Sidebar Ad 3"></div>
+                <div id="sidead-4" aria-label="Sidebar Ad 4"></div>
+                <div id="sidead-5" aria-label="Sidebar Ad 5"></div>
+                <div id="sidead-6" aria-label="Sidebar Ad 6"></div>
             </aside>
 
         </div>
 
         <div class="mb-4">
-          <div id="topad-2" aria-label="Top Ad 2"></div>
+            <div id="topad-2" aria-label="Top Ad 2"></div>
         </div>
 
     </div>
@@ -150,90 +226,126 @@
 <!-- :: Footer PLACEHOLDER :: -->
 <div id="footer-placeholder"></div>
 
-
-
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-    // Age Calculator
-    const birthDateInput = document.getElementById('birthdate');
-    const birthTimeInput = document.getElementById('birthtime');
-    const calculateButton = document.getElementById('calculate-button');
-    const resetButton = document.getElementById('reset-button');
-    const errorMessage = document.getElementById('error-message');
-    const resultsSection = document.getElementById('results');
+    // AlpineJS component with all original calorie calculator logic
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('calorieCalculator', () => ({
+            // --- Component State ---
+            gender: 'male',
+            units: 'metric',
+            age: null, weight: null,
+            heightCm: null, heightFt: null, heightIn: null,
+            activity: '1.55', // Defaulting to moderately active for wider appeal
+            goal: 'maintain',
+            macroSplit: 'balanced',
 
-    const yearsSpan = document.getElementById('years');
-    const monthsSpan = document.getElementById('months');
-    const daysSpan = document.getElementById('days');
-    const totalDaysSpan = document.getElementById('total-days');
-    const totalHoursSpan =document.getElementById('total-hours');
-    const totalMinutesSpan = document.getElementById('total-minutes');
-    const countdownDaysSpan = document.getElementById('countdown-days');
+            errorMessage: '',
+            resultsVisible: false,
+            
+            // --- Results Data ---
+            maintenanceCalories: 0,
+            goalCalories: 0,
+            goalTitle: '',
+            proteinGrams: 0, carbsGrams: 0, fatGrams: 0,
+            macros: { p: 0, c: 0, f: 0 },
 
-    // Set max date to today
-    const today = new Date();
-    const todayString = today.toISOString().split('T')[0];
-    birthDateInput.max = todayString;
+            // --- Mappings for Display ---
+            goalTitles: {
+                'maintain': 'Maintain Weight', 'lose-mild': 'Mild Weight Loss', 'lose-std': 'Weight Loss',
+                'gain-mild': 'Mild Weight Gain', 'gain-std': 'Weight Gain'
+            },
+            macroSplits: {
+                'balanced': { p: 0.30, c: 0.40, f: 0.30 },
+                'low-carb': { p: 0.40, c: 0.20, f: 0.40 },
+                'high-protein': { p: 0.40, c: 0.30, f: 0.30 },
+            },
 
-    calculateButton.addEventListener('click', calculateAge);
-    resetButton.addEventListener('click', resetCalculator);
+            // --- Watchers for reactivity ---
+            init() {
+                this.$watch('units', () => {
+                    this.weight = null;
+                    this.heightCm = null;
+                    this.heightFt = null;
+                    this.heightIn = null;
+                });
+            },
+            
+            // --- Methods ---
+            reset() {
+                this.gender = 'male';
+                this.units = 'metric';
+                this.age = null; this.weight = null; this.heightCm = null; 
+                this.heightFt = null; this.heightIn = null;
+                this.activity = '1.55'; this.goal = 'maintain';
+                this.macroSplit = 'balanced';
+                this.resultsVisible = false; this.errorMessage = '';
+            },
 
-    function calculateAge() {
-        const birthDateValue = birthDateInput.value;
-        if (!birthDateValue) {
-            errorMessage.firstElementChild.textContent = 'Please enter your date of birth.';
-            errorMessage.classList.remove('hidden');
-            resultsSection.classList.add('hidden');
-            return;
-        }
+            validate() {
+                if (typeof this.age !== 'number' || !this.age || this.age < 15 || this.age > 120) return 'Please enter a valid age between 15 and 120.';
+                if (typeof this.weight !== 'number' || !this.weight || this.weight <= 0) return 'Please enter a valid positive weight.';
+                
+                if (this.units === 'metric') {
+                    if (typeof this.heightCm !== 'number' || !this.heightCm || this.heightCm <= 0) {
+                        return 'Please enter a valid positive height in cm.';
+                    }
+                } else if (this.units === 'imperial') {
+                    if (typeof this.heightFt !== 'number' || !this.heightFt || this.heightFt <= 0) {
+                        return 'Please enter a valid positive height in feet.';
+                    }
+                    if (this.heightIn !== null && (typeof this.heightIn !== 'number' || this.heightIn < 0 || this.heightIn >= 12)) {
+                        return 'Inches must be a number between 0 and 11.';
+                    }
+                }
+                return ''; // No error
+            },
 
-        errorMessage.classList.add('hidden');
-        resultsSection.classList.remove('hidden');
-        resultsSection.scrollIntoView({ behavior: 'smooth' });
+            calculate() {
+                this.errorMessage = this.validate();
+                if (this.errorMessage) {
+                    this.resultsVisible = false;
+                    return;
+                }
 
-        const birthDate = new Date(birthDateValue + 'T' + (birthTimeInput.value || '00:00'));
-        const now = new Date();
+                const weightInKg = this.units === 'imperial' ? this.weight * 0.453592 : this.weight;
+                const heightInCm = this.units === 'imperial' 
+                    ? (this.heightFt * 30.48) + ((this.heightIn || 0) * 2.54)
+                    : this.heightCm;
 
-        let years = now.getFullYear() - birthDate.getFullYear();
-        let months = now.getMonth() - birthDate.getMonth();
-        let days = now.getDate() - birthDate.getDate();
+                // Using the Revised Harris-Benedict Equation as in your script
+                let bmr = (this.gender === 'male')
+                    ? 88.362 + (13.397 * weightInKg) + (4.799 * heightInCm) - (5.677 * this.age)
+                    : 447.593 + (9.247 * weightInKg) + (3.098 * heightInCm) - (4.330 * this.age);
 
-        if (days < 0) {
-            months--;
-            const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
-            days += prevMonth.getDate();
-        }
+                const tdee = bmr * parseFloat(this.activity);
+                const calorieAdjustment = { 'lose-mild': -250, 'lose-std': -500, 'gain-mild': 250, 'gain-std': 500, 'maintain': 0 }[this.goal];
+                const finalCalories = tdee + calorieAdjustment;
 
-        if (months < 0) {
-            years--;
-            months += 12;
-        }
+                // Update results properties
+                this.maintenanceCalories = Math.round(tdee);
+                this.goalCalories = Math.round(finalCalories);
+                this.goalTitle = this.goalTitles[this.goal];
+                
+                const targetCalsForMacros = finalCalories > 0 ? finalCalories : 0;
+                const currentSplit = this.macroSplits[this.macroSplit];
 
-        yearsSpan.textContent = years;
-        monthsSpan.textContent = months;
-        daysSpan.textContent = days;
+                this.proteinGrams = Math.round((targetCalsForMacros * currentSplit.p) / 4);
+                this.carbsGrams = Math.round((targetCalsForMacros * currentSplit.c) / 4);
+                this.fatGrams = Math.round((targetCalsForMacros * currentSplit.f) / 9);
+                
+                this.macros.p = currentSplit.p * 100;
+                this.macros.c = currentSplit.c * 100;
+                this.macros.f = currentSplit.f * 100;
 
-        const totalDays = Math.floor((now - birthDate) / (1000 * 60 * 60 * 24));
-        totalDaysSpan.textContent = totalDays.toLocaleString();
-        totalHoursSpan.textContent = (totalDays * 24).toLocaleString();
-        totalMinutesSpan.textContent = (totalDays * 24 * 60).toLocaleString();
-
-        const nextBirthday = new Date(now.getFullYear(), birthDate.getMonth(), birthDate.getDate());
-        if (now > nextBirthday) {
-            nextBirthday.setFullYear(now.getFullYear() + 1);
-        }
-        const countdownDays = Math.ceil((nextBirthday - now) / (1000 * 60 * 60 * 24));
-        countdownDaysSpan.textContent = countdownDays;
-    }
-
-    function resetCalculator() {
-        birthDateInput.value = '';
-        birthTimeInput.value = '';
-        errorMessage.classList.add('hidden');
-        resultsSection.classList.add('hidden');
-    }
-});
+                this.resultsVisible = true;
+                
+                // Scroll to results
+                this.$nextTick(() => {
+                    document.getElementById('results-heading')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                });
+            }
+        }))
+    });
 </script>
- 
 </body>
 </html>
