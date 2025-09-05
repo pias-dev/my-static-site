@@ -37,8 +37,6 @@
     <script src="./assets/js/header.js" defer></script>
     <script src="./assets/js/footer.js" defer></script>
     <script src="./assets/js/script.js" defer></script>
-    <script src="./assets/ads/banner.js" defer></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 <body class="bg-slate-200 font-sans text-slate-800 flex min-h-screen flex-col transition-colors duration-300 dark:bg-slate-900 dark:text-slate-200">
 
@@ -56,7 +54,7 @@
         <div class="lg:grid lg:grid-cols-[side_bar] lg:gap-4">
 
             <div class="min-w-0 overflow-hidden">
-                <section x-data="bmiCalculator()" x-init="init()" class="bg-white p-4 sm:p-6 lg:p-8 rounded-2xl border border-indigo-300 dark:bg-slate-800 dark:border-slate-700">
+                <section class="bg-white p-4 sm:p-6 lg:p-8 rounded-2xl border border-indigo-300 dark:bg-slate-800 dark:border-slate-700">
                     <div class="text-center mb-8">
                         <h1 class="text-3xl lg:text-4xl font-extrabold p-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">BMI Calculator: Check Your Body Mass Index</h1>
                         <p class="mt-2 max-w-2xl mx-auto text-lg text-slate-600 dark:text-slate-400">Get a clear, simple, and accurate snapshot of your health. Use our free online tool to instantly calculate your BMI and discover your ideal weight range.</p>
@@ -64,56 +62,56 @@
 
                     <div class="w-full max-w-2xl mx-auto space-y-6">
                         <div class="flex p-1 bg-slate-200 dark:bg-slate-900 rounded-lg">
-                            <button @click="unit = 'metric'; reset()" :class="unit === 'metric' ? 'bg-white dark:bg-slate-800 border border-indigo-300' : 'text-slate-600 dark:text-slate-400 bg-slate-200 dark:bg-slate-900'" class="w-1/2 py-3 px-4 rounded-md font-semibold transition-all duration-300">Metric (kg/cm)</button>
-                            <button @click="unit = 'imperial'; reset()" :class="unit === 'imperial' ? 'bg-white dark:bg-slate-800 border border-indigo-300' : 'text-slate-600 dark:text-slate-400 bg-slate-200 dark:bg-slate-900'" class="w-1/2 py-3 px-4 rounded-md font-semibold transition-all duration-300">Imperial (lb/ft)</button>
+                            <button data-unit="metric" class="w-1/2 py-3 px-4 rounded-md font-semibold transition-all duration-300 bg-white dark:bg-slate-800 border border-indigo-300">Metric (kg/cm)</button>
+                            <button data-unit="imperial" class="w-1/2 py-3 px-4 rounded-md font-semibold transition-all duration-300 text-slate-600 dark:text-slate-400 bg-slate-200 dark:bg-slate-900">Imperial (lb/ft)</button>
                         </div>
                         
-                        <div x-show="unit === 'metric'" class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
+                        <div data-inputs="metric" class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
                             <div>
                                 <label for="height-cm" class="block text-sm font-medium text-slate-900 dark:text-slate-200">Height (cm)</label>
                                 <div class="mt-2">
-                                    <input type="number" min="0" id="height-cm" x-model.number.debounce.300ms="heightCm" placeholder="e.g., 180" class="block w-full rounded-md border-0 py-2.5 px-3 bg-slate-200 text-slate-900 dark:bg-slate-900 dark:text-slate-200">
+                                    <input type="number" min="0" id="height-cm" placeholder="e.g., 180" class="block w-full rounded-md border-0 py-2.5 px-3 bg-slate-200 text-slate-900 dark:bg-slate-900 dark:text-slate-200">
                                 </div>
                             </div>
                             <div>
                                 <label for="weight-kg" class="block text-sm font-medium text-slate-900 dark:text-slate-200">Weight (kg)</label>
                                 <div class="mt-2">
-                                    <input type="number" min="0" id="weight-kg" x-model.number.debounce.300ms="weightKg" placeholder="e.g., 75" class="block w-full rounded-md border-0 py-2.5 px-3 bg-slate-200 text-slate-900 dark:bg-slate-900 dark:text-slate-200">
+                                    <input type="number" min="0" id="weight-kg" placeholder="e.g., 75" class="block w-full rounded-md border-0 py-2.5 px-3 bg-slate-200 text-slate-900 dark:bg-slate-900 dark:text-slate-200">
                                 </div>
                             </div>
                         </div>
 
-                        <div x-show="unit === 'imperial'" class="space-y-4" x-cloak>
+                        <div data-inputs="imperial" class="space-y-4" style="display: none;">
                             <div>
                                 <label class="block text-sm font-medium text-slate-900 dark:text-slate-200">Height</label>
                                 <div class="mt-2 flex">
                                     <div class="w-1/2">
-                                        <input type="number" min="0" x-model.number.debounce.300ms="heightFt" placeholder="ft" class="block w-full rounded-md border-0 py-2.5 px-3 bg-slate-200 text-slate-900 dark:bg-slate-900 dark:text-slate-200">
+                                        <input type="number" min="0" id="height-ft" placeholder="ft" class="block w-full rounded-md border-0 py-2.5 px-3 bg-slate-200 text-slate-900 dark:bg-slate-900 dark:text-slate-200">
                                     </div>
                                     <div class="w-1/2 ml-4">
-                                        <input type="number" min="0" x-model.number.debounce.300ms="heightIn" placeholder="in" class="block w-full rounded-md border-0 py-2.5 px-3 bg-slate-200 text-slate-900 dark:bg-slate-900 dark:text-slate-200">
+                                        <input type="number" min="0" id="height-in" placeholder="in" class="block w-full rounded-md border-0 py-2.5 px-3 bg-slate-200 text-slate-900 dark:bg-slate-900 dark:text-slate-200">
                                     </div>
                                 </div>
                             </div>
-                            <div><label for="weight-lb" class="block text-sm font-medium text-slate-900 dark:text-slate-200">Weight (lb)</label><div class="mt-2"><input type="number" min="0" id="weight-lb" x-model.number.debounce.300ms="weightLb" placeholder="e.g., 165" class="block w-full rounded-md border-0 py-2.5 px-3 bg-slate-200 text-slate-900 dark:bg-slate-900 dark:text-slate-200"></div></div>
+                            <div><label for="weight-lb" class="block text-sm font-medium text-slate-900 dark:text-slate-200">Weight (lb)</label><div class="mt-2"><input type="number" min="0" id="weight-lb" placeholder="e.g., 165" class="block w-full rounded-md border-0 py-2.5 px-3 bg-slate-200 text-slate-900 dark:bg-slate-900 dark:text-slate-200"></div></div>
                         </div>
                         
-                        <div x-show="errorMessage" x-transition class="text-center"><p class="text-sm font-medium text-red-600 dark:text-red-400" x-text="errorMessage"></p></div>
+                        <div data-id="error-message" class="text-center"><p class="text-sm font-medium text-red-600 dark:text-red-400"></p></div>
                         <div class="flex flex-col sm:flex-row gap-4 pt-2">
-                            <button @click="calculateBmi()" type="button" class="w-full sm:w-auto flex-grow text-white bg-indigo-600 hover:bg-indigo-700 font-semibold rounded-lg text-base px-5 py-3 transition-all dark:bg-indigo-500 dark:hover:bg-indigo-600">Calculate BMI</button>
-                            <button @click="reset(true)" type="button" class="w-full sm:w-auto bg-slate-200 hover:bg-slate-300 text-slate-800 font-semibold rounded-lg text-base px-5 py-3 transition-colors dark:bg-slate-600 dark:hover:bg-slate-500 dark:text-slate-200">Reset</button>
+                            <button data-action="calculate" type="button" class="w-full sm:w-auto flex-grow text-white bg-indigo-600 hover:bg-indigo-700 font-semibold rounded-lg text-base px-5 py-3 transition-all dark:bg-indigo-500 dark:hover:bg-indigo-600">Calculate BMI</button>
+                            <button data-action="reset" type="button" class="w-full sm:w-auto bg-slate-200 hover:bg-slate-300 text-slate-800 font-semibold rounded-lg text-base px-5 py-3 transition-colors dark:bg-slate-600 dark:hover:bg-slate-500 dark:text-slate-200">Reset</button>
                         </div>
                         
-                        <div x-show="resultsVisible" x-transition:enter.duration.500ms class="space-y-8 pt-4" x-cloak>
+                        <div data-id="results" class="space-y-8 pt-4" style="display: none;">
                             <div class="text-center space-y-4 p-6 bg-slate-100 dark:bg-slate-900 rounded-xl">
                                 <h2 class="text-lg font-medium text-slate-700 dark:text-slate-300">Your Body Mass Index (BMI) is</h2>
-                                <p class="text-6xl font-extrabold text-slate-900 dark:text-white" x-text="bmi"></p>
-                                <p class="text-xl font-bold" :class="categoryClass" x-text="category"></p>
+                                <p data-id="bmi-value" class="text-6xl font-extrabold text-slate-900 dark:text-white"></p>
+                                <p data-id="bmi-category" class="text-xl font-bold"></p>
                             </div>
                             
                             <div class="space-y-3 pt-2">
                                 <div class="relative w-full h-3 bmi-gradient">
-                                    <div class="absolute w-5 h-5 bg-white dark:bg-slate-300 rounded-full border-2" :class="categoryBorderClass" :style="{ left: gaugePosition + '%', top: '50%' }" style="transform: translate(-50%, -50%); transition: left 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div>
+                                    <div data-id="bmi-gauge" class="absolute w-5 h-5 bg-white dark:bg-slate-300 rounded-full border-2" style="top: 50%; left: 50%; transform: translate(-50%, -50%); transition: left 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div>
                                 </div>
                                 <div class="relative h-2 flex justify-between text-sm font-medium text-slate-500 dark:text-slate-400">
                                     <span class="absolute" style="left: 10.4%; transform: translateX(-50%);">18.5</span>
@@ -123,7 +121,7 @@
                             </div>
                             
                             <div class="text-center p-4 bg-slate-100 dark:bg-slate-900 rounded-xl">
-                                <p class="text-slate-700 dark:text-slate-200">Based on your height, a healthy BMI suggests your ideal weight range is <strong class="text-slate-900 dark:text-white" x-text="healthyWeightRange"></strong>.</p>
+                                <p class="text-slate-700 dark:text-slate-200">Based on your height, a healthy BMI suggests your ideal weight range is <strong data-id="healthy-weight-range" class="text-slate-900 dark:text-white"></strong>.</p>
                             </div>
                         </div>
                     </div>
@@ -138,14 +136,10 @@
 
             <aside class="hidden lg:flex flex-col">
               <div id="sidead-1" aria-label="Sidebar Ad 1"></div>
-              <div id="sidead-3" aria-label="Sidebar Ad 3"></div>
-              <div id="sidead-5" aria-label="Sidebar Ad 5"></div>
             </aside>
 
             <aside class="hidden lg:flex flex-col">
               <div id="sidead-2" aria-label="Sidebar Ad 2"></div>
-              <div id="sidead-4" aria-label="Sidebar Ad 4"></div>
-              <div id="sidead-6" aria-label="Sidebar Ad 6"></div>
             </aside>
 
         </div>
@@ -161,103 +155,139 @@
 <div id="footer-placeholder"></div>
 
 <script>
-    function bmiCalculator() {
-        return {
-            unit: 'metric',
-            heightCm: null,
-            weightKg: null,
-            heightFt: null,
-            heightIn: null,
-            weightLb: null,
-            bmi: 0,
-            category: '',
-            categoryClass: '',
-            categoryBorderClass: '',
-            healthyWeightRange: '',
-            gaugePosition: 0,
-            resultsVisible: false,
-            errorMessage: '',
+    
+document.addEventListener('DOMContentLoaded', () => {
+    const metricButton = document.querySelector('button[data-unit="metric"]');
+    const imperialButton = document.querySelector('button[data-unit="imperial"]');
+    const metricInputs = document.querySelector('[data-inputs="metric"]');
+    const imperialInputs = document.querySelector('[data-inputs="imperial"]');
 
-            init() {
-                this.$watch('[heightCm, weightKg, heightFt, heightIn, weightLb]', () => this.calculateBmi(true));
-            },
+    const heightCmInput = document.getElementById('height-cm');
+    const weightKgInput = document.getElementById('weight-kg');
+    const heightFtInput = document.getElementById('height-ft');
+    const heightInInput = document.getElementById('height-in');
+    const weightLbInput = document.getElementById('weight-lb');
 
-            reset(clearInputs = false) {
-                if (clearInputs) {
-                    this.heightCm = null;
-                    this.weightKg = null;
-                    this.heightFt = null;
-                    this.heightIn = null;
-                    this.weightLb = null;
-                }
-                this.resultsVisible = false;
-                this.errorMessage = '';
-            },
+    const calculateButton = document.querySelector('button[data-action="calculate"]');
+    const resetButton = document.querySelector('button[data-action="reset"]');
 
-            calculateBmi(isAuto = false) {
-                let height, weight;
+    const errorMessage = document.querySelector('[data-id="error-message"]');
+    const resultsContainer = document.querySelector('[data-id="results"]');
+    const bmiValue = document.querySelector('[data-id="bmi-value"]');
+    const bmiCategory = document.querySelector('[data-id="bmi-category"]');
+    const bmiGauge = document.querySelector('[data-id="bmi-gauge"]');
+    const healthyWeightRange = document.querySelector('[data-id="healthy-weight-range"]');
 
-                if (this.unit === 'metric') {
-                    height = this.heightCm;
-                    weight = this.weightKg;
-                } else {
-                    height = (this.heightFt || 0) * 12 + (this.heightIn || 0);
-                    weight = this.weightLb;
-                }
+    let unit = 'metric';
 
-                if (!height || !weight || height <= 0 || weight <= 0) {
-                    this.resultsVisible = false;
-                    if (!isAuto) {
-                        this.errorMessage = 'Please enter a valid, positive height and weight.';
-                    }
-                    return;
-                }
+    function reset(clearInputs = false) {
+        if (clearInputs) {
+            heightCmInput.value = '';
+            weightKgInput.value = '';
+            heightFtInput.value = '';
+            heightInInput.value = '';
+            weightLbInput.value = '';
+        }
+        resultsContainer.style.display = 'none';
+        errorMessage.textContent = '';
+    }
 
-                this.errorMessage = '';
-                
-                if (this.unit === 'metric') {
-                    this.bmi = (weight / (height / 100) ** 2).toFixed(1);
-                } else {
-                    this.bmi = (weight / height ** 2 * 703).toFixed(1);
-                }
+    function calculateBmi() {
+        let height, weight;
 
-                this.updateBmiDetails(height);
-                this.resultsVisible = true;
-            },
+        if (unit === 'metric') {
+            height = parseFloat(heightCmInput.value);
+            weight = parseFloat(weightKgInput.value);
+        } else {
+            height = (parseFloat(heightFtInput.value) || 0) * 12 + (parseFloat(heightInInput.value) || 0);
+            weight = parseFloat(weightLbInput.value);
+        }
 
-            updateBmiDetails(height) {
-                const bmiValue = parseFloat(this.bmi);
-                const categories = [
-                    { maxBmi: 18.5, name: 'Underweight', textClass: 'text-blue-500', borderClass: 'border-blue-500' },
-                    { maxBmi: 25, name: 'Healthy Weight', textClass: 'text-green-500', borderClass: 'border-green-500' },
-                    { maxBmi: 30, name: 'Overweight', textClass: 'text-yellow-500', borderClass: 'border-yellow-500' },
-                    { maxBmi: Infinity, name: 'Obese', textClass: 'text-red-500', borderClass: 'border-red-500' }
-                ];
+        if (!height || !weight || height <= 0 || weight <= 0) {
+            resultsContainer.style.display = 'none';
+            errorMessage.textContent = 'Please enter a valid, positive height and weight.';
+            return;
+        }
 
-                const status = categories.find(cat => bmiValue < cat.maxBmi);
-                this.category = status.name;
-                this.categoryClass = status.textClass;
-                this.categoryBorderClass = status.borderClass;
+        errorMessage.textContent = '';
 
-                const minBmi = 15, maxBmi = 40;
-                const clampedBmi = Math.max(minBmi, Math.min(bmiValue, maxBmi));
-                this.gaugePosition = (clampedBmi - minBmi) / (maxBmi - minBmi) * 100;
+        let bmi;
+        if (unit === 'metric') {
+            bmi = (weight / (height / 100) ** 2).toFixed(1);
+        } else {
+            bmi = (weight / height ** 2 * 703).toFixed(1);
+        }
 
-                const minHealthyBmi = 18.5, maxHealthyBmi = 24.9;
-                let minWeight, maxWeight;
+        updateBmiDetails(height, bmi);
+        resultsContainer.style.display = 'block';
+    }
 
-                if (this.unit === 'metric') {
-                    minWeight = (minHealthyBmi * (height / 100) ** 2).toFixed(1);
-                    maxWeight = (maxHealthyBmi * (height / 100) ** 2).toFixed(1);
-                    this.healthyWeightRange = `${minWeight} kg - ${maxWeight} kg`;
-                } else {
-                    minWeight = (minHealthyBmi / 703 * height ** 2).toFixed(0);
-                    maxWeight = (maxHealthyBmi / 703 * height ** 2).toFixed(0);
-                    this.healthyWeightRange = `${minWeight} lbs - ${maxWeight} lbs`;
-                }
-            }
+    function updateBmiDetails(height, bmi) {
+        const bmiValueFloat = parseFloat(bmi);
+        const categories = [
+            { maxBmi: 18.5, name: 'Underweight', textClass: 'text-blue-500', borderClass: 'border-blue-500' },
+            { maxBmi: 25, name: 'Healthy Weight', textClass: 'text-green-500', borderClass: 'border-green-500' },
+            { maxBmi: 30, name: 'Overweight', textClass: 'text-yellow-500', borderClass: 'border-yellow-500' },
+            { maxBmi: Infinity, name: 'Obese', textClass: 'text-red-500', borderClass: 'border-red-500' }
+        ];
+
+        const status = categories.find(cat => bmiValueFloat < cat.maxBmi);
+        bmiValue.textContent = bmi;
+        bmiCategory.textContent = status.name;
+        bmiCategory.className = `text-xl font-bold ${status.textClass}`;
+
+        const minBmi = 15, maxBmi = 40;
+        const clampedBmi = Math.max(minBmi, Math.min(bmiValueFloat, maxBmi));
+        const gaugePosition = (clampedBmi - minBmi) / (maxBmi - minBmi) * 100;
+        bmiGauge.style.left = `${gaugePosition}%`;
+        bmiGauge.className = `absolute w-5 h-5 bg-white dark:bg-slate-300 rounded-full border-2 ${status.borderClass}`;
+
+
+        const minHealthyBmi = 18.5, maxHealthyBmi = 24.9;
+        let minWeight, maxWeight;
+
+        if (unit === 'metric') {
+            minWeight = (minHealthyBmi * (height / 100) ** 2).toFixed(1);
+            maxWeight = (maxHealthyBmi * (height / 100) ** 2).toFixed(1);
+            healthyWeightRange.textContent = `${minWeight} kg - ${maxWeight} kg`;
+        } else {
+            minWeight = (minHealthyBmi / 703 * height ** 2).toFixed(0);
+            maxWeight = (maxHealthyBmi / 703 * height ** 2).toFixed(0);
+            healthyWeightRange.textContent = `${minWeight} lbs - ${maxWeight} lbs`;
         }
     }
+
+    metricButton.addEventListener('click', () => {
+        unit = 'metric';
+        metricButton.classList.add('bg-white', 'dark:bg-slate-800', 'border', 'border-indigo-300');
+        metricButton.classList.remove('text-slate-600', 'dark:text-slate-400', 'bg-slate-200', 'dark:bg-slate-900');
+        imperialButton.classList.remove('bg-white', 'dark:bg-slate-800', 'border', 'border-indigo-300');
+        imperialButton.classList.add('text-slate-600', 'dark:text-slate-400', 'bg-slate-200', 'dark:bg-slate-900');
+        metricInputs.style.display = 'grid';
+        imperialInputs.style.display = 'none';
+        reset();
+    });
+
+    imperialButton.addEventListener('click', () => {
+        unit = 'imperial';
+        imperialButton.classList.add('bg-white', 'dark:bg-slate-800', 'border', 'border-indigo-300');
+        imperialButton.classList.remove('text-slate-600', 'dark:text-slate-400', 'bg-slate-200', 'dark:bg-slate-900');
+        metricButton.classList.remove('bg-white', 'dark:bg-slate-800', 'border', 'border-indigo-300');
+        metricButton.classList.add('text-slate-600', 'dark:text-slate-400', 'bg-slate-200', 'dark:bg-slate-900');
+        metricInputs.style.display = 'none';
+        imperialInputs.style.display = 'block';
+        reset();
+    });
+
+    calculateButton.addEventListener('click', () => calculateBmi());
+    resetButton.addEventListener('click', () => reset(true));
+
+    // Initial state
+    metricInputs.style.display = 'grid';
+    imperialInputs.style.display = 'none';
+    resultsContainer.style.display = 'none';
+});
+
 </script>
  
 </body>
