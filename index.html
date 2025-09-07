@@ -21,13 +21,15 @@
     <!-- Non-blocking load for Google Fonts stylesheet -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" />
     
-    <!-- Optimized Non-blocking load for your Tailwind build -->
-    <link rel="preload" href="./assets/style/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="./assets/style/style.css"></noscript>
+    <!-- 3) Non-blocking load for your Tailwind build -->
+    <link rel="preload" href="./assets/style/style.css" as="style" />
+    <link rel="stylesheet" href="./assets/style/style.css" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="./assets/style/style.css" />
     
     <script src="./assets/js/header.js" defer></script>
     <script src="./assets/js/footer.js" defer></script>
     <script src="./assets/js/main.js" defer></script>
+    <script src="./assets/ads/banner.js" defer></script>
 </head>
 <body class="bg-slate-200 font-sans text-slate-800 flex min-h-screen flex-col transition-colors duration-300 dark:bg-slate-900 dark:text-slate-200">
 
