@@ -1,85 +1,48 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-    <!-- SEO METADATA - OPTIMIZED FOR RANKING -->
-    <title>Compound Interest Calculator | Calculate Your Investment Growth</title>
-    <meta name="description" content="Use our free and powerful compound interest calculator to accurately project your investment growth. See detailed yearly, monthly, and even daily breakdowns to plan for retirement, savings goals, and your financial future.">
-    <meta name="keywords" content="compound interest calculator, investment calculator, future value calculator, interest calculator, savings calculator, investment projection, financial calculator, compounding interest, retirement calculator, savings growth calculator, investment return calculator, how to calculate investment growth, financial planning tool">
-    <link rel="canonical" href="https://www.aimultipletools.com/compound-interest-calculator" />
-    <meta property="og:title" content="Powerful Compound Interest Calculator with Future Value Projections" />
-    <meta property="og:description" content="Visualize your financial future. Our free tool calculates compound interest and provides powerful yearly, monthly, and weekly projections to help you achieve your savings and investment goals." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.aimultipletools.com/compound-interest-calculator" />
-    <meta property="og:image" content="https://www.aimultipletools.com/og-image-interest-calculator.png" />
-    <meta property="og:site_name" content="Ai Multiple Tools" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="The Best Compound Interest Calculator for Financial Planning" />
-    <meta name="twitter:description" content="Calculate your investment returns with our free compound interest tool. Perfect for projecting savings growth for retirement and other financial goals." />
-    <meta name="twitter:image" content="https://www.aimultipletools.com/twitter-card-interest-calculator.png" />
 
+    <!--! SEO & GEO OPTIMIZED META TAGS (VERIFIED) -->
+    <title>Best Free Video to MP3 Converter - High-Quality Audio Extraction | All Tool AI</title>
+    <meta name="keywords" content="video to mp3, audio extractor, video to audio, mp3 converter, free converter, online audio tool, high-quality audio, secure audio extraction, private converter, All Tool AI"/>
+    <meta name="description" content="The world's best free video to MP3 converter. Instantly extract high-quality MP3 audio from any video file. Fast, private, and secure online tool from All Tool AI. Your files are processed in your browser."/>
+    <meta name="author" content="All Tool AI"/>
+    <link rel="canonical" href="https://www.alltoolai.com/" />
+    
     <!-- FAVICON -->
     <link rel="icon" href="./assets/svg/logo.svg" type="image/svg+xml">
+
+    <!-- LAME.js MP3 ENCODER LIBRARY -->
+    <script src="https://cdn.jsdelivr.net/npm/lamejs@1.2.1/lame.min.js"></script>
 
     <!-- 1) Preconnect for Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <!-- 2) Non-blocking load for Google Fonts stylesheet -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" as="style" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" />
     
     <!-- 3) Non-blocking load for your Tailwind build -->
-    <link rel="preload" href="./assets/style/style.css" as="style" />
-    <link rel="stylesheet" href="./assets/style/style.css" media="print" onload="this.media='all'" />
     <link rel="stylesheet" href="./assets/style/style.css" />
     
     <script src="./assets/js/header.js" defer></script>
     <script src="./assets/js/footer.js" defer></script>
     <script src="./assets/js/main.js" defer></script>
-    <script src="./assets/ads/banner.js" defer></script>
-    
+
     <style>
-      
-      /* Base input styles from the first file */
-      input[type="number"], input[type="date"], select {
-          -moz-appearance: textfield;
+      #progress-bar.is-processing {
+        background-size: 40px 40px;
+        background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+        animation: progress-bar-stripes 1s linear infinite;
       }
-      input::-webkit-outer-spin-button,
-      input::-webkit-inner-spin-button {
-          -webkit-appearance: none;
-          margin: 0;
-      }
-      input[type="date"]::-webkit-calendar-picker-indicator,
-      input[type="time"]::-webkit-calendar-picker-indicator {
-        cursor: pointer;
-        filter: invert(0.5);
-      }
-      .dark input[type="date"]::-webkit-calendar-picker-indicator,
-      .dark input[type="time"]::-webkit-calendar-picker-indicator {
-        filter: invert(0.8);
-      }
-      
-      /* Styles for the "By Duration" / "By Date" switcher */
-      #mode-switcher label {
-          transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-      }
-      #mode-switcher input[type="radio"]:checked + label {
-          background-color: #4f46e5; /* indigo-600 */
-          color: white;
-          font-weight: 600;
-      }
-      html.dark #mode-switcher input[type="radio"]:checked + label {
-           background-color: #6366f1; /* indigo-500 */
-      }
-       @keyframes card-fade-in { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-      .results-card { animation: card-fade-in 0.5s ease-out forwards; }
+      @keyframes progress-bar-stripes { from { background-position: 40px 0 } to { background-position: 0 0 } }
     </style>
+
 </head>
-<body class="bg-slate-200 text-slate-800 flex min-h-screen flex-col transition-colors duration-300 dark:bg-slate-900 dark:text-slate-200">
+<body class="bg-slate-200 font-sans text-slate-800 flex min-h-screen flex-col transition-colors duration-300 dark:bg-slate-900 dark:text-slate-200">
 
 <div id="header-placeholder"></div>
 
@@ -91,76 +54,61 @@
 
         <div class="lg:grid lg:grid-cols-[side_bar] lg:gap-4">
 
-             <div class="min-w-0 overflow-hidden">
+            <div class="min-w-0 overflow-hidden">
                 <section class="bg-white p-4 sm:p-6 lg:p-8 rounded-2xl border border-indigo-300 dark:bg-slate-800 dark:border-slate-700">
-                    <header class="text-center mb-8">
-                        <h1 class="text-3xl lg:text-4xl font-extrabold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">Compound Interest Calculator</h1>
-                        <p class="mt-2 text-lg text-slate-600 dark:text-slate-400">Unlock the power of compounding. Project your savings growth and plan for your financial goals with precision.</p>
-                    </header>
-                    
-                    <form id="interest-form" novalidate class="w-full max-w-2xl mx-auto">
-                        <div class="space-y-6">
-                           <!-- Principal & Rate -->
-                            <div>
-                                <label for="principal" class="block text-sm font-medium leading-6 text-slate-900 dark:text-slate-200">Principal Amount ($)</label>
-                                <div class="mt-2">
-                                    <input type="number" id="principal" placeholder="1000" min="0" step="any" required class="block w-full rounded-md border-0 py-2.5 px-3 bg-slate-200 text-slate-900 dark:bg-slate-700 dark:text-slate-200">
-                                </div>
-                                <div class="text-red-600 dark:text-red-500 text-sm mt-1 min-h-[1.25rem]" id="principal-error"></div>
+                    <div class="text-center mb-8">
+                        <h1 class="text-3xl lg:text-4xl font-extrabold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">Free Video to MP3 Converter</h1>
+                        <p class="mt-2 text-lg text-slate-600 dark:text-slate-400">Extract high-quality MP3 audio. This tool is 100% free, private, and works directly in your browser without uploading your files.</p>
+                    </div>
+
+                    <div class="w-full max-w-2xl mx-auto space-y-6" id="converter-app">
+                        <!-- File Upload Area -->
+                        <label id="upload-area" for="file-input" class="block text-center p-8 border-2 border-dashed border-slate-300 dark:border-slate-500 rounded-lg cursor-pointer transition-colors hover:border-indigo-500 dark:hover:border-indigo-300 bg-slate-200 dark:bg-slate-900">
+                            <div class="flex flex-col items-center justify-center space-y-4 pointer-events-none">
+                                <p class="text-lg font-medium text-slate-700 dark:text-slate-300">Drag & drop your video here</p>
+                                <span class="text-slate-500 dark:text-slate-400">or</span>
+                                <span class="bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white font-semibold py-2.5 px-5 rounded-md text-base z-10">Select a File</span>
+                                <p class="flex items-center text-sm text-slate-500 dark:text-slate-400 pt-2">
+                                    <svg class="h-5 w-5 mr-1.5" viewBox="0 0 20 20" fill="currentColor">
+                                      <path fill-rule="evenodd" d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z" clip-rule="evenodd" />
+                                    </svg>
+                                    100% Secure. Files are processed on your device.
+                                </p>
                             </div>
-                            <!-- Compounding Frequency -->
-                            <div  class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
-                                <div>
-                                    <label for="compounding" class="block text-sm font-medium leading-6 text-slate-900 dark:text-slate-200">Compounding Frequency</label>
-                                    <div class="mt-2">
-                                    <select id="compounding" class="block w-full rounded-md border-0 py-2.5 px-3 bg-slate-200 text-slate-900 dark:bg-slate-700 dark:text-slate-200">
-                                        <option value="365">Daily</option><option value="52">Weekly</option><option value="12">Monthly</option><option value="4" selected>Quarterly</option><option value="1">Annually</option>
-                                    </select>
-                                    </div>
-                                </div>
-                                <div>
-                                    <label for="rate" class="block text-sm font-medium leading-6 text-slate-900 dark:text-slate-200">Annual Rate (%)</label>
-                                    <div class="mt-2">
-                                     <input type="number" id="rate" placeholder="5" min="0" step="any" required class="block w-full rounded-md border-0 py-2.5 px-3 bg-slate-200 text-slate-900 dark:bg-slate-700 dark:text-slate-200">
-                                    </div>
-                                    <div class="text-red-600 dark:text-red-500 text-sm mt-1 min-h-[1.25rem]" id="rate-error"></div>
-                                </div>
+                        </label>
+                        <input type="file" id="file-input" accept="video/*" class="hidden">
+
+                        <!-- Processing & Results Area -->
+                        <div id="processing-area" class="hidden space-y-8 pt-4">
+                            <!-- File Info -->
+                            <div id="file-info-area" class="bg-slate-100 dark:bg-slate-700 p-4 rounded-xl space-y-2">
+                                  <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 text-center">Selected Video File</h2>
+                                  <div id="file-details" class="text-center text-base text-slate-600 dark:text-slate-400"></div>
                             </div>
-                            <!-- Investment Period -->
-                            <fieldset>
-                               <div id="mode-switcher" class="flex rounded-lg p-1 my-4 bg-slate-200 dark:bg-slate-700">
-                                    <input type="radio" id="mode-duration" name="duration-mode" value="duration" class="hidden" checked><label for="mode-duration" class="flex-1 w-1/2 text-center py-2 px-3 rounded-md cursor-pointer text-slate-800 dark:text-slate-200">By Duration</label>
-                                    <input type="radio" id="mode-date" name="duration-mode" value="date" class="hidden"><label for="mode-date" class="flex-1 w-1/2 text-center py-2 px-3 rounded-md cursor-pointer text-slate-800 dark:text-slate-200">By Date</label>
+                            
+                            <!-- Audio Player -->
+                            <div id="player-container" class="hidden bg-slate-100 dark:bg-slate-700 p-4 rounded-xl space-y-3">
+                                <h3 class="text-center font-semibold text-lg text-slate-800 dark:text-slate-100">Preview Extracted Audio</h3>
+                                <audio id="audio-player" class="w-full" controls></audio>
+                            </div>
+
+                            <!-- Status/Progress -->
+                            <div id="status-container" class="text-center pt-2">
+                                <p id="status-message" class="text-4xl font-medium"></p>
+                                <div id="progress-bar-container" class="hidden w-full bg-slate-200 dark:bg-slate-700 rounded-md h-2.5 mt-2 overflow-hidden">
+                                    <div id="progress-bar" class="bg-indigo-600 dark:bg-indigo-500 h-2.5 rounded-md transition-all duration-300" style="width:0%"></div>
                                 </div>
-                                <div id="duration-container">
-                                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                                        <div><label for="years" class="block text-sm font-medium text-slate-700 dark:text-slate-300">Years</label><input type="number" id="years" placeholder="10" min="0" step="1" class="mt-1 block w-full rounded-md border-0 py-2.5 px-3 bg-slate-200 text-slate-900 dark:bg-slate-700 dark:text-slate-200"></div>
-                                        <div><label for="months" class="block text-sm font-medium text-slate-700 dark:text-slate-300">Months</label><input type="number" id="months" min="0" step="1" placeholder="0" class="mt-1 block w-full rounded-md border-0 py-2.5 px-3 bg-slate-200 text-slate-900 dark:bg-slate-700 dark:text-slate-200"></div>
-                                        <div><label for="days" class="block text-sm font-medium text-slate-700 dark:text-slate-300">Days</label><input type="number" id="days" min="0" step="1" placeholder="0" class="mt-1 block w-full rounded-md border-0 py-2.5 px-3 bg-slate-200 text-slate-900 dark:bg-slate-700 dark:text-slate-200"></div>
-                                    </div>
-                                    <div class="text-red-600 dark:text-red-500 text-sm mt-2 min-h-[1.25rem]" id="duration-error"></div>
-                                </div>
-                                <div id="date-container" class="hidden">
-                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                        <div><label for="start-date" class="block text-sm font-medium text-slate-700 dark:text-slate-300">Start Date</label><input type="date" id="start-date" class="mt-1 block w-full rounded-md border-0 py-2.5 px-3 bg-slate-200 text-slate-900 dark:bg-slate-700 dark:text-slate-200"></div>
-                                        <div><label for="end-date" class="block text-sm font-medium text-slate-700 dark:text-slate-300">End Date</label><input type="date" id="end-date" class="mt-1 block w-full rounded-md border-0 py-2.5 px-3 bg-slate-200 text-slate-900 dark:bg-slate-700 dark:text-slate-200"></div>
-                                    </div>
-                                    <div class="text-red-600 dark:text-red-500 text-sm mt-2 min-h-[1.25rem]" id="date-error"></div>
-                                </div>
-                            </fieldset>
-                             <!-- Buttons -->
-                            <div class="flex flex-col sm:flex-row gap-4 pt-2">
-                                <button type="submit" class="w-full sm:w-auto flex-grow text-white bg-indigo-600 hover:bg-indigo-700 font-semibold rounded-lg text-base px-5 py-3 transition-all dark:bg-indigo-500 dark:hover:bg-indigo-600">Calculate</button>
-                                <button type="reset" class="w-full sm:w-auto bg-slate-200 hover:bg-slate-300 text-slate-800 font-semibold rounded-lg text-base px-5 py-3 transition-colors dark:bg-slate-600 dark:hover:bg-slate-500 dark:text-slate-200">Reset</button>
                             </div>
                         </div>
-                    </form>
-                    
-                    <section id="results-section" class="max-w-4xl mx-auto mt-12" style="display: none;" aria-live="polite"></section>
+
+                        <!-- Action Buttons -->
+                        <div class="flex flex-col sm:flex-row gap-4 pt-2">
+                             <button id="convert-btn" class="w-full sm:w-auto flex-grow text-white bg-indigo-600 hover:bg-indigo-700 font-semibold rounded-lg text-base px-5 py-3 transition-all dark:bg-indigo-500 dark:hover:bg-indigo-600 disabled:bg-slate-400 dark:disabled:bg-slate-600 disabled:cursor-not-allowed" disabled>Extract MP3 Audio</button>
+                             <button id="download-btn" class="w-full sm:w-auto flex-grow text-white bg-indigo-600 hover:bg-indigo-700 font-semibold rounded-lg text-base px-5 py-3 transition-colors dark:bg-indigo-500 dark:hover:bg-indigo-600 disabled:bg-slate-400 dark:disabled:bg-slate-600 disabled:cursor-not-allowed hidden" disabled>Download MP3</button>
+                             <button id="reset-btn" class="w-full sm:w-auto bg-slate-200 hover:bg-slate-300 text-slate-800 font-semibold rounded-lg text-base px-5 py-3 transition-colors dark:bg-slate-600 dark:hover:bg-slate-500 dark:text-slate-200" disabled>Start Over</button>
+                        </div>
+                    </div>
                 </section>
-                <div class="my-4">
-                    <div id="midad-1" aria-label="Mid Ad 1"></div>
-                </div>
             </div>
 
             <aside class="hidden lg:flex flex-col">
@@ -185,233 +133,232 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-    // --- Compound Interest Calculator Logic ---
-    const elements = {
-        form: document.getElementById('interest-form'),
-        resultsSection: document.getElementById('results-section'),
-        principalInput: document.getElementById('principal'),
-        rateInput: document.getElementById('rate'),
-        compoundingSelect: document.getElementById('compounding'),
-        durationContainer: document.getElementById('duration-container'),
-        dateContainer: document.getElementById('date-container'),
-        yearsInput: document.getElementById('years'),
-        monthsInput: document.getElementById('months'),
-        daysInput: document.getElementById('days'),
-        startDateInput: document.getElementById('start-date'),
-        endDateInput: document.getElementById('end-date'),
+    // --- Element Selectors ---
+    const getEl = id => document.getElementById(id);
+
+    const uploadArea = getEl('upload-area');
+    const fileInput = getEl('file-input');
+    const processingArea = getEl('processing-area');
+    const fileDetails = getEl('file-details');
+    const playerContainer = getEl('player-container');
+    const audioPlayer = getEl('audio-player');
+    const statusMessage = getEl('status-message');
+    const progressBarContainer = getEl('progress-bar-container');
+    const progressBar = getEl('progress-bar');
+    const convertBtn = getEl('convert-btn');
+    const downloadBtn = getEl('download-btn');
+    const resetBtn = getEl('reset-btn');
+
+    // --- State Variables ---
+    let currentFile = null;
+    let objectUrl = null;
+    const audioContext = new(window.AudioContext || window.webkitAudioContext)();
+
+    // --- Helper Functions ---
+    const formatBytes = (bytes) => {
+        if (bytes === 0) return '0 Bytes';
+        const k = 1024;
+        const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        return `${parseFloat((bytes / Math.pow(k, i)).toFixed(2))} ${sizes[i]}`;
     };
 
-    let currentParams = {};
-    let dailyPagination = { currentPage: 1, itemsPerPage: 100 };
-    const MS_IN_YEAR = 1000 * 60 * 60 * 24 * 365.25;
+    const updateStatus = (message, type = 'info') => {
+        statusMessage.textContent = message;
+        const colors = {
+            'error': 'text-red-600 dark:text-red-500',
+            'success': 'text-indigo-600 dark:text-indigo-400',
+            'info': 'text-slate-600 dark:text-slate-400'
+        };
+        statusMessage.className = `text-base font-medium transition-colors ${colors[type]}`;
+    };
 
-    const formatCurrency = (value) => isNaN(value) ? '$0.00' : value.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-    const compoundInterest = (p, r, n, t) => p * Math.pow(1 + r / n, n * t);
+    const updateProgress = (percentage) => {
+        progressBar.style.width = `${percentage}%`;
+    };
 
-    const calculateTimeInYears = () => {
-        if (document.getElementById('mode-duration').checked) {
-            const years = parseFloat(elements.yearsInput.value) || 0;
-            const months = parseFloat(elements.monthsInput.value) || 0;
-            const days = parseFloat(elements.daysInput.value) || 0;
-            return years + (months / 12) + (days / 365.25);
+    // --- UI Logic ---
+    const resetUI = (isError = false) => {
+        if (objectUrl) URL.revokeObjectURL(objectUrl);
+        objectUrl = currentFile = null;
+        fileInput.value = '';
+
+        if (!isError) {
+            updateStatus('Please select a video file to begin.');
         }
-        const start = new Date(elements.startDateInput.value);
-        const end = new Date(elements.endDateInput.value);
-        if (isNaN(start.getTime()) || isNaN(end.getTime())) return 0;
-        return (end - start) / MS_IN_YEAR;
-    };
-    
-    const clearErrors = () => elements.form.querySelectorAll('[id$="-error"]').forEach(el => el.textContent = '');
-    
-    const handleModeChange = () => {
-        const isDurationMode = document.getElementById('mode-duration').checked;
-        elements.durationContainer.classList.toggle('hidden', !isDurationMode);
-        elements.dateContainer.classList.toggle('hidden', isDurationMode);
-        clearErrors();
+
+        uploadArea.classList.remove('hidden', 'drag-over');
+        processingArea.classList.add('hidden');
+        playerContainer.classList.add('hidden');
+        audioPlayer.src = '';
+        audioPlayer.removeAttribute('src');
+
+        convertBtn.disabled = true;
+        downloadBtn.disabled = true;
+        convertBtn.classList.remove('hidden');
+        downloadBtn.classList.add('hidden');
+        resetBtn.disabled = true;
+
+        progressBarContainer.classList.add('hidden');
+        updateProgress(0);
+        progressBar.classList.remove('is-processing');
     };
 
-    const validateForm = () => {
-        clearErrors();
-        let isValid = true;
-        ['principal', 'rate'].forEach(id => {
-            const input = document.getElementById(id);
-            if (input.value.trim() === '' || parseFloat(input.value) < 0) {
-                document.getElementById(`${id}-error`).textContent = 'Please enter a valid, non-negative number.';
-                isValid = false;
-            }
-        });
-        const time = calculateTimeInYears();
-        if (time <= 0) {
-            if (document.getElementById('mode-duration').checked) {
-                document.getElementById('duration-error').textContent = 'Please enter a duration greater than 0.';
-            } else {
-                document.getElementById('date-error').textContent = !elements.startDateInput.value || !elements.endDateInput.value ? 'Please select both start and end dates.' : 'End date must be after the start date.';
-            }
-            isValid = false;
-        }
-        return isValid;
-    };
-    
-    const handleFormSubmit = (e) => {
-        e.preventDefault();
-        elements.resultsSection.style.display = 'none';
-        if (!validateForm()) return;
-        currentParams = { p: parseFloat(elements.principalInput.value), r: parseFloat(elements.rateInput.value) / 100, n: parseInt(elements.compoundingSelect.value), t: calculateTimeInYears() };
-        const finalAmount = compoundInterest(currentParams.p, currentParams.r, currentParams.n, currentParams.t);
-        renderResultsPage(finalAmount);
-    };
+    const handleFile = (file) => {
+        resetUI();
+        if (!file) return;
 
-    const handleFormReset = () => {
-        elements.form.reset();
-        elements.compoundingSelect.value = '4';
-        document.getElementById('mode-duration').checked = true;
-        handleModeChange();
-        elements.resultsSection.style.display = 'none';
-        elements.principalInput.focus();
-    };
-    
-    const renderResultsPage = (finalAmount) => {
-        const totalInterest = finalAmount - currentParams.p;
-        elements.resultsSection.innerHTML = `
-            <div class="space-y-8 pt-4">
-                <!-- Summary Card -->
-                <div class="text-center space-y-4 results-card" style="animation-delay: 0s;">
-                    <h2 class="text-2xl font-bold text-slate-800 dark:text-slate-200">Investment Summary</h2>
-                    <div class="grid grid-cols-1 gap-4">
-                        <div class="bg-slate-100 p-6 rounded-xl dark:bg-slate-900">
-                            <h3 class="font-semibold text-xl text-slate-600 dark:text-slate-400">Future Value</h3>
-                            <p class="text-4xl font-extrabold text-indigo-600 dark:text-indigo-400 mt-2">${formatCurrency(finalAmount)}</p>
-                        </div>
-                        <div class="bg-slate-100 p-6 rounded-xl dark:bg-slate-900">
-                            <h3 class="font-semibold text-xl text-slate-600 dark:text-slate-400">Total Interest Earned</h3>
-                            <p class="text-4xl font-extrabold text-indigo-600 dark:text-indigo-400 mt-2">${formatCurrency(totalInterest)}</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Projected Earnings Card -->
-                <div class="text-center space-y-4 results-card" style="animation-delay: 100ms;">
-                    <h2 class="text-2xl font-bold text-slate-800 dark:text-slate-200">Projected Earning Power</h2>
-                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div class="bg-slate-100 dark:bg-slate-900 p-4 rounded-lg"><p class="text-lg text-slate-500 dark:text-slate-400">Next Day</p><span id="proj-day" class="block font-bold text-xl text-slate-700 dark:text-slate-200"></span></div>
-                        <div class="bg-slate-100 dark:bg-slate-900 p-4 rounded-lg"><p class="text-lg text-slate-500 dark:text-slate-400">Next Week</p><span id="proj-week" class="block font-bold text-xl text-slate-700 dark:text-slate-200"></span></div>
-                        <div class="bg-slate-100 dark:bg-slate-900 p-4 rounded-lg"><p class="text-lg text-slate-500 dark:text-slate-400">Next Month</p><span id="proj-month" class="block font-bold text-xl text-slate-700 dark:text-slate-200"></span></div>
-                        <div class="bg-slate-100 dark:bg-slate-900 p-4 rounded-lg"><p class="text-lg text-slate-500 dark:text-slate-400">Next Year</p><span id="proj-year" class="block font-bold text-xl text-slate-700 dark:text-slate-200"></span></div>
-                    </div>
-                </div>
-                <!-- Breakdown Card -->
-                <div class="results-card" style="animation-delay: 200ms;" id="breakdown-card"></div>
-            </div>`;
-        renderProjectedGrowth(finalAmount);
-        renderBreakdownArea();
-        elements.resultsSection.style.display = 'block';
-        elements.resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    };
-
-    const renderProjectedGrowth = (finalAmount) => {
-        const { r, n } = currentParams;
-        const getInterest = (t) => `+${formatCurrency(compoundInterest(finalAmount, r, n, t) - finalAmount)}`;
-        document.getElementById('proj-day').textContent = getInterest(1/365.25);
-        document.getElementById('proj-week').textContent = getInterest(7/365.25);
-        document.getElementById('proj-month').textContent = getInterest(1/12);
-        document.getElementById('proj-year').textContent = getInterest(1);
-    };
-
-    const renderBreakdownArea = () => {
-        const { t } = currentParams;
-        const totalDays = t * 365.25;
-        const breakdownCard = document.getElementById('breakdown-card');
-        const DAILY_LIMIT = 2000;
-        const tabs = [{ name: 'Yearly', view: 'yearly', condition: t >= 1 }, { name: 'Monthly', view: 'monthly', condition: t * 12 >= 1 }, { name: 'Weekly', view: 'weekly', condition: t * 52 >= 1 }, { name: 'Daily', view: 'daily', condition: totalDays >= 1, disabled: totalDays > DAILY_LIMIT }].filter(tab => tab.condition);
-        
-        if (tabs.length === 0) {
-            breakdownCard.innerHTML = `<div class="text-center p-8 bg-slate-100 dark:bg-slate-700 rounded-xl"><h3 class="text-xl font-bold text-slate-800 dark:text-slate-200">No Detailed Breakdown</h3><p class="text-slate-500 dark:text-slate-400">Duration is too short for a detailed breakdown.</p></div>`; return;
-        }
-        const tabsHTML = tabs.map(tab => `<div class="flex items-center justify-center"><button class="breakdown-tab px-4 py-2 ml-4 text-lg font-semibold rounded-lg transition-colors ${tab.disabled ? 'opacity-50 cursor-not-allowed' : ''}" data-view="${tab.view}" ${tab.disabled ? 'disabled' : ''}>${tab.name}</button></div>`).join('');
-        const dailyTabNote = tabs.find(tab => tab.disabled) ? `<div class="text-center text-base my-4 text-slate-500 dark:text-slate-400">Daily breakdown is available for durations up to ${DAILY_LIMIT} days.</div>` : '';
-        
-        breakdownCard.innerHTML = `<div class="text-center space-y-4">
-              <h2 class="text-2xl font-bold text-slate-800 dark:text-slate-200">Detailed Breakdown</h2>
-              <div class="bg-slate-100 p-4 rounded-xl dark:bg-slate-900">
-                <div id="breakdown-controls" class="flex justify-center flex-wrap gap-2 mb-4">${tabsHTML}</div>
-                ${dailyTabNote}
-                <div class="table-wrapper overflow-x-auto rounded-lg"><table class="w-full text-left text-base"><thead id="breakdown-head" class="text-slate-600 dark:text-slate-300"></thead><tbody id="breakdown-body"></tbody></table></div>
-                <div id="pagination-controls" class="mt-4"></div>
-              </div>
-            </div>`;
-        
-        const defaultTab = tabs.find(tab => !tab.disabled) || tabs[0];
-        renderBreakdownTable(defaultTab.view);
-    };
-    
-    const renderBreakdownTable = (view) => {
-        document.querySelectorAll('.breakdown-tab').forEach(tab => {
-            tab.classList.remove('active-tab', 'bg-indigo-600', 'dark:bg-indigo-400', 'text-white');
-            tab.classList.add('bg-slate-200', 'dark:bg-slate-700', 'text-slate-800', 'dark:text-slate-200');
-        });
-        const activeTab = document.querySelector(`.breakdown-tab[data-view="${view}"]`);
-        activeTab.classList.add('active-tab', 'bg-indigo-600', 'dark:bg-indigo-400', 'text-white');
-        activeTab.classList.remove('bg-slate-200', 'dark:bg-slate-700', 'text-slate-800', 'dark:text-slate-200');
-        
-        if (view === 'daily') {
-            dailyPagination.currentPage = 1;
-            renderDailyPage();
+        if (!file.type.startsWith('video/')) {
+            updateStatus('Invalid file type. Please select a video file.', 'error');
             return;
         }
 
-        const { p, r, n, t } = currentParams;
-        const periodsConfig = { yearly: { name: 'Year', count: Math.floor(t), period: 1 }, monthly: { name: 'Month', count: Math.floor(t * 12), period: 1/12 }, weekly: { name: 'Week', count: Math.floor(t * 52), period: 1/52 }};
-        const { name, count, period } = periodsConfig[view];
-
-        document.getElementById('breakdown-head').innerHTML = `<tr><th class="p-3 font-semibold">${name}</th><th class="p-3 font-semibold text-right">Start Balance</th><th class="p-3 font-semibold text-right">Interest</th><th class="p-3 font-semibold text-right">End Balance</th></tr>`;
-        let rowsHTML = '';
-        for (let i = 1; i <= count; i++) {
-            const start = compoundInterest(p, r, n, (i - 1) * period);
-            const end = compoundInterest(p, r, n, i * period);
-            rowsHTML += `<tr class="border-b border-slate-200 dark:border-slate-600"><td class="p-3 text-slate-500 dark:text-slate-400">${i}</td><td class="p-3 text-right font-semibold text-green-500">${formatCurrency(start)}</td><td class="p-3 text-right font-semibold text-red-500">+${formatCurrency(end - start)}</td><td class="p-3 font-semibold text-blue-500 text-right">${formatCurrency(end)}</td></tr>`;
-        }
-        document.getElementById('breakdown-body').innerHTML = rowsHTML;
-        document.getElementById('pagination-controls').innerHTML = '';
+        currentFile = file;
+        fileDetails.innerHTML = `<p class="font-bold text-slate-700 dark:text-slate-200 truncate">${file.name}</p><p>${formatBytes(file.size)}</p>`;
+        processingArea.classList.remove('hidden');
+        uploadArea.classList.add('hidden');
+        updateStatus('File ready. Click "Extract MP3 Audio" to begin.', 'success');
+        convertBtn.disabled = false;
+        resetBtn.disabled = false;
     };
 
-    const renderDailyPage = () => {
-        const { p, r, n, t } = currentParams;
-        const { currentPage, itemsPerPage } = dailyPagination;
-        const totalDays = Math.floor(t * 365.25);
-        const startIndex = (currentPage - 1) * itemsPerPage;
-        const endIndex = Math.min(startIndex + itemsPerPage, totalDays);
+    // --- Audio Processing ---
+    const encodeMp3 = (audioBuffer) => {
+        const channels = audioBuffer.numberOfChannels;
+        const sampleRate = audioBuffer.sampleRate;
+        const kbps = 128; // Standard MP3 bitrate
+        const mp3encoder = new lamejs.Mp3Encoder(channels, sampleRate, kbps);
         
-        let rowsHTML = '';
-        for (let i = startIndex + 1; i <= endIndex; i++) {
-             const start = compoundInterest(p, r, n, (i-1)/365.25);
-             const end = compoundInterest(p, r, n, i/365.25);
-             rowsHTML += `<tr class="border-b border-slate-200 dark:border-slate-600"><td class="p-3 text-slate-500 dark:text-slate-400">${i}</td><td class="p-3 text-right font-semibold text-green-500">${formatCurrency(start)}</td><td class="p-3 text-right font-semibold text-red-500">+${formatCurrency(end-start)}</td><td class="p-3 text-right font-semibold text-blue-500">${formatCurrency(end)}</td></tr>`;
+        // Get PCM data from each channel
+        const pcmData = [];
+        for (let i = 0; i < channels; i++) {
+            pcmData.push(audioBuffer.getChannelData(i));
         }
-        
-        document.getElementById('breakdown-head').innerHTML = `<tr><th class="p-3 font-semibold">Day</th><th class="p-3 font-semibold text-right">Start Balance</th><th class="p-3 font-semibold text-right">Interest</th><th class="p-3 font-semibold text-right">End Balance</th></tr>`;
-        document.getElementById('breakdown-body').innerHTML = rowsHTML;
-        
-        const paginationControls = document.getElementById('pagination-controls');
-        const totalPages = Math.ceil(totalDays/itemsPerPage);
 
-        paginationControls.innerHTML = (totalPages <= 1) ? '' : `<div class="flex justify-between items-center w-full mt-4"><button class="px-4 py-2 rounded-lg text-sm font-semibold transition-colors bg-slate-200 hover:bg-slate-300 dark:bg-slate-600 dark:hover:bg-slate-500 disabled:opacity-50" data-page-nav="prev" ${currentPage === 1 ? 'disabled' : ''}>Previous</button><span class="text-sm text-slate-500 dark:text-slate-400">Page ${currentPage} of ${totalPages}</span><button class="px-4 py-2 rounded-lg text-sm font-semibold transition-colors bg-slate-200 hover:bg-slate-300 dark:bg-slate-600 dark:hover:bg-slate-500 disabled:opacity-50" data-page-nav="next" ${currentPage === totalPages ? 'disabled' : ''}>Next</button></div>`;
+        // Convert PCM float samples to 16-bit signed integers
+        const to16BitInt = (floatData) => {
+            const output = new Int16Array(floatData.length);
+            for (let i = 0; i < floatData.length; i++) {
+                const s = Math.max(-1, Math.min(1, floatData[i]));
+                output[i] = s < 0 ? s * 0x8000 : s * 0x7FFF;
+            }
+            return output;
+        };
+
+        const samplesLeft = to16BitInt(pcmData[0]);
+        const samplesRight = channels > 1 ? to16BitInt(pcmData[1]) : null;
+
+        let remaining = samplesLeft.length;
+        const maxSamples = 1152; // Max samples per frame
+        const mp3Data = [];
+
+        for (let i = 0; remaining >= maxSamples; i += maxSamples) {
+            const leftChunk = samplesLeft.subarray(i, i + maxSamples);
+            let rightChunk = null;
+            if (channels > 1) {
+                rightChunk = samplesRight.subarray(i, i + maxSamples);
+            }
+            const mp3buf = mp3encoder.encodeBuffer(leftChunk, rightChunk);
+            if (mp3buf.length > 0) {
+                mp3Data.push(new Int8Array(mp3buf));
+            }
+            remaining -= maxSamples;
+        }
+
+        const finalMp3buf = mp3encoder.flush();
+        if (finalMp3buf.length > 0) {
+            mp3Data.push(new Int8Array(finalMp3buf));
+        }
+
+        return new Blob(mp3Data, { type: 'audio/mp3' });
     };
-    
+
+    const processFile = (file) => {
+        updateStatus('Initializing...', 'info');
+        progressBarContainer.classList.remove('hidden');
+        updateProgress(0);
+        convertBtn.disabled = true;
+        resetBtn.disabled = true;
+
+        const reader = new FileReader();
+        reader.onerror = () => {
+            updateStatus('Error: Failed to read file.', 'error');
+            resetUI(true);
+        };
+        reader.onprogress = (event) => {
+            if (event.lengthComputable) {
+                const percentLoaded = Math.round((event.loaded / event.total) * 50);
+                updateStatus(`Reading file (${percentLoaded * 2}%)`, 'info');
+                updateProgress(percentLoaded);
+            }
+        };
+        reader.onload = async (e) => {
+            try {
+                updateStatus('Decoding audio...', 'info');
+                updateProgress(50);
+                progressBar.classList.add('is-processing');
+
+                const decodedAudioBuffer = await audioContext.decodeAudioData(e.target.result);
+                progressBar.classList.remove('is-processing');
+
+                updateStatus('Encoding to MP3...', 'info');
+                updateProgress(90);
+
+                const mp3Blob = encodeMp3(decodedAudioBuffer);
+
+                if (objectUrl) URL.revokeObjectURL(objectUrl);
+                objectUrl = URL.createObjectURL(mp3Blob);
+                audioPlayer.src = objectUrl;
+
+                updateStatus('Extraction Complete!', 'success');
+                updateProgress(100);
+
+                playerContainer.classList.remove('hidden');
+                convertBtn.classList.add('hidden');
+                downloadBtn.classList.remove('hidden');
+                downloadBtn.disabled = false;
+                resetBtn.disabled = false;
+
+            } catch (err) {
+                console.error(err);
+                updateStatus('Extraction Failed: The audio codec may not be supported.', 'error');
+                resetUI(true);
+            }
+        };
+        reader.readAsArrayBuffer(file);
+    };
+
     // --- Event Listeners ---
-    elements.form.addEventListener('submit', handleFormSubmit);
-    elements.form.addEventListener('reset', handleFormReset);
-    document.getElementById('mode-switcher').addEventListener('change', handleModeChange);
-    elements.resultsSection.addEventListener('click', (e) => {
-        if (e.target.matches('.breakdown-tab')) {
-            renderBreakdownTable(e.target.dataset.view);
-        } else if (e.target.matches('[data-page-nav]')) {
-            if(e.target.dataset.pageNav === 'next') dailyPagination.currentPage++;
-            if(e.target.dataset.pageNav === 'prev') dailyPagination.currentPage--;
-            renderDailyPage();
-        }
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+        uploadArea.addEventListener(eventName, e => {
+            e.preventDefault();
+            e.stopPropagation();
+        });
     });
-    // Prevent typing negative signs or 'e' in number inputs
-    [elements.principalInput, elements.rateInput, elements.yearsInput, elements.monthsInput, elements.daysInput].forEach(input => input.addEventListener('keydown', e => (e.key === '-' || e.key === 'e') && e.preventDefault()));
+    ['dragenter', 'dragover'].forEach(eventName => {
+        uploadArea.addEventListener(eventName, () => uploadArea.classList.add('border-indigo-500', 'dark:border-indigo-500'));
+    });
+    ['dragleave', 'drop'].forEach(eventName => {
+        uploadArea.addEventListener(eventName, () => uploadArea.classList.remove('border-indigo-500', 'dark:border-indigo-500'));
+    });
+    uploadArea.addEventListener('drop', e => handleFile(e.dataTransfer.files[0]));
+    fileInput.addEventListener('change', () => handleFile(fileInput.files[0]));
+    resetBtn.addEventListener('click', () => resetUI());
+    convertBtn.addEventListener('click', () => { if (currentFile) processFile(currentFile); });
+    downloadBtn.addEventListener('click', () => {
+        if (!objectUrl) return;
+        const a = document.createElement('a');
+        a.href = objectUrl;
+        a.download = `${currentFile.name.substring(0, currentFile.name.lastIndexOf('.')) || currentFile.name}.mp3`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    });
+    
+    // --- Initial State ---
+    resetUI();
 });
 </script>
+ 
 </body>
 </html>
