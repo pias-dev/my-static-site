@@ -6,14 +6,17 @@
 
 
     <!--! SEO & GEO OPTIMIZED META TAGS (VERIFIED) -->
-    <title>Best Free Video to WAV Converter - High-Quality Audio Extraction | All Tool AI</title>
-    <meta name="keywords" content="video to wav, audio extractor, video to audio, wav converter, free converter, online audio tool, high-quality audio, secure audio extraction, private converter, All Tool AI"/>
-    <meta name="description" content="The world's best free video to WAV converter. Instantly extract high-quality, uncompressed WAV audio from any video file. Fast, private, and secure online tool from All Tool AI. Your files are processed in your browser."/>
+    <title>Best Free Video to MP3 Converter - High-Quality Audio Extraction | All Tool AI</title>
+    <meta name="keywords" content="video to mp3, audio extractor, video to audio, mp3 converter, free converter, online audio tool, high-quality audio, secure audio extraction, private converter, All Tool AI"/>
+    <meta name="description" content="The world's best free video to MP3 converter. Instantly extract high-quality MP3 audio from any video file. Fast, private, and secure online tool from All Tool AI. Your files are processed in your browser."/>
     <meta name="author" content="All Tool AI"/>
     <link rel="canonical" href="https://www.alltoolai.com/" />
     
     <!-- FAVICON -->
     <link rel="icon" href="./assets/svg/logo.svg" type="image/svg+xml">
+
+    <!-- LAME.js MP3 ENCODER LIBRARY -->
+    <script src="https://cdn.jsdelivr.net/npm/lamejs@1.2.1/lame.min.js"></script>
 
     <!-- 1) Preconnect for Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -54,8 +57,8 @@
             <div class="min-w-0 overflow-hidden">
                 <section class="bg-white p-4 sm:p-6 lg:p-8 rounded-2xl border border-indigo-300 dark:bg-slate-800 dark:border-slate-700">
                     <div class="text-center mb-8">
-                        <h1 class="text-3xl lg:text-4xl font-extrabold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">Free Video to WAV Converter</h1>
-                        <p class="mt-2 text-lg text-slate-600 dark:text-slate-400">Extract high-quality WAV audio. This tool is 100% free, private, and works directly in your browser without uploading your files.</p>
+                        <h1 class="text-3xl lg:text-4xl font-extrabold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">Free Video to MP3 Converter</h1>
+                        <p class="mt-2 text-lg text-slate-600 dark:text-slate-400">Extract high-quality MP3 audio. This tool is 100% free, private, and works directly in your browser without uploading your files.</p>
                     </div>
 
                     <div class="w-full max-w-2xl mx-auto space-y-6" id="converter-app">
@@ -86,19 +89,7 @@
                             <!-- Audio Player -->
                             <div id="player-container" class="hidden bg-slate-100 dark:bg-slate-700 p-4 rounded-xl space-y-3">
                                 <h3 class="text-center font-semibold text-lg text-slate-800 dark:text-slate-100">Preview Extracted Audio</h3>
-                                <audio id="audio-player" class="w-full hidden" controls></audio>
-                                <div class="flex items-center gap-4">
-                                    <button id="play-pause-btn" aria-label="Play/Pause" class="bg-transparent">
-                                        <svg id="play-icon" class="h-8 w-8 text-blue-500 hover:opacity-80" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
-                                        </svg>
-                                        <svg id="pause-icon" class="hidden h-8 w-8 text-blue-500 hover:opacity-80" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                          <path fill-rule="evenodd" d="M2 10a8 8 0 1116 0 8 8 0 01-16 0zM8.25 7.25a.75.75 0 00-1.5 0v5.5a.75.75 0 001.5 0v-5.5zM12.25 7.25a.75.75 0 00-1.5 0v5.5a.75.75 0 001.5 0v-5.5z" clip-rule="evenodd" />
-                                        </svg>
-                                    </button>
-                                    <input type="range" id="seek-bar" value="0" step="0.1" class="w-full h-2.5 rounded-lg cursor-pointer">
-                                    <span id="current-time" class="text-base w-10 text-slate-500 dark:text-slate-300">0:00</span>
-                                </div>
+                                <audio id="audio-player" class="w-full" controls></audio>
                             </div>
 
                             <!-- Status/Progress -->
@@ -111,10 +102,10 @@
                         </div>
 
                         <!-- Action Buttons -->
-                        <div id="calculate-section" class="flex flex-col sm:flex-row gap-4 pt-2">
-                             <button id="convert-btn" class="w-full sm:w-auto flex-grow text-white bg-indigo-600 hover:bg-indigo-700 font-semibold rounded-lg text-base px-5 py-3 transition-all dark:bg-indigo-500 dark:hover:bg-indigo-600 disabled:bg-slate-400 dark:disabled:bg-slate-600 disabled:cursor-not-allowed" disabled>Extract WAV Audio</button>
-                             <button id="download-btn" class="w-full sm:w-auto flex-grow text-white bg-indigo-600 hover:bg-indigo-700 font-semibold rounded-lg text-base px-5 py-3 transition-colors dark:bg-indigo-500 dark:hover:bg-indigo-600 disabled:bg-slate-400 dark:disabled:bg-slate-600 disabled:cursor-not-allowed hidden" disabled>Download WAV</button>
-                             <button id="reset-btn" class="w-full sm:w-auto bg-slate-200 hover:bg-slate-300 text-slate-800 font-semibold rounded-lg text-base px-5 py-3 transition-colors dark:bg-slate-600 dark:hover:bg-slate-500 dark:text-slate-200 disabled:opacity-50" disabled>Start Over</button>
+                        <div class="flex flex-col sm:flex-row gap-4 pt-2">
+                             <button id="convert-btn" class="w-full sm:w-auto flex-grow text-white bg-indigo-600 hover:bg-indigo-700 font-semibold rounded-lg text-base px-5 py-3 transition-all dark:bg-indigo-500 dark:hover:bg-indigo-600 disabled:bg-slate-400 dark:disabled:bg-slate-600 disabled:cursor-not-allowed" disabled>Extract MP3 Audio</button>
+                             <button id="download-btn" class="w-full sm:w-auto flex-grow text-white bg-indigo-600 hover:bg-indigo-700 font-semibold rounded-lg text-base px-5 py-3 transition-colors dark:bg-indigo-500 dark:hover:bg-indigo-600 disabled:bg-slate-400 dark:disabled:bg-slate-600 disabled:cursor-not-allowed hidden" disabled>Download MP3</button>
+                             <button id="reset-btn" class="w-full sm:w-auto bg-slate-200 hover:bg-slate-300 text-slate-800 font-semibold rounded-lg text-base px-5 py-3 transition-colors dark:bg-slate-600 dark:hover:bg-slate-500 dark:text-slate-200" disabled>Start Over</button>
                         </div>
                     </div>
                 </section>
@@ -151,11 +142,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const fileDetails = getEl('file-details');
     const playerContainer = getEl('player-container');
     const audioPlayer = getEl('audio-player');
-    const playPauseBtn = getEl('play-pause-btn');
-    const playIcon = getEl('play-icon');
-    const pauseIcon = getEl('pause-icon');
-    const seekBar = getEl('seek-bar');
-    const currentTimeEl = getEl('current-time');
     const statusMessage = getEl('status-message');
     const progressBarContainer = getEl('progress-bar-container');
     const progressBar = getEl('progress-bar');
@@ -191,13 +177,6 @@ document.addEventListener('DOMContentLoaded', () => {
         progressBar.style.width = `${percentage}%`;
     };
 
-    const formatTime = (seconds) => {
-        if (isNaN(seconds)) return '0:00';
-        const minutes = Math.floor(seconds / 60);
-        const remainingSeconds = Math.floor(seconds % 60).toString().padStart(2, '0');
-        return `${minutes}:${remainingSeconds}`;
-    };
-
     // --- UI Logic ---
     const resetUI = (isError = false) => {
         if (objectUrl) URL.revokeObjectURL(objectUrl);
@@ -223,11 +202,6 @@ document.addEventListener('DOMContentLoaded', () => {
         progressBarContainer.classList.add('hidden');
         updateProgress(0);
         progressBar.classList.remove('is-processing');
-
-        playIcon.classList.remove('hidden');
-        pauseIcon.classList.add('hidden');
-        seekBar.value = 0;
-        currentTimeEl.textContent = '0:00';
     };
 
     const handleFile = (file) => {
@@ -241,58 +215,64 @@ document.addEventListener('DOMContentLoaded', () => {
 
         currentFile = file;
         fileDetails.innerHTML = `<p class="font-bold text-slate-700 dark:text-slate-200 truncate">${file.name}</p><p>${formatBytes(file.size)}</p>`;
-
         processingArea.classList.remove('hidden');
         uploadArea.classList.add('hidden');
-
-        updateStatus('File ready. Click "Extract WAV Audio" to begin.', 'success');
+        updateStatus('File ready. Click "Extract MP3 Audio" to begin.', 'success');
         convertBtn.disabled = false;
         resetBtn.disabled = false;
     };
 
     // --- Audio Processing ---
-    const encodeWAV = (audioBuffer) => {
-        const numChannels = audioBuffer.numberOfChannels;
+    const encodeMp3 = (audioBuffer) => {
+        const channels = audioBuffer.numberOfChannels;
         const sampleRate = audioBuffer.sampleRate;
-        const length = audioBuffer.length;
-        const bufferLength = length * numChannels * 2 + 44;
-        const buffer = new ArrayBuffer(bufferLength);
-        const view = new DataView(buffer);
-        let offset = 0;
+        const kbps = 128; // Standard MP3 bitrate
+        const mp3encoder = new lamejs.Mp3Encoder(channels, sampleRate, kbps);
+        
+        // Get PCM data from each channel
+        const pcmData = [];
+        for (let i = 0; i < channels; i++) {
+            pcmData.push(audioBuffer.getChannelData(i));
+        }
 
-        const writeString = (view, offset, string) => {
-            for (let i = 0; i < string.length; i++) {
-                view.setUint8(offset + i, string.charCodeAt(i));
+        // Convert PCM float samples to 16-bit signed integers
+        const to16BitInt = (floatData) => {
+            const output = new Int16Array(floatData.length);
+            for (let i = 0; i < floatData.length; i++) {
+                const s = Math.max(-1, Math.min(1, floatData[i]));
+                output[i] = s < 0 ? s * 0x8000 : s * 0x7FFF;
             }
+            return output;
         };
 
-        writeString(view, offset, 'RIFF'); offset += 4;
-        view.setUint32(offset, bufferLength - 8, true); offset += 4;
-        writeString(view, offset, 'WAVE'); offset += 4;
-        writeString(view, offset, 'fmt '); offset += 4;
-        view.setUint32(offset, 16, true); offset += 4; // Sub-chunk size
-        view.setUint16(offset, 1, true); offset += 2; // Audio format (1 for PCM)
-        view.setUint16(offset, numChannels, true); offset += 2;
-        view.setUint32(offset, sampleRate, true); offset += 4;
-        view.setUint32(offset, sampleRate * 2 * numChannels, true); offset += 4; // Byte rate
-        view.setUint16(offset, numChannels * 2, true); offset += 2; // Block align
-        view.setUint16(offset, 16, true); offset += 2; // Bits per sample
-        writeString(view, offset, 'data'); offset += 4;
-        view.setUint32(offset, bufferLength - offset, true); offset += 4;
+        const samplesLeft = to16BitInt(pcmData[0]);
+        const samplesRight = channels > 1 ? to16BitInt(pcmData[1]) : null;
 
-        const channelData = Array.from({ length: numChannels }, (_, i) => audioBuffer.getChannelData(i));
+        let remaining = samplesLeft.length;
+        const maxSamples = 1152; // Max samples per frame
+        const mp3Data = [];
 
-        for (let i = 0; i < length; i++) {
-            for (let j = 0; j < numChannels; j++) {
-                let sample = Math.max(-1, Math.min(1, channelData[j][i]));
-                sample = sample < 0 ? sample * 32768 : sample * 32767;
-                view.setInt16(offset, sample, true);
-                offset += 2;
+        for (let i = 0; remaining >= maxSamples; i += maxSamples) {
+            const leftChunk = samplesLeft.subarray(i, i + maxSamples);
+            let rightChunk = null;
+            if (channels > 1) {
+                rightChunk = samplesRight.subarray(i, i + maxSamples);
             }
+            const mp3buf = mp3encoder.encodeBuffer(leftChunk, rightChunk);
+            if (mp3buf.length > 0) {
+                mp3Data.push(new Int8Array(mp3buf));
+            }
+            remaining -= maxSamples;
         }
-        return new Blob([view], { type: 'audio/wav' });
+
+        const finalMp3buf = mp3encoder.flush();
+        if (finalMp3buf.length > 0) {
+            mp3Data.push(new Int8Array(finalMp3buf));
+        }
+
+        return new Blob(mp3Data, { type: 'audio/mp3' });
     };
-    
+
     const processFile = (file) => {
         updateStatus('Initializing...', 'info');
         progressBarContainer.classList.remove('hidden');
@@ -321,13 +301,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 const decodedAudioBuffer = await audioContext.decodeAudioData(e.target.result);
                 progressBar.classList.remove('is-processing');
 
-                updateStatus('Encoding to WAV...', 'info');
+                updateStatus('Encoding to MP3...', 'info');
                 updateProgress(90);
 
-                const wavBlob = encodeWAV(decodedAudioBuffer);
+                const mp3Blob = encodeMp3(decodedAudioBuffer);
 
                 if (objectUrl) URL.revokeObjectURL(objectUrl);
-                objectUrl = URL.createObjectURL(wavBlob);
+                objectUrl = URL.createObjectURL(mp3Blob);
                 audioPlayer.src = objectUrl;
 
                 updateStatus('Extraction Complete!', 'success');
@@ -338,6 +318,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 downloadBtn.classList.remove('hidden');
                 downloadBtn.disabled = false;
                 resetBtn.disabled = false;
+
             } catch (err) {
                 console.error(err);
                 updateStatus('Extraction Failed: The audio codec may not be supported.', 'error');
@@ -368,39 +349,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!objectUrl) return;
         const a = document.createElement('a');
         a.href = objectUrl;
-        a.download = `${currentFile.name.substring(0, currentFile.name.lastIndexOf('.')) || currentFile.name}.wav`;
+        a.download = `${currentFile.name.substring(0, currentFile.name.lastIndexOf('.')) || currentFile.name}.mp3`;
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
     });
-
-    playPauseBtn.addEventListener('click', () => audioPlayer.paused ? audioPlayer.play() : audioPlayer.pause());
-    audioPlayer.addEventListener('play', () => {
-        playIcon.classList.add('hidden');
-        pauseIcon.classList.remove('hidden');
-    });
-    audioPlayer.addEventListener('pause', () => {
-        playIcon.classList.remove('hidden');
-        pauseIcon.classList.add('hidden');
-    });
-    audioPlayer.addEventListener('ended', () => {
-        playIcon.classList.remove('hidden');
-        pauseIcon.classList.add('hidden');
-        seekBar.value = 0;
-        audioPlayer.currentTime = 0;
-    });
-    audioPlayer.addEventListener('timeupdate', () => {
-        if (audioPlayer.duration) {
-            seekBar.value = (audioPlayer.currentTime / audioPlayer.duration) * 100;
-        }
-        currentTimeEl.textContent = formatTime(audioPlayer.currentTime);
-    });
-    seekBar.addEventListener('input', () => {
-        if (audioPlayer.duration) {
-            audioPlayer.currentTime = (seekBar.value / 100) * audioPlayer.duration;
-        }
-    });
-
+    
     // --- Initial State ---
     resetUI();
 });
