@@ -15,31 +15,25 @@
     <!-- FAVICON -->
     <link rel="icon" href="./assets/svg/logo.svg" type="image/svg+xml">
 
-    <!-- LAME.js MP3 ENCODER LIBRARY -->
-    <script src="https://cdn.jsdelivr.net/npm/lamejs@1.2.1/lame.min.js"></script>
-
     <!-- 1) Preconnect for Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <!-- 2) Non-blocking load for Google Fonts stylesheet -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" as="style" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" />
     
     <!-- 3) Non-blocking load for your Tailwind build -->
+    <link rel="preload" href="./assets/style/style.css" as="style" />
+    <link rel="stylesheet" href="./assets/style/style.css" media="print" onload="this.media='all'" />
     <link rel="stylesheet" href="./assets/style/style.css" />
     
     <script src="./assets/js/header.js" defer></script>
     <script src="./assets/js/footer.js" defer></script>
     <script src="./assets/js/main.js" defer></script>
 
-    <style>
-      #progress-bar.is-processing {
-        background-size: 40px 40px;
-        background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
-        animation: progress-bar-stripes 1s linear infinite;
-      }
-      @keyframes progress-bar-stripes { from { background-position: 40px 0 } to { background-position: 0 0 } }
-    </style>
+
 
 </head>
 <body class="bg-slate-200 font-sans text-slate-800 flex min-h-screen flex-col transition-colors duration-300 dark:bg-slate-900 dark:text-slate-200">
@@ -63,7 +57,7 @@
 
                     <div class="w-full max-w-2xl mx-auto space-y-6" id="converter-app">
                         <!-- File Upload Area -->
-                        <label id="upload-area" for="file-input" class="block text-center p-8 border-2 border-dashed border-slate-300 dark:border-slate-500 rounded-lg cursor-pointer transition-colors hover:border-indigo-500 dark:hover:border-indigo-300 bg-slate-200 dark:bg-slate-900">
+                        <label id="upload-area" for="file-input" class="block text-center p-8 border-2 border-dashed border-slate-400 dark:border-slate-500 rounded-lg cursor-pointer transition-colors hover:border-indigo-700 dark:hover:border-indigo-300 bg-slate-200 dark:bg-slate-900">
                             <div class="flex flex-col items-center justify-center space-y-4 pointer-events-none">
                                 <p class="text-lg font-medium text-slate-700 dark:text-slate-300">Drag & drop your video here</p>
                                 <span class="text-slate-500 dark:text-slate-400">or</span>
@@ -94,7 +88,7 @@
 
                             <!-- Status/Progress -->
                             <div id="status-container" class="text-center pt-2">
-                                <p id="status-message" class="text-4xl font-medium"></p>
+                                <p id="status-message" class="text-base font-medium"></p>
                                 <div id="progress-bar-container" class="hidden w-full bg-slate-200 dark:bg-slate-700 rounded-md h-2.5 mt-2 overflow-hidden">
                                     <div id="progress-bar" class="bg-indigo-600 dark:bg-indigo-500 h-2.5 rounded-md transition-all duration-300" style="width:0%"></div>
                                 </div>
@@ -133,21 +127,77 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+    // --- Create a self-contained Web Worker ---
+    const workerCode = `
+        // Load the LAME MP3 encoder library
+        self.importScripts('https://cdn.jsdelivr.net/npm/lamejs@1.2.1/lame.min.js');
+
+        self.onmessage = function(e) {
+            try {
+                const { channelData, sampleRate, channels } = e.data;
+                const kbps = 128; // Standard MP3 bitrate
+                const mp3encoder = new lamejs.Mp3Encoder(channels, sampleRate, kbps);
+                
+                const pcmData = channelData.map(cd => {
+                    const output = new Int16Array(cd.length);
+                    for (let i = 0; i < cd.length; i++) {
+                        const s = Math.max(-1, Math.min(1, cd[i]));
+                        output[i] = s < 0 ? s * 0x8000 : s * 0x7FFF;
+                    }
+                    return output;
+                });
+                
+                const samplesLeft = pcmData[0];
+                const samplesRight = channels > 1 ? pcmData[1] : null;
+
+                let remaining = samplesLeft.length;
+                const maxSamples = 1152; // Max samples per LAME frame
+                const mp3Data = [];
+
+                for (let i = 0; remaining >= 0; i += maxSamples) {
+                    const leftChunk = samplesLeft.subarray(i, i + maxSamples);
+                    let rightChunk = null;
+                    if (channels > 1) {
+                        rightChunk = samplesRight.subarray(i, i + maxSamples);
+                    }
+
+                    const mp3buf = mp3encoder.encodeBuffer(leftChunk, rightChunk);
+                    if (mp3buf.length > 0) {
+                        mp3Data.push(mp3buf);
+                    }
+                    
+                    // Post progress back to the main thread
+                    const progress = (i / samplesLeft.length) * 100;
+                    self.postMessage({ status: 'progress', value: progress });
+
+                    remaining -= maxSamples;
+                }
+
+                const finalMp3buf = mp3encoder.flush();
+                if (finalMp3buf.length > 0) {
+                    mp3Data.push(finalMp3buf);
+                }
+
+                const mp3Blob = new Blob(mp3Data, { type: 'audio/mp3' });
+                self.postMessage({ status: 'complete', blob: mp3Blob });
+            } catch (error) {
+                self.postMessage({ status: 'error', message: error.message });
+            }
+        };
+    `;
+    const workerBlob = new Blob([workerCode], { type: 'application/javascript' });
+    const workerUrl = URL.createObjectURL(workerBlob);
+    let converterWorker = null;
+
+
     // --- Element Selectors ---
     const getEl = id => document.getElementById(id);
-
-    const uploadArea = getEl('upload-area');
-    const fileInput = getEl('file-input');
-    const processingArea = getEl('processing-area');
-    const fileDetails = getEl('file-details');
-    const playerContainer = getEl('player-container');
-    const audioPlayer = getEl('audio-player');
-    const statusMessage = getEl('status-message');
-    const progressBarContainer = getEl('progress-bar-container');
-    const progressBar = getEl('progress-bar');
-    const convertBtn = getEl('convert-btn');
-    const downloadBtn = getEl('download-btn');
-    const resetBtn = getEl('reset-btn');
+    const uploadArea = getEl('upload-area'), fileInput = getEl('file-input'),
+        processingArea = getEl('processing-area'), fileDetails = getEl('file-details'),
+        playerContainer = getEl('player-container'), audioPlayer = getEl('audio-player'),
+        statusMessage = getEl('status-message'), progressBarContainer = getEl('progress-bar-container'),
+        progressBar = getEl('progress-bar'), convertBtn = getEl('convert-btn'),
+        downloadBtn = getEl('download-btn'), resetBtn = getEl('reset-btn');
 
     // --- State Variables ---
     let currentFile = null;
@@ -157,8 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Helper Functions ---
     const formatBytes = (bytes) => {
         if (bytes === 0) return '0 Bytes';
-        const k = 1024;
-        const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+        const k = 1024, sizes = ['Bytes', 'KB', 'MB', 'GB'];
         const i = Math.floor(Math.log(bytes) / Math.log(k));
         return `${parseFloat((bytes / Math.pow(k, i)).toFixed(2))} ${sizes[i]}`;
     };
@@ -173,20 +222,17 @@ document.addEventListener('DOMContentLoaded', () => {
         statusMessage.className = `text-base font-medium transition-colors ${colors[type]}`;
     };
 
-    const updateProgress = (percentage) => {
-        progressBar.style.width = `${percentage}%`;
-    };
+    const updateProgress = (percentage) => { progressBar.style.width = `${percentage}%`; };
 
     // --- UI Logic ---
     const resetUI = (isError = false) => {
+        if (converterWorker) converterWorker.terminate();
+        converterWorker = null;
         if (objectUrl) URL.revokeObjectURL(objectUrl);
         objectUrl = currentFile = null;
         fileInput.value = '';
-
-        if (!isError) {
-            updateStatus('Please select a video file to begin.');
-        }
-
+        if (!isError) updateStatus('Please select a video file to begin.');
+        
         uploadArea.classList.remove('hidden', 'drag-over');
         processingArea.classList.add('hidden');
         playerContainer.classList.add('hidden');
@@ -201,13 +247,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         progressBarContainer.classList.add('hidden');
         updateProgress(0);
-        progressBar.classList.remove('is-processing');
     };
 
     const handleFile = (file) => {
         resetUI();
         if (!file) return;
-
         if (!file.type.startsWith('video/')) {
             updateStatus('Invalid file type. Please select a video file.', 'error');
             return;
@@ -222,125 +266,69 @@ document.addEventListener('DOMContentLoaded', () => {
         resetBtn.disabled = false;
     };
 
-    // --- Audio Processing ---
-    const encodeMp3 = (audioBuffer) => {
-        const channels = audioBuffer.numberOfChannels;
-        const sampleRate = audioBuffer.sampleRate;
-        const kbps = 128; // Standard MP3 bitrate
-        const mp3encoder = new lamejs.Mp3Encoder(channels, sampleRate, kbps);
-        
-        // Get PCM data from each channel
-        const pcmData = [];
-        for (let i = 0; i < channels; i++) {
-            pcmData.push(audioBuffer.getChannelData(i));
-        }
-
-        // Convert PCM float samples to 16-bit signed integers
-        const to16BitInt = (floatData) => {
-            const output = new Int16Array(floatData.length);
-            for (let i = 0; i < floatData.length; i++) {
-                const s = Math.max(-1, Math.min(1, floatData[i]));
-                output[i] = s < 0 ? s * 0x8000 : s * 0x7FFF;
-            }
-            return output;
-        };
-
-        const samplesLeft = to16BitInt(pcmData[0]);
-        const samplesRight = channels > 1 ? to16BitInt(pcmData[1]) : null;
-
-        let remaining = samplesLeft.length;
-        const maxSamples = 1152; // Max samples per frame
-        const mp3Data = [];
-
-        for (let i = 0; remaining >= maxSamples; i += maxSamples) {
-            const leftChunk = samplesLeft.subarray(i, i + maxSamples);
-            let rightChunk = null;
-            if (channels > 1) {
-                rightChunk = samplesRight.subarray(i, i + maxSamples);
-            }
-            const mp3buf = mp3encoder.encodeBuffer(leftChunk, rightChunk);
-            if (mp3buf.length > 0) {
-                mp3Data.push(new Int8Array(mp3buf));
-            }
-            remaining -= maxSamples;
-        }
-
-        const finalMp3buf = mp3encoder.flush();
-        if (finalMp3buf.length > 0) {
-            mp3Data.push(new Int8Array(finalMp3buf));
-        }
-
-        return new Blob(mp3Data, { type: 'audio/mp3' });
-    };
-
-    const processFile = (file) => {
+    const processFile = async (file) => {
         updateStatus('Initializing...', 'info');
         progressBarContainer.classList.remove('hidden');
         updateProgress(0);
         convertBtn.disabled = true;
         resetBtn.disabled = true;
 
-        const reader = new FileReader();
-        reader.onerror = () => {
-            updateStatus('Error: Failed to read file.', 'error');
-            resetUI(true);
-        };
-        reader.onprogress = (event) => {
-            if (event.lengthComputable) {
-                const percentLoaded = Math.round((event.loaded / event.total) * 50);
-                updateStatus(`Reading file (${percentLoaded * 2}%)`, 'info');
-                updateProgress(percentLoaded);
-            }
-        };
-        reader.onload = async (e) => {
-            try {
-                updateStatus('Decoding audio...', 'info');
-                updateProgress(50);
-                progressBar.classList.add('is-processing');
+        try {
+            const arrayBuffer = await file.arrayBuffer();
+            updateStatus('Decoding audio track...', 'info');
+            updateProgress(5); 
 
-                const decodedAudioBuffer = await audioContext.decodeAudioData(e.target.result);
-                progressBar.classList.remove('is-processing');
+            const decodedAudioBuffer = await audioContext.decodeAudioData(arrayBuffer);
+            updateStatus('Starting MP3 encoding...', 'info');
+            updateProgress(10); 
+            
+            converterWorker = new Worker(workerUrl);
+            
+            const channelData = Array.from({ length: decodedAudioBuffer.numberOfChannels }, (_, i) => decodedAudioBuffer.getChannelData(i));
+            
+            converterWorker.postMessage({
+                channelData: channelData,
+                sampleRate: decodedAudioBuffer.sampleRate,
+                channels: decodedAudioBuffer.numberOfChannels
+            }, channelData.map(buffer => buffer.buffer));
 
-                updateStatus('Encoding to MP3...', 'info');
-                updateProgress(90);
+            converterWorker.onmessage = (e) => {
+                const { status, value, blob, message } = e.data;
+                if (status === 'progress') {
+                    updateStatus('Encoding... Please wait.', 'info');
+                    updateProgress(10 + (value * 0.9)); // Scale progress from 10% to 100%
+                } else if (status === 'complete') {
+                    updateStatus('Extraction Complete!', 'success');
+                    updateProgress(100);
+                    if (objectUrl) URL.revokeObjectURL(objectUrl);
+                    objectUrl = URL.createObjectURL(blob);
+                    audioPlayer.src = objectUrl;
 
-                const mp3Blob = encodeMp3(decodedAudioBuffer);
-
-                if (objectUrl) URL.revokeObjectURL(objectUrl);
-                objectUrl = URL.createObjectURL(mp3Blob);
-                audioPlayer.src = objectUrl;
-
-                updateStatus('Extraction Complete!', 'success');
-                updateProgress(100);
-
-                playerContainer.classList.remove('hidden');
-                convertBtn.classList.add('hidden');
-                downloadBtn.classList.remove('hidden');
-                downloadBtn.disabled = false;
-                resetBtn.disabled = false;
-
-            } catch (err) {
-                console.error(err);
-                updateStatus('Extraction Failed: The audio codec may not be supported.', 'error');
+                    playerContainer.classList.remove('hidden');
+                    convertBtn.classList.add('hidden');
+                    downloadBtn.classList.remove('hidden');
+                    downloadBtn.disabled = false;
+                    resetBtn.disabled = false;
+                    converterWorker.terminate();
+                } else if (status === 'error') {
+                    updateStatus(`Encoding failed: ${message}`, 'error');
+                    resetUI(true);
+                }
+            };
+            converterWorker.onerror = (e) => {
+                updateStatus(`An unexpected worker error occurred: ${e.message}`, 'error');
                 resetUI(true);
-            }
-        };
-        reader.readAsArrayBuffer(file);
+            };
+
+        } catch (err) {
+            updateStatus('Extraction Failed: The video file or its audio codec may not be supported.', 'error');
+            resetUI(true);
+        }
     };
 
     // --- Event Listeners ---
-    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-        uploadArea.addEventListener(eventName, e => {
-            e.preventDefault();
-            e.stopPropagation();
-        });
-    });
-    ['dragenter', 'dragover'].forEach(eventName => {
-        uploadArea.addEventListener(eventName, () => uploadArea.classList.add('border-indigo-500', 'dark:border-indigo-500'));
-    });
-    ['dragleave', 'drop'].forEach(eventName => {
-        uploadArea.addEventListener(eventName, () => uploadArea.classList.remove('border-indigo-500', 'dark:border-indigo-500'));
-    });
+    ['dragenter','dragover'].forEach(e=>uploadArea.addEventListener(e,()=>uploadArea.classList.add('border-indigo-500','dark:border-indigo-500')));
+    ['dragleave','drop'].forEach(e=>uploadArea.addEventListener(e,()=>uploadArea.classList.remove('border-indigo-500','dark:border-indigo-500')));
     uploadArea.addEventListener('drop', e => handleFile(e.dataTransfer.files[0]));
     fileInput.addEventListener('change', () => handleFile(fileInput.files[0]));
     resetBtn.addEventListener('click', () => resetUI());
