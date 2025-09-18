@@ -1,352 +1,546 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-
-    <!--! SEO & GEO OPTIMIZED META TAGS (VERIFIED) -->
-    <title>Best Free Video to MP3 Converter - High-Quality Audio Extraction | All Tool AI</title>
-    <meta name="keywords" content="video to mp3, audio extractor, video to audio, mp3 converter, free converter, online audio tool, high-quality audio, secure audio extraction, private converter, All Tool AI"/>
-    <meta name="description" content="The world's best free video to MP3 converter. Instantly extract high-quality MP3 audio from any video file. Fast, private, and secure online tool from All Tool AI. Your files are processed in your browser."/>
-    <meta name="author" content="All Tool AI"/>
-    <link rel="canonical" href="https://www.alltoolai.com/" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Secure ZIP File Converter - Client-side file compression">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Secure ZIP File Converter</title>
     
-    <!-- FAVICON -->
-    <link rel="icon" href="./assets/svg/logo.svg" type="image/svg+xml">
+    <!-- Inline critical CSS to avoid external requests -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <!-- 1) Preconnect for Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f0f2f5;
+            color: #333;
+            line-height: 1.6;
+        }
 
-    <!-- 2) Non-blocking load for Google Fonts stylesheet -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" as="style" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" />
-    
-    <!-- 3) Non-blocking load for your Tailwind build -->
-    <link rel="preload" href="./assets/style/style.css" as="style" />
-    <link rel="stylesheet" href="./assets/style/style.css" media="print" onload="this.media='all'" />
-    <link rel="stylesheet" href="./assets/style/style.css" />
-    
-    <script src="./assets/js/header.js" defer></script>
-    <script src="./assets/js/footer.js" defer></script>
-    <script src="./assets/js/main.js" defer></script>
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
 
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
 
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
 
+        .security-notice {
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            color: #856404;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #ffeeba;
+        }
+
+        .warning-box h3 {
+            margin-bottom: 10px;
+        }
+
+        .warning-box ol {
+            margin-left: 20px;
+        }
+
+        .warning-box li {
+            margin-bottom: 5px;
+        }
+
+        .tool-section {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .file-input-wrapper {
+            margin-bottom: 20px;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .file-label {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #3498db;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .file-label:hover {
+            background: #2980b9;
+        }
+
+        .file-list {
+            margin: 20px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            min-height: 100px;
+        }
+
+        .file-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: white;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .file-name {
+            flex: 1;
+            margin-right: 10px;
+            word-break: break-all;
+        }
+
+        .file-size {
+            color: #666;
+            font-size: 0.9rem;
+            margin-right: 10px;
+        }
+
+        .remove-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .remove-btn:hover {
+            background: #c0392b;
+        }
+
+        .action-btn {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .action-btn:hover {
+            background: #229954;
+        }
+
+        .action-btn:disabled {
+            background: #95a5a6;
+            cursor: not-allowed;
+        }
+
+        .progress {
+            margin-top: 20px;
+            display: none;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: #ecf0f1;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #3498db;
+            width: 0%;
+            transition: width 0.3s;
+        }
+
+        .extracted-files {
+            margin-top: 20px;
+        }
+
+        .download-link {
+            display: inline-block;
+            margin: 5px;
+            padding: 8px 16px;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .download-link:hover {
+            background: #2980b9;
+        }
+
+        .empty-state {
+            text-align: center;
+            color: #999;
+            padding: 40px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .tool-section {
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
-<body class="bg-slate-200 font-sans text-slate-800 flex min-h-screen flex-col transition-colors duration-300 dark:bg-slate-900 dark:text-slate-200">
+<body>
+    <div class="container">
+        <header>
+            <h1>🔒 Secure ZIP File Converter</h1>
+            <p>Convert files to ZIP and extract ZIP files - 100% client-side</p>
+        </header>
 
-<div id="header-placeholder"></div>
-
-<main class="flex-grow w-full">
-    <div class="p-4 sm:p-6 mt-16 mx-auto">
-        <div class="mb-4">
-          <div id="topad-1" aria-label="Top Ad 1"></div>
+        <div class="warning-box">
+            <h3>⚠️ To Avoid Windows Security Warnings:</h3>
+            <ol>
+                <li><strong>Right-click</strong> the saved HTML file</li>
+                <li>Select <strong>"Properties"</strong></li>
+                <li>Check <strong>"Unblock"</strong> at the bottom</li>
+                <li>Click <strong>"Apply"</strong> then <strong>"OK"</strong></li>
+                <li>Or use a local web server (see instructions below)</li>
+            </ol>
         </div>
 
-        <div class="lg:grid lg:grid-cols-[side_bar] lg:gap-4">
+        <div class="security-notice">
+            ✅ All processing happens in your browser - Your files never leave your device
+        </div>
 
-            <div class="min-w-0 overflow-hidden">
-                <section class="bg-white p-4 sm:p-6 lg:p-8 rounded-2xl border border-indigo-300 dark:bg-slate-800 dark:border-slate-700">
-                    <div class="text-center mb-8">
-                        <h1 class="text-3xl lg:text-4xl font-extrabold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">Free Video to MP3 Converter</h1>
-                        <p class="mt-2 text-lg text-slate-600 dark:text-slate-400">Extract high-quality MP3 audio. This tool is 100% free, private, and works directly in your browser without uploading your files.</p>
-                    </div>
-
-                    <div class="w-full max-w-2xl mx-auto space-y-6" id="converter-app">
-                        <!-- File Upload Area -->
-                        <label id="upload-area" for="file-input" class="block text-center p-8 border-2 border-dashed border-slate-400 dark:border-slate-500 rounded-lg cursor-pointer transition-colors hover:border-indigo-700 dark:hover:border-indigo-300 bg-slate-200 dark:bg-slate-900">
-                            <div class="flex flex-col items-center justify-center space-y-4 pointer-events-none">
-                                <p class="text-lg font-medium text-slate-700 dark:text-slate-300">Drag & drop your video here</p>
-                                <span class="text-slate-500 dark:text-slate-400">or</span>
-                                <span class="bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white font-semibold py-2.5 px-5 rounded-md text-base z-10">Select a File</span>
-                                <p class="flex items-center text-sm text-slate-500 dark:text-slate-400 pt-2">
-                                    <svg class="h-5 w-5 mr-1.5" viewBox="0 0 20 20" fill="currentColor">
-                                      <path fill-rule="evenodd" d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z" clip-rule="evenodd" />
-                                    </svg>
-                                    100% Secure. Files are processed on your device.
-                                </p>
-                            </div>
-                        </label>
-                        <input type="file" id="file-input" accept="video/*" class="hidden">
-
-                        <!-- Processing & Results Area -->
-                        <div id="processing-area" class="hidden space-y-8 pt-4">
-                            <!-- File Info -->
-                            <div id="file-info-area" class="bg-slate-100 dark:bg-slate-700 p-4 rounded-xl space-y-2">
-                                  <h2 class="text-xl font-bold text-slate-800 dark:text-slate-100 text-center">Selected Video File</h2>
-                                  <div id="file-details" class="text-center text-base text-slate-600 dark:text-slate-400"></div>
-                            </div>
-                            
-                            <!-- Audio Player -->
-                            <div id="player-container" class="hidden bg-slate-100 dark:bg-slate-700 p-4 rounded-xl space-y-3">
-                                <h3 class="text-center font-semibold text-lg text-slate-800 dark:text-slate-100">Preview Extracted Audio</h3>
-                                <audio id="audio-player" class="w-full" controls></audio>
-                            </div>
-
-                            <!-- Status/Progress -->
-                            <div id="status-container" class="text-center pt-2">
-                                <p id="status-message" class="text-base font-medium"></p>
-                                <div id="progress-bar-container" class="hidden w-full bg-slate-200 dark:bg-slate-700 rounded-md h-2.5 mt-2 overflow-hidden">
-                                    <div id="progress-bar" class="bg-indigo-600 dark:bg-indigo-500 h-2.5 rounded-md transition-all duration-300" style="width:0%"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Action Buttons -->
-                        <div class="flex flex-col sm:flex-row gap-4 pt-2">
-                             <button id="convert-btn" class="w-full sm:w-auto flex-grow text-white bg-indigo-600 hover:bg-indigo-700 font-semibold rounded-lg text-base px-5 py-3 transition-all dark:bg-indigo-500 dark:hover:bg-indigo-600 disabled:bg-slate-400 dark:disabled:bg-slate-600 disabled:cursor-not-allowed" disabled>Extract MP3 Audio</button>
-                             <button id="download-btn" class="w-full sm:w-auto flex-grow text-white bg-indigo-600 hover:bg-indigo-700 font-semibold rounded-lg text-base px-5 py-3 transition-colors dark:bg-indigo-500 dark:hover:bg-indigo-600 disabled:bg-slate-400 dark:disabled:bg-slate-600 disabled:cursor-not-allowed hidden" disabled>Download MP3</button>
-                             <button id="reset-btn" class="w-full sm:w-auto bg-slate-200 hover:bg-slate-300 text-slate-800 font-semibold rounded-lg text-base px-5 py-3 transition-colors dark:bg-slate-600 dark:hover:bg-slate-500 dark:text-slate-200" disabled>Start Over</button>
-                        </div>
-                    </div>
-                </section>
+        <!-- Create ZIP Section -->
+        <div class="tool-section">
+            <h2 class="section-title">📦 Create ZIP File</h2>
+            <div class="file-input-wrapper">
+                <input type="file" id="files-to-zip" class="file-input" multiple>
+                <label for="files-to-zip" class="file-label">Choose Files to ZIP</label>
             </div>
-
-            <aside class="hidden lg:flex flex-col">
-              <div id="sidead-1" aria-label="Sidebar Ad 1"></div>
-            </aside>
-
-            <aside class="hidden lg:flex flex-col">
-              <div id="sidead-2" aria-label="Sidebar Ad 2"></div>
-            </aside>
-
+            
+            <div id="zip-file-list" class="file-list">
+                <div class="empty-state">No files selected</div>
+            </div>
+            
+            <button id="create-zip-btn" class="action-btn" disabled>Create ZIP File</button>
+            
+            <div id="zip-progress" class="progress">
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+            </div>
         </div>
 
-        <div class="mb-4">
-          <div id="topad-2" aria-label="Top Ad 2"></div>
+        <!-- Extract ZIP Section -->
+        <div class="tool-section">
+            <h2 class="section-title">📂 Extract ZIP File</h2>
+            <div class="file-input-wrapper">
+                <input type="file" id="zip-to-extract" class="file-input" accept=".zip">
+                <label for="zip-to-extract" class="file-label">Choose ZIP File to Extract</label>
+            </div>
+            
+            <div id="extract-file-info" class="file-list">
+                <div class="empty-state">No ZIP file selected</div>
+            </div>
+            
+            <button id="extract-zip-btn" class="action-btn" disabled>Extract Files</button>
+            
+            <div id="extract-progress" class="progress">
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+            </div>
+            
+            <div id="extracted-files" class="extracted-files"></div>
         </div>
 
+        <div class="tool-section" style="background: #f8f9fa;">
+            <h3>Alternative: Run Without Security Warnings</h3>
+            <p>For the best experience without security warnings:</p>
+            <ol>
+                <li>Install Python (if not already installed)</li>
+                <li>Save this file as "index.html"</li>
+                <li>Open Command Prompt in the file's directory</li>
+                <li>Run: <code>python -m http.server 8000</code></li>
+                <li>Open browser to: <code>http://localhost:8000</code></li>
+            </ol>
+        </div>
     </div>
-</main>
 
-<!-- :: Footer PLACEHOLDER :: -->
-<div id="footer-placeholder"></div>
+    <!-- Load libraries with integrity checks -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" 
+            integrity="sha512-XMVd28F1oH/O71fzwBnV7HucLxVwtxf26XV8P4wPk26EDxuGZ91N8bsOttmnomcCD3CS5ZMRL50H0GgOHvegtg==" 
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js" 
+            integrity="sha512-Qlv6VSKh1gDKGoJbnyA5RMXYcvnpIqhO++MhIM2fStMcGT9i2T//tSwYFlcyoRRDcDZ+TYHpH8azBBCyhpSeqw==" 
+            crossorigin="anonymous"></script>
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    // --- Create a self-contained Web Worker ---
-    const workerCode = `
-        // Load the LAME MP3 encoder library
-        self.importScripts('https://cdn.jsdelivr.net/npm/lamejs@1.2.1/lame.min.js');
+    <script>
+        // Check if running from file:// protocol
+        if (window.location.protocol === 'file:') {
+            console.info('Running from local file. Some features may be restricted.');
+        }
 
-        self.onmessage = function(e) {
+        // File storage for creating ZIP
+        let filesToZip = [];
+        let zipToExtract = null;
+
+        // Utility function to format file size
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        // Handle file selection for ZIP creation
+        document.getElementById('files-to-zip').addEventListener('change', function(e) {
             try {
-                const { channelData, sampleRate, channels } = e.data;
-                const kbps = 128; // Standard MP3 bitrate
-                const mp3encoder = new lamejs.Mp3Encoder(channels, sampleRate, kbps);
+                const newFiles = Array.from(e.target.files);
+                filesToZip = filesToZip.concat(newFiles);
+                updateZipFileList();
+                e.target.value = ''; // Reset input
+            } catch (error) {
+                console.error('Error selecting files:', error);
+                alert('Error selecting files. Please try again.');
+            }
+        });
+
+        // Update file list display for ZIP creation
+        function updateZipFileList() {
+            const listEl = document.getElementById('zip-file-list');
+            const createBtn = document.getElementById('create-zip-btn');
+            
+            if (filesToZip.length === 0) {
+                listEl.innerHTML = '<div class="empty-state">No files selected</div>';
+                createBtn.disabled = true;
+                return;
+            }
+            
+            createBtn.disabled = false;
+            listEl.innerHTML = filesToZip.map((file, index) => `
+                <div class="file-item">
+                    <span class="file-name">${file.name}</span>
+                    <span class="file-size">${formatFileSize(file.size)}</span>
+                    <button class="remove-btn" onclick="removeFile(${index})">Remove</button>
+                </div>
+            `).join('');
+        }
+
+        // Remove file from ZIP list
+        window.removeFile = function(index) {
+            filesToZip.splice(index, 1);
+            updateZipFileList();
+        }
+
+        // Create ZIP file
+        document.getElementById('create-zip-btn').addEventListener('click', async function() {
+            if (filesToZip.length === 0) return;
+            
+            const zip = new JSZip();
+            const progressEl = document.getElementById('zip-progress');
+            const progressFill = progressEl.querySelector('.progress-fill');
+            
+            progressEl.style.display = 'block';
+            this.disabled = true;
+            
+            try {
+                // Add files to ZIP
+                for (let i = 0; i < filesToZip.length; i++) {
+                    const file = filesToZip[i];
+                    const arrayBuffer = await file.arrayBuffer();
+                    zip.file(file.name, arrayBuffer);
+                    
+                    // Update progress
+                    const progress = ((i + 1) / filesToZip.length) * 100;
+                    progressFill.style.width = progress + '%';
+                }
                 
-                const pcmData = channelData.map(cd => {
-                    const output = new Int16Array(cd.length);
-                    for (let i = 0; i < cd.length; i++) {
-                        const s = Math.max(-1, Math.min(1, cd[i]));
-                        output[i] = s < 0 ? s * 0x8000 : s * 0x7FFF;
+                // Generate ZIP file
+                const content = await zip.generateAsync({
+                    type: 'blob',
+                    compression: 'DEFLATE',
+                    compressionOptions: {
+                        level: 6
                     }
-                    return output;
                 });
                 
-                const samplesLeft = pcmData[0];
-                const samplesRight = channels > 1 ? pcmData[1] : null;
+                // Create filename with timestamp
+                const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, -5);
+                const filename = `archive_${timestamp}.zip`;
+                
+                // Download the ZIP file
+                saveAs(content, filename);
+                
+                // Reset
+                filesToZip = [];
+                updateZipFileList();
+                progressEl.style.display = 'none';
+                progressFill.style.width = '0%';
+                this.disabled = false;
+                
+            } catch (error) {
+                console.error('ZIP creation error:', error);
+                alert('Error creating ZIP file: ' + error.message);
+                progressEl.style.display = 'none';
+                this.disabled = false;
+            }
+        });
 
-                let remaining = samplesLeft.length;
-                const maxSamples = 1152; // Max samples per LAME frame
-                const mp3Data = [];
+        // Handle ZIP file selection for extraction
+        document.getElementById('zip-to-extract').addEventListener('change', function(e) {
+            try {
+                const file = e.target.files[0];
+                if (file && file.name.toLowerCase().endsWith('.zip')) {
+                    zipToExtract = file;
+                    updateExtractFileInfo();
+                } else if (file) {
+                    alert('Please select a valid ZIP file');
+                    e.target.value = '';
+                }
+            } catch (error) {
+                console.error('Error selecting ZIP file:', error);
+                alert('Error selecting file. Please try again.');
+            }
+        });
 
-                for (let i = 0; remaining >= 0; i += maxSamples) {
-                    const leftChunk = samplesLeft.subarray(i, i + maxSamples);
-                    let rightChunk = null;
-                    if (channels > 1) {
-                        rightChunk = samplesRight.subarray(i, i + maxSamples);
-                    }
+        // Update file info display for extraction
+        function updateExtractFileInfo() {
+            const infoEl = document.getElementById('extract-file-info');
+            const extractBtn = document.getElementById('extract-zip-btn');
+            
+            if (!zipToExtract) {
+                infoEl.innerHTML = '<div class="empty-state">No ZIP file selected</div>';
+                extractBtn.disabled = true;
+                return;
+            }
+            
+            extractBtn.disabled = false;
+            infoEl.innerHTML = `
+                <div class="file-item">
+                    <span class="file-name">${zipToExtract.name}</span>
+                    <span class="file-size">${formatFileSize(zipToExtract.size)}</span>
+                </div>
+            `;
+        }
 
-                    const mp3buf = mp3encoder.encodeBuffer(leftChunk, rightChunk);
-                    if (mp3buf.length > 0) {
-                        mp3Data.push(mp3buf);
+        // Extract ZIP file
+        document.getElementById('extract-zip-btn').addEventListener('click', async function() {
+            if (!zipToExtract) return;
+            
+            const progressEl = document.getElementById('extract-progress');
+            const progressFill = progressEl.querySelector('.progress-fill');
+            const extractedFilesEl = document.getElementById('extracted-files');
+            
+            progressEl.style.display = 'block';
+            this.disabled = true;
+            extractedFilesEl.innerHTML = '';
+            
+            try {
+                const zip = new JSZip();
+                const contents = await zip.loadAsync(zipToExtract);
+                const files = Object.keys(contents.files);
+                const fileLinks = [];
+                
+                for (let i = 0; i < files.length; i++) {
+                    const filename = files[i];
+                    const file = contents.files[filename];
+                    
+                    if (!file.dir) {
+                        const blob = await file.async('blob');
+                        const url = URL.createObjectURL(blob);
+                        
+                        fileLinks.push({
+                            name: filename,
+                            url: url,
+                            blob: blob
+                        });
                     }
                     
-                    // Post progress back to the main thread
-                    const progress = (i / samplesLeft.length) * 100;
-                    self.postMessage({ status: 'progress', value: progress });
-
-                    remaining -= maxSamples;
+                    // Update progress
+                    const progress = ((i + 1) / files.length) * 100;
+                    progressFill.style.width = progress + '%';
                 }
-
-                const finalMp3buf = mp3encoder.flush();
-                if (finalMp3buf.length > 0) {
-                    mp3Data.push(finalMp3buf);
+                
+                // Display extracted files
+                if (fileLinks.length > 0) {
+                    extractedFilesEl.innerHTML = '<h3>Extracted Files:</h3>' +
+                        fileLinks.map(file => `
+                            <a href="${file.url}" download="${file.name}" class="download-link">
+                                📄 ${file.name}
+                            </a>
+                        `).join('');
+                } else {
+                    extractedFilesEl.innerHTML = '<p>No files found in the ZIP archive.</p>';
                 }
-
-                const mp3Blob = new Blob(mp3Data, { type: 'audio/mp3' });
-                self.postMessage({ status: 'complete', blob: mp3Blob });
+                
+                // Clean up URLs after 5 minutes
+                setTimeout(() => {
+                    fileLinks.forEach(file => URL.revokeObjectURL(file.url));
+                }, 300000);
+                
+                // Reset
+                progressEl.style.display = 'none';
+                progressFill.style.width = '0%';
+                this.disabled = false;
+                
             } catch (error) {
-                self.postMessage({ status: 'error', message: error.message });
+                console.error('ZIP extraction error:', error);
+                alert('Error extracting ZIP file: ' + error.message + '\nThe file may be corrupted or password protected.');
+                progressEl.style.display = 'none';
+                this.disabled = false;
             }
-        };
-    `;
-    const workerBlob = new Blob([workerCode], { type: 'application/javascript' });
-    const workerUrl = URL.createObjectURL(workerBlob);
-    let converterWorker = null;
+        });
 
-
-    // --- Element Selectors ---
-    const getEl = id => document.getElementById(id);
-    const uploadArea = getEl('upload-area'), fileInput = getEl('file-input'),
-        processingArea = getEl('processing-area'), fileDetails = getEl('file-details'),
-        playerContainer = getEl('player-container'), audioPlayer = getEl('audio-player'),
-        statusMessage = getEl('status-message'), progressBarContainer = getEl('progress-bar-container'),
-        progressBar = getEl('progress-bar'), convertBtn = getEl('convert-btn'),
-        downloadBtn = getEl('download-btn'), resetBtn = getEl('reset-btn');
-
-    // --- State Variables ---
-    let currentFile = null;
-    let objectUrl = null;
-    const audioContext = new(window.AudioContext || window.webkitAudioContext)();
-
-    // --- Helper Functions ---
-    const formatBytes = (bytes) => {
-        if (bytes === 0) return '0 Bytes';
-        const k = 1024, sizes = ['Bytes', 'KB', 'MB', 'GB'];
-        const i = Math.floor(Math.log(bytes) / Math.log(k));
-        return `${parseFloat((bytes / Math.pow(k, i)).toFixed(2))} ${sizes[i]}`;
-    };
-
-    const updateStatus = (message, type = 'info') => {
-        statusMessage.textContent = message;
-        const colors = {
-            'error': 'text-red-600 dark:text-red-500',
-            'success': 'text-indigo-600 dark:text-indigo-400',
-            'info': 'text-slate-600 dark:text-slate-400'
-        };
-        statusMessage.className = `text-base font-medium transition-colors ${colors[type]}`;
-    };
-
-    const updateProgress = (percentage) => { progressBar.style.width = `${percentage}%`; };
-
-    // --- UI Logic ---
-    const resetUI = (isError = false) => {
-        if (converterWorker) converterWorker.terminate();
-        converterWorker = null;
-        if (objectUrl) URL.revokeObjectURL(objectUrl);
-        objectUrl = currentFile = null;
-        fileInput.value = '';
-        if (!isError) updateStatus('Please select a video file to begin.');
-        
-        uploadArea.classList.remove('hidden', 'drag-over');
-        processingArea.classList.add('hidden');
-        playerContainer.classList.add('hidden');
-        audioPlayer.src = '';
-        audioPlayer.removeAttribute('src');
-
-        convertBtn.disabled = true;
-        downloadBtn.disabled = true;
-        convertBtn.classList.remove('hidden');
-        downloadBtn.classList.add('hidden');
-        resetBtn.disabled = true;
-
-        progressBarContainer.classList.add('hidden');
-        updateProgress(0);
-    };
-
-    const handleFile = (file) => {
-        resetUI();
-        if (!file) return;
-        if (!file.type.startsWith('video/')) {
-            updateStatus('Invalid file type. Please select a video file.', 'error');
-            return;
-        }
-
-        currentFile = file;
-        fileDetails.innerHTML = `<p class="font-bold text-slate-700 dark:text-slate-200 truncate">${file.name}</p><p>${formatBytes(file.size)}</p>`;
-        processingArea.classList.remove('hidden');
-        uploadArea.classList.add('hidden');
-        updateStatus('File ready. Click "Extract MP3 Audio" to begin.', 'success');
-        convertBtn.disabled = false;
-        resetBtn.disabled = false;
-    };
-
-    const processFile = async (file) => {
-        updateStatus('Initializing...', 'info');
-        progressBarContainer.classList.remove('hidden');
-        updateProgress(0);
-        convertBtn.disabled = true;
-        resetBtn.disabled = true;
-
-        try {
-            const arrayBuffer = await file.arrayBuffer();
-            updateStatus('Decoding audio track...', 'info');
-            updateProgress(5); 
-
-            const decodedAudioBuffer = await audioContext.decodeAudioData(arrayBuffer);
-            updateStatus('Starting MP3 encoding...', 'info');
-            updateProgress(10); 
-            
-            converterWorker = new Worker(workerUrl);
-            
-            const channelData = Array.from({ length: decodedAudioBuffer.numberOfChannels }, (_, i) => decodedAudioBuffer.getChannelData(i));
-            
-            converterWorker.postMessage({
-                channelData: channelData,
-                sampleRate: decodedAudioBuffer.sampleRate,
-                channels: decodedAudioBuffer.numberOfChannels
-            }, channelData.map(buffer => buffer.buffer));
-
-            converterWorker.onmessage = (e) => {
-                const { status, value, blob, message } = e.data;
-                if (status === 'progress') {
-                    updateStatus('Encoding... Please wait.', 'info');
-                    updateProgress(10 + (value * 0.9)); // Scale progress from 10% to 100%
-                } else if (status === 'complete') {
-                    updateStatus('Extraction Complete!', 'success');
-                    updateProgress(100);
-                    if (objectUrl) URL.revokeObjectURL(objectUrl);
-                    objectUrl = URL.createObjectURL(blob);
-                    audioPlayer.src = objectUrl;
-
-                    playerContainer.classList.remove('hidden');
-                    convertBtn.classList.add('hidden');
-                    downloadBtn.classList.remove('hidden');
-                    downloadBtn.disabled = false;
-                    resetBtn.disabled = false;
-                    converterWorker.terminate();
-                } else if (status === 'error') {
-                    updateStatus(`Encoding failed: ${message}`, 'error');
-                    resetUI(true);
+        // Clean up on page unload
+        window.addEventListener('beforeunload', function() {
+            // Revoke any object URLs that might still be active
+            const links = document.querySelectorAll('.download-link');
+            links.forEach(link => {
+                if (link.href.startsWith('blob:')) {
+                    URL.revokeObjectURL(link.href);
                 }
-            };
-            converterWorker.onerror = (e) => {
-                updateStatus(`An unexpected worker error occurred: ${e.message}`, 'error');
-                resetUI(true);
-            };
-
-        } catch (err) {
-            updateStatus('Extraction Failed: The video file or its audio codec may not be supported.', 'error');
-            resetUI(true);
-        }
-    };
-
-    // --- Event Listeners ---
-    ['dragenter','dragover'].forEach(e=>uploadArea.addEventListener(e,()=>uploadArea.classList.add('border-indigo-500','dark:border-indigo-500')));
-    ['dragleave','drop'].forEach(e=>uploadArea.addEventListener(e,()=>uploadArea.classList.remove('border-indigo-500','dark:border-indigo-500')));
-    uploadArea.addEventListener('drop', e => handleFile(e.dataTransfer.files[0]));
-    fileInput.addEventListener('change', () => handleFile(fileInput.files[0]));
-    resetBtn.addEventListener('click', () => resetUI());
-    convertBtn.addEventListener('click', () => { if (currentFile) processFile(currentFile); });
-    downloadBtn.addEventListener('click', () => {
-        if (!objectUrl) return;
-        const a = document.createElement('a');
-        a.href = objectUrl;
-        a.download = `${currentFile.name.substring(0, currentFile.name.lastIndexOf('.')) || currentFile.name}.mp3`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-    });
-    
-    // --- Initial State ---
-    resetUI();
-});
-</script>
- 
+            });
+        });
+    </script>
 </body>
 </html>
