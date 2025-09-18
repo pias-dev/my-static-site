@@ -9,7 +9,7 @@
     <!-- FAVICON -->
     <link rel="icon" href="./assets/svg/logo.svg" type="image/svg+xml">
 
-    <!-- 1) Preconnect for Google Fonts for faster connection -->
+    <!-- 1) Preconnect for Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
@@ -21,16 +21,17 @@
     <!-- 2) Non-blocking load for Google Fonts stylesheet -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" as="style" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" />
 
-    <!-- 3) Non-blocking load for Tailwind CSS build -->
+    <!-- 3) Non-blocking load for your Tailwind build -->
     <link rel="preload" href="./assets/style/style.css" as="style" />
     <link rel="stylesheet" href="./assets/style/style.css" media="print" onload="this.media='all'" />
     <link rel="stylesheet" href="./assets/style/style.css" />
 
-    <!-- Main application scripts - Deferred -->
     <script src="./assets/js/header.js" defer></script>
     <script src="./assets/js/footer.js" defer></script>
     <script src="./assets/js/main.js" defer></script>
+
 </head>
 
 <body class="bg-slate-200 font-sans text-slate-800 flex min-h-screen flex-col transition-colors duration-300 dark:bg-slate-900 dark:text-slate-200">
@@ -93,8 +94,8 @@
                     <!-- Status & Results -->
                     <div id="status-area" class="text-center mt-6 hidden">
                         <div id="loader" class="loader w-10 h-10 border-4 rounded-full mx-auto my-4 hidden"></div>
-                        <p id="progress-message" class="font-medium text-lg text-slate-600 dark:text-slate-300"></p>
-                        <div id="error-message" class="hidden mt-4 font-medium text-white bg-red-500/90 rounded-lg p-4"></div>
+                        <p id="progress-message" role="status" class="font-medium text-lg text-slate-600 dark:text-slate-300"></p>
+                        <div id="error-message" role="alert" class="hidden mt-4 font-medium text-white bg-red-500/90 rounded-lg p-4"></div>
                     </div>
 
                     <section id="results-container" class="hidden mt-8">
@@ -112,10 +113,14 @@
                 </div>
             </div>
 
-            <aside class="hidden lg:flex flex-col space-y-4">
+            <aside class="hidden lg:flex flex-col">
               <div id="sidead-1" aria-label="Sidebar Ad 1"></div>
+            </aside>
+
+            <aside class="hidden lg:flex flex-col">
               <div id="sidead-2" aria-label="Sidebar Ad 2"></div>
             </aside>
+            
         </div>
 
         <div class="mb-4">
@@ -139,6 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const { PDFDocument, degrees } = PDFLib;
     const getEl = (id) => document.getElementById(id);
 
+    // Get references to all necessary DOM elements
     const uploadArea = getEl('upload-area');
     const fileInput = getEl('file-input');
     const fileInfo = getEl('file-info');
@@ -158,11 +164,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let pdfBytes = null, pageCount = 0, originalFilename = '';
 
+    // Resets the entire application to its initial state
     function resetAll() {
         pdfBytes = null; pageCount = 0; originalFilename = '';
         fileInput.value = ''; fileInfo.textContent = '';
-        resultsList.innerHTML = ''; getEl('delete-pages').value = '';
+        getEl('delete-pages').value = '';
 
+        // *** FIX: Revoke object URLs to prevent memory leaks ***
+        // Before clearing the list, iterate through each result card and revoke its URL
+        // This releases the memory used by the generated PDF blobs.
+        const cards = resultsList.querySelectorAll('.result-card');
+        cards.forEach(card => {
+            if (card.dataset.url) {
+                URL.revokeObjectURL(card.dataset.url);
+            }
+        });
+        resultsList.innerHTML = '';
+
+        // Hide and show the relevant sections
         controls.classList.add('hidden');
         resetBtn.classList.add('hidden');
         resultsContainer.classList.add('hidden');
@@ -171,12 +190,14 @@ document.addEventListener('DOMContentLoaded', () => {
         uploadSection.classList.remove('hidden');
         uploadArea.classList.remove('hidden');
 
+        // Re-enable all buttons
         [processBtn, extractAllBtn, resetBtn, downloadCombinedBtn, downloadSeparatelyBtn].forEach(b => {
             b.disabled = false;
         });
     }
     resetAll();
 
+    // Event listeners setup
     fileInput.addEventListener('change', () => { if (fileInput.files.length) handleFile(fileInput.files[0]); });
 
     const uploadLabel = uploadArea.querySelector('label');
@@ -186,10 +207,8 @@ document.addEventListener('DOMContentLoaded', () => {
             e.stopPropagation();
             if (eName === 'dragenter' || eName === 'dragover') {
                 uploadLabel.classList.add('border-indigo-600', 'dark:border-indigo-300');
-                uploadLabel.classList.remove('border-slate-400', 'dark:border-slate-500');
             } else {
                 uploadLabel.classList.remove('border-indigo-600', 'dark:border-indigo-300');
-                uploadLabel.classList.add('border-slate-400', 'dark:border-slate-500');
             }
             if (eName === 'drop' && e.dataTransfer.files.length) {
                 fileInput.files = e.dataTransfer.files;
@@ -204,17 +223,14 @@ document.addEventListener('DOMContentLoaded', () => {
     downloadCombinedBtn.addEventListener('click', handleDownloadCombined);
     downloadSeparatelyBtn.addEventListener('click', handleDownloadSeparately);
 
+    // Handles the uploaded PDF file
     async function handleFile(file) {
         if (!file || file.type !== 'application/pdf') {
             showStatus("Please upload a valid PDF file.", 'error');
             return;
         }
 
-        resultsList.innerHTML = '';
-        errorMessage.classList.add('hidden');
-        controls.classList.add('hidden');
-        resultsContainer.classList.add('hidden');
-
+        resetAll(); // Reset previous state before loading a new file
         showStatus("Loading PDF...");
         originalFilename = file.name.replace(/\.pdf$/i, '');
         try {
@@ -234,6 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Displays status messages (loading, progress, or error)
     function showStatus(message, type = 'loading') {
         statusArea.classList.remove('hidden');
         errorMessage.classList.add('hidden');
@@ -241,13 +258,14 @@ document.addEventListener('DOMContentLoaded', () => {
         loader.classList.add('hidden');
 
         if (type === 'error') {
-            errorMessage.classList.remove('hidden'); errorMessage.innerHTML = message;
+            errorMessage.classList.remove('hidden'); errorMessage.textContent = message;
         } else {
-            progressMessage.classList.remove('hidden'); progressMessage.innerHTML = message;
+            progressMessage.classList.remove('hidden'); progressMessage.textContent = message;
             loader.classList.remove('hidden');
         }
     }
 
+    // A wrapper to handle the processing logic, including button disabling and error handling
     async function processRequest(handler) {
         resultsList.innerHTML = '';
         resultsContainer.classList.add('hidden');
@@ -263,6 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Shows the results container and download buttons if any files were generated
     function finalizeResults() {
         const numCards = resultsList.children.length;
         if (errorMessage.classList.contains('hidden')) statusArea.classList.add('hidden');
@@ -270,7 +289,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (numCards > 0) {
             resultsContainer.classList.remove('hidden');
             downloadCombinedBtn.classList.toggle('hidden', numCards <= 1);
-            downloadSeparatelyBtn.textContent = 'Download as ZIP';
             downloadSeparatelyBtn.classList.toggle('hidden', numCards <= 1);
         } else {
             resultsContainer.classList.add('hidden');
@@ -280,16 +298,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Handles the "Delete & Save" operation
     async function handleDeletePages() {
         const pagesToDeleteStr = getEl('delete-pages').value;
         const pagesToDelete = parsePageList(pagesToDeleteStr, pageCount);
-
-        if (!pagesToDelete || pagesToDelete.size === 0) throw new Error("Please enter valid page numbers to delete.");
+        if (!pagesToDelete) throw new Error("Please enter valid page numbers to delete.");
 
         const pagesToKeep = Array.from({ length: pageCount }, (_, i) => i + 1).filter(p => !pagesToDelete.has(p));
-
-        if (pagesToKeep.length === pageCount) throw new Error("None of the pages you entered were found in the PDF.");
-        if (pagesToKeep.length === 0) throw new Error("This operation would result in an empty PDF. Please keep at least one page.");
+        if (pagesToKeep.length === pageCount) throw new Error("None of the specified pages were found in the PDF.");
+        if (pagesToKeep.length === 0) throw new Error("This operation would result in an empty PDF. At least one page must be kept.");
 
         showStatus(`Preparing ${pagesToKeep.length} remaining pages...`);
         const sourceDoc = await PDFDocument.load(pdfBytes, { ignoreEncryption: true });
@@ -301,6 +318,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Handles the "Extract Every Page" operation
     async function handleExtractAllPages() {
         showStatus(`Extracting all ${pageCount} pages...`);
         const sourceDoc = await PDFDocument.load(pdfBytes, { ignoreEncryption: true });
@@ -310,7 +328,8 @@ document.addEventListener('DOMContentLoaded', () => {
             await addDownloadCard(resultBytes, `${originalFilename}_page_${i}.pdf`, `Page ${i}`);
         }
     }
-
+    
+    // Merges all generated single-page PDFs into one file
     async function handleDownloadCombined() {
         const cards = Array.from(resultsList.children);
         if (cards.length <= 1) return;
@@ -334,32 +353,45 @@ document.addEventListener('DOMContentLoaded', () => {
             [downloadCombinedBtn, downloadSeparatelyBtn, resetBtn].forEach(b => b.disabled = false);
         }
     }
-    
+
+    // Compresses all generated single-page PDFs into a single ZIP file
     async function handleDownloadSeparately() {
         const cards = Array.from(resultsList.children);
         if (cards.length <= 1) return;
 
         [downloadCombinedBtn, downloadSeparatelyBtn, resetBtn].forEach(b => b.disabled = true);
-        showStatus(`Creating ZIP file with ${cards.length} PDFs...`);
+        showStatus(`Creating ZIP file...`);
+
         try {
             const zip = new JSZip();
-            await Promise.all(cards.map(async (card, index) => {
-                progressMessage.textContent = `Adding file ${index + 1} of ${cards.length} to ZIP...`;
+
+            for (let i = 0; i < cards.length; i++) {
+                const card = cards[i];
+                const progress = ((i + 1) / cards.length) * 100;
+                progressMessage.textContent = `Adding file ${i + 1} of ${cards.length} to ZIP... (${progress.toFixed(0)}%)`;
+
                 const blob = await fetch(card.dataset.url).then(res => res.blob());
                 zip.file(card.dataset.filename, blob);
-            }));
+            }
 
             progressMessage.textContent = 'Generating ZIP file...';
-            const zipBlob = await zip.generateAsync({ type: "blob" });
-            downloadBlob(zipBlob, `${originalFilename}_pages.zip`);
+            const content = await zip.generateAsync({
+                type: 'blob',
+                compression: 'DEFLATE',
+                compressionOptions: { level: 6 }
+            });
+
+            downloadBlob(content, `${originalFilename}_pages.zip`);
             statusArea.classList.add('hidden');
-        } catch (e) {
-             showStatus(`Error creating ZIP file: ${e.message}`, 'error');
+        } catch (error) {
+             console.error('ZIP creation error:', error);
+             showStatus(`Error creating ZIP file: ${error.message}`, 'error');
         } finally {
              [downloadCombinedBtn, downloadSeparatelyBtn, resetBtn].forEach(b => b.disabled = false);
         }
     }
 
+    // Rotates a single generated PDF page by 90 degrees
     async function handleRotate(event) {
         const card = event.currentTarget.closest('.result-card');
         if (!card) return;
@@ -369,28 +401,26 @@ document.addEventListener('DOMContentLoaded', () => {
             const oldUrl = card.dataset.url;
             const pdfBytes = new Uint8Array(await (await fetch(oldUrl)).arrayBuffer());
             const pdfDoc = await PDFDocument.load(pdfBytes);
-
             const page = pdfDoc.getPage(0);
             const currentRotation = page.getRotation().angle;
             page.setRotation(degrees((currentRotation + 90) % 360));
-
             const newPdfBytes = await pdfDoc.save();
+            
             const blob = new Blob([newPdfBytes], { type: 'application/pdf' });
             const newUrl = URL.createObjectURL(blob);
-
-            card.dataset.url = newUrl;
-            card.querySelector('.download-card-btn').onclick = () => downloadBlob(blob, card.dataset.filename);
             
-            URL.revokeObjectURL(oldUrl); // Clean up old URL
+            card.dataset.url = newUrl;
+            URL.revokeObjectURL(oldUrl); // Clean up the old, un-rotated blob URL
+
             await renderPdfPreview(card.querySelector('canvas'), newPdfBytes);
         } catch (e) {
             console.error("Rotation error:", e);
-            alert("An error occurred while rotating the PDF.");
         } finally {
             card.querySelectorAll('button').forEach(b => b.disabled = false);
         }
     }
 
+    // Triggers the download of a blob
     function downloadBlob(blob, filename) {
         const link = document.createElement('a');
         link.href = URL.createObjectURL(blob);
@@ -398,9 +428,10 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
-        setTimeout(() => URL.revokeObjectURL(link.href), 100);
+        setTimeout(() => URL.revokeObjectURL(link.href), 100); // Clean up download URL
     }
 
+    // Creates a new PDF document from a subset of pages from a source document
     async function createPdfFromPages(sourceDoc, pageNumbers) {
         const newPdfDoc = await PDFDocument.create();
         const indices = pageNumbers.map(n => n - 1);
@@ -409,6 +440,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return newPdfDoc.save();
     }
 
+    // Creates and appends a result card with a preview and action buttons
     async function addDownloadCard(bytes, filename, displayName) {
         const card = document.createElement('div');
         card.className = 'result-card relative group bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg overflow-hidden flex flex-col shadow-sm';
@@ -422,20 +454,21 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="absolute z-10 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                 <button class="download-card-btn bg-transparent text-2xl" title="Download">⬇️</button>
                 <button class="rotate-card-btn bg-transparent text-2xl" title="Rotate 90°">🔄</button>
-                <button class="delete-card-btn bg-transparent text-xl" title="Remove">❌</button>
+                <button class="delete-card-btn bg-transparent text-2xl" title="Remove">❌</button>
             </div>
             <div class="w-full h-48 flex items-center justify-center p-2 bg-slate-100 dark:bg-slate-700"><canvas class="max-w-full max-h-full"></canvas></div>
             <span class="block font-semibold text-center p-2 border-t border-indigo-300 truncate" title="${displayName}">${displayName}</span>
         `;
-
+        
         card.querySelector('.download-card-btn').addEventListener('click', () => downloadBlob(blob, filename));
-        card.querySelector('.delete-card-btn').addEventListener('click', () => { card.remove(); URL.revokeObjectURL(url); finalizeResults(); });
+        card.querySelector('.delete-card-btn').addEventListener('click', () => { URL.revokeObjectURL(url); card.remove(); finalizeResults(); });
         card.querySelector('.rotate-card-btn').addEventListener('click', handleRotate);
 
         resultsList.appendChild(card);
         await renderPdfPreview(card.querySelector('canvas'), bytes);
     }
-
+    
+    // Renders a preview of the first page of a PDF onto a canvas element
     async function renderPdfPreview(canvas, bytes) {
         try {
             const pdf = await pdfjsLib.getDocument({data: new Uint8Array(bytes)}).promise;
@@ -450,6 +483,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Parses a string of page numbers (e.g., "1, 3-5, 8") into a Set of numbers
     function parsePageList(str, max) {
         if (!str?.trim()) return null;
         const pages = new Set();
@@ -458,16 +492,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (!part) return;
                 if (part.includes('-')) {
                     let [start, end] = part.split('-').map(Number);
-                    if (isNaN(start) || isNaN(end) || start < 1 || start > end || end > max) throw new Error(`Range '${part}' is invalid.`);
+                    if (isNaN(start) || isNaN(end) || start < 1 || start > end || end > max) throw new Error();
                     for (let i = start; i <= end; i++) pages.add(i);
                 } else {
                     const num = Number(part);
-                    if (isNaN(num) || num < 1 || num > max) throw new Error(`Page '${part}' is invalid.`);
+                    if (isNaN(num) || num < 1 || num > max) throw new Error();
                     pages.add(num);
                 }
             });
         } catch (e) {
-            throw new Error(`Invalid page format. ${e.message}`);
+            throw new Error(`Invalid page format. Please use numbers and ranges (e.g., 1, 3-5) within the page limit of ${max}.`);
         }
         return pages.size > 0 ? pages : null;
     }
