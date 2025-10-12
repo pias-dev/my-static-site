@@ -1,0 +1,9 @@
+RewriteEngine On
+
+# 1) Old /image/... → New /... (301 redirect)
+RewriteCond %{THE_REQUEST} \s/+image/ [NC]
+RewriteRule ^image/(.+)$ /$1 [R=301,L]
+
+# 2) If desired, serve the old path inside the new clean URL (as a bridge)
+# Only for those 4 pages
+RewriteRule ^(image-resizer|image-cropper|image-compressor|image-converter)$ /image/$1 [L,NC]
