@@ -1,7 +1,0 @@
-RewriteEngine On
-
-# 1) Redirect old long URL to new short URL (SEO-friendly)
-RewriteRule ^image/image-resizer/?$ /image-resizer [R=301,L,NC]
-
-# 2) Internally serve the same content when users visit the short URL
-RewriteRule ^image-resizer/?$ /image/image-resizer [L,NC]
