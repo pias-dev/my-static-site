@@ -1,9 +1,7 @@
 RewriteEngine On
 
-# 1) Old /image/... → New /... (301 redirect)
-RewriteCond %{THE_REQUEST} \s/+image/ [NC]
-RewriteRule ^image/(.+)$ /$1 [R=301,L]
+# 1) Redirect old long URL to new short URL (SEO-friendly)
+RewriteRule ^image/image-resizer/?$ /image-resizer [R=301,L,NC]
 
-# 2) If desired, serve the old path inside the new clean URL (as a bridge)
-# Only for those 4 pages
-RewriteRule ^(image-resizer|image-cropper|image-compressor|image-converter)$ /image/$1 [L,NC]
+# 2) Internally serve the same content when users visit the short URL
+RewriteRule ^image-resizer/?$ /image/image-resizer [L,NC]
