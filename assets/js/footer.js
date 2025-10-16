@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function() {
             <div>
                 <h2 id="main-tools" class="text-indigo-600 dark:text-indigo-400 text-lg font-bold underline mb-4 underline-offset-8 scroll-mt-16">Main Tools</h2>
                 <ul class="mt-4 space-y-2 list-disc pl-5 text-slate-800 text-base font-semibold dark:text-slate-300">
-                    <li><a href="/image-tools" class="hover:text-purple-600 dark:hover:text-purple-400">Image Tools</a></li>
+                    <li><a href="image-tools" class="hover:text-purple-600 dark:hover:text-purple-400">Image Tools</a></li>
                     <li><a href="/pdf-tools" class="hover:text-purple-600 dark:hover:text-purple-400">PDF Tools</a></li>
                     <li><a href="/text-tools" class="hover:text-purple-600 dark:hover:text-purple-400">Text Tools</a></li>
                     <li><a href="/calculator-tools" class="hover:text-purple-600 dark:hover:text-purple-400">Calculator Tools</a></li>
@@ -92,4 +92,5 @@ document.addEventListener("DOMContentLoaded", function() {
     if (placeholder) {
         placeholder.innerHTML = footerHTML;
     }
+
 });
