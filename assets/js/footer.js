@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function() {
             <div>
                 <h2 class="text-indigo-600 dark:text-indigo-400 text-xl font-bold underline mb-4 underline-offset-8">Quick Links</h2>
                 <ul class="mt-4 space-y-2 list-disc pl-5 text-slate-800 text-lg font-semibold dark:text-slate-300">
-                    <li><a href="/index" class="color-home link-b hover:text-purple-600 dark:hover:text-purple-400">Home</a></li>
+                    <li><a href="/index" class="color-home hover:text-purple-600 dark:hover:text-purple-400">Home</a></li>
                     <li><a href="/about" class="hover:text-purple-600 dark:hover:text-purple-400">About Us</a></li>
                     <li><a href="/contact" class="hover:text-purple-600 dark:hover:text-purple-400">Contact</a></li>
                     <li><a href="/privacy-policy" class="hover:text-purple-600 dark:hover:text-purple-400">Privacy Policy</a></li>
@@ -84,3 +84,4 @@ document.addEventListener("DOMContentLoaded", function() {
         placeholder.innerHTML = footerHTML;
     }
 });
+
