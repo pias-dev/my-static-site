@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const footerHTML = `
     <footer class="bg-slate-100 p-8 dark:bg-slate-800">
     <div class="max-w-screen-xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             
             <!-- Logo and Social Media Section -->
             <div class="space-y-4 text-slate-800 dark:text-slate-300">
@@ -68,20 +68,6 @@ document.addEventListener("DOMContentLoaded", function() {
                     <li><a href="/unit-converter-tools" class="hover:text-purple-600 dark:hover:text-purple-400">Unit Converter Tools</a></li>
                     <li><a href="/qr-generator-tools" class="hover:text-purple-600 dark:hover:text-purple-400">QR Generator Tools</a></li>
                     <li><a href="/audio-tools" class="hover:text-purple-600 dark:hover:text-purple-400">Audio Tools</a></li>
-                </ul>
-            </div>
-
-            <!-- Tools -->
-            <div>
-                <h2 class="text-indigo-600 dark:text-indigo-400 text-xl font-bold underline mb-4 underline-offset-8">Tools</h2>
-                <ul class="mt-4 space-y-2 list-disc pl-5 text-slate-800 text-lg font-semibold dark:text-slate-300">
-                    <li><a href="/image-cropper" class="color-link1 hover:text-purple-600 dark:hover:text-purple-400">Image Cropper</a></li>
-                    <li><a href="/image-resize" class="color-link2 hover:text-purple-600 dark:hover:text-purple-400">Image Resize</a></li>
-                    <li><a href="/images-compressor" class="color-link3 hover:text-purple-600 dark:hover:text-purple-400">Images Compressor</a></li>
-                    <li><a href="/images-converter" class="color-link4 hover:text-purple-600 dark:hover:text-purple-400">Images Converter</a></li>
-                    <li><a href="/image-rotate-flip" class="color-link5 hover:text-purple-600 dark:hover:text-purple-400">Image Rotate & Flip</a></li>
-                    <li><a href="/image-to-base64" class="color-link6 hover:text-purple-600 dark:hover:text-purple-400">Image to Base64</a></li>
-                    <li><a href="/base64-to-image" class="color-link7 hover:text-purple-600 dark:hover:text-purple-400">Base64 to Image</a></li>
                 </ul>
             </div>
         </div>
