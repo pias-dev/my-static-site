@@ -77,8 +77,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 <ul class="mt-4 space-y-2 list-disc pl-5 text-slate-800 text-lg font-semibold dark:text-slate-300">
                     <li><a href="/image-crop" class="color-link1 hover:text-purple-600 dark:hover:text-purple-400">Image Cropper</a></li>
                     <li><a href="/image-resize" class="color-link2 hover:text-purple-600 dark:hover:text-purple-400">Image Resize</a></li>
-                    <li><a href="/images-compressor" class="color-link3 hover:text-purple-600 dark:hover:text-purple-400">Images Compressor</a></li>
-                    <li><a href="/images-converter" class="color-link4 hover:text-purple-600 dark:hover:text-purple-400">Images Converter</a></li>
+                    <li><a href="/images-compress" class="color-link3 hover:text-purple-600 dark:hover:text-purple-400">Images Compressor</a></li>
+                    <li><a href="/images-convert" class="color-link4 hover:text-purple-600 dark:hover:text-purple-400">Images Converter</a></li>
                     <li><a href="/image-rotate-flip" class="color-link5 hover:text-purple-600 dark:hover:text-purple-400">Image Rotate & Flip</a></li>
                     <li><a href="/image-to-base64" class="color-link6 hover:text-purple-600 dark:hover:text-purple-400">Image to Base64</a></li>
                     <li><a href="/base64-to-image" class="color-link7 hover:text-purple-600 dark:hover:text-purple-400">Base64 to Image</a></li>
