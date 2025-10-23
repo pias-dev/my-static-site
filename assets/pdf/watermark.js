@@ -49,6 +49,10 @@
         const debouncedUpdatePreview = debounce(updatePreview, 300);
 
         // --- Event Listeners ---
+        fontSize.addEventListener('input', e => document.getElementById('font-size-value').textContent = `${e.target.value}pt`);
+        opacity.addEventListener('input', e => document.getElementById('opacity-value').textContent = e.target.value);
+        rotation.addEventListener('input', e => document.getElementById('rotation-value').textContent = `${e.target.value}°`);
+
         pdfUpload.addEventListener('change', (e) => {
             if (e.target.files.length) handleFile(e.target.files[0]);
         });
