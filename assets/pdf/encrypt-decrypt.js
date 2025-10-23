@@ -83,8 +83,8 @@
                 resultDiv.innerHTML = `
                     <div class="mt-4 p-4 rounded-lg bg-green-100 dark:bg-green-900 border border-green-300 dark:border-green-700">
                         <h3 class="font-bold text-green-800 dark:text-green-200">Encryption Successful!</h3>
-                        <p class="text-green-700 dark:text-green-300">Your PDF has been encrypted and is ready for download.</p>
-                        <a href="${url}" download="${downloadFileName}" class="mt-2 inline-block text-white bg-green-600 hover:bg-green-700 font-semibold rounded-lg text-sm px-4 py-2 transition-all">Download Encrypted PDF</a>
+                        <p class="mb-2 text-green-700 dark:text-green-300">Your PDF has been encrypted and is ready for download.</p>
+                        <a href="${url}" download="${downloadFileName}" class="inline-block text-white bg-green-600 hover:bg-green-700 font-semibold rounded-lg text-sm px-4 py-2 transition-all">Download Encrypted PDF</a>
                     </div>
                 `;
                 resultDiv.style.display = 'block';
