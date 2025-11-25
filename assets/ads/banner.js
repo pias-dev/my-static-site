@@ -115,7 +115,7 @@ function startAdRefreshInterval() {
   // Refresh ads every 5 seconds (5000ms)
   adRefreshInterval = setInterval(() => {
     refreshAds();
-  }, 3000);
+  }, 5000);
 }
 
 // Stop the ad refresh interval (useful if needed)
@@ -139,5 +139,5 @@ window.addEventListener("load", () => {
     loadAds(true);
     // Start refreshing every 5 seconds after initial load
     startAdRefreshInterval();
-  }, 1000);
+  }, 500);
 });
