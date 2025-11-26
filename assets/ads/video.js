@@ -17,6 +17,7 @@
     // Repeat every 5 seconds (5000ms)
     setInterval(function () {
       loadScript();
-    }, 15000);
-  }, 1500);
+    }, 5000);
+  }, 1200);
 })({});
+
