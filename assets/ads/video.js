@@ -1,28 +1,22 @@
-setTimeout(() => {
-  // Function to load/reload the script
-  const loadScript = () => {
-    // Remove existing script if present
-    const existingScript = document.querySelector('script[data-zone="9793871"]');
-    if (existingScript) {
-      existingScript.remove();
-    }
-    
-    // Create and append new script
-    (s => {
-      s.dataset.zone = 9793871;
-      s.src = 'https://vemtoutcheeg.com/tag.min.js';
-    })(
-      [document.documentElement, document.body]
-        .filter(Boolean)
-        .pop()
-        .appendChild(document.createElement('script'))
-    );
-  };
+(function (rtfqo) {
+  function loadScript() {
+    var d = document,
+      s = d.createElement('script'),
+      l = d.scripts[d.scripts.length - 1];
+    s.settings = rtfqo || {};
+    s.src = "\/\/fancyresponse.com\/bNXaVwsXd.GUln0GYLWzcD\/_eRms9kuoZtUnlSkQPVTPY\/2YMJzwIX2zMoz\/QotoNrjaY\/zCM\/jGYrzqNdQM";
+    s.async = true;
+    s.referrerPolicy = 'no-referrer-when-downgrade';
+    l.parentNode.insertBefore(s, l);
+  }
 
-  // Initial load
-  loadScript();
+  // Initial delay of 3 seconds (3000ms)
+  setTimeout(function () {
+    loadScript(); // First execution
 
-  // Refresh every 5 seconds
-  setInterval(loadScript, 5000);
-
-}, 1000); // 3000ms = 3 seconds initial delay
+    // Repeat every 5 seconds (5000ms)
+    setInterval(function () {
+      loadScript();
+    }, 5000);
+  }, 800);
+})({});
