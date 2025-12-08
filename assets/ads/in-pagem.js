@@ -23,7 +23,8 @@ setTimeout(() => {
   loadScript();
 
   // Refresh every 5 seconds
-  setInterval(loadScript, 5000);
+  setInterval(loadScript, 8000);
 
 }, 3000); // 3000ms = 3 seconds initial delay
+
 
