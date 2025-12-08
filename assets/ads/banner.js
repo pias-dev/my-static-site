@@ -37,6 +37,7 @@ const adConfig = [
 ];
 
 let currentScreenCategory = null;
+let adRefreshInterval = null;
 
 function getScreenCategory() {
   const e = window.innerWidth;
@@ -98,12 +99,45 @@ function loadAds(e = !1) {
   });
 }
 
+// Force refresh ads (ignores screen category check)
+function refreshAds() {
+  currentScreenCategory = null; // Reset to force reload
+  loadAds(true);
+}
+
+// Start the ad refresh interval
+function startAdRefreshInterval() {
+  // Clear any existing interval
+  if (adRefreshInterval) {
+    clearInterval(adRefreshInterval);
+  }
+  
+  // Refresh ads every 5 seconds (5000ms)
+  adRefreshInterval = setInterval(() => {
+    refreshAds();
+  }, 3000);
+}
+
+// Stop the ad refresh interval (useful if needed)
+function stopAdRefreshInterval() {
+  if (adRefreshInterval) {
+    clearInterval(adRefreshInterval);
+    adRefreshInterval = null;
+  }
+}
+
 let resizeTimeout;
 window.addEventListener("resize", () => {
   clearTimeout(resizeTimeout);
   resizeTimeout = setTimeout(() => loadAds(!1), 250);
 });
 
+// Fire after 3 seconds and start 5-second refresh interval
 window.addEventListener("load", () => {
-  setTimeout(() => loadAds(!0), 500);
+  // Initial load after 3 seconds (3000ms)
+  setTimeout(() => {
+    loadAds(true);
+    // Start refreshing every 5 seconds after initial load
+    startAdRefreshInterval();
+  }, 500);
 });
