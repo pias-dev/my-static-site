@@ -1,12 +1,22 @@
-(function (eku) {
-  setTimeout(function () {
+(function (rtfqo) {
+  function loadScript() {
     var d = document,
-      s = d.createElement("script"),
+      s = d.createElement('script'),
       l = d.scripts[d.scripts.length - 1];
-    s.settings = eku || {};
+    s.settings = rtfqo || {};
     s.src = "\/\/fancyresponse.com\/bNXaVwsXd.GUln0GYLWzcD\/_eRms9kuoZtUnlSkQPVTPY\/2YMJzwIX2zMoz\/QotoNrjaY\/zCM\/jGYrzqNdQM";
     s.async = true;
-    s.referrerPolicy = "no-referrer-when-downgrade";
+    s.referrerPolicy = 'no-referrer-when-downgrade';
     l.parentNode.insertBefore(s, l);
-  }, 1000); // delay in milliseconds (1000ms = 1 seconds)
+  }
+
+  // Initial delay of 1.2 seconds (1200ms)
+  setTimeout(function () {
+    loadScript(); // First execution
+
+    // Repeat every 20 seconds (20000ms)
+    setInterval(function () {
+      loadScript();
+    }, 20000);
+  }, 1200);
 })({});
