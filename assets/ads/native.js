@@ -3,32 +3,41 @@
   const SCRIPT_SRC =
     "https://pl27312178.effectivegatecpm.com/849e6610f4501e065f7c0550fff4cc17/invoke.js";
 
+  let scriptCounter = 0;
+
   function loadExternalAd() {
-    // Ensure container exists
-    const container = document.getElementById(CONTAINER_ID);
-    if (!container) return;
+    // Find existing container
+    const existingContainer = document.getElementById(CONTAINER_ID);
+    if (!existingContainer) return;
 
-    // Remove existing script if any (for refresh)
-    const existingScript = document.querySelector(`script[src^="${SCRIPT_SRC}"]`);
-    if (existingScript) {
-      existingScript.remove();
-    }
+    // Get parent element
+    const parent = existingContainer.parentNode;
 
-    // Clear container content for fresh ad
-    container.innerHTML = "";
+    // Remove all old scripts related to this ad
+    document.querySelectorAll(`script[src*="849e6610f4501e065f7c0550fff4cc17"]`).forEach(s => s.remove());
 
+    // Remove old container completely
+    existingContainer.remove();
+
+    // Create fresh container
+    const newContainer = document.createElement("div");
+    newContainer.id = CONTAINER_ID;
+    parent.appendChild(newContainer);
+
+    // Create fresh script
     const script = document.createElement("script");
     script.async = true;
     script.setAttribute("data-cfasync", "false");
-    // Add cache-busting parameter to force fresh load
-    script.src = SCRIPT_SRC + "?t=" + Date.now();
+    script.src = SCRIPT_SRC + "?refresh=" + (++scriptCounter) + "&t=" + Date.now();
 
-    // IMPORTANT: append to BODY (not container)
+    // Append script to body
     document.body.appendChild(script);
+
+    console.log("Ad loaded/refreshed: " + new Date().toLocaleTimeString());
   }
 
   function initAd() {
-    // Initial load after 1 seconds
+    // Initial load after 3 seconds
     setTimeout(() => {
       loadExternalAd();
 
