@@ -5,9 +5,6 @@
     const container = document.getElementById(containerId);
     if (!container) return;
 
-    // Clear existing content before loading new ad
-    container.innerHTML = '';
-
     const script = document.createElement("script");
     script.async = true;
     script.setAttribute("data-cfasync", "false");
@@ -16,11 +13,6 @@
     container.appendChild(script);
   }
 
-  // Initial load after 1 seconds
-  setTimeout(function () {
-    loadExternalAd();
-
-    // Refresh every 3 seconds after initial load
-    setInterval(loadExternalAd, 3000);
-  }, 1000);
+  // Optional delay (adjust or remove if not needed)
+  setTimeout(loadExternalAd, 1000);
 })();
