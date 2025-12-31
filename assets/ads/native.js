@@ -3,53 +3,28 @@
   const SCRIPT_SRC =
     "https://pl27312178.effectivegatecpm.com/849e6610f4501e065f7c0550fff4cc17/invoke.js";
 
-  let scriptCounter = 0;
-
   function loadExternalAd() {
-    // Find existing container
-    const existingContainer = document.getElementById(CONTAINER_ID);
-    if (!existingContainer) return;
+    // Ensure container exists
+    if (!document.getElementById(CONTAINER_ID)) return;
 
-    // Get parent element
-    const parent = existingContainer.parentNode;
+    // Prevent duplicate loads
+    if (document.querySelector(`script[src="${SCRIPT_SRC}"]`)) return;
 
-    // Remove all old scripts related to this ad
-    document.querySelectorAll(`script[src*="849e6610f4501e065f7c0550fff4cc17"]`).forEach(s => s.remove());
-
-    // Remove old container completely
-    existingContainer.remove();
-
-    // Create fresh container
-    const newContainer = document.createElement("div");
-    newContainer.id = CONTAINER_ID;
-    parent.appendChild(newContainer);
-
-    // Create fresh script
     const script = document.createElement("script");
     script.async = true;
     script.setAttribute("data-cfasync", "false");
-    script.src = SCRIPT_SRC + "?refresh=" + (++scriptCounter) + "&t=" + Date.now();
+    script.src = SCRIPT_SRC;
 
-    // Append script to body
+    // IMPORTANT: append to BODY (not container)
     document.body.appendChild(script);
-
-    console.log("Ad loaded/refreshed: " + new Date().toLocaleTimeString());
-  }
-
-  function initAd() {
-    // Initial load after 3 seconds
-    setTimeout(() => {
-      loadExternalAd();
-
-      // Refresh every 5 seconds
-      setInterval(loadExternalAd, 5000);
-    }, 1000);
   }
 
   // Load after page is fully ready
   if (document.readyState === "complete") {
-    initAd();
+    setTimeout(loadExternalAd, 1000);
   } else {
-    window.addEventListener("load", initAd);
+    window.addEventListener("load", () => {
+      setTimeout(loadExternalAd, 1000);
+    });
   }
 })();
