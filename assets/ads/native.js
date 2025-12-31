@@ -1,0 +1,26 @@
+(function () {
+  const containerId = "container-849e6610f4501e065f7c0550fff4cc17";
+
+  function loadExternalAd() {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    // Clear existing content before loading new ad
+    container.innerHTML = '';
+
+    const script = document.createElement("script");
+    script.async = true;
+    script.setAttribute("data-cfasync", "false");
+    script.src = "https://pl27312178.effectivegatecpm.com/849e6610f4501e065f7c0550fff4cc17/invoke.js";
+
+    container.appendChild(script);
+  }
+
+  // Initial load after 1 seconds
+  setTimeout(function () {
+    loadExternalAd();
+
+    // Refresh every 3 seconds after initial load
+    setInterval(loadExternalAd, 3000);
+  }, 1000);
+})();
