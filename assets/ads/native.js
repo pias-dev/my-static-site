@@ -13,6 +13,4 @@
     container.appendChild(script);
   }
 
-  // Optional delay (adjust or remove if not needed)
-  setTimeout(loadExternalAd, 1000);
 })();
