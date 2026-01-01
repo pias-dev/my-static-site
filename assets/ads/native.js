@@ -4,27 +4,57 @@
     "https://pl27312178.effectivegatecpm.com/849e6610f4501e065f7c0550fff4cc17/invoke.js";
 
   function loadExternalAd() {
-    // Ensure container exists
-    if (!document.getElementById(CONTAINER_ID)) return;
+    const container = document.getElementById(CONTAINER_ID);
+    if (!container) return;
 
-    // Prevent duplicate loads
-    if (document.querySelector(`script[src="${SCRIPT_SRC}"]`)) return;
+    // Clear container
+    container.innerHTML = "";
 
-    const script = document.createElement("script");
-    script.async = true;
-    script.setAttribute("data-cfasync", "false");
-    script.src = SCRIPT_SRC;
+    // Create iframe for complete isolation
+    const iframe = document.createElement("iframe");
+    iframe.style.width = "100%";
+    iframe.style.height = "100%";
+    iframe.style.border = "none";
+    iframe.style.overflow = "hidden";
+    iframe.scrolling = "no";
 
-    // IMPORTANT: append to BODY (not container)
-    document.body.appendChild(script);
+    container.appendChild(iframe);
+
+    // Write content into iframe
+    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+    iframeDoc.open();
+    iframeDoc.write(`
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <style>
+          body { margin: 0; padding: 0; }
+        </style>
+      </head>
+      <body>
+        <div id="${CONTAINER_ID}"></div>
+        <script async data-cfasync="false" src="${SCRIPT_SRC}?t=${Date.now()}"><\/script>
+      </body>
+      </html>
+    `);
+    iframeDoc.close();
+
+    console.log("Ad loaded/refreshed: " + new Date().toLocaleTimeString());
   }
 
-  // Load after page is fully ready
+  function initAd() {
+    // Initial load after 1 seconds
+    setTimeout(() => {
+      loadExternalAd();
+
+      // Refresh every 5 seconds
+      setInterval(loadExternalAd, 5000);
+    }, 1000);
+  }
+
   if (document.readyState === "complete") {
-    setTimeout(loadExternalAd, 1000);
+    initAd();
   } else {
-    window.addEventListener("load", () => {
-      setTimeout(loadExternalAd, 1000);
-    });
+    window.addEventListener("load", initAd);
   }
 })();
