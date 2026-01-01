@@ -15,7 +15,7 @@
       iframe.style.height = height + "px";
     } catch (e) {
       // Cross-origin safety fallback
-      iframe.style.height = "250px";
+      iframe.style.height = "300px";
     }
   }
 
