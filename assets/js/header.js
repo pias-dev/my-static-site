@@ -6,21 +6,17 @@ document.addEventListener("DOMContentLoaded", function() {
                 <div class="flex-shrink-0">
                     <a href="https://www.alltoolai.com/" class="flex items-center space-x-3 transition-opacity hover:opacity-85" aria-label="Homepage">
                         <img src="/assets/icon/favicon.svg" alt="All Tool AI Logo" class="w-10 h-10 lg:w-12 lg:h-12">
-                        <div class="logo-text-block">
-                            <div class="logo-main-line"><span class="logo-text alltool">All Tool&ensp;</span><span class="logo-text ai">Ai</span></div>
+                        <div class="logo-text-block" style="background-color: ;">
+                            <div class="logo-main-line"><span class="logo-text com-color">Text</span><span class="logo-text space ai">.</span><span class="logo-text alltool">Toolify</span><span class="logo-text ai">Site</span></div>
                             <div class="logo-sub-line"><span class="com-color">.Com</span></div>
                         </div>
                     </a>
                 </div>
-                <nav class="hidden md:flex items-center space-x-8 text-lg font-semibold text-slate-800 dark:text-slate-200">
+                <nav class="hidden md:flex items-center space-x-8 text-xl font-semibold text-slate-800 dark:text-slate-200">
                     <a href="https://www.alltoolai.com/" class="nav-link-animated hover:text-purple-600 dark:hover:text-purple-400">Home</a>
-                    <a href="#main-tools" class="nav-link-animated hover:text-purple-600 dark:hover:text-purple-400">Tools List</a>
+                    <a href="#main-tools" class="nav-link-animated hover:text-purple-600 dark:hover:text-purple-400">Main Tool</a>
+                    <a href="#main-tools" class="nav-link-animated hover:text-purple-600 dark:hover:text-purple-400">Text Tools</a>
                     <a href="/about" class="nav-link-animated hover:text-purple-600 dark:hover:text-purple-400">About</a>
-                    <a href="/contact" class="nav-link-animated hover:text-purple-600 dark:hover:text-purple-400">Contact</a>
-                    <a href="https://play.google.com/store/" aria-label="Get our app on Google Play" title="Google Play" class="transition-transform hover:scale-110 focus:scale-110 flex items-center">
-                        <span class="sr-only">Google Play</span>
-                        <img src="/assets/svg/play.svg" alt="Google Play Icon" class="w-8 h-8">
-                    </a>
                 </nav>
 
                 <div class="flex items-center">
@@ -61,5 +57,3 @@ document.addEventListener("DOMContentLoaded", function() {
         placeholder.innerHTML = headerHTML;
     }
 });
-
-
